@@ -125,7 +125,7 @@ theorem ker_coboundary0_nontrivial (cfg : GraphChainConfig) :
 theorem allOnes_ne_zero [Nonempty cfg.V] : allOnes cfg ≠ 0 := by
   intro h
   have := congr_fun h (Classical.arbitrary cfg.V)
-  simp [allOnes, Pi.zero_apply] at this
+  simp [allOnes] at this
 
 /-- For a nonempty graph, ker(δ₀) contains a nonzero element.
     This demonstrates the nontriviality concretely. -/
@@ -190,7 +190,8 @@ theorem coboundary0_zero_at_edge_iff (α : ChainSpace0 cfg) (e : cfg.E) :
 theorem coboundary0_allOnes_at_edge (e : cfg.E) :
     (coboundary0 cfg (allOnes cfg)) e = 0 := by
   rw [coboundary0_at_edge]
-  simp [allOnes]
+  simp only [allOnes]
+  decide
 
 /-! ## Section 6: The Two Endpoints Property
 
@@ -200,7 +201,7 @@ This is built into the structure of a graph and manifests as 1 + 1 = 0 in ZMod 2
 
 /-- Every edge has exactly two endpoints, which in ZMod 2 means the all-ones coboundary
     sums to 0. This is the algebraic form of "every edge has exactly two endpoints". -/
-theorem two_endpoints_property (e : cfg.E) :
+theorem two_endpoints_property (_e : cfg.E) :
     (1 : ZMod 2) + 1 = 0 := by decide
 
 /-- The coboundary of the full vertex set (all-ones) at any edge is zero. -/
