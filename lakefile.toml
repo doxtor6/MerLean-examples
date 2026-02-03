@@ -38,5 +38,9 @@ rev = "main"
 [[require]]
 name = "checkdecls"
 git = "https://github.com/PatrickMassot/checkdecls.git"
+
+[[require]]
+name = "checkdecls"
+git = "https://github.com/PatrickMassot/checkdecls.git"
 [[lean_lib]]
 name = "QEC1"
