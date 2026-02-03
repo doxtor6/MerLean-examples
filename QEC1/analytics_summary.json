@@ -1,0 +1,187 @@
+{
+  "paper_name": "QEC1",
+  "start_time": "2026-02-03T03:49:36.024329",
+  "end_time": "2026-02-03T03:51:21.244868",
+  "duration_seconds": 105.220539,
+  "duration_formatted": "1m 45s",
+  "statements": {
+    "total": 47,
+    "successful": 46,
+    "with_axiom": 1,
+    "with_sorry": 0,
+    "success_rate": "97.9%"
+  },
+  "tokens": {
+    "input": 7,
+    "output": 141,
+    "cache_read": 74572,
+    "cache_creation": 23305,
+    "total": 148
+  },
+  "compile_attempts": 1,
+  "faithfulness_checks": 1,
+  "error_type_summary": {},
+  "per_statement": [
+    {
+      "statement_id": "Rem_1"
+    },
+    {
+      "statement_id": "Rem_2"
+    },
+    {
+      "statement_id": "Rem_3"
+    },
+    {
+      "statement_id": "Rem_4"
+    },
+    {
+      "statement_id": "Rem_5"
+    },
+    {
+      "statement_id": "Rem_6"
+    },
+    {
+      "statement_id": "Def_1"
+    },
+    {
+      "statement_id": "Rem_7"
+    },
+    {
+      "statement_id": "Rem_8"
+    },
+    {
+      "statement_id": "Rem_9"
+    },
+    {
+      "statement_id": "Rem_10"
+    },
+    {
+      "statement_id": "Def_2"
+    },
+    {
+      "statement_id": "Def_3"
+    },
+    {
+      "statement_id": "Def_4"
+    },
+    {
+      "statement_id": "Def_5",
+      "start_time": "2026-02-03T03:49:37.860089",
+      "end_time": "2026-02-03T03:51:21.170325",
+      "duration_seconds": 103.310236,
+      "duration_formatted": "1m 43s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 141,
+        "cache_read": 74572,
+        "cache_creation": 23305,
+        "total": 148
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_6"
+    },
+    {
+      "statement_id": "Def_7"
+    },
+    {
+      "statement_id": "Def_8"
+    },
+    {
+      "statement_id": "Def_9"
+    },
+    {
+      "statement_id": "Def_10"
+    },
+    {
+      "statement_id": "Def_11"
+    },
+    {
+      "statement_id": "Def_12"
+    },
+    {
+      "statement_id": "Lem_1"
+    },
+    {
+      "statement_id": "Lem_2"
+    },
+    {
+      "statement_id": "Lem_3"
+    },
+    {
+      "statement_id": "Lem_4"
+    },
+    {
+      "statement_id": "Lem_5"
+    },
+    {
+      "statement_id": "Lem_6"
+    },
+    {
+      "statement_id": "Lem_7"
+    },
+    {
+      "statement_id": "Thm_1"
+    },
+    {
+      "statement_id": "Thm_2"
+    },
+    {
+      "statement_id": "Cor_1"
+    },
+    {
+      "statement_id": "Cor_2"
+    },
+    {
+      "statement_id": "Rem_11"
+    },
+    {
+      "statement_id": "Rem_12"
+    },
+    {
+      "statement_id": "Rem_13"
+    },
+    {
+      "statement_id": "Rem_14"
+    },
+    {
+      "statement_id": "Rem_15"
+    },
+    {
+      "statement_id": "Rem_16"
+    },
+    {
+      "statement_id": "Rem_17"
+    },
+    {
+      "statement_id": "Rem_18"
+    },
+    {
+      "statement_id": "Rem_19"
+    },
+    {
+      "statement_id": "Rem_20"
+    },
+    {
+      "statement_id": "Rem_21"
+    },
+    {
+      "statement_id": "Def_13"
+    },
+    {
+      "statement_id": "Def_14"
+    },
+    {
+      "statement_id": "Rem_22"
+    }
+  ]
+}

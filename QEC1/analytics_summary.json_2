@@ -1,0 +1,1146 @@
+{
+  "paper_name": "QEC1",
+  "start_time": "2026-02-02T14:26:20.159201",
+  "end_time": "2026-02-02T21:20:09.719556",
+  "duration_seconds": 24829.560355,
+  "duration_formatted": "6h 53m 49s",
+  "statements": {
+    "total": 47,
+    "successful": 36,
+    "with_axiom": 1,
+    "with_sorry": 10,
+    "success_rate": "76.6%"
+  },
+  "tokens": {
+    "input": 143400,
+    "output": 847590,
+    "cache_read": 110539561,
+    "cache_creation": 6496380,
+    "total": 990990
+  },
+  "compile_attempts": 245,
+  "faithfulness_checks": 70,
+  "error_type_summary": {
+    "other": 18
+  },
+  "per_statement": [
+    {
+      "statement_id": "Rem_1",
+      "start_time": "2026-02-02T14:26:21.525685",
+      "end_time": "2026-02-02T14:27:55.118274",
+      "duration_seconds": 93.592589,
+      "duration_formatted": "1m 33s",
+      "compile_attempts": 2,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 12,
+        "output": 676,
+        "cache_read": 246917,
+        "cache_creation": 28503,
+        "total": 688
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_2",
+      "start_time": "2026-02-02T14:27:55.164111",
+      "end_time": "2026-02-02T14:29:03.828588",
+      "duration_seconds": 68.664477,
+      "duration_formatted": "1m 8s",
+      "compile_attempts": 2,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 9,
+        "output": 314,
+        "cache_read": 147900,
+        "cache_creation": 9553,
+        "total": 323
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_3",
+      "start_time": "2026-02-02T14:29:03.872776",
+      "end_time": "2026-02-02T14:30:07.794442",
+      "duration_seconds": 63.921666,
+      "duration_formatted": "1m 3s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 130,
+        "cache_read": 83333,
+        "cache_creation": 10698,
+        "total": 137
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_4",
+      "start_time": "2026-02-02T14:30:07.840015",
+      "end_time": "2026-02-02T14:32:11.457482",
+      "duration_seconds": 123.617467,
+      "duration_formatted": "2m 3s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 133,
+        "cache_read": 82940,
+        "cache_creation": 10177,
+        "total": 140
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_5",
+      "start_time": "2026-02-02T14:32:11.498047",
+      "end_time": "2026-02-02T14:33:14.684796",
+      "duration_seconds": 63.186749,
+      "duration_formatted": "1m 3s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 131,
+        "cache_read": 79155,
+        "cache_creation": 6465,
+        "total": 138
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_6",
+      "start_time": "2026-02-02T14:33:14.730730",
+      "end_time": "2026-02-02T14:35:11.250845",
+      "duration_seconds": 116.520115,
+      "duration_formatted": "1m 56s",
+      "compile_attempts": 2,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 11,
+        "output": 802,
+        "cache_read": 222583,
+        "cache_creation": 17229,
+        "total": 813
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_1",
+      "start_time": "2026-02-02T14:35:11.294274",
+      "end_time": "2026-02-02T14:36:49.211159",
+      "duration_seconds": 97.916885,
+      "duration_formatted": "1m 37s",
+      "compile_attempts": 2,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 11,
+        "output": 735,
+        "cache_read": 247777,
+        "cache_creation": 30108,
+        "total": 746
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_7",
+      "start_time": "2026-02-02T14:36:49.254751",
+      "end_time": "2026-02-02T14:38:37.570516",
+      "duration_seconds": 108.315765,
+      "duration_formatted": "1m 48s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 10,
+        "output": 447,
+        "cache_read": 200575,
+        "cache_creation": 16736,
+        "total": 457
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_8",
+      "start_time": "2026-02-02T14:38:37.615289",
+      "end_time": "2026-02-02T14:40:38.178963",
+      "duration_seconds": 120.563674,
+      "duration_formatted": "2m 0s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 132,
+        "cache_read": 78902,
+        "cache_creation": 6197,
+        "total": 139
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_9",
+      "start_time": "2026-02-02T14:40:38.220714",
+      "end_time": "2026-02-02T14:44:05.674227",
+      "duration_seconds": 207.453513,
+      "duration_formatted": "3m 27s",
+      "compile_attempts": 3,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 14,
+        "output": 973,
+        "cache_read": 320244,
+        "cache_creation": 13209,
+        "total": 987
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_10",
+      "start_time": "2026-02-02T14:44:05.713176",
+      "end_time": "2026-02-02T14:45:32.617738",
+      "duration_seconds": 86.904562,
+      "duration_formatted": "1m 26s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 129,
+        "cache_read": 82606,
+        "cache_creation": 9921,
+        "total": 136
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_2",
+      "start_time": "2026-02-02T14:45:32.662955",
+      "end_time": "2026-02-02T14:48:48.457838",
+      "duration_seconds": 195.794883,
+      "duration_formatted": "3m 15s",
+      "compile_attempts": 2,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 21,
+        "output": 1257,
+        "cache_read": 669085,
+        "cache_creation": 30537,
+        "total": 1278
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_3",
+      "start_time": "2026-02-02T14:48:48.505333",
+      "end_time": "2026-02-02T14:50:34.108577",
+      "duration_seconds": 105.603244,
+      "duration_formatted": "1m 45s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 130,
+        "cache_read": 85219,
+        "cache_creation": 12310,
+        "total": 137
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_4",
+      "start_time": "2026-02-02T14:50:34.149222",
+      "end_time": "2026-02-02T14:52:47.965361",
+      "duration_seconds": 133.816139,
+      "duration_formatted": "2m 13s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 16,
+        "output": 833,
+        "cache_read": 524409,
+        "cache_creation": 31151,
+        "total": 849
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_5",
+      "start_time": "2026-02-02T14:52:48.006576",
+      "end_time": "2026-02-02T14:54:26.149446",
+      "duration_seconds": 98.14287,
+      "duration_formatted": "1m 38s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 130,
+        "cache_read": 85362,
+        "cache_creation": 12498,
+        "total": 137
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_6",
+      "start_time": "2026-02-02T14:54:26.195979",
+      "end_time": "2026-02-02T14:56:23.235386",
+      "duration_seconds": 117.039407,
+      "duration_formatted": "1m 57s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 133,
+        "cache_read": 87762,
+        "cache_creation": 14828,
+        "total": 140
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_7",
+      "start_time": "2026-02-02T14:56:23.277226",
+      "end_time": "2026-02-02T14:57:38.641925",
+      "duration_seconds": 75.364699,
+      "duration_formatted": "1m 15s",
+      "compile_attempts": 2,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 11,
+        "output": 520,
+        "cache_read": 232154,
+        "cache_creation": 13378,
+        "total": 531
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_8",
+      "start_time": "2026-02-02T14:57:38.689584",
+      "end_time": "2026-02-02T14:59:15.936558",
+      "duration_seconds": 97.246974,
+      "duration_formatted": "1m 37s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 126,
+        "cache_read": 85066,
+        "cache_creation": 12352,
+        "total": 133
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_9",
+      "start_time": "2026-02-02T14:59:15.979691",
+      "end_time": "2026-02-02T15:13:34.589401",
+      "duration_seconds": 858.60971,
+      "duration_formatted": "14m 18s",
+      "compile_attempts": 9,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 2,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 2,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 1100,
+        "output": 36423,
+        "cache_read": 4568804,
+        "cache_creation": 164853,
+        "total": 37523
+      },
+      "error_types": {
+        "other": 1
+      },
+      "unique_errors": [
+        "Errors detected in prose (no JSON)"
+      ]
+    },
+    {
+      "statement_id": "Def_10",
+      "start_time": "2026-02-02T15:13:34.656957",
+      "end_time": "2026-02-02T15:15:03.951738",
+      "duration_seconds": 89.294781,
+      "duration_formatted": "1m 29s",
+      "compile_attempts": 2,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 9,
+        "output": 305,
+        "cache_read": 150573,
+        "cache_creation": 10542,
+        "total": 314
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_11",
+      "start_time": "2026-02-02T15:15:03.998031",
+      "end_time": "2026-02-02T15:16:51.769832",
+      "duration_seconds": 107.771801,
+      "duration_formatted": "1m 47s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 133,
+        "cache_read": 83569,
+        "cache_creation": 10871,
+        "total": 140
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_12",
+      "start_time": "2026-02-02T15:16:51.808829",
+      "end_time": "2026-02-02T15:17:54.440846",
+      "duration_seconds": 62.632017,
+      "duration_formatted": "1m 2s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 132,
+        "cache_read": 83095,
+        "cache_creation": 10275,
+        "total": 139
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Lem_1",
+      "start_time": "2026-02-02T15:17:54.484835",
+      "end_time": "2026-02-02T15:19:53.529354",
+      "duration_seconds": 119.044519,
+      "duration_formatted": "1m 59s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 7,
+        "output": 132,
+        "cache_read": 89233,
+        "cache_creation": 14472,
+        "total": 139
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Lem_2",
+      "start_time": "2026-02-02T15:19:53.569828",
+      "end_time": "2026-02-02T17:04:29.380407",
+      "duration_seconds": 6275.810579,
+      "duration_formatted": "1h 44m 35s",
+      "compile_attempts": 50,
+      "faithfulness_checks": 5,
+      "error_fix_attempts": 50,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 49,
+      "axiom_phase_compiles": 1,
+      "structure_fix_attempts": 1,
+      "tokens": {
+        "input": 41553,
+        "output": 177951,
+        "cache_read": 30421880,
+        "cache_creation": 2341173,
+        "total": 219504
+      },
+      "error_types": {
+        "other": 3
+      },
+      "unique_errors": [
+        "Errors detected in prose (no JSON)",
+        "Failed to parse diagnostics response"
+      ]
+    },
+    {
+      "statement_id": "Lem_3",
+      "start_time": "2026-02-02T17:04:29.457109",
+      "end_time": "2026-02-02T17:06:32.304083",
+      "duration_seconds": 122.846974,
+      "duration_formatted": "2m 2s",
+      "compile_attempts": 1,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 15,
+        "output": 992,
+        "cache_read": 459656,
+        "cache_creation": 24248,
+        "total": 1007
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Lem_4",
+      "start_time": "2026-02-02T17:06:32.348123",
+      "end_time": "2026-02-02T17:44:33.316314",
+      "duration_seconds": 2280.968191,
+      "duration_formatted": "38m 0s",
+      "compile_attempts": 16,
+      "faithfulness_checks": 4,
+      "error_fix_attempts": 5,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 5,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 3,
+      "tokens": {
+        "input": 7636,
+        "output": 107796,
+        "cache_read": 10705194,
+        "cache_creation": 471007,
+        "total": 115432
+      },
+      "error_types": {
+        "other": 1
+      },
+      "unique_errors": [
+        "Compilation timed out after 60s"
+      ]
+    },
+    {
+      "statement_id": "Lem_5",
+      "start_time": "2026-02-02T17:44:33.415044",
+      "end_time": "2026-02-02T18:17:01.162755",
+      "duration_seconds": 1947.747711,
+      "duration_formatted": "32m 27s",
+      "compile_attempts": 15,
+      "faithfulness_checks": 2,
+      "error_fix_attempts": 6,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 6,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 3,
+      "tokens": {
+        "input": 2217,
+        "output": 82891,
+        "cache_read": 6042584,
+        "cache_creation": 456935,
+        "total": 85108
+      },
+      "error_types": {
+        "other": 4
+      },
+      "unique_errors": [
+        "Errors detected in prose (no JSON)"
+      ]
+    },
+    {
+      "statement_id": "Lem_6",
+      "start_time": "2026-02-02T18:17:01.213588",
+      "end_time": "2026-02-02T18:41:28.075247",
+      "duration_seconds": 1466.861659,
+      "duration_formatted": "24m 26s",
+      "compile_attempts": 7,
+      "faithfulness_checks": 2,
+      "error_fix_attempts": 2,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 2,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 3,
+      "tokens": {
+        "input": 72,
+        "output": 58637,
+        "cache_read": 4647678,
+        "cache_creation": 278488,
+        "total": 58709
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Lem_7",
+      "start_time": "2026-02-02T18:41:28.120109",
+      "end_time": "2026-02-02T19:11:39.501337",
+      "duration_seconds": 1811.381228,
+      "duration_formatted": "30m 11s",
+      "compile_attempts": 20,
+      "faithfulness_checks": 5,
+      "error_fix_attempts": 6,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 6,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 22791,
+        "output": 77643,
+        "cache_read": 10659298,
+        "cache_creation": 473046,
+        "total": 100434
+      },
+      "error_types": {
+        "other": 1
+      },
+      "unique_errors": [
+        "Errors detected in prose (no JSON)"
+      ]
+    },
+    {
+      "statement_id": "Thm_1",
+      "start_time": "2026-02-02T19:11:39.551425",
+      "end_time": "2026-02-02T19:52:34.731499",
+      "duration_seconds": 2455.180074,
+      "duration_formatted": "40m 55s",
+      "compile_attempts": 16,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 2,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 2,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 1,
+      "tokens": {
+        "input": 28929,
+        "output": 131324,
+        "cache_read": 11359508,
+        "cache_creation": 421925,
+        "total": 160253
+      },
+      "error_types": {
+        "other": 1
+      },
+      "unique_errors": [
+        "Errors detected in prose (no JSON)"
+      ]
+    },
+    {
+      "statement_id": "Thm_2",
+      "start_time": "2026-02-02T19:52:34.787041",
+      "end_time": "2026-02-02T20:16:03.702703",
+      "duration_seconds": 1408.915662,
+      "duration_formatted": "23m 28s",
+      "compile_attempts": 39,
+      "faithfulness_checks": 15,
+      "error_fix_attempts": 16,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 16,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 26091,
+        "output": 40901,
+        "cache_read": 8617560,
+        "cache_creation": 696223,
+        "total": 66992
+      },
+      "error_types": {
+        "other": 1
+      },
+      "unique_errors": [
+        "Errors detected in prose (no JSON)"
+      ]
+    },
+    {
+      "statement_id": "Cor_1",
+      "start_time": "2026-02-02T20:16:03.744291",
+      "end_time": "2026-02-02T20:25:19.712988",
+      "duration_seconds": 555.968697,
+      "duration_formatted": "9m 15s",
+      "compile_attempts": 8,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 51,
+        "output": 23323,
+        "cache_read": 4222581,
+        "cache_creation": 94083,
+        "total": 23374
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Cor_2",
+      "start_time": "2026-02-02T20:25:19.765350",
+      "end_time": "2026-02-02T20:36:56.766387",
+      "duration_seconds": 697.001037,
+      "duration_formatted": "11m 37s",
+      "compile_attempts": 5,
+      "faithfulness_checks": 2,
+      "error_fix_attempts": 2,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 2,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 30,
+        "output": 15653,
+        "cache_read": 1516740,
+        "cache_creation": 128753,
+        "total": 15683
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_11",
+      "start_time": "2026-02-02T20:36:56.813150",
+      "end_time": "2026-02-02T20:47:22.172378",
+      "duration_seconds": 625.359228,
+      "duration_formatted": "10m 25s",
+      "compile_attempts": 12,
+      "faithfulness_checks": 6,
+      "error_fix_attempts": 6,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 6,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 85,
+        "output": 22186,
+        "cache_read": 4194141,
+        "cache_creation": 178507,
+        "total": 22271
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_12",
+      "start_time": "2026-02-02T20:47:22.220023",
+      "end_time": "2026-02-02T20:52:52.109796",
+      "duration_seconds": 329.889773,
+      "duration_formatted": "5m 29s",
+      "compile_attempts": 2,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 11911,
+        "output": 14104,
+        "cache_read": 856559,
+        "cache_creation": 90634,
+        "total": 26015
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_13",
+      "start_time": "2026-02-02T20:52:52.158771",
+      "end_time": "2026-02-02T20:57:28.084207",
+      "duration_seconds": 275.925436,
+      "duration_formatted": "4m 35s",
+      "compile_attempts": 2,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 1,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 1,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 25,
+        "output": 12079,
+        "cache_read": 1642062,
+        "cache_creation": 77175,
+        "total": 12104
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_14",
+      "start_time": "2026-02-02T20:57:28.130396",
+      "end_time": "2026-02-02T21:07:56.080940",
+      "duration_seconds": 627.950544,
+      "duration_formatted": "10m 27s",
+      "compile_attempts": 6,
+      "faithfulness_checks": 1,
+      "error_fix_attempts": 2,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 2,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 1,
+      "tokens": {
+        "input": 61,
+        "output": 22703,
+        "cache_read": 4108692,
+        "cache_creation": 122871,
+        "total": 22764
+      },
+      "error_types": {
+        "other": 1
+      },
+      "unique_errors": [
+        "Errors detected in prose (no JSON)"
+      ]
+    },
+    {
+      "statement_id": "Rem_15",
+      "start_time": "2026-02-02T21:07:56.131433",
+      "end_time": "2026-02-02T21:19:52.256178",
+      "duration_seconds": 716.124745,
+      "duration_formatted": "11m 56s",
+      "compile_attempts": 6,
+      "faithfulness_checks": 0,
+      "error_fix_attempts": 5,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 6,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 1,
+      "tokens": {
+        "input": 625,
+        "output": 14551,
+        "cache_read": 2548165,
+        "cache_creation": 144449,
+        "total": 15176
+      },
+      "error_types": {
+        "other": 5
+      },
+      "unique_errors": [
+        "Compilation timed out after 60s"
+      ]
+    },
+    {
+      "statement_id": "Rem_16",
+      "start_time": "2026-02-02T21:19:52.259901",
+      "end_time": "2026-02-02T21:20:02.522751",
+      "duration_seconds": 10.26285,
+      "duration_formatted": "10s",
+      "compile_attempts": 0,
+      "faithfulness_checks": 0,
+      "error_fix_attempts": 0,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 0,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0,
+        "cache_creation": 0,
+        "total": 0
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_17",
+      "start_time": "2026-02-02T21:20:02.525764",
+      "end_time": "2026-02-02T21:20:03.440290",
+      "duration_seconds": 0.914526,
+      "duration_formatted": "0s",
+      "compile_attempts": 0,
+      "faithfulness_checks": 0,
+      "error_fix_attempts": 0,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 0,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0,
+        "cache_creation": 0,
+        "total": 0
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_18",
+      "start_time": "2026-02-02T21:20:03.443249",
+      "end_time": "2026-02-02T21:20:04.343976",
+      "duration_seconds": 0.900727,
+      "duration_formatted": "0s",
+      "compile_attempts": 0,
+      "faithfulness_checks": 0,
+      "error_fix_attempts": 0,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 0,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0,
+        "cache_creation": 0,
+        "total": 0
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_19",
+      "start_time": "2026-02-02T21:20:04.347344",
+      "end_time": "2026-02-02T21:20:05.247115",
+      "duration_seconds": 0.899771,
+      "duration_formatted": "0s",
+      "compile_attempts": 0,
+      "faithfulness_checks": 0,
+      "error_fix_attempts": 0,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 0,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0,
+        "cache_creation": 0,
+        "total": 0
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_20",
+      "start_time": "2026-02-02T21:20:05.250159",
+      "end_time": "2026-02-02T21:20:06.136855",
+      "duration_seconds": 0.886696,
+      "duration_formatted": "0s",
+      "compile_attempts": 0,
+      "faithfulness_checks": 0,
+      "error_fix_attempts": 0,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 0,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0,
+        "cache_creation": 0,
+        "total": 0
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_21",
+      "start_time": "2026-02-02T21:20:06.139872",
+      "end_time": "2026-02-02T21:20:07.040351",
+      "duration_seconds": 0.900479,
+      "duration_formatted": "0s",
+      "compile_attempts": 0,
+      "faithfulness_checks": 0,
+      "error_fix_attempts": 0,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 0,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0,
+        "cache_creation": 0,
+        "total": 0
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_13",
+      "start_time": "2026-02-02T21:20:07.043366",
+      "end_time": "2026-02-02T21:20:07.940292",
+      "duration_seconds": 0.896926,
+      "duration_formatted": "0s",
+      "compile_attempts": 0,
+      "faithfulness_checks": 0,
+      "error_fix_attempts": 0,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 0,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0,
+        "cache_creation": 0,
+        "total": 0
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Def_14",
+      "start_time": "2026-02-02T21:20:07.943618",
+      "end_time": "2026-02-02T21:20:08.830911",
+      "duration_seconds": 0.887293,
+      "duration_formatted": "0s",
+      "compile_attempts": 0,
+      "faithfulness_checks": 0,
+      "error_fix_attempts": 0,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 0,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0,
+        "cache_creation": 0,
+        "total": 0
+      },
+      "error_types": {},
+      "unique_errors": []
+    },
+    {
+      "statement_id": "Rem_22",
+      "start_time": "2026-02-02T21:20:08.833956",
+      "end_time": "2026-02-02T21:20:09.716851",
+      "duration_seconds": 0.882895,
+      "duration_formatted": "0s",
+      "compile_attempts": 0,
+      "faithfulness_checks": 0,
+      "error_fix_attempts": 0,
+      "warning_fix_attempts": 0,
+      "main_phase_compiles": 0,
+      "axiom_phase_compiles": 0,
+      "structure_fix_attempts": 0,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0,
+        "cache_creation": 0,
+        "total": 0
+      },
+      "error_types": {},
+      "unique_errors": []
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+[
+  {
+    "statement_id": "Rem_15",
+    "start_time": "2026-02-03T01:10:06.002276",
+    "end_time": "2026-02-03T01:22:02.057687",
+    "duration_seconds": 716.055411,
+    "duration_formatted": "11m 56s",
+    "compile_attempts": 5,
+    "faithfulness_checks": 1,
+    "error_fix_attempts": 1,
+    "warning_fix_attempts": 0,
+    "main_phase_compiles": 1,
+    "axiom_phase_compiles": 0,
+    "structure_fix_attempts": 1,
+    "tokens": {
+      "input": 11935,
+      "output": 25938,
+      "cache_read": 5612254,
+      "cache_creation": 134150,
+      "total": 37873
+    },
+    "error_types": {},
+    "unique_errors": []
+  },
+  {
+    "statement_id": "Rem_16",
+    "start_time": "2026-02-03T01:22:02.112725",
+    "end_time": "2026-02-03T01:25:45.655170",
+    "duration_seconds": 223.542445,
+    "duration_formatted": "3m 43s",
+    "compile_attempts": 2,
+    "faithfulness_checks": 1,
+    "error_fix_attempts": 1,
+    "warning_fix_attempts": 0,
+    "main_phase_compiles": 1,
+    "axiom_phase_compiles": 0,
+    "structure_fix_attempts": 0,
+    "tokens": {
+      "input": 54,
+      "output": 10605,
+      "cache_read": 957706,
+      "cache_creation": 50674,
+      "total": 10659
+    },
+    "error_types": {},
+    "unique_errors": []
+  },
+  {
+    "statement_id": "Rem_17",
+    "start_time": "2026-02-03T01:25:45.709391",
+    "end_time": "2026-02-03T01:36:15.483227",
+    "duration_seconds": 629.773836,
+    "duration_formatted": "10m 29s",
+    "compile_attempts": 9,
+    "faithfulness_checks": 1,
+    "error_fix_attempts": 1,
+    "warning_fix_attempts": 0,
+    "main_phase_compiles": 1,
+    "axiom_phase_compiles": 0,
+    "structure_fix_attempts": 1,
+    "tokens": {
+      "input": 420,
+      "output": 26722,
+      "cache_read": 3257088,
+      "cache_creation": 118343,
+      "total": 27142
+    },
+    "error_types": {},
+    "unique_errors": []
+  },
+  {
+    "statement_id": "Rem_18",
+    "start_time": "2026-02-03T01:36:15.532544",
+    "end_time": "2026-02-03T02:16:47.707169",
+    "duration_seconds": 2432.174625,
+    "duration_formatted": "40m 32s",
+    "compile_attempts": 6,
+    "faithfulness_checks": 1,
+    "error_fix_attempts": 1,
+    "warning_fix_attempts": 0,
+    "main_phase_compiles": 1,
+    "axiom_phase_compiles": 0,
+    "structure_fix_attempts": 3,
+    "tokens": {
+      "input": 3138,
+      "output": 80034,
+      "cache_read": 5740255,
+      "cache_creation": 319274,
+      "total": 83172
+    },
+    "error_types": {},
+    "unique_errors": []
+  },
+  {
+    "statement_id": "Rem_19",
+    "start_time": "2026-02-03T02:16:47.710868",
+    "end_time": "2026-02-03T02:34:57.687761",
+    "duration_seconds": 1089.976893,
+    "duration_formatted": "18m 9s",
+    "compile_attempts": 8,
+    "faithfulness_checks": 1,
+    "error_fix_attempts": 2,
+    "warning_fix_attempts": 0,
+    "main_phase_compiles": 2,
+    "axiom_phase_compiles": 0,
+    "structure_fix_attempts": 0,
+    "tokens": {
+      "input": 1818,
+      "output": 52976,
+      "cache_read": 3223401,
+      "cache_creation": 182333,
+      "total": 54794
+    },
+    "error_types": {
+      "other": 1
+    },
+    "unique_errors": [
+      "Errors detected in prose (no JSON)"
+    ]
+  },
+  {
+    "statement_id": "Rem_20",
+    "start_time": "2026-02-03T02:34:57.745913",
+    "end_time": "2026-02-03T02:47:08.218376",
+    "duration_seconds": 730.472463,
+    "duration_formatted": "12m 10s",
+    "compile_attempts": 7,
+    "faithfulness_checks": 1,
+    "error_fix_attempts": 2,
+    "warning_fix_attempts": 0,
+    "main_phase_compiles": 2,
+    "axiom_phase_compiles": 0,
+    "structure_fix_attempts": 0,
+    "tokens": {
+      "input": 121,
+      "output": 35361,
+      "cache_read": 2192830,
+      "cache_creation": 161243,
+      "total": 35482
+    },
+    "error_types": {
+      "other": 1
+    },
+    "unique_errors": [
+      "Errors detected in prose (no JSON)"
+    ]
+  },
+  {
+    "statement_id": "Rem_21",
+    "start_time": "2026-02-03T02:47:08.274538",
+    "end_time": "2026-02-03T02:54:58.080546",
+    "duration_seconds": 469.806008,
+    "duration_formatted": "7m 49s",
+    "compile_attempts": 7,
+    "faithfulness_checks": 1,
+    "error_fix_attempts": 1,
+    "warning_fix_attempts": 0,
+    "main_phase_compiles": 1,
+    "axiom_phase_compiles": 0,
+    "structure_fix_attempts": 0,
+    "tokens": {
+      "input": 451,
+      "output": 20006,
+      "cache_read": 3602003,
+      "cache_creation": 85242,
+      "total": 20457
+    },
+    "error_types": {},
+    "unique_errors": []
+  },
+  {
+    "statement_id": "Def_13",
+    "start_time": "2026-02-03T02:54:58.127359",
+    "end_time": "2026-02-03T03:25:41.735796",
+    "duration_seconds": 1843.608437,
+    "duration_formatted": "30m 43s",
+    "compile_attempts": 14,
+    "faithfulness_checks": 1,
+    "error_fix_attempts": 1,
+    "warning_fix_attempts": 0,
+    "main_phase_compiles": 1,
+    "axiom_phase_compiles": 0,
+    "structure_fix_attempts": 0,
+    "tokens": {
+      "input": 3676,
+      "output": 28389,
+      "cache_read": 4554175,
+      "cache_creation": 105526,
+      "total": 32065
+    },
+    "error_types": {},
+    "unique_errors": []
+  },
+  {
+    "statement_id": "Def_14",
+    "start_time": "2026-02-03T03:25:41.786078",
+    "end_time": "2026-02-03T03:29:40.219369",
+    "duration_seconds": 238.433291,
+    "duration_formatted": "3m 58s",
+    "compile_attempts": 2,
+    "faithfulness_checks": 1,
+    "error_fix_attempts": 1,
+    "warning_fix_attempts": 0,
+    "main_phase_compiles": 1,
+    "axiom_phase_compiles": 0,
+    "structure_fix_attempts": 0,
+    "tokens": {
+      "input": 1678,
+      "output": 6560,
+      "cache_read": 675162,
+      "cache_creation": 33939,
+      "total": 8238
+    },
+    "error_types": {},
+    "unique_errors": []
+  },
+  {
+    "statement_id": "Rem_22",
+    "start_time": "2026-02-03T03:29:40.277863",
+    "end_time": "2026-02-03T03:32:58.265233",
+    "duration_seconds": 197.98737,
+    "duration_formatted": "3m 17s",
+    "compile_attempts": 2,
+    "faithfulness_checks": 1,
+    "error_fix_attempts": 1,
+    "warning_fix_attempts": 0,
+    "main_phase_compiles": 1,
+    "axiom_phase_compiles": 0,
+    "structure_fix_attempts": 0,
+    "tokens": {
+      "input": 7124,
+      "output": 7675,
+      "cache_read": 696434,
+      "cache_creation": 57714,
+      "total": 14799
+    },
+    "error_types": {},
+    "unique_errors": []
+  }
+]
