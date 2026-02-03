@@ -1,11 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:github.com)",
-      "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(for name in GaugingGraph GrossCode DoubleGrossCode TannerGraph FluxConfigCircuit FullFaultToleranceConfig GrossCodeGaugingGraph MatchingMatrixConfig MeasurementConfig SyndromePair EdgePath)",
-      "Bash(do echo \"=== $name ===\")",
-      "Bash(done)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
