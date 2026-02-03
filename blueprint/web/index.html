@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MerLean-Example</title>
+<link rel="next" href="rem-notation_conventions.html" title="Introduction" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="rem-notation_conventions.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000000083"><span class="toc_ref">1.1</span> <span class="toc_entry">Logical Operator (Definition 2)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000000084"><span class="toc_ref">1.1.1</span> <span class="toc_entry">Logical Operator Definition</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000086"><span class="toc_ref">1.1.2</span> <span class="toc_entry">Logical Representatives and Equivalence</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000092"><span class="toc_ref">1.1.3</span> <span class="toc_entry">X-Type Logical Operators</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000095"><span class="toc_ref">1.1.4</span> <span class="toc_entry">Distance and Minimum Weight</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000097"><span class="toc_ref">1.1.5</span> <span class="toc_entry">Commutation Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000100"><span class="toc_ref">1.1.6</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000115"><span class="toc_ref">1.2</span> <span class="toc_entry">Gauging Graph (Definition 3)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000000116"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Gauging Graph Definition</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000120"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000133"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Tree Case (Cycle Rank 0)</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000138"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Minimal Gauging Graph (No Dummy Vertices)</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000144"><span class="toc_ref">1.2.5</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000158"><span class="toc_ref">1.3</span> <span class="toc_entry">Chain Spaces and Boundary Maps</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000263"><span class="toc_ref">1.4</span> <span class="toc_entry">Cheeger Constant</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000283"><span class="toc_ref">1.5</span> <span class="toc_entry">Gauss’s Law Operators</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000000285"><span class="toc_ref">1.5.1</span> <span class="toc_entry">Gauss Law Operators as \(\mathbb {Z}/2\mathbb {Z}\)-valued Supports</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000287"><span class="toc_ref">1.5.2</span> <span class="toc_entry">Collection of All Gauss Law Operators</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000290"><span class="toc_ref">1.5.3</span> <span class="toc_entry">Commutativity of Gauss Law Operators</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000300"><span class="toc_ref">1.5.4</span> <span class="toc_entry">Product Constraint</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000311"><span class="toc_ref">1.5.5</span> <span class="toc_entry">Hermitian Properties</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000318"><span class="toc_ref">1.5.6</span> <span class="toc_entry">Independence and Group Order</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000335"><span class="toc_ref">1.5.7</span> <span class="toc_entry">Vertex Degree and Support Size</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000337"><span class="toc_ref">1.5.8</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000400"><span class="toc_ref">1.6</span> <span class="toc_entry">Deformed Operator</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000486"><span class="toc_ref">1.7</span> <span class="toc_entry">Deformed Check (Definition 9)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000000488"><span class="toc_ref">1.7.1</span> <span class="toc_entry">Check Type Classification</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000496"><span class="toc_ref">1.7.2</span> <span class="toc_entry">Deformed Check Definition</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000501"><span class="toc_ref">1.7.3</span> <span class="toc_entry">Type C Checks (Unchanged)</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000505"><span class="toc_ref">1.7.4</span> <span class="toc_entry">Commutativity with Gauss Law Operators</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000517"><span class="toc_ref">1.7.5</span> <span class="toc_entry">Classification of Code Checks</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000524"><span class="toc_ref">1.7.6</span> <span class="toc_entry">Type S Checks Require Nontrivial Paths</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000527"><span class="toc_ref">1.7.7</span> <span class="toc_entry">Deformed Checks Collection</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000532"><span class="toc_ref">1.7.8</span> <span class="toc_entry">Explicit Deformed Check Formula</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000533"><span class="toc_ref">1.7.9</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000000722"><span class="toc_ref">1.8</span> <span class="toc_entry">Cycle-Sparsified Graph</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001071"><span class="toc_ref">1.9</span> <span class="toc_entry">Space Distance Bound</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#rem:logical_preservation"><span class="toc_ref">1.10</span> <span class="toc_entry">Logical Preservation</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001418"><span class="toc_ref">1.11</span> <span class="toc_entry">Detector (Definition 12)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000001420"><span class="toc_ref">1.11.1</span> <span class="toc_entry">Initialization States</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001426"><span class="toc_ref">1.11.2</span> <span class="toc_entry">Measurement Observables</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001429"><span class="toc_ref">1.11.3</span> <span class="toc_entry">Qubit Initialization in a Detector</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001430"><span class="toc_ref">1.11.4</span> <span class="toc_entry">Single Qubit Measurement in a Detector</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001432"><span class="toc_ref">1.11.5</span> <span class="toc_entry">Detector Structure</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001444"><span class="toc_ref">1.11.6</span> <span class="toc_entry">Effect of Faults on Measurements</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001452"><span class="toc_ref">1.11.7</span> <span class="toc_entry">Counting Parity Flips</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001455"><span class="toc_ref">1.11.8</span> <span class="toc_entry">Parity Calculation</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001458"><span class="toc_ref">1.11.9</span> <span class="toc_entry">Detector Violation</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001464"><span class="toc_ref">1.11.10</span> <span class="toc_entry">Syndrome Definition</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001473"><span class="toc_ref">1.11.11</span> <span class="toc_entry">Syndrome Weight</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001479"><span class="toc_ref">1.11.12</span> <span class="toc_entry">Detector Properties</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001489"><span class="toc_ref">1.11.13</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001674"><span class="toc_ref">1.12</span> <span class="toc_entry">Spacetime Logical Fault (Definition 13)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000001675"><span class="toc_ref">1.12.1</span> <span class="toc_entry">Undetectable Faults</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001683"><span class="toc_ref">1.12.2</span> <span class="toc_entry">Spacetime Logical Fault</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001694"><span class="toc_ref">1.12.3</span> <span class="toc_entry">Properties of Logical Faults</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001701"><span class="toc_ref">1.12.4</span> <span class="toc_entry">Consistency Properties</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001706"><span class="toc_ref">1.12.5</span> <span class="toc_entry">Fault Distance Motivation</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001710"><span class="toc_ref">1.12.6</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001751"><span class="toc_ref">1.13</span> <span class="toc_entry">Spacetime Stabilizer Generators (Lemma 4)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000001752"><span class="toc_ref">1.13.1</span> <span class="toc_entry">Anticommutation and Check Support</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001757"><span class="toc_ref">1.13.2</span> <span class="toc_entry">Anticommuting Check Set</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001759"><span class="toc_ref">1.13.3</span> <span class="toc_entry">Space Generators</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001764"><span class="toc_ref">1.13.4</span> <span class="toc_entry">Time Generators</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001771"><span class="toc_ref">1.13.5</span> <span class="toc_entry">Core Cancellation Properties</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001778"><span class="toc_ref">1.13.6</span> <span class="toc_entry">Syndrome Cancellation for Time Generators</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001783"><span class="toc_ref">1.13.7</span> <span class="toc_entry">Boundary Generators</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001795"><span class="toc_ref">1.13.8</span> <span class="toc_entry">Stabilizer Generator Classification</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001796"><span class="toc_ref">1.13.9</span> <span class="toc_entry">Generator Properties</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001801"><span class="toc_ref">1.13.10</span> <span class="toc_entry">Main Theorems</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001808"><span class="toc_ref">1.13.11</span> <span class="toc_entry">Generator Type Classification</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001811"><span class="toc_ref">1.14</span> <span class="toc_entry">Spacetime Fault Distance</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000001813"><span class="toc_ref">1.14.1</span> <span class="toc_entry">Set of Logical Fault Weights</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001818"><span class="toc_ref">1.14.2</span> <span class="toc_entry">Spacetime Fault Distance Definition</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001821"><span class="toc_ref">1.14.3</span> <span class="toc_entry">Main Properties</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001830"><span class="toc_ref">1.14.4</span> <span class="toc_entry">Properties of Spacetime Fault Distance</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001835"><span class="toc_ref">1.14.5</span> <span class="toc_entry">Spacetime Fault Distance Structure</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001842"><span class="toc_ref">1.14.6</span> <span class="toc_entry">Fault-Tolerance Threshold</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001848"><span class="toc_ref">1.14.7</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001859"><span class="toc_ref">1.14.8</span> <span class="toc_entry">Distance Positivity Characterization</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001862"><span class="toc_ref">1.14.9</span> <span class="toc_entry">Equivalent Characterization</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001865"><span class="toc_ref">1.14.10</span> <span class="toc_entry">Basic Facts About Distance</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001867"><span class="toc_ref">1.14.11</span> <span class="toc_entry">Relationship to Stabilizer Code</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001874"><span class="toc_ref">1.15</span> <span class="toc_entry">Time Fault Distance (Lemma 5)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000001875"><span class="toc_ref">1.15.1</span> <span class="toc_entry">Pure Time Fault Predicate</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001882"><span class="toc_ref">1.15.2</span> <span class="toc_entry">Code Deformation Interval</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001889"><span class="toc_ref">1.15.3</span> <span class="toc_entry">Time Fault Coverage</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001892"><span class="toc_ref">1.15.4</span> <span class="toc_entry">Comparison Detector Model</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001896"><span class="toc_ref">1.15.5</span> <span class="toc_entry">Key Lemmas - Parity Propagation</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001902"><span class="toc_ref">1.15.6</span> <span class="toc_entry">Chain Coverage Theorem</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001910"><span class="toc_ref">1.15.7</span> <span class="toc_entry">Round Coverage Implies Weight Bound</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001917"><span class="toc_ref">1.15.8</span> <span class="toc_entry">Pure Time Fault Action Conditions</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001922"><span class="toc_ref">1.15.9</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001925"><span class="toc_ref">1.15.10</span> <span class="toc_entry">Achievability - Chain Faults Are Logical Faults</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001947"><span class="toc_ref">1.15.11</span> <span class="toc_entry">Summary Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001949"><span class="toc_ref">1.16</span> <span class="toc_entry">Spacetime Fault Decoupling (Lemma 6)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000001950"><span class="toc_ref">1.16.1</span> <span class="toc_entry">Space-Only Fault</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001954"><span class="toc_ref">1.16.2</span> <span class="toc_entry">Time-Only Fault (Pure Time Fault)</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001959"><span class="toc_ref">1.16.3</span> <span class="toc_entry">Fault Product</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001964"><span class="toc_ref">1.16.4</span> <span class="toc_entry">Time Translation Stabilizers</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001971"><span class="toc_ref">1.16.5</span> <span class="toc_entry">Extraction Functions and Projection</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001973"><span class="toc_ref">1.16.6</span> <span class="toc_entry">Decomposition Components</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001974"><span class="toc_ref">1.16.7</span> <span class="toc_entry">Stabilizer Property of Individual Time Translations</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001976"><span class="toc_ref">1.16.8</span> <span class="toc_entry">Main Decomposition Theorem</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001980"><span class="toc_ref">1.16.9</span> <span class="toc_entry">Properties</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001983"><span class="toc_ref">1.16.10</span> <span class="toc_entry">Weight Bounds</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001988"><span class="toc_ref">1.16.11</span> <span class="toc_entry">Uniqueness</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001990"><span class="toc_ref">1.16.12</span> <span class="toc_entry">Corollaries</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000001998"><span class="toc_ref">1.17</span> <span class="toc_entry">Fault Tolerance (Theorem 2)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000001999"><span class="toc_ref">1.17.1</span> <span class="toc_entry">Code Deformation Interval</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002003"><span class="toc_ref">1.17.2</span> <span class="toc_entry">Time Distance Bound (from Lemma 5)</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002006"><span class="toc_ref">1.17.3</span> <span class="toc_entry">Space Distance Bound (from Lemma 2)</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002015"><span class="toc_ref">1.17.4</span> <span class="toc_entry">Cleaning Preserves Weight</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002027"><span class="toc_ref">1.17.5</span> <span class="toc_entry">Space Fault to Check Connection</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002033"><span class="toc_ref">1.17.6</span> <span class="toc_entry">Full Fault Tolerance Configuration</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002037"><span class="toc_ref">1.17.7</span> <span class="toc_entry">Space Bound from Cheeger Condition</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002040"><span class="toc_ref">1.17.8</span> <span class="toc_entry">Logical Fault Space Check Weight</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002042"><span class="toc_ref">1.17.9</span> <span class="toc_entry">Main Theorems</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002047"><span class="toc_ref">1.17.10</span> <span class="toc_entry">Spacetime Fault Distance Bounds</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002050"><span class="toc_ref">1.17.11</span> <span class="toc_entry">Achievability</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002052"><span class="toc_ref">1.17.12</span> <span class="toc_entry">Summary Theorem</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002054"><span class="toc_ref">1.17.13</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002063"><span class="toc_ref">1.17.14</span> <span class="toc_entry">Distance Preservation with Cheeger Condition</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002067"><span class="toc_ref">1.17.15</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002134"><span class="toc_ref">1.18</span> <span class="toc_entry">Boundary Conditions (Remark 18)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000002135"><span class="toc_ref">1.18.1</span> <span class="toc_entry">Boundary Configuration</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002143"><span class="toc_ref">1.18.2</span> <span class="toc_entry">Extended Interval and Region Classification</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002156"><span class="toc_ref">1.18.3</span> <span class="toc_entry">Chain Coverage Extended to Buffer Regions</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002165"><span class="toc_ref">1.18.4</span> <span class="toc_entry">Main Theorem - Boundary-Crossing Faults Exceed Distance \(d\)</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002177"><span class="toc_ref">1.18.5</span> <span class="toc_entry">Internal Faults</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002182"><span class="toc_ref">1.18.6</span> <span class="toc_entry">Idealization - Perfect Boundary Assumption</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002187"><span class="toc_ref">1.18.7</span> <span class="toc_entry">Practical Considerations</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002194"><span class="toc_ref">1.18.8</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#rem:bivariate_bicycle_setup"><span class="toc_ref">1.19</span> <span class="toc_entry">Bivariate Bicycle Code (Definition 16)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000002213"><span class="toc_ref">1.19.1</span> <span class="toc_entry">Cyclic Permutation Matrix</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002217"><span class="toc_ref">1.19.2</span> <span class="toc_entry">Qubit and Check Types</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002218"><span class="toc_ref">1.19.3</span> <span class="toc_entry">Monomial Index</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002222"><span class="toc_ref">1.19.4</span> <span class="toc_entry">BB Polynomial</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002226"><span class="toc_ref">1.19.5</span> <span class="toc_entry">Polynomial Transpose</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002230"><span class="toc_ref">1.19.6</span> <span class="toc_entry">Qubit and Check Labels</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002231"><span class="toc_ref">1.19.7</span> <span class="toc_entry">Bivariate Bicycle Code Structure</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002232"><span class="toc_ref">1.19.8</span> <span class="toc_entry">CSS Orthogonality</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002234"><span class="toc_ref">1.19.9</span> <span class="toc_entry">Code Construction</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002235"><span class="toc_ref">1.19.10</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002406"><span class="toc_ref">1.20</span> <span class="toc_entry">Double Gross Code Gauging Construction (Proposition 2)</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002751"><span class="toc_ref">1.21</span> <span class="toc_entry">Corollary 1: Qubit Overhead Bound</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000002752"><span class="toc_ref">1.21.1</span> <span class="toc_entry">Auxiliary Qubit Count</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002764"><span class="toc_ref">1.21.2</span> <span class="toc_entry">Overhead Bound</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002776"><span class="toc_ref">1.21.3</span> <span class="toc_entry">LDPC Preservation</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002789"><span class="toc_ref">1.21.4</span> <span class="toc_entry">Main Corollary</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002796"><span class="toc_ref">1.21.5</span> <span class="toc_entry">Edge Count Bounds</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000002803"><span class="toc_ref">1.21.6</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003149"><span class="toc_ref">1.22</span> <span class="toc_entry">Cycle Rank Formula</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000003151"><span class="toc_ref">1.22.1</span> <span class="toc_entry">Cycle Rank Definition</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003154"><span class="toc_ref">1.22.2</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003162"><span class="toc_ref">1.22.3</span> <span class="toc_entry">Trees Have Zero Cycle Rank</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003171"><span class="toc_ref">1.22.4</span> <span class="toc_entry">Non-negativity for Connected Graphs</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003176"><span class="toc_ref">1.22.5</span> <span class="toc_entry">Chain Space Dimensions</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003183"><span class="toc_ref">1.22.6</span> <span class="toc_entry">Rank-Nullity for Boundary Map</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003194"><span class="toc_ref">1.22.7</span> <span class="toc_entry">Properties of the Parity Map</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003204"><span class="toc_ref">1.22.8</span> <span class="toc_entry">SimpleGraph Cycle Rank</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003217"><span class="toc_ref">1.22.9</span> <span class="toc_entry">Edges Outside Spanning Tree</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003222"><span class="toc_ref">1.22.10</span> <span class="toc_entry">Minimum Edge Removal</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003231"><span class="toc_ref">1.22.11</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003253"><span class="toc_ref">1.23</span> <span class="toc_entry">Tanner Graph</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000003254"><span class="toc_ref">1.23.1</span> <span class="toc_entry">Tanner Node Type</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003262"><span class="toc_ref">1.23.2</span> <span class="toc_entry">Tanner Graph for Stabilizer Codes</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003268"><span class="toc_ref">1.23.3</span> <span class="toc_entry">Construct Tanner Graph from Stabilizer Code</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003272"><span class="toc_ref">1.23.4</span> <span class="toc_entry">CSS Tanner Graph</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003273"><span class="toc_ref">1.23.5</span> <span class="toc_entry">LDPC Condition via Tanner Graph</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003276"><span class="toc_ref">1.23.6</span> <span class="toc_entry">Deformed Code Tanner Graph</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003278"><span class="toc_ref">1.23.7</span> <span class="toc_entry">Bipartite Property of Tanner Graph</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003285"><span class="toc_ref">1.23.8</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003416"><span class="toc_ref">1.24</span> <span class="toc_entry">Gross Code Redundant Cycles (Corollary 2)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="rem-notation_conventions.html#a0000003417"><span class="toc_ref">1.24.1</span> <span class="toc_entry">Gross Code Logical Support</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003421"><span class="toc_ref">1.24.2</span> <span class="toc_entry">Cycle Rank Computation</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003429"><span class="toc_ref">1.24.3</span> <span class="toc_entry">Independent Cycles</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003433"><span class="toc_ref">1.24.4</span> <span class="toc_entry">Redundant Cycle Derivation</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003440"><span class="toc_ref">1.24.5</span> <span class="toc_entry">Connection to Lemma 10 Framework</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003444"><span class="toc_ref">1.24.6</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003446"><span class="toc_ref">1.24.7</span> <span class="toc_entry">Connection to Gross Code Parameters</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003450"><span class="toc_ref">1.24.8</span> <span class="toc_entry">Overhead Analysis</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003454"><span class="toc_ref">1.24.9</span> <span class="toc_entry">Cycle Space Dimension Properties</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003459"><span class="toc_ref">1.24.10</span> <span class="toc_entry">Cycle Rank Non-negativity</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003464"><span class="toc_ref">1.24.11</span> <span class="toc_entry">Summary Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003474"><span class="toc_ref">1.24.12</span> <span class="toc_entry">Row Nullity Background</span></a>
+ </li>
+<li class="">
+  <a href="rem-notation_conventions.html#a0000003481"><span class="toc_ref">1.24.13</span> <span class="toc_entry">Legacy Compatibility</span></a>
+ </li>
+
+  </ul>
+ </li>
+
+  </ul>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<div class="titlepage">
+<h1>MerLean-Example</h1>
+<p class="authors">
+<span class="author">doxtor6</span>
+</p>
+</div>
+
+</div> <!--main-text -->
+<nav class=local_toc>
+<ul>
+  <li>	
+  <a href="rem-notation_conventions.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000000083"><span class="toc_ref">1.1</span> <span class="toc_entry">Logical Operator (Definition 2)</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000000084"><span class="toc_ref">1.1.1</span> <span class="toc_entry">Logical Operator Definition</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000086"><span class="toc_ref">1.1.2</span> <span class="toc_entry">Logical Representatives and Equivalence</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000092"><span class="toc_ref">1.1.3</span> <span class="toc_entry">X-Type Logical Operators</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000095"><span class="toc_ref">1.1.4</span> <span class="toc_entry">Distance and Minimum Weight</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000097"><span class="toc_ref">1.1.5</span> <span class="toc_entry">Commutation Lemmas</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000100"><span class="toc_ref">1.1.6</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000115"><span class="toc_ref">1.2</span> <span class="toc_entry">Gauging Graph (Definition 3)</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000000116"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Gauging Graph Definition</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000120"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Basic Properties</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000133"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Tree Case (Cycle Rank 0)</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000138"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Minimal Gauging Graph (No Dummy Vertices)</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000144"><span class="toc_ref">1.2.5</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000158"><span class="toc_ref">1.3</span> <span class="toc_entry">Chain Spaces and Boundary Maps</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000263"><span class="toc_ref">1.4</span> <span class="toc_entry">Cheeger Constant</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000283"><span class="toc_ref">1.5</span> <span class="toc_entry">Gauss’s Law Operators</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000000285"><span class="toc_ref">1.5.1</span> <span class="toc_entry">Gauss Law Operators as \(\mathbb {Z}/2\mathbb {Z}\)-valued Supports</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000287"><span class="toc_ref">1.5.2</span> <span class="toc_entry">Collection of All Gauss Law Operators</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000290"><span class="toc_ref">1.5.3</span> <span class="toc_entry">Commutativity of Gauss Law Operators</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000300"><span class="toc_ref">1.5.4</span> <span class="toc_entry">Product Constraint</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000311"><span class="toc_ref">1.5.5</span> <span class="toc_entry">Hermitian Properties</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000318"><span class="toc_ref">1.5.6</span> <span class="toc_entry">Independence and Group Order</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000335"><span class="toc_ref">1.5.7</span> <span class="toc_entry">Vertex Degree and Support Size</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000337"><span class="toc_ref">1.5.8</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000400"><span class="toc_ref">1.6</span> <span class="toc_entry">Deformed Operator</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000486"><span class="toc_ref">1.7</span> <span class="toc_entry">Deformed Check (Definition 9)</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000000488"><span class="toc_ref">1.7.1</span> <span class="toc_entry">Check Type Classification</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000496"><span class="toc_ref">1.7.2</span> <span class="toc_entry">Deformed Check Definition</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000501"><span class="toc_ref">1.7.3</span> <span class="toc_entry">Type C Checks (Unchanged)</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000505"><span class="toc_ref">1.7.4</span> <span class="toc_entry">Commutativity with Gauss Law Operators</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000517"><span class="toc_ref">1.7.5</span> <span class="toc_entry">Classification of Code Checks</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000524"><span class="toc_ref">1.7.6</span> <span class="toc_entry">Type S Checks Require Nontrivial Paths</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000527"><span class="toc_ref">1.7.7</span> <span class="toc_entry">Deformed Checks Collection</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000532"><span class="toc_ref">1.7.8</span> <span class="toc_entry">Explicit Deformed Check Formula</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000533"><span class="toc_ref">1.7.9</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000000722"><span class="toc_ref">1.8</span> <span class="toc_entry">Cycle-Sparsified Graph</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001071"><span class="toc_ref">1.9</span> <span class="toc_entry">Space Distance Bound</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#rem:logical_preservation"><span class="toc_ref">1.10</span> <span class="toc_entry">Logical Preservation</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001418"><span class="toc_ref">1.11</span> <span class="toc_entry">Detector (Definition 12)</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000001420"><span class="toc_ref">1.11.1</span> <span class="toc_entry">Initialization States</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001426"><span class="toc_ref">1.11.2</span> <span class="toc_entry">Measurement Observables</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001429"><span class="toc_ref">1.11.3</span> <span class="toc_entry">Qubit Initialization in a Detector</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001430"><span class="toc_ref">1.11.4</span> <span class="toc_entry">Single Qubit Measurement in a Detector</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001432"><span class="toc_ref">1.11.5</span> <span class="toc_entry">Detector Structure</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001444"><span class="toc_ref">1.11.6</span> <span class="toc_entry">Effect of Faults on Measurements</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001452"><span class="toc_ref">1.11.7</span> <span class="toc_entry">Counting Parity Flips</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001455"><span class="toc_ref">1.11.8</span> <span class="toc_entry">Parity Calculation</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001458"><span class="toc_ref">1.11.9</span> <span class="toc_entry">Detector Violation</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001464"><span class="toc_ref">1.11.10</span> <span class="toc_entry">Syndrome Definition</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001473"><span class="toc_ref">1.11.11</span> <span class="toc_entry">Syndrome Weight</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001479"><span class="toc_ref">1.11.12</span> <span class="toc_entry">Detector Properties</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001489"><span class="toc_ref">1.11.13</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001674"><span class="toc_ref">1.12</span> <span class="toc_entry">Spacetime Logical Fault (Definition 13)</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000001675"><span class="toc_ref">1.12.1</span> <span class="toc_entry">Undetectable Faults</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001683"><span class="toc_ref">1.12.2</span> <span class="toc_entry">Spacetime Logical Fault</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001694"><span class="toc_ref">1.12.3</span> <span class="toc_entry">Properties of Logical Faults</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001701"><span class="toc_ref">1.12.4</span> <span class="toc_entry">Consistency Properties</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001706"><span class="toc_ref">1.12.5</span> <span class="toc_entry">Fault Distance Motivation</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001710"><span class="toc_ref">1.12.6</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001751"><span class="toc_ref">1.13</span> <span class="toc_entry">Spacetime Stabilizer Generators (Lemma 4)</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000001752"><span class="toc_ref">1.13.1</span> <span class="toc_entry">Anticommutation and Check Support</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001757"><span class="toc_ref">1.13.2</span> <span class="toc_entry">Anticommuting Check Set</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001759"><span class="toc_ref">1.13.3</span> <span class="toc_entry">Space Generators</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001764"><span class="toc_ref">1.13.4</span> <span class="toc_entry">Time Generators</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001771"><span class="toc_ref">1.13.5</span> <span class="toc_entry">Core Cancellation Properties</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001778"><span class="toc_ref">1.13.6</span> <span class="toc_entry">Syndrome Cancellation for Time Generators</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001783"><span class="toc_ref">1.13.7</span> <span class="toc_entry">Boundary Generators</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001795"><span class="toc_ref">1.13.8</span> <span class="toc_entry">Stabilizer Generator Classification</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001796"><span class="toc_ref">1.13.9</span> <span class="toc_entry">Generator Properties</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001801"><span class="toc_ref">1.13.10</span> <span class="toc_entry">Main Theorems</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001808"><span class="toc_ref">1.13.11</span> <span class="toc_entry">Generator Type Classification</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001811"><span class="toc_ref">1.14</span> <span class="toc_entry">Spacetime Fault Distance</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000001813"><span class="toc_ref">1.14.1</span> <span class="toc_entry">Set of Logical Fault Weights</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001818"><span class="toc_ref">1.14.2</span> <span class="toc_entry">Spacetime Fault Distance Definition</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001821"><span class="toc_ref">1.14.3</span> <span class="toc_entry">Main Properties</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001830"><span class="toc_ref">1.14.4</span> <span class="toc_entry">Properties of Spacetime Fault Distance</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001835"><span class="toc_ref">1.14.5</span> <span class="toc_entry">Spacetime Fault Distance Structure</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001842"><span class="toc_ref">1.14.6</span> <span class="toc_entry">Fault-Tolerance Threshold</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001848"><span class="toc_ref">1.14.7</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001859"><span class="toc_ref">1.14.8</span> <span class="toc_entry">Distance Positivity Characterization</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001862"><span class="toc_ref">1.14.9</span> <span class="toc_entry">Equivalent Characterization</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001865"><span class="toc_ref">1.14.10</span> <span class="toc_entry">Basic Facts About Distance</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001867"><span class="toc_ref">1.14.11</span> <span class="toc_entry">Relationship to Stabilizer Code</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001874"><span class="toc_ref">1.15</span> <span class="toc_entry">Time Fault Distance (Lemma 5)</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000001875"><span class="toc_ref">1.15.1</span> <span class="toc_entry">Pure Time Fault Predicate</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001882"><span class="toc_ref">1.15.2</span> <span class="toc_entry">Code Deformation Interval</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001889"><span class="toc_ref">1.15.3</span> <span class="toc_entry">Time Fault Coverage</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001892"><span class="toc_ref">1.15.4</span> <span class="toc_entry">Comparison Detector Model</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001896"><span class="toc_ref">1.15.5</span> <span class="toc_entry">Key Lemmas - Parity Propagation</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001902"><span class="toc_ref">1.15.6</span> <span class="toc_entry">Chain Coverage Theorem</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001910"><span class="toc_ref">1.15.7</span> <span class="toc_entry">Round Coverage Implies Weight Bound</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001917"><span class="toc_ref">1.15.8</span> <span class="toc_entry">Pure Time Fault Action Conditions</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001922"><span class="toc_ref">1.15.9</span> <span class="toc_entry">Main Theorem</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001925"><span class="toc_ref">1.15.10</span> <span class="toc_entry">Achievability - Chain Faults Are Logical Faults</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001947"><span class="toc_ref">1.15.11</span> <span class="toc_entry">Summary Theorem</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001949"><span class="toc_ref">1.16</span> <span class="toc_entry">Spacetime Fault Decoupling (Lemma 6)</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000001950"><span class="toc_ref">1.16.1</span> <span class="toc_entry">Space-Only Fault</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001954"><span class="toc_ref">1.16.2</span> <span class="toc_entry">Time-Only Fault (Pure Time Fault)</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001959"><span class="toc_ref">1.16.3</span> <span class="toc_entry">Fault Product</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001964"><span class="toc_ref">1.16.4</span> <span class="toc_entry">Time Translation Stabilizers</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001971"><span class="toc_ref">1.16.5</span> <span class="toc_entry">Extraction Functions and Projection</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001973"><span class="toc_ref">1.16.6</span> <span class="toc_entry">Decomposition Components</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001974"><span class="toc_ref">1.16.7</span> <span class="toc_entry">Stabilizer Property of Individual Time Translations</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001976"><span class="toc_ref">1.16.8</span> <span class="toc_entry">Main Decomposition Theorem</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001980"><span class="toc_ref">1.16.9</span> <span class="toc_entry">Properties</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001983"><span class="toc_ref">1.16.10</span> <span class="toc_entry">Weight Bounds</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001988"><span class="toc_ref">1.16.11</span> <span class="toc_entry">Uniqueness</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001990"><span class="toc_ref">1.16.12</span> <span class="toc_entry">Corollaries</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000001998"><span class="toc_ref">1.17</span> <span class="toc_entry">Fault Tolerance (Theorem 2)</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000001999"><span class="toc_ref">1.17.1</span> <span class="toc_entry">Code Deformation Interval</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002003"><span class="toc_ref">1.17.2</span> <span class="toc_entry">Time Distance Bound (from Lemma 5)</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002006"><span class="toc_ref">1.17.3</span> <span class="toc_entry">Space Distance Bound (from Lemma 2)</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002015"><span class="toc_ref">1.17.4</span> <span class="toc_entry">Cleaning Preserves Weight</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002027"><span class="toc_ref">1.17.5</span> <span class="toc_entry">Space Fault to Check Connection</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002033"><span class="toc_ref">1.17.6</span> <span class="toc_entry">Full Fault Tolerance Configuration</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002037"><span class="toc_ref">1.17.7</span> <span class="toc_entry">Space Bound from Cheeger Condition</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002040"><span class="toc_ref">1.17.8</span> <span class="toc_entry">Logical Fault Space Check Weight</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002042"><span class="toc_ref">1.17.9</span> <span class="toc_entry">Main Theorems</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002047"><span class="toc_ref">1.17.10</span> <span class="toc_entry">Spacetime Fault Distance Bounds</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002050"><span class="toc_ref">1.17.11</span> <span class="toc_entry">Achievability</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002052"><span class="toc_ref">1.17.12</span> <span class="toc_entry">Summary Theorem</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002054"><span class="toc_ref">1.17.13</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002063"><span class="toc_ref">1.17.14</span> <span class="toc_entry">Distance Preservation with Cheeger Condition</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002067"><span class="toc_ref">1.17.15</span> <span class="toc_entry">Main Theorem</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002134"><span class="toc_ref">1.18</span> <span class="toc_entry">Boundary Conditions (Remark 18)</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000002135"><span class="toc_ref">1.18.1</span> <span class="toc_entry">Boundary Configuration</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002143"><span class="toc_ref">1.18.2</span> <span class="toc_entry">Extended Interval and Region Classification</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002156"><span class="toc_ref">1.18.3</span> <span class="toc_entry">Chain Coverage Extended to Buffer Regions</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002165"><span class="toc_ref">1.18.4</span> <span class="toc_entry">Main Theorem - Boundary-Crossing Faults Exceed Distance \(d\)</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002177"><span class="toc_ref">1.18.5</span> <span class="toc_entry">Internal Faults</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002182"><span class="toc_ref">1.18.6</span> <span class="toc_entry">Idealization - Perfect Boundary Assumption</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002187"><span class="toc_ref">1.18.7</span> <span class="toc_entry">Practical Considerations</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002194"><span class="toc_ref">1.18.8</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#rem:bivariate_bicycle_setup"><span class="toc_ref">1.19</span> <span class="toc_entry">Bivariate Bicycle Code (Definition 16)</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000002213"><span class="toc_ref">1.19.1</span> <span class="toc_entry">Cyclic Permutation Matrix</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002217"><span class="toc_ref">1.19.2</span> <span class="toc_entry">Qubit and Check Types</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002218"><span class="toc_ref">1.19.3</span> <span class="toc_entry">Monomial Index</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002222"><span class="toc_ref">1.19.4</span> <span class="toc_entry">BB Polynomial</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002226"><span class="toc_ref">1.19.5</span> <span class="toc_entry">Polynomial Transpose</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002230"><span class="toc_ref">1.19.6</span> <span class="toc_entry">Qubit and Check Labels</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002231"><span class="toc_ref">1.19.7</span> <span class="toc_entry">Bivariate Bicycle Code Structure</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002232"><span class="toc_ref">1.19.8</span> <span class="toc_entry">CSS Orthogonality</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002234"><span class="toc_ref">1.19.9</span> <span class="toc_entry">Code Construction</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002235"><span class="toc_ref">1.19.10</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002406"><span class="toc_ref">1.20</span> <span class="toc_entry">Double Gross Code Gauging Construction (Proposition 2)</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002751"><span class="toc_ref">1.21</span> <span class="toc_entry">Corollary 1: Qubit Overhead Bound</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000002752"><span class="toc_ref">1.21.1</span> <span class="toc_entry">Auxiliary Qubit Count</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002764"><span class="toc_ref">1.21.2</span> <span class="toc_entry">Overhead Bound</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002776"><span class="toc_ref">1.21.3</span> <span class="toc_entry">LDPC Preservation</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002789"><span class="toc_ref">1.21.4</span> <span class="toc_entry">Main Corollary</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002796"><span class="toc_ref">1.21.5</span> <span class="toc_entry">Edge Count Bounds</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000002803"><span class="toc_ref">1.21.6</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003149"><span class="toc_ref">1.22</span> <span class="toc_entry">Cycle Rank Formula</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000003151"><span class="toc_ref">1.22.1</span> <span class="toc_entry">Cycle Rank Definition</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003154"><span class="toc_ref">1.22.2</span> <span class="toc_entry">Basic Properties</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003162"><span class="toc_ref">1.22.3</span> <span class="toc_entry">Trees Have Zero Cycle Rank</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003171"><span class="toc_ref">1.22.4</span> <span class="toc_entry">Non-negativity for Connected Graphs</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003176"><span class="toc_ref">1.22.5</span> <span class="toc_entry">Chain Space Dimensions</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003183"><span class="toc_ref">1.22.6</span> <span class="toc_entry">Rank-Nullity for Boundary Map</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003194"><span class="toc_ref">1.22.7</span> <span class="toc_entry">Properties of the Parity Map</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003204"><span class="toc_ref">1.22.8</span> <span class="toc_entry">SimpleGraph Cycle Rank</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003217"><span class="toc_ref">1.22.9</span> <span class="toc_entry">Edges Outside Spanning Tree</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003222"><span class="toc_ref">1.22.10</span> <span class="toc_entry">Minimum Edge Removal</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003231"><span class="toc_ref">1.22.11</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003253"><span class="toc_ref">1.23</span> <span class="toc_entry">Tanner Graph</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000003254"><span class="toc_ref">1.23.1</span> <span class="toc_entry">Tanner Node Type</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003262"><span class="toc_ref">1.23.2</span> <span class="toc_entry">Tanner Graph for Stabilizer Codes</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003268"><span class="toc_ref">1.23.3</span> <span class="toc_entry">Construct Tanner Graph from Stabilizer Code</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003272"><span class="toc_ref">1.23.4</span> <span class="toc_entry">CSS Tanner Graph</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003273"><span class="toc_ref">1.23.5</span> <span class="toc_entry">LDPC Condition via Tanner Graph</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003276"><span class="toc_ref">1.23.6</span> <span class="toc_entry">Deformed Code Tanner Graph</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003278"><span class="toc_ref">1.23.7</span> <span class="toc_entry">Bipartite Property of Tanner Graph</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003285"><span class="toc_ref">1.23.8</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003416"><span class="toc_ref">1.24</span> <span class="toc_entry">Gross Code Redundant Cycles (Corollary 2)</span></a>
+	<ul>
+		   <li>	
+  <a href="rem-notation_conventions.html#a0000003417"><span class="toc_ref">1.24.1</span> <span class="toc_entry">Gross Code Logical Support</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003421"><span class="toc_ref">1.24.2</span> <span class="toc_entry">Cycle Rank Computation</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003429"><span class="toc_ref">1.24.3</span> <span class="toc_entry">Independent Cycles</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003433"><span class="toc_ref">1.24.4</span> <span class="toc_entry">Redundant Cycle Derivation</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003440"><span class="toc_ref">1.24.5</span> <span class="toc_entry">Connection to Lemma 10 Framework</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003444"><span class="toc_ref">1.24.6</span> <span class="toc_entry">Main Theorem</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003446"><span class="toc_ref">1.24.7</span> <span class="toc_entry">Connection to Gross Code Parameters</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003450"><span class="toc_ref">1.24.8</span> <span class="toc_entry">Overhead Analysis</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003454"><span class="toc_ref">1.24.9</span> <span class="toc_entry">Cycle Space Dimension Properties</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003459"><span class="toc_ref">1.24.10</span> <span class="toc_entry">Cycle Rank Non-negativity</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003464"><span class="toc_ref">1.24.11</span> <span class="toc_entry">Summary Helper Lemmas</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003474"><span class="toc_ref">1.24.12</span> <span class="toc_entry">Row Nullity Background</span></a>
+  </li>
+  <li>	
+  <a href="rem-notation_conventions.html#a0000003481"><span class="toc_ref">1.24.13</span> <span class="toc_entry">Legacy Compatibility</span></a>
+  </li>
+
+	</ul>
+  </li>
+
+	</ul>
+  </li>
+</ul>
+</nav>
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="rem-notation_conventions.html" title="Introduction"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>
