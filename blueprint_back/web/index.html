@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gauging Measurement Formalization Blueprint</title>
+<link rel="next" href="sect0001.html" title="Introduction" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000084"><span class="toc_ref">1.1</span> <span class="toc_entry">Logical Operator (Definition 2)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000000085"><span class="toc_ref">1.1.1</span> <span class="toc_entry">Logical Operator Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000087"><span class="toc_ref">1.1.2</span> <span class="toc_entry">Logical Representatives and Equivalence</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000093"><span class="toc_ref">1.1.3</span> <span class="toc_entry">X-Type Logical Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000096"><span class="toc_ref">1.1.4</span> <span class="toc_entry">Distance and Minimum Weight</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000098"><span class="toc_ref">1.1.5</span> <span class="toc_entry">Commutation Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000101"><span class="toc_ref">1.1.6</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000116"><span class="toc_ref">1.2</span> <span class="toc_entry">Gauging Graph (Definition 3)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000000117"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Gauging Graph Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000121"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000134"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Tree Case (Cycle Rank 0)</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000139"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Minimal Gauging Graph (No Dummy Vertices)</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000145"><span class="toc_ref">1.2.5</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000159"><span class="toc_ref">1.3</span> <span class="toc_entry">Chain Spaces and Boundary Maps</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000264"><span class="toc_ref">1.4</span> <span class="toc_entry">Cheeger Constant</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000284"><span class="toc_ref">1.5</span> <span class="toc_entry">Gauss’s Law Operators</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000000286"><span class="toc_ref">1.5.1</span> <span class="toc_entry">Gauss Law Operators as \(\mathbb {Z}/2\mathbb {Z}\)-valued Supports</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000288"><span class="toc_ref">1.5.2</span> <span class="toc_entry">Collection of All Gauss Law Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000291"><span class="toc_ref">1.5.3</span> <span class="toc_entry">Commutativity of Gauss Law Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000301"><span class="toc_ref">1.5.4</span> <span class="toc_entry">Product Constraint</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000312"><span class="toc_ref">1.5.5</span> <span class="toc_entry">Hermitian Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000319"><span class="toc_ref">1.5.6</span> <span class="toc_entry">Independence and Group Order</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000336"><span class="toc_ref">1.5.7</span> <span class="toc_entry">Vertex Degree and Support Size</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000338"><span class="toc_ref">1.5.8</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000401"><span class="toc_ref">1.6</span> <span class="toc_entry">Deformed Operator</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000487"><span class="toc_ref">1.7</span> <span class="toc_entry">Deformed Check (Definition 9)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000000489"><span class="toc_ref">1.7.1</span> <span class="toc_entry">Check Type Classification</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000497"><span class="toc_ref">1.7.2</span> <span class="toc_entry">Deformed Check Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000502"><span class="toc_ref">1.7.3</span> <span class="toc_entry">Type C Checks (Unchanged)</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000506"><span class="toc_ref">1.7.4</span> <span class="toc_entry">Commutativity with Gauss Law Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000518"><span class="toc_ref">1.7.5</span> <span class="toc_entry">Classification of Code Checks</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000525"><span class="toc_ref">1.7.6</span> <span class="toc_entry">Type S Checks Require Nontrivial Paths</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000528"><span class="toc_ref">1.7.7</span> <span class="toc_entry">Deformed Checks Collection</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000533"><span class="toc_ref">1.7.8</span> <span class="toc_entry">Explicit Deformed Check Formula</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000534"><span class="toc_ref">1.7.9</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000723"><span class="toc_ref">1.8</span> <span class="toc_entry">Cycle-Sparsified Graph</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001072"><span class="toc_ref">1.9</span> <span class="toc_entry">Space Distance Bound</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001159"><span class="toc_ref">1.10</span> <span class="toc_entry">Logical Preservation</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001420"><span class="toc_ref">1.11</span> <span class="toc_entry">Detector (Definition 12)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000001422"><span class="toc_ref">1.11.1</span> <span class="toc_entry">Initialization States</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001428"><span class="toc_ref">1.11.2</span> <span class="toc_entry">Measurement Observables</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001431"><span class="toc_ref">1.11.3</span> <span class="toc_entry">Qubit Initialization in a Detector</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001432"><span class="toc_ref">1.11.4</span> <span class="toc_entry">Single Qubit Measurement in a Detector</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001434"><span class="toc_ref">1.11.5</span> <span class="toc_entry">Detector Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001446"><span class="toc_ref">1.11.6</span> <span class="toc_entry">Effect of Faults on Measurements</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001454"><span class="toc_ref">1.11.7</span> <span class="toc_entry">Counting Parity Flips</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001457"><span class="toc_ref">1.11.8</span> <span class="toc_entry">Parity Calculation</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001460"><span class="toc_ref">1.11.9</span> <span class="toc_entry">Detector Violation</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001466"><span class="toc_ref">1.11.10</span> <span class="toc_entry">Syndrome Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001475"><span class="toc_ref">1.11.11</span> <span class="toc_entry">Syndrome Weight</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001481"><span class="toc_ref">1.11.12</span> <span class="toc_entry">Detector Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001491"><span class="toc_ref">1.11.13</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001676"><span class="toc_ref">1.12</span> <span class="toc_entry">Spacetime Logical Fault (Definition 13)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000001677"><span class="toc_ref">1.12.1</span> <span class="toc_entry">Undetectable Faults</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001685"><span class="toc_ref">1.12.2</span> <span class="toc_entry">Spacetime Logical Fault</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001696"><span class="toc_ref">1.12.3</span> <span class="toc_entry">Properties of Logical Faults</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001703"><span class="toc_ref">1.12.4</span> <span class="toc_entry">Consistency Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001708"><span class="toc_ref">1.12.5</span> <span class="toc_entry">Fault Distance Motivation</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001712"><span class="toc_ref">1.12.6</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001753"><span class="toc_ref">1.13</span> <span class="toc_entry">Spacetime Stabilizer Generators (Lemma 4)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000001754"><span class="toc_ref">1.13.1</span> <span class="toc_entry">Anticommutation and Check Support</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001759"><span class="toc_ref">1.13.2</span> <span class="toc_entry">Anticommuting Check Set</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001761"><span class="toc_ref">1.13.3</span> <span class="toc_entry">Space Generators</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001766"><span class="toc_ref">1.13.4</span> <span class="toc_entry">Time Generators</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001773"><span class="toc_ref">1.13.5</span> <span class="toc_entry">Core Cancellation Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001780"><span class="toc_ref">1.13.6</span> <span class="toc_entry">Syndrome Cancellation for Time Generators</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001785"><span class="toc_ref">1.13.7</span> <span class="toc_entry">Boundary Generators</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001797"><span class="toc_ref">1.13.8</span> <span class="toc_entry">Stabilizer Generator Classification</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001798"><span class="toc_ref">1.13.9</span> <span class="toc_entry">Generator Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001803"><span class="toc_ref">1.13.10</span> <span class="toc_entry">Main Theorems</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001810"><span class="toc_ref">1.13.11</span> <span class="toc_entry">Generator Type Classification</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001813"><span class="toc_ref">1.14</span> <span class="toc_entry">Spacetime Fault Distance</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000001815"><span class="toc_ref">1.14.1</span> <span class="toc_entry">Set of Logical Fault Weights</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001820"><span class="toc_ref">1.14.2</span> <span class="toc_entry">Spacetime Fault Distance Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001823"><span class="toc_ref">1.14.3</span> <span class="toc_entry">Main Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001832"><span class="toc_ref">1.14.4</span> <span class="toc_entry">Properties of Spacetime Fault Distance</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001837"><span class="toc_ref">1.14.5</span> <span class="toc_entry">Spacetime Fault Distance Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001844"><span class="toc_ref">1.14.6</span> <span class="toc_entry">Fault-Tolerance Threshold</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001850"><span class="toc_ref">1.14.7</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001861"><span class="toc_ref">1.14.8</span> <span class="toc_entry">Distance Positivity Characterization</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001864"><span class="toc_ref">1.14.9</span> <span class="toc_entry">Equivalent Characterization</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001867"><span class="toc_ref">1.14.10</span> <span class="toc_entry">Basic Facts About Distance</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001869"><span class="toc_ref">1.14.11</span> <span class="toc_entry">Relationship to Stabilizer Code</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001876"><span class="toc_ref">1.15</span> <span class="toc_entry">Time Fault Distance (Lemma 5)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000001877"><span class="toc_ref">1.15.1</span> <span class="toc_entry">Pure Time Fault Predicate</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001884"><span class="toc_ref">1.15.2</span> <span class="toc_entry">Code Deformation Interval</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001891"><span class="toc_ref">1.15.3</span> <span class="toc_entry">Time Fault Coverage</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001894"><span class="toc_ref">1.15.4</span> <span class="toc_entry">Comparison Detector Model</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001898"><span class="toc_ref">1.15.5</span> <span class="toc_entry">Key Lemmas - Parity Propagation</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001904"><span class="toc_ref">1.15.6</span> <span class="toc_entry">Chain Coverage Theorem</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001912"><span class="toc_ref">1.15.7</span> <span class="toc_entry">Round Coverage Implies Weight Bound</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001919"><span class="toc_ref">1.15.8</span> <span class="toc_entry">Pure Time Fault Action Conditions</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001924"><span class="toc_ref">1.15.9</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001927"><span class="toc_ref">1.15.10</span> <span class="toc_entry">Achievability - Chain Faults Are Logical Faults</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001949"><span class="toc_ref">1.15.11</span> <span class="toc_entry">Summary Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001951"><span class="toc_ref">1.16</span> <span class="toc_entry">Spacetime Fault Decoupling (Lemma 6)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000001952"><span class="toc_ref">1.16.1</span> <span class="toc_entry">Space-Only Fault</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001956"><span class="toc_ref">1.16.2</span> <span class="toc_entry">Time-Only Fault (Pure Time Fault)</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001961"><span class="toc_ref">1.16.3</span> <span class="toc_entry">Fault Product</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001966"><span class="toc_ref">1.16.4</span> <span class="toc_entry">Time Translation Stabilizers</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001973"><span class="toc_ref">1.16.5</span> <span class="toc_entry">Extraction Functions and Projection</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001975"><span class="toc_ref">1.16.6</span> <span class="toc_entry">Decomposition Components</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001976"><span class="toc_ref">1.16.7</span> <span class="toc_entry">Stabilizer Property of Individual Time Translations</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001978"><span class="toc_ref">1.16.8</span> <span class="toc_entry">Main Decomposition Theorem</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001982"><span class="toc_ref">1.16.9</span> <span class="toc_entry">Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001985"><span class="toc_ref">1.16.10</span> <span class="toc_entry">Weight Bounds</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001990"><span class="toc_ref">1.16.11</span> <span class="toc_entry">Uniqueness</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000001992"><span class="toc_ref">1.16.12</span> <span class="toc_entry">Corollaries</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002000"><span class="toc_ref">1.17</span> <span class="toc_entry">Fault Tolerance (Theorem 2)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000002001"><span class="toc_ref">1.17.1</span> <span class="toc_entry">Code Deformation Interval</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002005"><span class="toc_ref">1.17.2</span> <span class="toc_entry">Time Distance Bound (from Lemma 5)</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002008"><span class="toc_ref">1.17.3</span> <span class="toc_entry">Space Distance Bound (from Lemma 2)</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002017"><span class="toc_ref">1.17.4</span> <span class="toc_entry">Cleaning Preserves Weight</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002029"><span class="toc_ref">1.17.5</span> <span class="toc_entry">Space Fault to Check Connection</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002035"><span class="toc_ref">1.17.6</span> <span class="toc_entry">Full Fault Tolerance Configuration</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002039"><span class="toc_ref">1.17.7</span> <span class="toc_entry">Space Bound from Cheeger Condition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002042"><span class="toc_ref">1.17.8</span> <span class="toc_entry">Logical Fault Space Check Weight</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002044"><span class="toc_ref">1.17.9</span> <span class="toc_entry">Main Theorems</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002049"><span class="toc_ref">1.17.10</span> <span class="toc_entry">Spacetime Fault Distance Bounds</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002052"><span class="toc_ref">1.17.11</span> <span class="toc_entry">Achievability</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002054"><span class="toc_ref">1.17.12</span> <span class="toc_entry">Summary Theorem</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002056"><span class="toc_ref">1.17.13</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002065"><span class="toc_ref">1.17.14</span> <span class="toc_entry">Distance Preservation with Cheeger Condition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002069"><span class="toc_ref">1.17.15</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002136"><span class="toc_ref">1.18</span> <span class="toc_entry">Boundary Conditions (Remark 18)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000002137"><span class="toc_ref">1.18.1</span> <span class="toc_entry">Boundary Configuration</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002145"><span class="toc_ref">1.18.2</span> <span class="toc_entry">Extended Interval and Region Classification</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002158"><span class="toc_ref">1.18.3</span> <span class="toc_entry">Chain Coverage Extended to Buffer Regions</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002167"><span class="toc_ref">1.18.4</span> <span class="toc_entry">Main Theorem - Boundary-Crossing Faults Exceed Distance \(d\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002179"><span class="toc_ref">1.18.5</span> <span class="toc_entry">Internal Faults</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002184"><span class="toc_ref">1.18.6</span> <span class="toc_entry">Idealization - Perfect Boundary Assumption</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002189"><span class="toc_ref">1.18.7</span> <span class="toc_entry">Practical Considerations</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002196"><span class="toc_ref">1.18.8</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002213"><span class="toc_ref">1.19</span> <span class="toc_entry">Bivariate Bicycle Code (Definition 16)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000002216"><span class="toc_ref">1.19.1</span> <span class="toc_entry">Cyclic Permutation Matrix</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002220"><span class="toc_ref">1.19.2</span> <span class="toc_entry">Qubit and Check Types</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002221"><span class="toc_ref">1.19.3</span> <span class="toc_entry">Monomial Index</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002225"><span class="toc_ref">1.19.4</span> <span class="toc_entry">BB Polynomial</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002229"><span class="toc_ref">1.19.5</span> <span class="toc_entry">Polynomial Transpose</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002233"><span class="toc_ref">1.19.6</span> <span class="toc_entry">Qubit and Check Labels</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002234"><span class="toc_ref">1.19.7</span> <span class="toc_entry">Bivariate Bicycle Code Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002235"><span class="toc_ref">1.19.8</span> <span class="toc_entry">CSS Orthogonality</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002237"><span class="toc_ref">1.19.9</span> <span class="toc_entry">Code Construction</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002238"><span class="toc_ref">1.19.10</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002409"><span class="toc_ref">1.20</span> <span class="toc_entry">Double Gross Code Gauging Construction (Proposition 2)</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002754"><span class="toc_ref">1.21</span> <span class="toc_entry">Corollary 1: Qubit Overhead Bound</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000002755"><span class="toc_ref">1.21.1</span> <span class="toc_entry">Auxiliary Qubit Count</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002767"><span class="toc_ref">1.21.2</span> <span class="toc_entry">Overhead Bound</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002779"><span class="toc_ref">1.21.3</span> <span class="toc_entry">LDPC Preservation</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002792"><span class="toc_ref">1.21.4</span> <span class="toc_entry">Main Corollary</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002799"><span class="toc_ref">1.21.5</span> <span class="toc_entry">Edge Count Bounds</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000002806"><span class="toc_ref">1.21.6</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003152"><span class="toc_ref">1.22</span> <span class="toc_entry">Cycle Rank Formula</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000003154"><span class="toc_ref">1.22.1</span> <span class="toc_entry">Cycle Rank Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003157"><span class="toc_ref">1.22.2</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003165"><span class="toc_ref">1.22.3</span> <span class="toc_entry">Trees Have Zero Cycle Rank</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003174"><span class="toc_ref">1.22.4</span> <span class="toc_entry">Non-negativity for Connected Graphs</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003179"><span class="toc_ref">1.22.5</span> <span class="toc_entry">Chain Space Dimensions</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003186"><span class="toc_ref">1.22.6</span> <span class="toc_entry">Rank-Nullity for Boundary Map</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003197"><span class="toc_ref">1.22.7</span> <span class="toc_entry">Properties of the Parity Map</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003207"><span class="toc_ref">1.22.8</span> <span class="toc_entry">SimpleGraph Cycle Rank</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003220"><span class="toc_ref">1.22.9</span> <span class="toc_entry">Edges Outside Spanning Tree</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003225"><span class="toc_ref">1.22.10</span> <span class="toc_entry">Minimum Edge Removal</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003234"><span class="toc_ref">1.22.11</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003256"><span class="toc_ref">1.23</span> <span class="toc_entry">Tanner Graph</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000003257"><span class="toc_ref">1.23.1</span> <span class="toc_entry">Tanner Node Type</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003265"><span class="toc_ref">1.23.2</span> <span class="toc_entry">Tanner Graph for Stabilizer Codes</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003271"><span class="toc_ref">1.23.3</span> <span class="toc_entry">Construct Tanner Graph from Stabilizer Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003275"><span class="toc_ref">1.23.4</span> <span class="toc_entry">CSS Tanner Graph</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003276"><span class="toc_ref">1.23.5</span> <span class="toc_entry">LDPC Condition via Tanner Graph</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003279"><span class="toc_ref">1.23.6</span> <span class="toc_entry">Deformed Code Tanner Graph</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003281"><span class="toc_ref">1.23.7</span> <span class="toc_entry">Bipartite Property of Tanner Graph</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003288"><span class="toc_ref">1.23.8</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003419"><span class="toc_ref">1.24</span> <span class="toc_entry">Gross Code Redundant Cycles (Corollary 2)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0001.html#a0000003420"><span class="toc_ref">1.24.1</span> <span class="toc_entry">Gross Code Logical Support</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003424"><span class="toc_ref">1.24.2</span> <span class="toc_entry">Cycle Rank Computation</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003432"><span class="toc_ref">1.24.3</span> <span class="toc_entry">Independent Cycles</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003436"><span class="toc_ref">1.24.4</span> <span class="toc_entry">Redundant Cycle Derivation</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003443"><span class="toc_ref">1.24.5</span> <span class="toc_entry">Connection to Lemma 10 Framework</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003447"><span class="toc_ref">1.24.6</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003449"><span class="toc_ref">1.24.7</span> <span class="toc_entry">Connection to Gross Code Parameters</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003453"><span class="toc_ref">1.24.8</span> <span class="toc_entry">Overhead Analysis</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003457"><span class="toc_ref">1.24.9</span> <span class="toc_entry">Cycle Space Dimension Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003462"><span class="toc_ref">1.24.10</span> <span class="toc_entry">Cycle Rank Non-negativity</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003467"><span class="toc_ref">1.24.11</span> <span class="toc_entry">Summary Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003477"><span class="toc_ref">1.24.12</span> <span class="toc_entry">Row Nullity Background</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000003484"><span class="toc_ref">1.24.13</span> <span class="toc_entry">Legacy Compatibility</span></a>
+ </li>
+
+  </ul>
+ </li>
+
+  </ul>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<div class="titlepage">
+<h1>Gauging Measurement Formalization Blueprint</h1>
+<p class="authors">
+<span class="author">Lean-QuantumInfo Project</span>
+</p>
+</div>
+
+</div> <!--main-text -->
+<nav class=local_toc>
+<ul>
+  <li>	
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000000084"><span class="toc_ref">1.1</span> <span class="toc_entry">Logical Operator (Definition 2)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000000085"><span class="toc_ref">1.1.1</span> <span class="toc_entry">Logical Operator Definition</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000087"><span class="toc_ref">1.1.2</span> <span class="toc_entry">Logical Representatives and Equivalence</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000093"><span class="toc_ref">1.1.3</span> <span class="toc_entry">X-Type Logical Operators</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000096"><span class="toc_ref">1.1.4</span> <span class="toc_entry">Distance and Minimum Weight</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000098"><span class="toc_ref">1.1.5</span> <span class="toc_entry">Commutation Lemmas</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000101"><span class="toc_ref">1.1.6</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000116"><span class="toc_ref">1.2</span> <span class="toc_entry">Gauging Graph (Definition 3)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000000117"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Gauging Graph Definition</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000121"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Basic Properties</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000134"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Tree Case (Cycle Rank 0)</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000139"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Minimal Gauging Graph (No Dummy Vertices)</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000145"><span class="toc_ref">1.2.5</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000159"><span class="toc_ref">1.3</span> <span class="toc_entry">Chain Spaces and Boundary Maps</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000264"><span class="toc_ref">1.4</span> <span class="toc_entry">Cheeger Constant</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000284"><span class="toc_ref">1.5</span> <span class="toc_entry">Gauss’s Law Operators</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000000286"><span class="toc_ref">1.5.1</span> <span class="toc_entry">Gauss Law Operators as \(\mathbb {Z}/2\mathbb {Z}\)-valued Supports</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000288"><span class="toc_ref">1.5.2</span> <span class="toc_entry">Collection of All Gauss Law Operators</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000291"><span class="toc_ref">1.5.3</span> <span class="toc_entry">Commutativity of Gauss Law Operators</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000301"><span class="toc_ref">1.5.4</span> <span class="toc_entry">Product Constraint</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000312"><span class="toc_ref">1.5.5</span> <span class="toc_entry">Hermitian Properties</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000319"><span class="toc_ref">1.5.6</span> <span class="toc_entry">Independence and Group Order</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000336"><span class="toc_ref">1.5.7</span> <span class="toc_entry">Vertex Degree and Support Size</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000338"><span class="toc_ref">1.5.8</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000401"><span class="toc_ref">1.6</span> <span class="toc_entry">Deformed Operator</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000487"><span class="toc_ref">1.7</span> <span class="toc_entry">Deformed Check (Definition 9)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000000489"><span class="toc_ref">1.7.1</span> <span class="toc_entry">Check Type Classification</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000497"><span class="toc_ref">1.7.2</span> <span class="toc_entry">Deformed Check Definition</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000502"><span class="toc_ref">1.7.3</span> <span class="toc_entry">Type C Checks (Unchanged)</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000506"><span class="toc_ref">1.7.4</span> <span class="toc_entry">Commutativity with Gauss Law Operators</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000518"><span class="toc_ref">1.7.5</span> <span class="toc_entry">Classification of Code Checks</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000525"><span class="toc_ref">1.7.6</span> <span class="toc_entry">Type S Checks Require Nontrivial Paths</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000528"><span class="toc_ref">1.7.7</span> <span class="toc_entry">Deformed Checks Collection</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000533"><span class="toc_ref">1.7.8</span> <span class="toc_entry">Explicit Deformed Check Formula</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000534"><span class="toc_ref">1.7.9</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000723"><span class="toc_ref">1.8</span> <span class="toc_entry">Cycle-Sparsified Graph</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001072"><span class="toc_ref">1.9</span> <span class="toc_entry">Space Distance Bound</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001159"><span class="toc_ref">1.10</span> <span class="toc_entry">Logical Preservation</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001420"><span class="toc_ref">1.11</span> <span class="toc_entry">Detector (Definition 12)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000001422"><span class="toc_ref">1.11.1</span> <span class="toc_entry">Initialization States</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001428"><span class="toc_ref">1.11.2</span> <span class="toc_entry">Measurement Observables</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001431"><span class="toc_ref">1.11.3</span> <span class="toc_entry">Qubit Initialization in a Detector</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001432"><span class="toc_ref">1.11.4</span> <span class="toc_entry">Single Qubit Measurement in a Detector</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001434"><span class="toc_ref">1.11.5</span> <span class="toc_entry">Detector Structure</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001446"><span class="toc_ref">1.11.6</span> <span class="toc_entry">Effect of Faults on Measurements</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001454"><span class="toc_ref">1.11.7</span> <span class="toc_entry">Counting Parity Flips</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001457"><span class="toc_ref">1.11.8</span> <span class="toc_entry">Parity Calculation</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001460"><span class="toc_ref">1.11.9</span> <span class="toc_entry">Detector Violation</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001466"><span class="toc_ref">1.11.10</span> <span class="toc_entry">Syndrome Definition</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001475"><span class="toc_ref">1.11.11</span> <span class="toc_entry">Syndrome Weight</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001481"><span class="toc_ref">1.11.12</span> <span class="toc_entry">Detector Properties</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001491"><span class="toc_ref">1.11.13</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001676"><span class="toc_ref">1.12</span> <span class="toc_entry">Spacetime Logical Fault (Definition 13)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000001677"><span class="toc_ref">1.12.1</span> <span class="toc_entry">Undetectable Faults</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001685"><span class="toc_ref">1.12.2</span> <span class="toc_entry">Spacetime Logical Fault</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001696"><span class="toc_ref">1.12.3</span> <span class="toc_entry">Properties of Logical Faults</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001703"><span class="toc_ref">1.12.4</span> <span class="toc_entry">Consistency Properties</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001708"><span class="toc_ref">1.12.5</span> <span class="toc_entry">Fault Distance Motivation</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001712"><span class="toc_ref">1.12.6</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001753"><span class="toc_ref">1.13</span> <span class="toc_entry">Spacetime Stabilizer Generators (Lemma 4)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000001754"><span class="toc_ref">1.13.1</span> <span class="toc_entry">Anticommutation and Check Support</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001759"><span class="toc_ref">1.13.2</span> <span class="toc_entry">Anticommuting Check Set</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001761"><span class="toc_ref">1.13.3</span> <span class="toc_entry">Space Generators</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001766"><span class="toc_ref">1.13.4</span> <span class="toc_entry">Time Generators</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001773"><span class="toc_ref">1.13.5</span> <span class="toc_entry">Core Cancellation Properties</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001780"><span class="toc_ref">1.13.6</span> <span class="toc_entry">Syndrome Cancellation for Time Generators</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001785"><span class="toc_ref">1.13.7</span> <span class="toc_entry">Boundary Generators</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001797"><span class="toc_ref">1.13.8</span> <span class="toc_entry">Stabilizer Generator Classification</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001798"><span class="toc_ref">1.13.9</span> <span class="toc_entry">Generator Properties</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001803"><span class="toc_ref">1.13.10</span> <span class="toc_entry">Main Theorems</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001810"><span class="toc_ref">1.13.11</span> <span class="toc_entry">Generator Type Classification</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001813"><span class="toc_ref">1.14</span> <span class="toc_entry">Spacetime Fault Distance</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000001815"><span class="toc_ref">1.14.1</span> <span class="toc_entry">Set of Logical Fault Weights</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001820"><span class="toc_ref">1.14.2</span> <span class="toc_entry">Spacetime Fault Distance Definition</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001823"><span class="toc_ref">1.14.3</span> <span class="toc_entry">Main Properties</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001832"><span class="toc_ref">1.14.4</span> <span class="toc_entry">Properties of Spacetime Fault Distance</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001837"><span class="toc_ref">1.14.5</span> <span class="toc_entry">Spacetime Fault Distance Structure</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001844"><span class="toc_ref">1.14.6</span> <span class="toc_entry">Fault-Tolerance Threshold</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001850"><span class="toc_ref">1.14.7</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001861"><span class="toc_ref">1.14.8</span> <span class="toc_entry">Distance Positivity Characterization</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001864"><span class="toc_ref">1.14.9</span> <span class="toc_entry">Equivalent Characterization</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001867"><span class="toc_ref">1.14.10</span> <span class="toc_entry">Basic Facts About Distance</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001869"><span class="toc_ref">1.14.11</span> <span class="toc_entry">Relationship to Stabilizer Code</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001876"><span class="toc_ref">1.15</span> <span class="toc_entry">Time Fault Distance (Lemma 5)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000001877"><span class="toc_ref">1.15.1</span> <span class="toc_entry">Pure Time Fault Predicate</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001884"><span class="toc_ref">1.15.2</span> <span class="toc_entry">Code Deformation Interval</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001891"><span class="toc_ref">1.15.3</span> <span class="toc_entry">Time Fault Coverage</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001894"><span class="toc_ref">1.15.4</span> <span class="toc_entry">Comparison Detector Model</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001898"><span class="toc_ref">1.15.5</span> <span class="toc_entry">Key Lemmas - Parity Propagation</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001904"><span class="toc_ref">1.15.6</span> <span class="toc_entry">Chain Coverage Theorem</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001912"><span class="toc_ref">1.15.7</span> <span class="toc_entry">Round Coverage Implies Weight Bound</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001919"><span class="toc_ref">1.15.8</span> <span class="toc_entry">Pure Time Fault Action Conditions</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001924"><span class="toc_ref">1.15.9</span> <span class="toc_entry">Main Theorem</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001927"><span class="toc_ref">1.15.10</span> <span class="toc_entry">Achievability - Chain Faults Are Logical Faults</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001949"><span class="toc_ref">1.15.11</span> <span class="toc_entry">Summary Theorem</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001951"><span class="toc_ref">1.16</span> <span class="toc_entry">Spacetime Fault Decoupling (Lemma 6)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000001952"><span class="toc_ref">1.16.1</span> <span class="toc_entry">Space-Only Fault</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001956"><span class="toc_ref">1.16.2</span> <span class="toc_entry">Time-Only Fault (Pure Time Fault)</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001961"><span class="toc_ref">1.16.3</span> <span class="toc_entry">Fault Product</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001966"><span class="toc_ref">1.16.4</span> <span class="toc_entry">Time Translation Stabilizers</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001973"><span class="toc_ref">1.16.5</span> <span class="toc_entry">Extraction Functions and Projection</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001975"><span class="toc_ref">1.16.6</span> <span class="toc_entry">Decomposition Components</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001976"><span class="toc_ref">1.16.7</span> <span class="toc_entry">Stabilizer Property of Individual Time Translations</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001978"><span class="toc_ref">1.16.8</span> <span class="toc_entry">Main Decomposition Theorem</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001982"><span class="toc_ref">1.16.9</span> <span class="toc_entry">Properties</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001985"><span class="toc_ref">1.16.10</span> <span class="toc_entry">Weight Bounds</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001990"><span class="toc_ref">1.16.11</span> <span class="toc_entry">Uniqueness</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000001992"><span class="toc_ref">1.16.12</span> <span class="toc_entry">Corollaries</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002000"><span class="toc_ref">1.17</span> <span class="toc_entry">Fault Tolerance (Theorem 2)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000002001"><span class="toc_ref">1.17.1</span> <span class="toc_entry">Code Deformation Interval</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002005"><span class="toc_ref">1.17.2</span> <span class="toc_entry">Time Distance Bound (from Lemma 5)</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002008"><span class="toc_ref">1.17.3</span> <span class="toc_entry">Space Distance Bound (from Lemma 2)</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002017"><span class="toc_ref">1.17.4</span> <span class="toc_entry">Cleaning Preserves Weight</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002029"><span class="toc_ref">1.17.5</span> <span class="toc_entry">Space Fault to Check Connection</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002035"><span class="toc_ref">1.17.6</span> <span class="toc_entry">Full Fault Tolerance Configuration</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002039"><span class="toc_ref">1.17.7</span> <span class="toc_entry">Space Bound from Cheeger Condition</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002042"><span class="toc_ref">1.17.8</span> <span class="toc_entry">Logical Fault Space Check Weight</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002044"><span class="toc_ref">1.17.9</span> <span class="toc_entry">Main Theorems</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002049"><span class="toc_ref">1.17.10</span> <span class="toc_entry">Spacetime Fault Distance Bounds</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002052"><span class="toc_ref">1.17.11</span> <span class="toc_entry">Achievability</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002054"><span class="toc_ref">1.17.12</span> <span class="toc_entry">Summary Theorem</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002056"><span class="toc_ref">1.17.13</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002065"><span class="toc_ref">1.17.14</span> <span class="toc_entry">Distance Preservation with Cheeger Condition</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002069"><span class="toc_ref">1.17.15</span> <span class="toc_entry">Main Theorem</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002136"><span class="toc_ref">1.18</span> <span class="toc_entry">Boundary Conditions (Remark 18)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000002137"><span class="toc_ref">1.18.1</span> <span class="toc_entry">Boundary Configuration</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002145"><span class="toc_ref">1.18.2</span> <span class="toc_entry">Extended Interval and Region Classification</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002158"><span class="toc_ref">1.18.3</span> <span class="toc_entry">Chain Coverage Extended to Buffer Regions</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002167"><span class="toc_ref">1.18.4</span> <span class="toc_entry">Main Theorem - Boundary-Crossing Faults Exceed Distance \(d\)</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002179"><span class="toc_ref">1.18.5</span> <span class="toc_entry">Internal Faults</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002184"><span class="toc_ref">1.18.6</span> <span class="toc_entry">Idealization - Perfect Boundary Assumption</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002189"><span class="toc_ref">1.18.7</span> <span class="toc_entry">Practical Considerations</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002196"><span class="toc_ref">1.18.8</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002213"><span class="toc_ref">1.19</span> <span class="toc_entry">Bivariate Bicycle Code (Definition 16)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000002216"><span class="toc_ref">1.19.1</span> <span class="toc_entry">Cyclic Permutation Matrix</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002220"><span class="toc_ref">1.19.2</span> <span class="toc_entry">Qubit and Check Types</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002221"><span class="toc_ref">1.19.3</span> <span class="toc_entry">Monomial Index</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002225"><span class="toc_ref">1.19.4</span> <span class="toc_entry">BB Polynomial</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002229"><span class="toc_ref">1.19.5</span> <span class="toc_entry">Polynomial Transpose</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002233"><span class="toc_ref">1.19.6</span> <span class="toc_entry">Qubit and Check Labels</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002234"><span class="toc_ref">1.19.7</span> <span class="toc_entry">Bivariate Bicycle Code Structure</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002235"><span class="toc_ref">1.19.8</span> <span class="toc_entry">CSS Orthogonality</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002237"><span class="toc_ref">1.19.9</span> <span class="toc_entry">Code Construction</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002238"><span class="toc_ref">1.19.10</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002409"><span class="toc_ref">1.20</span> <span class="toc_entry">Double Gross Code Gauging Construction (Proposition 2)</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002754"><span class="toc_ref">1.21</span> <span class="toc_entry">Corollary 1: Qubit Overhead Bound</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000002755"><span class="toc_ref">1.21.1</span> <span class="toc_entry">Auxiliary Qubit Count</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002767"><span class="toc_ref">1.21.2</span> <span class="toc_entry">Overhead Bound</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002779"><span class="toc_ref">1.21.3</span> <span class="toc_entry">LDPC Preservation</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002792"><span class="toc_ref">1.21.4</span> <span class="toc_entry">Main Corollary</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002799"><span class="toc_ref">1.21.5</span> <span class="toc_entry">Edge Count Bounds</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000002806"><span class="toc_ref">1.21.6</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003152"><span class="toc_ref">1.22</span> <span class="toc_entry">Cycle Rank Formula</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000003154"><span class="toc_ref">1.22.1</span> <span class="toc_entry">Cycle Rank Definition</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003157"><span class="toc_ref">1.22.2</span> <span class="toc_entry">Basic Properties</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003165"><span class="toc_ref">1.22.3</span> <span class="toc_entry">Trees Have Zero Cycle Rank</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003174"><span class="toc_ref">1.22.4</span> <span class="toc_entry">Non-negativity for Connected Graphs</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003179"><span class="toc_ref">1.22.5</span> <span class="toc_entry">Chain Space Dimensions</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003186"><span class="toc_ref">1.22.6</span> <span class="toc_entry">Rank-Nullity for Boundary Map</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003197"><span class="toc_ref">1.22.7</span> <span class="toc_entry">Properties of the Parity Map</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003207"><span class="toc_ref">1.22.8</span> <span class="toc_entry">SimpleGraph Cycle Rank</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003220"><span class="toc_ref">1.22.9</span> <span class="toc_entry">Edges Outside Spanning Tree</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003225"><span class="toc_ref">1.22.10</span> <span class="toc_entry">Minimum Edge Removal</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003234"><span class="toc_ref">1.22.11</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003256"><span class="toc_ref">1.23</span> <span class="toc_entry">Tanner Graph</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000003257"><span class="toc_ref">1.23.1</span> <span class="toc_entry">Tanner Node Type</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003265"><span class="toc_ref">1.23.2</span> <span class="toc_entry">Tanner Graph for Stabilizer Codes</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003271"><span class="toc_ref">1.23.3</span> <span class="toc_entry">Construct Tanner Graph from Stabilizer Code</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003275"><span class="toc_ref">1.23.4</span> <span class="toc_entry">CSS Tanner Graph</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003276"><span class="toc_ref">1.23.5</span> <span class="toc_entry">LDPC Condition via Tanner Graph</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003279"><span class="toc_ref">1.23.6</span> <span class="toc_entry">Deformed Code Tanner Graph</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003281"><span class="toc_ref">1.23.7</span> <span class="toc_entry">Bipartite Property of Tanner Graph</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003288"><span class="toc_ref">1.23.8</span> <span class="toc_entry">Helper Lemmas</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003419"><span class="toc_ref">1.24</span> <span class="toc_entry">Gross Code Redundant Cycles (Corollary 2)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000003420"><span class="toc_ref">1.24.1</span> <span class="toc_entry">Gross Code Logical Support</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003424"><span class="toc_ref">1.24.2</span> <span class="toc_entry">Cycle Rank Computation</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003432"><span class="toc_ref">1.24.3</span> <span class="toc_entry">Independent Cycles</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003436"><span class="toc_ref">1.24.4</span> <span class="toc_entry">Redundant Cycle Derivation</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003443"><span class="toc_ref">1.24.5</span> <span class="toc_entry">Connection to Lemma 10 Framework</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003447"><span class="toc_ref">1.24.6</span> <span class="toc_entry">Main Theorem</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003449"><span class="toc_ref">1.24.7</span> <span class="toc_entry">Connection to Gross Code Parameters</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003453"><span class="toc_ref">1.24.8</span> <span class="toc_entry">Overhead Analysis</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003457"><span class="toc_ref">1.24.9</span> <span class="toc_entry">Cycle Space Dimension Properties</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003462"><span class="toc_ref">1.24.10</span> <span class="toc_entry">Cycle Rank Non-negativity</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003467"><span class="toc_ref">1.24.11</span> <span class="toc_entry">Summary Helper Lemmas</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003477"><span class="toc_ref">1.24.12</span> <span class="toc_entry">Row Nullity Background</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000003484"><span class="toc_ref">1.24.13</span> <span class="toc_entry">Legacy Compatibility</span></a>
+  </li>
+
+	</ul>
+  </li>
+
+	</ul>
+  </li>
+</ul>
+</nav>
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0001.html" title="Introduction"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

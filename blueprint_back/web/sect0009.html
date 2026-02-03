@@ -1,0 +1,2279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thm 1: Vanishing of Reduced Zeroth Homology for Connected Graphs</title>
+<link rel="next" href="sect0010.html" title="Lem 3: Charge Neutrality of Symmetrized Operators" />
+<link rel="prev" href="sect0008.html" title="Def 3: Symmetrized Operator (Orbit Average)" />
+<link rel="up" href="index.html" title="Gauging Measurement Formalization Blueprint" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Gauging Measurement Formalization Blueprint</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Rem 1: Vertex Set Partition</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000025"><span class="toc_ref">1.1</span> <span class="toc_entry">Cell Complex Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000026"><span class="toc_ref">1.2</span> <span class="toc_entry">Vertex Partition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000027"><span class="toc_ref">1.3</span> <span class="toc_entry">Partition Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000037"><span class="toc_ref">1.4</span> <span class="toc_entry">Connection to Setoid.IsPartition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000040"><span class="toc_ref">1.5</span> <span class="toc_entry">Additional Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000046"><span class="toc_ref">1.6</span> <span class="toc_entry">Construction Helpers</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">2</span> <span class="toc_entry">Rem 2: Chain Complex Notation</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">3</span> <span class="toc_entry">Rem 3: Symmetry Action and Abelian Group Structure</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000050"><span class="toc_ref">3.1</span> <span class="toc_entry">Symmetry Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000051"><span class="toc_ref">3.2</span> <span class="toc_entry">Operator Algebra Automorphisms</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000052"><span class="toc_ref">3.3</span> <span class="toc_entry">On-site Symmetry Operator</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000053"><span class="toc_ref">3.4</span> <span class="toc_entry">Character Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000054"><span class="toc_ref">3.5</span> <span class="toc_entry">Duality Pairing</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000055"><span class="toc_ref">3.6</span> <span class="toc_entry">Symmetry Eigenvalues</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">4</span> <span class="toc_entry">Def 1: Charge Projection (Single Site)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000056"><span class="toc_ref">4.1</span> <span class="toc_entry">Character Conjugate Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000057"><span class="toc_ref">4.2</span> <span class="toc_entry">Charge Projection Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000058"><span class="toc_ref">4.3</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000059"><span class="toc_ref">4.4</span> <span class="toc_entry">Character Orthogonality</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">5</span> <span class="toc_entry">Def 2: Charge Projection (Multi-Site Distribution)</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html"><span class="toc_ref">6</span> <span class="toc_entry">Lem 1: Covariance Property of Charge Components</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0006.html#a0000000060"><span class="toc_ref">6.1</span> <span class="toc_entry">Scalar-Fixing Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000061"><span class="toc_ref">6.2</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000062"><span class="toc_ref">6.3</span> <span class="toc_entry">Character Value Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000063"><span class="toc_ref">6.4</span> <span class="toc_entry">Main Covariance Theorem</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000064"><span class="toc_ref">6.5</span> <span class="toc_entry">Corollaries</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0007.html"><span class="toc_ref">7</span> <span class="toc_entry">Lem 2: Completeness of Charge Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">8</span> <span class="toc_entry">Def 3: Symmetrized Operator (Orbit Average)</span></a>
+ </li>
+<li class=" active current">
+  <a href="sect0009.html"><span class="toc_ref">9</span> <span class="toc_entry">Thm 1: Vanishing of Reduced Zeroth Homology for Connected Graphs</span></a>
+ </li>
+<li class="">
+  <a href="sect0010.html"><span class="toc_ref">10</span> <span class="toc_entry">Lem 3: Charge Neutrality of Symmetrized Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">11</span> <span class="toc_entry">Def 4: Gauging (Decoration Map)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0011.html#a0000000065"><span class="toc_ref">11.1</span> <span class="toc_entry">Chain Complex over ZMod p</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000066"><span class="toc_ref">11.2</span> <span class="toc_entry">Exact Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000067"><span class="toc_ref">11.3</span> <span class="toc_entry">Spanning Basis</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000068"><span class="toc_ref">11.4</span> <span class="toc_entry">Gauge Z-Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000069"><span class="toc_ref">11.5</span> <span class="toc_entry">The Full Gauging Map</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000070"><span class="toc_ref">11.6</span> <span class="toc_entry">Remark on Basis Independence</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">12</span> <span class="toc_entry">Def 5: Circuit Unitaries for Gauging</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0012.html#a0000000071"><span class="toc_ref">12.1</span> <span class="toc_entry">Qudit Space and States</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000072"><span class="toc_ref">12.2</span> <span class="toc_entry">Generalized Pauli Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000073"><span class="toc_ref">12.3</span> <span class="toc_entry">Controlled-X Gate</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000074"><span class="toc_ref">12.4</span> <span class="toc_entry">Boundary Matrix Entry</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000075"><span class="toc_ref">12.5</span> <span class="toc_entry">Full Gauging System State Space</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000076"><span class="toc_ref">12.6</span> <span class="toc_entry">Edge-Vertex Entangling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000077"><span class="toc_ref">12.7</span> <span class="toc_entry">Matter-Symmetry Coupling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000078"><span class="toc_ref">12.8</span> <span class="toc_entry">Measurement Projection</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000079"><span class="toc_ref">12.9</span> <span class="toc_entry">Commutativity of Unitaries</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000080"><span class="toc_ref">12.10</span> <span class="toc_entry">Unitarity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">13</span> <span class="toc_entry">Def 6: Gauged Stabilizers (Vertex and Plaquette Terms)</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html"><span class="toc_ref">14</span> <span class="toc_entry">Def 7: Decorated Stabilizer (Gauged Stabilizer of Original Code)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0014.html#a0000000081"><span class="toc_ref">14.1</span> <span class="toc_entry">Symmetrized Stabilizer Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000082"><span class="toc_ref">14.2</span> <span class="toc_entry">Overlap Set</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000083"><span class="toc_ref">14.3</span> <span class="toc_entry">Components of the Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000084"><span class="toc_ref">14.4</span> <span class="toc_entry">The Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000085"><span class="toc_ref">14.5</span> <span class="toc_entry">Hermiticity Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000086"><span class="toc_ref">14.6</span> <span class="toc_entry">Measurability Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000087"><span class="toc_ref">14.7</span> <span class="toc_entry">Commutativity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0015.html"><span class="toc_ref">15</span> <span class="toc_entry">Thm 2: Equivalence of Algebraic and Circuit Gauging</span></a>
+ </li>
+<li class="">
+  <a href="sect0016.html"><span class="toc_ref">16</span> <span class="toc_entry">Def 8: Cheeger Constant (Isoperimetric Constant)</span></a>
+ </li>
+<li class="">
+  <a href="sect0017.html"><span class="toc_ref">17</span> <span class="toc_entry">Def 9: Gauging Graph Criteria</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html"><span class="toc_ref">18</span> <span class="toc_entry">Lem 4: Charge Convolution for Operator Products</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0018.html#a0000000088"><span class="toc_ref">18.1</span> <span class="toc_entry">Addition of Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000089"><span class="toc_ref">18.2</span> <span class="toc_entry">Multiplicativity of Character Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000090"><span class="toc_ref">18.3</span> <span class="toc_entry">Linearity and Covariance</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000091"><span class="toc_ref">18.4</span> <span class="toc_entry">Key Lemma: Projection of Product of Charge Components</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000092"><span class="toc_ref">18.5</span> <span class="toc_entry">Main Convolution Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0019.html"><span class="toc_ref">19</span> <span class="toc_entry">Lem 5: Gauging is a Homomorphism (up to Flux Equivalence)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0019.html#a0000000093"><span class="toc_ref">19.1</span> <span class="toc_entry">Flux Equivalence Relation</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000094"><span class="toc_ref">19.2</span> <span class="toc_entry">The Delta Chain</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000095"><span class="toc_ref">19.3</span> <span class="toc_entry">Helper Lemmas for gaugeZOperator</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000096"><span class="toc_ref">19.4</span> <span class="toc_entry">Gauge Factor Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000097"><span class="toc_ref">19.5</span> <span class="toc_entry">Product Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000098"><span class="toc_ref">19.6</span> <span class="toc_entry">Axioms for Edge Cases</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000099"><span class="toc_ref">19.7</span> <span class="toc_entry">Flux Equivalence Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000100"><span class="toc_ref">19.8</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0020.html"><span class="toc_ref">20</span> <span class="toc_entry">Lem 6: Weight Non-Decrease Under Stabilizer Equivalence</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html"><span class="toc_ref">21</span> <span class="toc_entry">Lem 7: Gauged Code is Sparse and Distance Preserving</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0021.html#a0000000101"><span class="toc_ref">21.1</span> <span class="toc_entry">LDPC Property of Original Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000102"><span class="toc_ref">21.2</span> <span class="toc_entry">Part 1: Sparsity of the Gauged Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000103"><span class="toc_ref">21.3</span> <span class="toc_entry">Part 2: Distance Preservation</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0022.html"><span class="toc_ref">22</span> <span class="toc_entry">Def 10: Equivalence Relations in the Gauged Code</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0022.html#a0000000104"><span class="toc_ref">22.1</span> <span class="toc_entry">Operators on the Gauged System</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000105"><span class="toc_ref">22.2</span> <span class="toc_entry">Integer Powers of Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000106"><span class="toc_ref">22.3</span> <span class="toc_entry">Products of Stabilizers</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000107"><span class="toc_ref">22.4</span> <span class="toc_entry">Decorated Stabilizer Equivalence \(\sim _{\mathfrak {s}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000108"><span class="toc_ref">22.5</span> <span class="toc_entry">Vertex Stabilizer Equivalence \(\sim _{\mathfrak {A}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000109"><span class="toc_ref">22.6</span> <span class="toc_entry">Flux Stabilizer Equivalence \(\sim _{\mathfrak {B}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000110"><span class="toc_ref">22.7</span> <span class="toc_entry">Full Gauged Code Equivalence \(\sim _g\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000111"><span class="toc_ref">22.8</span> <span class="toc_entry">Inclusion Relations</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000112"><span class="toc_ref">22.9</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000113"><span class="toc_ref">22.10</span> <span class="toc_entry">Single Stabilizer Application Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0023.html"><span class="toc_ref">23</span> <span class="toc_entry">Thm 3: Distance Preservation Under Gauging</span></a>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000010">9 Thm 1: Vanishing of Reduced Zeroth Homology for Connected Graphs</h1>
+<p>This chapter establishes the vanishing of reduced zeroth homology for connected graphs. For a connected graph \(G\) with coefficient field \(A\), we prove that \(\ker (\varepsilon ) = \operatorname {im}(\partial _1)\), where \(\varepsilon \) is the augmentation map and \(\partial _1\) is the boundary map. This implies the reduced zeroth homology \(\tilde{H}_0(G, A) := \ker (\varepsilon )/\operatorname {im}(\partial _1) = 0\). </p>
+<p><b class="bfseries">Physical interpretation</b>: Charge neutrality (total charge zero, i.e., \(\boldsymbol {\chi } \in \ker (\varepsilon )\)) implies the charge distribution is exact (can be written as the boundary of a 1-chain). </p>
+<div class="definition_thmwrapper theorem-style-definition" id="def:is_connected">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">9.1</span>
+    <span class="definition_thmtitle">Connected Oriented Graph</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#def:is_connected">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#def:oriented_graph">Definition 2.1</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.IsConnected" class="lean_decl">GaugingLDPC.IsConnected</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>An oriented graph \(G\) is <em>connected</em> if: </p>
+<ol class="enumerate">
+  <li><p>The vertex set \(V\) is nonempty. </p>
+</li>
+  <li><p>For any two vertices \(u, v \in V\), there exists a 1-chain \(\gamma \in C_1(G, A)\) such that \(\partial _1(\gamma ) = [v] - [u]\), where \([v]\) denotes the basis element corresponding to vertex \(v\). </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:im_boundary_le_ker_augmentation">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.2</span>
+    <span class="theorem_thmtitle">Image of Boundary in Kernel of Augmentation</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#thm:im_boundary_le_ker_augmentation">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000421"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0002.html#def:augmentation_map">Definition 2.9</a></li>
+          
+          <li><a href="sect0002.html#thm:range_boundary_le_ker_augmentation">Theorem 2.22</a></li>
+          
+          <li><a href="sect0002.html#thm:range_boundary_le_ker_augmentation">Theorem 2.22</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.im_boundary_le_ker_augmentation" class="lean_decl">GaugingLDPC.im_boundary_le_ker_augmentation</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The image of the boundary map is contained in the kernel of the augmentation map: </p>
+<div class="displaymath" id="a0000000422">
+  \[  \operatorname {im}(\partial _1) \subseteq \ker (\varepsilon ).  \]
+</div>
+<p> This is the chain complex property: \(\varepsilon \circ \partial _1 = 0\) implies \(\operatorname {im}(\partial _1) \subseteq \ker (\varepsilon )\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000421">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from the previously established result that \(\operatorname {im}(\partial _1) \leq \ker (\varepsilon )\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:is_charge_neutral">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">9.3</span>
+    <span class="definition_thmtitle">Charge Neutral</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#def:is_charge_neutral">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#def:augmentation_map">Definition 2.9</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.IsChargeNeutral" class="lean_decl">GaugingLDPC.IsChargeNeutral</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>A 0-chain \(c \in C_0(G, A)\) is <em>charge-neutral</em> if it lies in the kernel of the augmentation map, i.e., the sum of its coefficients is zero: </p>
+<div class="displaymath" id="a0000000423">
+  \[  \varepsilon (c) = \sum _{v \in V} c(v) = 0.  \]
+</div>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:is_charge_neutral_iff_mem_ker">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.4</span>
+    <span class="theorem_thmtitle">Charge Neutral Iff Mem Ker</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#thm:is_charge_neutral_iff_mem_ker">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000424"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0009.html#def:is_charge_neutral">Definition 9.3</a></li>
+          
+          <li><a href="sect0002.html#def:augmentation_map">Definition 2.9</a></li>
+          
+          <li><a href="sect0009.html#def:is_charge_neutral">Definition 9.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.isChargeNeutral_iff_mem_ker" class="lean_decl">GaugingLDPC.isChargeNeutral_iff_mem_ker</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>A 0-chain \(c\) is charge-neutral if and only if \(c \in \ker (\varepsilon )\): </p>
+<div class="displaymath" id="a0000000425">
+  \[  \text{IsChargeNeutral}(c) \iff c \in \ker (\varepsilon ).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000424">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By simplification using the definitions of IsChargeNeutral and membership in the kernel of a linear map, we have that \(\text{IsChargeNeutral}(c)\) is defined as \(\varepsilon (c) = 0\), which is exactly the condition for \(c \in \ker (\varepsilon )\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:difference_mem_range_boundary">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.5</span>
+    <span class="lemma_thmtitle">Difference Mem Range Boundary</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#lem:difference_mem_range_boundary">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000426"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0009.html#def:is_connected">Definition 9.1</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0009.html#def:is_connected">Definition 9.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.difference_mem_range_boundary" class="lean_decl">GaugingLDPC.difference_mem_range_boundary</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>In a connected graph, the difference \([v] - [u]\) (as a 0-chain) is in the image of the boundary map for any vertices \(u, v \in V\): </p>
+<div class="displaymath" id="a0000000427">
+  \[  [v] - [u] \in \operatorname {im}(\partial _1).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000426">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>From the connectivity assumption, we obtain a 1-chain \(\gamma \) satisfying \(\partial _1(\gamma ) = [v] - [u]\). This directly witnesses that \([v] - [u] \in \operatorname {im}(\partial _1)\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:vertex_minus_root_mem_range">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.6</span>
+    <span class="lemma_thmtitle">Vertex Minus Root Mem Range</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#lem:vertex_minus_root_mem_range">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000428"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0009.html#def:is_connected">Definition 9.1</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0009.html#lem:difference_mem_range_boundary">Lemma 9.5</a></li>
+          
+          <li><a href="sect0009.html#lem:difference_mem_range_boundary">Lemma 9.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.vertex_minus_root_mem_range" class="lean_decl">GaugingLDPC.vertex_minus_root_mem_range</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>For any root vertex \(r\) and vertex \(v\) in a connected graph, the difference \([v] - [r]\) is in the range of the boundary map: </p>
+<div class="displaymath" id="a0000000429">
+  \[  [v] - [r] \in \operatorname {im}(\partial _1).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000428">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This is a direct application of the previous lemma with \(u = r\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:chain_decomposition">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.7</span>
+    <span class="lemma_thmtitle">Chain Decomposition</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#lem:chain_decomposition">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000430"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#def:augmentation_map">Definition 2.9</a></li>
+          
+          <li><a href="sect0002.html#thm:augmentation_map_eq_finsum">Theorem 2.12</a></li>
+          
+          <li><a href="sect0002.html#thm:augmentation_map_eq_finsum">Theorem 2.12</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.chain_decomposition" class="lean_decl">GaugingLDPC.chain_decomposition</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>Any 0-chain \(c\) can be decomposed with respect to a root vertex \(r\) as: </p>
+<div class="displaymath" id="a0000000431">
+  \[  c = \sum _{v \in V} c(v) \cdot ([v] - [r]) + \varepsilon (c) \cdot [r].  \]
+</div>
+<p> This is the linear extension of the identity \([v] = ([v] - [r]) + [r]\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000430">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We first establish that \(\sum _{v \in V} c(v) \cdot [v] = c\) by extensionality: for any vertex \(w\), evaluating both sides gives \(c(w)\) (using that \([v](w) = 1\) if \(v = w\) and \(0\) otherwise). </p>
+<p>Next, we show by linearity that: </p>
+<div class="displaymath" id="a0000000432">
+  \[  \sum _{v \in V} c(v) \cdot ([v] - [r]) = \sum _{v \in V} c(v) \cdot [v] - \left(\sum _{v \in V} c(v)\right) \cdot [r]  \]
+</div>
+<p> using the distributivity of scalar multiplication over subtraction and the linearity of finite sums. </p>
+<p>Combining these, and using that \(\varepsilon (c) = \sum _{v \in V} c(v)\), we get: </p>
+<div class="displaymath" id="a0000000433">
+  \[  \sum _{v \in V} c(v) \cdot ([v] - [r]) + \varepsilon (c) \cdot [r] = c - \varepsilon (c) \cdot [r] + \varepsilon (c) \cdot [r] = c.  \]
+</div>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:charge_neutral_decomposition">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.8</span>
+    <span class="lemma_thmtitle">Charge Neutral Decomposition</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#lem:charge_neutral_decomposition">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000434"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0009.html#def:is_charge_neutral">Definition 9.3</a></li>
+          
+          <li><a href="sect0009.html#lem:chain_decomposition">Lemma 9.7</a></li>
+          
+          <li><a href="sect0009.html#lem:chain_decomposition">Lemma 9.7</a></li>
+          
+          <li><a href="sect0009.html#def:is_charge_neutral">Definition 9.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.charge_neutral_decomposition" class="lean_decl">GaugingLDPC.charge_neutral_decomposition</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>If \(c\) is charge-neutral (i.e., \(\varepsilon (c) = 0\)), then: </p>
+<div class="displaymath" id="a0000000435">
+  \[  c = \sum _{v \in V} c(v) \cdot ([v] - [r])  \]
+</div>
+<p> for any choice of root vertex \(r\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000434">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>From the chain decomposition lemma, we have \(c = \sum _{v \in V} c(v) \cdot ([v] - [r]) + \varepsilon (c) \cdot [r]\). Since \(c\) is charge-neutral, \(\varepsilon (c) = 0\), so \(\varepsilon (c) \cdot [r] = 0 \cdot [r] = 0\). Adding zero yields the result. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:sum_mem_range">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.9</span>
+    <span class="lemma_thmtitle">Sum Mem Range</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#lem:sum_mem_range">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000436"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.sum_mem_range" class="lean_decl">GaugingLDPC.sum_mem_range</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>If \(f_i \in \operatorname {im}(\partial _1)\) for all \(i\) in a finite index set \(S\), then: </p>
+<div class="displaymath" id="a0000000437">
+  \[  \sum _{i \in S} f_i \in \operatorname {im}(\partial _1).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000436">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>The range of a linear map is a submodule, so sums of elements in the range remain in the range. We apply the submodule sum membership property. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:smul_mem_range">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.10</span>
+    <span class="lemma_thmtitle">Smul Mem Range</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#lem:smul_mem_range">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000438"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.smul_mem_range" class="lean_decl">GaugingLDPC.smul_mem_range</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>If \(c \in \operatorname {im}(\partial _1)\), then \(a \cdot c \in \operatorname {im}(\partial _1)\) for any scalar \(a \in A\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000438">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Since \(c \in \operatorname {im}(\partial _1)\), there exists \(\gamma \) such that \(\partial _1(\gamma ) = c\). Then \(a \cdot \gamma \) satisfies \(\partial _1(a \cdot \gamma ) = a \cdot \partial _1(\gamma ) = a \cdot c\) by linearity of the boundary map. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:charge_neutral_mem_range">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.11</span>
+    <span class="lemma_thmtitle">Charge Neutral Mem Range</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#lem:charge_neutral_mem_range">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000439"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0009.html#def:is_connected">Definition 9.1</a></li>
+          
+          <li><a href="sect0009.html#def:is_charge_neutral">Definition 9.3</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0009.html#lem:charge_neutral_decomposition">Lemma 9.8</a></li>
+          
+          <li><a href="sect0009.html#lem:sum_mem_range">Lemma 9.9</a></li>
+          
+          <li><a href="sect0009.html#lem:smul_mem_range">Lemma 9.10</a></li>
+          
+          <li><a href="sect0009.html#lem:vertex_minus_root_mem_range">Lemma 9.6</a></li>
+          
+          <li><a href="sect0009.html#lem:charge_neutral_decomposition">Lemma 9.8</a></li>
+          
+          <li><a href="sect0009.html#lem:sum_mem_range">Lemma 9.9</a></li>
+          
+          <li><a href="sect0009.html#lem:smul_mem_range">Lemma 9.10</a></li>
+          
+          <li><a href="sect0009.html#lem:vertex_minus_root_mem_range">Lemma 9.6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.charge_neutral_mem_range" class="lean_decl">GaugingLDPC.charge_neutral_mem_range</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>In a connected graph, every charge-neutral 0-chain is in the range of the boundary map: </p>
+<div class="displaymath" id="a0000000440">
+  \[  \text{IsChargeNeutral}(c) \implies c \in \operatorname {im}(\partial _1).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000439">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Choose any root vertex \(r\) (which exists since the graph is connected, hence nonempty). By the charge neutral decomposition lemma, \(c = \sum _{v \in V} c(v) \cdot ([v] - [r])\). </p>
+<p>The sum is a finite sum of elements in the range: for each \(v\), the term \(c(v) \cdot ([v] - [r])\) is in the range because \([v] - [r] \in \operatorname {im}(\partial _1)\) (by the vertex minus root lemma) and scalar multiples preserve membership in the range (by the smul mem range lemma). </p>
+<p>By the sum mem range lemma, the entire sum is in \(\operatorname {im}(\partial _1)\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:ker_augmentation_le_range_boundary">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.12</span>
+    <span class="theorem_thmtitle">Ker Augmentation Le Range Boundary</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#thm:ker_augmentation_le_range_boundary">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000441"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0009.html#def:is_connected">Definition 9.1</a></li>
+          
+          <li><a href="sect0002.html#def:augmentation_map">Definition 2.9</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0009.html#lem:charge_neutral_mem_range">Lemma 9.11</a></li>
+          
+          <li><a href="sect0009.html#lem:charge_neutral_mem_range">Lemma 9.11</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.ker_augmentation_le_range_boundary" class="lean_decl">GaugingLDPC.ker_augmentation_le_range_boundary</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For connected graphs, \(\ker (\varepsilon ) \subseteq \operatorname {im}(\partial _1)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000441">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Let \(c \in \ker (\varepsilon )\). Then \(\varepsilon (c) = 0\), so \(c\) is charge-neutral. By the charge neutral mem range lemma, \(c \in \operatorname {im}(\partial _1)\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:reduced_h0_vanishes">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.13</span>
+    <span class="theorem_thmtitle">Vanishing of Reduced Zeroth Homology</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#thm:reduced_h0_vanishes">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000442"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0009.html#def:is_connected">Definition 9.1</a></li>
+          
+          <li><a href="sect0002.html#def:augmentation_map">Definition 2.9</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0009.html#thm:ker_augmentation_le_range_boundary">Theorem 9.12</a></li>
+          
+          <li><a href="sect0009.html#thm:im_boundary_le_ker_augmentation">Theorem 9.2</a></li>
+          
+          <li><a href="sect0009.html#thm:ker_augmentation_le_range_boundary">Theorem 9.12</a></li>
+          
+          <li><a href="sect0009.html#thm:im_boundary_le_ker_augmentation">Theorem 9.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.reducedH0_vanishes" class="lean_decl">GaugingLDPC.reducedH0_vanishes</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For a connected graph \(G\) with coefficient field \(A\): </p>
+<div class="displaymath" id="a0000000443">
+  \[  \ker (\varepsilon ) = \operatorname {im}(\partial _1).  \]
+</div>
+<p>This says the reduced zeroth homology \(\tilde{H}_0(G, A) = \ker (\varepsilon )/\operatorname {im}(\partial _1) = 0\). </p>
+<p><b class="bfseries">Physical interpretation</b>: Charge neutrality (\(\sum _i c_i = 0\)) implies the charge distribution is exact (can be written as \(\partial _1(\gamma )\) for some 1-chain \(\gamma \)). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000442">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We prove equality by showing both inclusions: </p>
+<ol class="enumerate">
+  <li><p>\(\ker (\varepsilon ) \subseteq \operatorname {im}(\partial _1)\): This follows from the theorem ker_augmentation_le_range_boundary. </p>
+</li>
+  <li><p>\(\operatorname {im}(\partial _1) \subseteq \ker (\varepsilon )\): This follows from im_boundary_le_ker_augmentation. </p>
+</li>
+</ol>
+<p> By antisymmetry of \(\subseteq \), we conclude \(\ker (\varepsilon ) = \operatorname {im}(\partial _1)\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:ker_augmentation_eq_range_boundary">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.14</span>
+    <span class="theorem_thmtitle">Ker Augmentation Eq Range Boundary</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#thm:ker_augmentation_eq_range_boundary">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000444"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0009.html#def:is_connected">Definition 9.1</a></li>
+          
+          <li><a href="sect0002.html#def:augmentation_map">Definition 2.9</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0009.html#thm:reduced_h0_vanishes">Theorem 9.13</a></li>
+          
+          <li><a href="sect0009.html#thm:reduced_h0_vanishes">Theorem 9.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.ker_augmentation_eq_range_boundary" class="lean_decl">GaugingLDPC.ker_augmentation_eq_range_boundary</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>Equivalent statement of the main theorem: For connected graphs, </p>
+<div class="displaymath" id="a0000000445">
+  \[  \ker (\varepsilon ) = \operatorname {im}(\partial _1).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000444">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This is exactly the statement of reducedH0_vanishes. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:charge_neutral_iff_mem_range">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.15</span>
+    <span class="theorem_thmtitle">Charge Neutral Iff Mem Range</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#thm:charge_neutral_iff_mem_range">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000446"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0009.html#def:is_connected">Definition 9.1</a></li>
+          
+          <li><a href="sect0009.html#def:is_charge_neutral">Definition 9.3</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0009.html#thm:is_charge_neutral_iff_mem_ker">Theorem 9.4</a></li>
+          
+          <li><a href="sect0009.html#thm:reduced_h0_vanishes">Theorem 9.13</a></li>
+          
+          <li><a href="sect0009.html#thm:is_charge_neutral_iff_mem_ker">Theorem 9.4</a></li>
+          
+          <li><a href="sect0009.html#thm:reduced_h0_vanishes">Theorem 9.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.chargeNeutral_iff_mem_range" class="lean_decl">GaugingLDPC.chargeNeutral_iff_mem_range</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For connected graphs, a 0-chain is charge-neutral if and only if it is in the image of the boundary: </p>
+<div class="displaymath" id="a0000000447">
+  \[  \text{IsChargeNeutral}(c) \iff c \in \operatorname {im}(\partial _1).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000446">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Rewriting using isChargeNeutral_iff_mem_ker, we have IsChargeNeutral\((c) \iff c \in \ker (\varepsilon )\). By reducedH0_vanishes, \(\ker (\varepsilon ) = \operatorname {im}(\partial _1)\), so membership in the kernel is equivalent to membership in the range. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:augmentation_map_of_boundary">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.16</span>
+    <span class="theorem_thmtitle">Augmentation Map of Boundary</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#thm:augmentation_map_of_boundary">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000448"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#def:augmentation_map">Definition 2.9</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0002.html#thm:augmentation_map_boundary_map">Theorem 2.14</a></li>
+          
+          <li><a href="sect0002.html#thm:augmentation_map_boundary_map">Theorem 2.14</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.augmentationMap_of_boundary" class="lean_decl">GaugingLDPC.augmentationMap_of_boundary</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The augmentation map applied to the boundary of any 1-chain is zero: </p>
+<div class="displaymath" id="a0000000449">
+  \[  \varepsilon (\partial _1(c)) = 0  \]
+</div>
+<p> for all \(c \in C_1(G, A)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000448">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from the previously established augmentationMap_boundaryMap theorem. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:quotient_trivial">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.17</span>
+    <span class="theorem_thmtitle">Quotient Trivial</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#thm:quotient_trivial">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000450"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0009.html#def:is_connected">Definition 9.1</a></li>
+          
+          <li><a href="sect0002.html#def:augmentation_map">Definition 2.9</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0009.html#thm:reduced_h0_vanishes">Theorem 9.13</a></li>
+          
+          <li><a href="sect0009.html#thm:reduced_h0_vanishes">Theorem 9.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.quotient_trivial" class="lean_decl">GaugingLDPC.quotient_trivial</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For connected graphs, the quotient \(\ker (\varepsilon )/\operatorname {im}(\partial _1)\) is trivial. This is expressed as: the comap of \(\operatorname {im}(\partial _1)\) along the inclusion of \(\ker (\varepsilon )\) equals \(\ker (\varepsilon )\) itself. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000450">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Rewriting using reducedH0_vanishes, we have \(\ker (\varepsilon ) = \operatorname {im}(\partial _1)\). Then the comap of a submodule along its own subtype map is the whole space \(\top \), by the submodule comap self property. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:single_vertex_case">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.18</span>
+    <span class="theorem_thmtitle">Single Vertex Case</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#thm:single_vertex_case">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000451"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#def:augmentation_map">Definition 2.9</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0002.html#thm:augmentation_map_eq_finsum">Theorem 2.12</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0002.html#thm:augmentation_map_eq_finsum">Theorem 2.12</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.single_vertex_case" class="lean_decl">GaugingLDPC.single_vertex_case</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For a single vertex graph with no edges, both the kernel of augmentation and the range of boundary are trivial: </p>
+<div class="displaymath" id="a0000000452">
+  \[  \ker (\varepsilon ) = \operatorname {im}(\partial _1) = \{ 0\} .  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000451">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>With no edges (\(E\) is empty), any finitely supported function \(g : E \to A\) must be zero (since there are no elements to have nonzero values). Therefore the boundary map sends everything to zero, so \(\operatorname {im}(\partial _1) = \{ 0\} \). </p>
+<p>For the kernel: with a unique vertex \(v\), any 0-chain \(c\) is determined by \(c(v)\). The augmentation \(\varepsilon (c) = c(v)\) (sum over the single vertex). So \(c \in \ker (\varepsilon )\) iff \(c(v) = 0\) iff \(c = 0\). Hence \(\ker (\varepsilon ) = \{ 0\} \). </p>
+<p>Both submodules equal \(\bot \), so they are equal. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:mem_ker_augmentation_iff">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.19</span>
+    <span class="theorem_thmtitle">Mem Ker Augmentation Iff</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#thm:mem_ker_augmentation_iff">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000453"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#def:augmentation_map">Definition 2.9</a></li>
+          
+          <li><a href="sect0002.html#thm:augmentation_map_eq_finsum">Theorem 2.12</a></li>
+          
+          <li><a href="sect0002.html#thm:augmentation_map_eq_finsum">Theorem 2.12</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.mem_ker_augmentation_iff" class="lean_decl">GaugingLDPC.mem_ker_augmentation_iff</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>A 0-chain \(c\) is in \(\ker (\varepsilon )\) if and only if the sum of its coefficients is zero: </p>
+<div class="displaymath" id="a0000000454">
+  \[  c \in \ker (\varepsilon ) \iff \sum _{v \in V} c(v) = 0.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000453">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By simplification using the definition of kernel membership and the characterization of the augmentation map as a finite sum, \(c \in \ker (\varepsilon )\) iff \(\varepsilon (c) = 0\) iff \(\sum _{v \in V} c(v) = 0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:mem_range_boundary_iff">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.20</span>
+    <span class="theorem_thmtitle">Mem Range Boundary Iff</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#thm:mem_range_boundary_iff">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000455"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.mem_range_boundary_iff" class="lean_decl">GaugingLDPC.mem_range_boundary_iff</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>A 0-chain \(c\) is in \(\operatorname {im}(\partial _1)\) if and only if there exists a 1-chain \(\gamma \) with \(\partial _1(\gamma ) = c\): </p>
+<div class="displaymath" id="a0000000456">
+  \[  c \in \operatorname {im}(\partial _1) \iff \exists \gamma \in C_1(G, A), \partial _1(\gamma ) = c.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000455">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By simplification using the definition of the range of a linear map, membership in \(\operatorname {im}(\partial _1)\) is equivalent to the existence of a preimage under \(\partial _1\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:sum_zero_iff_exists_preimage">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.21</span>
+    <span class="theorem_thmtitle">Sum Zero Iff Exists Preimage</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0009.html#thm:sum_zero_iff_exists_preimage">#</a>
+    
+    <a class="icon proof" href="sect0009.html#a0000000457"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0009.html#def:is_connected">Definition 9.1</a></li>
+          
+          <li><a href="sect0002.html#def:boundary_map">Definition 2.5</a></li>
+          
+          <li><a href="sect0009.html#thm:mem_ker_augmentation_iff">Theorem 9.19</a></li>
+          
+          <li><a href="sect0009.html#thm:mem_range_boundary_iff">Theorem 9.20</a></li>
+          
+          <li><a href="sect0009.html#thm:reduced_h0_vanishes">Theorem 9.13</a></li>
+          
+          <li><a href="sect0009.html#thm:mem_ker_augmentation_iff">Theorem 9.19</a></li>
+          
+          <li><a href="sect0009.html#thm:mem_range_boundary_iff">Theorem 9.20</a></li>
+          
+          <li><a href="sect0009.html#thm:reduced_h0_vanishes">Theorem 9.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.sum_zero_iff_exists_preimage" class="lean_decl">GaugingLDPC.sum_zero_iff_exists_preimage</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For connected graphs, a 0-chain has zero coefficient sum if and only if it has a preimage under the boundary map: </p>
+<div class="displaymath" id="a0000000458">
+  \[  \sum _{v \in V} c(v) = 0 \iff \exists \gamma , \partial _1(\gamma ) = c.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000457">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Rewriting using mem_ker_augmentation_iff, the left side becomes \(c \in \ker (\varepsilon )\). Rewriting using mem_range_boundary_iff, the right side becomes \(c \in \operatorname {im}(\partial _1)\). By reducedH0_vanishes, these two sets are equal for connected graphs. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0008.html" title="Def 3: Symmetrized Operator (Orbit Average)"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Gauging Measurement Formalization Blueprint"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0010.html" title="Lem 3: Charge Neutrality of Symmetrized Operators"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

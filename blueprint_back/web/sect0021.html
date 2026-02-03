@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lem 7: Gauged Code is Sparse and Distance Preserving</title>
+<link rel="next" href="sect0022.html" title="Def 10: Equivalence Relations in the Gauged Code" />
+<link rel="prev" href="sect0020.html" title="Lem 6: Weight Non-Decrease Under Stabilizer Equivalence" />
+<link rel="up" href="index.html" title="Gauging Measurement Formalization Blueprint" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Gauging Measurement Formalization Blueprint</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Rem 1: Vertex Set Partition</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000025"><span class="toc_ref">1.1</span> <span class="toc_entry">Cell Complex Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000026"><span class="toc_ref">1.2</span> <span class="toc_entry">Vertex Partition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000027"><span class="toc_ref">1.3</span> <span class="toc_entry">Partition Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000037"><span class="toc_ref">1.4</span> <span class="toc_entry">Connection to Setoid.IsPartition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000040"><span class="toc_ref">1.5</span> <span class="toc_entry">Additional Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000046"><span class="toc_ref">1.6</span> <span class="toc_entry">Construction Helpers</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">2</span> <span class="toc_entry">Rem 2: Chain Complex Notation</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">3</span> <span class="toc_entry">Rem 3: Symmetry Action and Abelian Group Structure</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000050"><span class="toc_ref">3.1</span> <span class="toc_entry">Symmetry Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000051"><span class="toc_ref">3.2</span> <span class="toc_entry">Operator Algebra Automorphisms</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000052"><span class="toc_ref">3.3</span> <span class="toc_entry">On-site Symmetry Operator</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000053"><span class="toc_ref">3.4</span> <span class="toc_entry">Character Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000054"><span class="toc_ref">3.5</span> <span class="toc_entry">Duality Pairing</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000055"><span class="toc_ref">3.6</span> <span class="toc_entry">Symmetry Eigenvalues</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">4</span> <span class="toc_entry">Def 1: Charge Projection (Single Site)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000056"><span class="toc_ref">4.1</span> <span class="toc_entry">Character Conjugate Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000057"><span class="toc_ref">4.2</span> <span class="toc_entry">Charge Projection Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000058"><span class="toc_ref">4.3</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000059"><span class="toc_ref">4.4</span> <span class="toc_entry">Character Orthogonality</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">5</span> <span class="toc_entry">Def 2: Charge Projection (Multi-Site Distribution)</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html"><span class="toc_ref">6</span> <span class="toc_entry">Lem 1: Covariance Property of Charge Components</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0006.html#a0000000060"><span class="toc_ref">6.1</span> <span class="toc_entry">Scalar-Fixing Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000061"><span class="toc_ref">6.2</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000062"><span class="toc_ref">6.3</span> <span class="toc_entry">Character Value Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000063"><span class="toc_ref">6.4</span> <span class="toc_entry">Main Covariance Theorem</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000064"><span class="toc_ref">6.5</span> <span class="toc_entry">Corollaries</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0007.html"><span class="toc_ref">7</span> <span class="toc_entry">Lem 2: Completeness of Charge Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">8</span> <span class="toc_entry">Def 3: Symmetrized Operator (Orbit Average)</span></a>
+ </li>
+<li class="">
+  <a href="sect0009.html"><span class="toc_ref">9</span> <span class="toc_entry">Thm 1: Vanishing of Reduced Zeroth Homology for Connected Graphs</span></a>
+ </li>
+<li class="">
+  <a href="sect0010.html"><span class="toc_ref">10</span> <span class="toc_entry">Lem 3: Charge Neutrality of Symmetrized Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">11</span> <span class="toc_entry">Def 4: Gauging (Decoration Map)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0011.html#a0000000065"><span class="toc_ref">11.1</span> <span class="toc_entry">Chain Complex over ZMod p</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000066"><span class="toc_ref">11.2</span> <span class="toc_entry">Exact Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000067"><span class="toc_ref">11.3</span> <span class="toc_entry">Spanning Basis</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000068"><span class="toc_ref">11.4</span> <span class="toc_entry">Gauge Z-Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000069"><span class="toc_ref">11.5</span> <span class="toc_entry">The Full Gauging Map</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000070"><span class="toc_ref">11.6</span> <span class="toc_entry">Remark on Basis Independence</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">12</span> <span class="toc_entry">Def 5: Circuit Unitaries for Gauging</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0012.html#a0000000071"><span class="toc_ref">12.1</span> <span class="toc_entry">Qudit Space and States</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000072"><span class="toc_ref">12.2</span> <span class="toc_entry">Generalized Pauli Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000073"><span class="toc_ref">12.3</span> <span class="toc_entry">Controlled-X Gate</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000074"><span class="toc_ref">12.4</span> <span class="toc_entry">Boundary Matrix Entry</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000075"><span class="toc_ref">12.5</span> <span class="toc_entry">Full Gauging System State Space</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000076"><span class="toc_ref">12.6</span> <span class="toc_entry">Edge-Vertex Entangling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000077"><span class="toc_ref">12.7</span> <span class="toc_entry">Matter-Symmetry Coupling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000078"><span class="toc_ref">12.8</span> <span class="toc_entry">Measurement Projection</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000079"><span class="toc_ref">12.9</span> <span class="toc_entry">Commutativity of Unitaries</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000080"><span class="toc_ref">12.10</span> <span class="toc_entry">Unitarity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">13</span> <span class="toc_entry">Def 6: Gauged Stabilizers (Vertex and Plaquette Terms)</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html"><span class="toc_ref">14</span> <span class="toc_entry">Def 7: Decorated Stabilizer (Gauged Stabilizer of Original Code)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0014.html#a0000000081"><span class="toc_ref">14.1</span> <span class="toc_entry">Symmetrized Stabilizer Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000082"><span class="toc_ref">14.2</span> <span class="toc_entry">Overlap Set</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000083"><span class="toc_ref">14.3</span> <span class="toc_entry">Components of the Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000084"><span class="toc_ref">14.4</span> <span class="toc_entry">The Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000085"><span class="toc_ref">14.5</span> <span class="toc_entry">Hermiticity Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000086"><span class="toc_ref">14.6</span> <span class="toc_entry">Measurability Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000087"><span class="toc_ref">14.7</span> <span class="toc_entry">Commutativity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0015.html"><span class="toc_ref">15</span> <span class="toc_entry">Thm 2: Equivalence of Algebraic and Circuit Gauging</span></a>
+ </li>
+<li class="">
+  <a href="sect0016.html"><span class="toc_ref">16</span> <span class="toc_entry">Def 8: Cheeger Constant (Isoperimetric Constant)</span></a>
+ </li>
+<li class="">
+  <a href="sect0017.html"><span class="toc_ref">17</span> <span class="toc_entry">Def 9: Gauging Graph Criteria</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html"><span class="toc_ref">18</span> <span class="toc_entry">Lem 4: Charge Convolution for Operator Products</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0018.html#a0000000088"><span class="toc_ref">18.1</span> <span class="toc_entry">Addition of Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000089"><span class="toc_ref">18.2</span> <span class="toc_entry">Multiplicativity of Character Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000090"><span class="toc_ref">18.3</span> <span class="toc_entry">Linearity and Covariance</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000091"><span class="toc_ref">18.4</span> <span class="toc_entry">Key Lemma: Projection of Product of Charge Components</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000092"><span class="toc_ref">18.5</span> <span class="toc_entry">Main Convolution Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0019.html"><span class="toc_ref">19</span> <span class="toc_entry">Lem 5: Gauging is a Homomorphism (up to Flux Equivalence)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0019.html#a0000000093"><span class="toc_ref">19.1</span> <span class="toc_entry">Flux Equivalence Relation</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000094"><span class="toc_ref">19.2</span> <span class="toc_entry">The Delta Chain</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000095"><span class="toc_ref">19.3</span> <span class="toc_entry">Helper Lemmas for gaugeZOperator</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000096"><span class="toc_ref">19.4</span> <span class="toc_entry">Gauge Factor Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000097"><span class="toc_ref">19.5</span> <span class="toc_entry">Product Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000098"><span class="toc_ref">19.6</span> <span class="toc_entry">Axioms for Edge Cases</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000099"><span class="toc_ref">19.7</span> <span class="toc_entry">Flux Equivalence Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000100"><span class="toc_ref">19.8</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0020.html"><span class="toc_ref">20</span> <span class="toc_entry">Lem 6: Weight Non-Decrease Under Stabilizer Equivalence</span></a>
+ </li>
+<li class=" active current">
+  <a href="sect0021.html"><span class="toc_ref">21</span> <span class="toc_entry">Lem 7: Gauged Code is Sparse and Distance Preserving</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0021.html#a0000000101"><span class="toc_ref">21.1</span> <span class="toc_entry">LDPC Property of Original Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000102"><span class="toc_ref">21.2</span> <span class="toc_entry">Part 1: Sparsity of the Gauged Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000103"><span class="toc_ref">21.3</span> <span class="toc_entry">Part 2: Distance Preservation</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0022.html"><span class="toc_ref">22</span> <span class="toc_entry">Def 10: Equivalence Relations in the Gauged Code</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0022.html#a0000000104"><span class="toc_ref">22.1</span> <span class="toc_entry">Operators on the Gauged System</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000105"><span class="toc_ref">22.2</span> <span class="toc_entry">Integer Powers of Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000106"><span class="toc_ref">22.3</span> <span class="toc_entry">Products of Stabilizers</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000107"><span class="toc_ref">22.4</span> <span class="toc_entry">Decorated Stabilizer Equivalence \(\sim _{\mathfrak {s}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000108"><span class="toc_ref">22.5</span> <span class="toc_entry">Vertex Stabilizer Equivalence \(\sim _{\mathfrak {A}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000109"><span class="toc_ref">22.6</span> <span class="toc_entry">Flux Stabilizer Equivalence \(\sim _{\mathfrak {B}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000110"><span class="toc_ref">22.7</span> <span class="toc_entry">Full Gauged Code Equivalence \(\sim _g\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000111"><span class="toc_ref">22.8</span> <span class="toc_entry">Inclusion Relations</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000112"><span class="toc_ref">22.9</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000113"><span class="toc_ref">22.10</span> <span class="toc_entry">Single Stabilizer Application Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0023.html"><span class="toc_ref">23</span> <span class="toc_entry">Thm 3: Distance Preservation Under Gauging</span></a>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000022">21 Lem 7: Gauged Code is Sparse and Distance Preserving</h1>
+<p>This chapter establishes that if the gauging graph \(\mathcal{G}\) satisfies all four criteria in Definition 9, then the gauged code is: </p>
+<ol class="enumerate">
+  <li><p><b class="bfseries">Sparse (LDPC)</b>: All stabilizer generators (\(\mathbb {A}_v\), \(\mathbb {B}_p\), \(\mathbb {S}\)) have weight \(O(1)\). </p>
+</li>
+  <li><p><b class="bfseries">Distance-preserving</b>: The code distance is preserved under gauging (\(d_{\text{gauged}} \geq d_{\text{original}}\)). </p>
+</li>
+</ol>
+<h1 id="a0000000101">21.1 LDPC Property of Original Code</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:is_ldpc_code">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">21.1</span>
+    <span class="definition_thmtitle">LDPC Code</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#def:is_ldpc_code">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.IsLDPCCode" class="lean_decl">GaugingLDPC.IsLDPCCode</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>An LDPC code has bounded stabilizer weight. Given a matter assignment \(\sigma \) and bounds <span class="ttfamily">matterWeightBound</span> and <span class="ttfamily">stabilizerSupportBound</span>, the code is LDPC if: </p>
+<ol class="enumerate">
+  <li><p>Each vertex set \(\Sigma (v)\) has bounded size: for all \(v \in V\), \(|\{ m \in M : m \in \sigma .\Sigma (v)\} | \leq \texttt{matterWeightBound}\). </p>
+</li>
+  <li><p>The original stabilizers have \(O(1)\) support: \(\texttt{stabilizerSupportBound} \leq \texttt{matterWeightBound}\). </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<h1 id="a0000000102">21.2 Part 1: Sparsity of the Gauged Code</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:vertex_stabilizer_weight">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">21.2</span>
+    <span class="definition_thmtitle">Vertex Stabilizer Weight</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#def:vertex_stabilizer_weight">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.vertexStabilizerWeight" class="lean_decl">GaugingLDPC.vertexStabilizerWeight</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The total support weight of vertex stabilizer \(\mathbb {A}_v\) is: </p>
+<div class="displaymath" id="a0000000826">
+  \[  \texttt{vertexStabilizerWeight}(G, \sigma , v) = |\Sigma (v)| + |\text{incidentEdges}(v)|  \]
+</div>
+<p> where \(|\Sigma (v)|\) is the number of matter qudits associated with vertex \(v\), and \(|\text{incidentEdges}(v)|\) is the number of edges incident to \(v\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:plaquette_stabilizer_weight">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">21.3</span>
+    <span class="definition_thmtitle">Plaquette Stabilizer Weight</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#def:plaquette_stabilizer_weight">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.plaquetteStabilizerWeight" class="lean_decl">GaugingLDPC.plaquetteStabilizerWeight</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The support weight of plaquette stabilizer \(\mathbb {B}_p\) equals the plaquette boundary weight: </p>
+<div class="displaymath" id="a0000000827">
+  \[  \texttt{plaquetteStabilizerWeight}(G, p) = \texttt{plaquetteBoundaryWeight}(G, p)  \]
+</div>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:decorated_stabilizer_total_weight">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">21.4</span>
+    <span class="definition_thmtitle">Decorated Stabilizer Total Weight</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#def:decorated_stabilizer_total_weight">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.decoratedStabilizerTotalWeight" class="lean_decl">GaugingLDPC.decoratedStabilizerTotalWeight</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The total weight of decorated stabilizer \(\mathbb {S}\) is the sum of matter support and edge support: </p>
+<div class="displaymath" id="a0000000828">
+  \[  \texttt{decoratedStabilizerTotalWeight}(\text{matterSupport}, \text{edgeSupport}) = \text{matterSupport} + \text{edgeSupport}  \]
+</div>
+<p> where the matter support comes from the original stabilizer and the edge support from the path \(\alpha \) solving \(\partial _1 \alpha = \chi \). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:incident_edges_card_eq_degree">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">21.5</span>
+    <span class="theorem_thmtitle">Incident Edges Card Equals Degree</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#thm:incident_edges_card_eq_degree">#</a>
+    
+    <a class="icon proof" href="sect0021.html#a0000000829"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.incidentEdges_card_eq_degree" class="lean_decl">GaugingLDPC.incidentEdges_card_eq_degree</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The number of incident edges equals the graph degree for simple graphs. For a gauged cell complex \(G\) and vertex \(v\), given an equivalence between edges incident to \(v\) and the neighbor finset: </p>
+<div class="displaymath" id="a0000000830">
+  \[  |\text{incidentEdges}(G, v)| = \deg _G(v)  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000829">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We first establish that the cardinality of the subtype \(\{ e : E \mid \text{source}(e) = v \lor \text{target}(e) = v\} \) equals the cardinality of the neighbor finset, using the given equivalence. Unfolding the definitions of <span class="ttfamily">incidentEdges</span> and <span class="ttfamily">SimpleGraph.degree</span>, and using the cardinality filter property, we convert the statement to show equality of cardinalities of subtypes. By simplification of the filter and subtype cardinalities, the result follows. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:gauged_code_is_sparse">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">21.6</span>
+    <span class="theorem_thmtitle">Gauged Code is Sparse</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#thm:gauged_code_is_sparse">#</a>
+    
+    <a class="icon proof" href="sect0021.html#a0000000831"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.GaugedCodeIsSparse" class="lean_decl">GaugingLDPC.GaugedCodeIsSparse</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>If the gauging graph satisfies all four criteria (Def 9) and the original code is LDPC, then all stabilizer generators have \(O(1)\) weight: </p>
+<ul class="itemize">
+  <li><p>\(\mathbb {A}_v\): \(|\Sigma (v)| + \deg (v) = O(1)\) </p>
+<ul class="itemize">
+  <li><p>\(|\Sigma (v)| = O(1)\) by LDPC property of original code </p>
+</li>
+  <li><p>\(\deg (v) \leq \texttt{degreeBound} = O(1)\) by Criterion 1 </p>
+</li>
+</ul>
+</li>
+  <li><p>\(\mathbb {B}_p\): \(|\partial p| \leq \texttt{cycleWeightBound} = O(1)\) by Criterion 2 </p>
+</li>
+  <li><p>\(\mathbb {S}\): matter support + edge support \(= O(1)\) </p>
+<ul class="itemize">
+  <li><p>Matter support \(= O(1)\) by LDPC property </p>
+</li>
+  <li><p>Edge support \(\leq \texttt{pathWeightBound} = O(1)\) by Criterion 3 </p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Formally: Given a valid gauging graph \(VG\) with LDPC code property, we have: </p>
+<ol class="enumerate">
+  <li><p>For all \(v \in V\): \(\texttt{vertexStabilizerWeight}(G, \sigma , v) \leq \texttt{matterBound} + VG.\texttt{degreeBound}\) </p>
+</li>
+  <li><p>For all \(p \in P\): \(\texttt{plaquetteStabilizerWeight}(G, p) \leq VG.\texttt{cycleWeightBound}\) </p>
+</li>
+  <li><p>For all \(S \in \texttt{stabilizers}\) and \(\chi \in S.\texttt{chargeConfigs}\), there exists \(\alpha : E \to _0 \mathbb {Z}/w\mathbb {Z}\) such that \(\alpha \) is a neutralizing path for \(\chi \) with \(\texttt{chainWeight}(\alpha ) \leq VG.\texttt{pathWeightBound}\) </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000831">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We prove the three parts separately. </p>
+<p><b class="bfseries">Part 1</b> (\(\mathbb {A}_v\) weight bound): Let \(v\) be an arbitrary vertex. Unfolding the definition of <span class="ttfamily">vertexStabilizerWeight</span>, the weight is \(|\Sigma (v)| + |\text{incidentEdges}(v)|\). By the LDPC property, \(|\Sigma (v)| \leq \texttt{matterBound}\). By the incident bound hypothesis, \(|\text{incidentEdges}(v)| \leq \deg (v)\). By Criterion 1 (bounded degree property), \(\deg (v) \leq VG.\texttt{degreeBound}\). By linear arithmetic (omega), the sum is at most \(\texttt{matterBound} + VG.\texttt{degreeBound}\). </p>
+<p><b class="bfseries">Part 2</b> (\(\mathbb {B}_p\) weight bound): For any plaquette \(p\), the plaquette stabilizer weight is bounded by \(VG.\texttt{cycleWeightBound}\) directly from Criterion 2 (sparse cycles property). </p>
+<p><b class="bfseries">Part 3</b> (\(\mathbb {S}\) edge weight bound): For any stabilizer \(S\) in the stabilizer set and any charge configuration \(\chi \) in \(S\)’s charge configs, Criterion 3 (constant path property) directly provides the existence of a neutralizing path \(\alpha \) with the required weight bound. </p>
+
+  </div>
+</div>
+<h1 id="a0000000103">21.3 Part 2: Distance Preservation</h1>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:distance_preserved_via_lem6">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">21.7</span>
+    <span class="theorem_thmtitle">Distance Preserved via Lemma 6</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#thm:distance_preserved_via_lem6">#</a>
+    
+    <a class="icon proof" href="sect0021.html#a0000000832"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.distance_preserved_via_Lem6" class="lean_decl">GaugingLDPC.distance_preserved_via_Lem6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>This theorem explicitly uses Lemma 6 (<span class="ttfamily">weight_non_decrease_under_stabilizer_equiv</span>) to establish that distance is preserved. The connection is: </p>
+<ol class="enumerate">
+  <li><p>Lemma 6 shows: For expander graphs with \(h(\mathcal{G}) \geq 1\), multiplying by \(\prod _{v \in U} \mathbb {A}_v\) results in \(|\text{Supp}(O')| \geq |\text{Supp}(O)|\). </p>
+</li>
+  <li><p>Therefore: All operators in the equivalence class of a decorated logical operator have weight \(\geq \) the original logical operator weight \(\geq d_{\text{original}}\). </p>
+</li>
+</ol>
+<p>Formally: Given an expander graph \(G\), a small subset \(U\), original vertex support \(V_O\), and original edge support \(E_O\) with \(U \subseteq V_O\) and \(E_O\) disjoint from the edge boundary of \(U\): </p>
+<div class="displaymath" id="a0000000833">
+  \[  |V_O \setminus U| + |E_O \cup \partial U| \geq |V_O| + |E_O|  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000832">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly by applying <span class="ttfamily">weight_non_decrease_under_stabilizer_equiv</span> from Lemma 6. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:distance_preserved_boundary_ge_size">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">21.8</span>
+    <span class="theorem_thmtitle">Distance Preserved Boundary \(\geq \) Size</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#thm:distance_preserved_boundary_ge_size">#</a>
+    
+    <a class="icon proof" href="sect0021.html#a0000000834"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.distance_preserved_boundary_ge_size" class="lean_decl">GaugingLDPC.distance_preserved_boundary_ge_size</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The net support change \(|\partial U| - |U|\) is non-negative for expanders. For an expander graph \(G\) and a small subset \(U\): </p>
+<div class="displaymath" id="a0000000835">
+  \[  \texttt{netSupportChange}(G, U) \geq 0  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000834">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This is a direct application of Lemma 6’s <span class="ttfamily">support_change_nonneg</span>. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:weight_non_decrease_via_lem6">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">21.9</span>
+    <span class="theorem_thmtitle">Weight Non-Decrease via Lemma 6</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#thm:weight_non_decrease_via_lem6">#</a>
+    
+    <a class="icon proof" href="sect0021.html#a0000000836"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.weight_non_decrease_via_Lem6" class="lean_decl">GaugingLDPC.weight_non_decrease_via_Lem6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any operator \(O\) with vertex support \(V_O\) and edge support \(E_O\), where \(U \subseteq V_O\) is the subset being “traded” for edge support, the new operator \(O' = (\prod _{v \in U} \mathbb {A}_v) \cdot O\) has: </p>
+<ul class="itemize">
+  <li><p>Vertex support \(V_O \setminus U\) </p>
+</li>
+  <li><p>Edge support \(E_O \cup \partial U\) </p>
+</li>
+</ul>
+<p>By Lemma 6’s <span class="ttfamily">boundary_ge_size_for_expander</span>: \(|\partial U| \geq |U|\). </p>
+<p>Therefore: </p>
+<div class="displaymath" id="a0000000837">
+  \[  |V_{O'}| + |E_{O'}| = (|V_O| - |U|) + (|E_O| + |\partial U|) \geq |V_O| + |E_O|  \]
+</div>
+<p>Formally: For an expander graph \(G\) and small subset \(U\): </p>
+<div class="displaymath" id="a0000000838">
+  \[  |\text{edgeBoundaryFinset}(G, U)| \geq |U|  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000836">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly by applying <span class="ttfamily">boundary_ge_size_for_expander</span> from Lemma 6. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:weight_change_under_stabilizer_equiv">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">21.10</span>
+    <span class="theorem_thmtitle">Weight Change Under Stabilizer Equivalence</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#thm:weight_change_under_stabilizer_equiv">#</a>
+    
+    <a class="icon proof" href="sect0021.html#a0000000839"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.weight_change_under_stabilizer_equiv" class="lean_decl">GaugingLDPC.weight_change_under_stabilizer_equiv</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>When multiplying an operator by \(\prod _{v \in U} \mathbb {A}_v\): </p>
+<ul class="itemize">
+  <li><p>Matter support decreases by at most \(|U|\) </p>
+</li>
+  <li><p>Edge support increases by at least \(|\partial U|\) </p>
+</li>
+</ul>
+<p>For an expander graph with \(h(\mathcal{G}) \geq 1\), the Cheeger bound gives \(|\partial U| \geq |U|\), so total weight does not decrease. </p>
+<p>Formally: Given an expander graph \(G\), small subset \(U\), original weight, matter decrease, and edge increase satisfying \(\texttt{matterDecrease} \leq |U|\) and \(\texttt{edgeIncrease} \geq |\text{edgeBoundaryFinset}(G, U)|\): </p>
+<div class="displaymath" id="a0000000840">
+  \[  \texttt{originalWeight} - \texttt{matterDecrease} + \texttt{edgeIncrease} \geq \texttt{originalWeight}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000839">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By the Cheeger bound (<span class="ttfamily">boundary_ge_size_for_expander</span>), we have \(|\partial U| \geq |U|\). </p>
+<p>We show \(\texttt{edgeIncrease} \geq \texttt{matterDecrease}\) by calculation: </p>
+<div class="displaymath" id="a0000000841">
+  \begin{align*}  \texttt{edgeIncrease} & \geq |\text{edgeBoundaryFinset}(G, U)| &  \text{(by hypothesis)} \\ & \geq |U| &  \text{(by Cheeger bound)} \\ & \geq \texttt{matterDecrease} &  \text{(by hypothesis)} \end{align*}
+</div>
+<p>The final inequality \(\texttt{originalWeight} - \texttt{matterDecrease} + \texttt{edgeIncrease} \geq \texttt{originalWeight}\) follows by linear arithmetic (omega). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:gauged_code_distance_preserved">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">21.11</span>
+    <span class="theorem_thmtitle">Gauged Code Distance Preserved</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#thm:gauged_code_distance_preserved">#</a>
+    
+    <a class="icon proof" href="sect0021.html#a0000000842"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.GaugedCodeDistancePreserved" class="lean_decl">GaugingLDPC.GaugedCodeDistancePreserved</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For a gauging graph satisfying Criterion 4 (\(h(\mathcal{G}) \geq 1\)), the distance of the gauged code satisfies \(d_{\text{gauged}} \geq d_{\text{original}}\). </p>
+<p><b class="bfseries">Theorem</b>: Let \(L\) be any logical operator in the original code with weight \(w_L \geq d_{\text{original}}\). Let \(D = \mathfrak {D}(L)\) be the decorated operator with weight \(w_D = w_L + (\text{decoration edge weight})\). For any operator \(O\) in the equivalence class of \(D\) obtained by multiplying by \(\prod _{v \in U} \mathbb {A}_v\) (for any small subset \(U\)), we have \(|\text{Supp}(O)| \geq d_{\text{original}}\). </p>
+<p><b class="bfseries">Proof outline</b>: </p>
+<ol class="enumerate">
+  <li><p>Decoration only adds edge support: \(w_D \geq w_L \geq d_{\text{original}}\) </p>
+</li>
+  <li><p>Stabilizer multiplication: By Lemma 6 and Criterion 4, when multiplying by \(\mathbb {A}_U\): </p>
+<ul class="itemize">
+  <li><p>Matter lost \(\leq |U|\) </p>
+</li>
+  <li><p>Edges gained \(\geq |\partial U| \geq |U|\) (by Cheeger bound \(h(\mathcal{G}) \geq 1\)) </p>
+</li>
+  <li><p>Therefore weight does not decrease </p>
+</li>
+</ul>
+</li>
+  <li><p>Combining: All operators in the equivalence class have weight \(\geq d_{\text{original}}\) </p>
+</li>
+  <li><p>Therefore: \(d_{\text{gauged}} = \min _L \min _{O \sim _g \mathfrak {D}(L)} |\text{Supp}(O)| \geq d_{\text{original}}\) </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000842">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Let \(U\) be a small subset with matter decrease and edge increase satisfying the hypotheses. The decorated weight satisfies \(\texttt{logicalWeight} + \texttt{decorationWeight} \geq d_{\text{original}}\) by linear arithmetic since \(\texttt{logicalWeight} \geq d_{\text{original}}\). </p>
+<p>By <span class="ttfamily">weight_change_under_stabilizer_equiv</span> applied to the simple graph of \(G\), Criterion 4 (expansion property), \(U\), the smallness hypothesis, the decorated weight, matter decrease, and edge increase with the given bounds, we obtain that the weight after stabilizer multiplication is at least the decorated weight. </p>
+<p>By linear arithmetic (omega), the final weight is at least \(d_{\text{original}}\). </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="cor:gauged_distance_ge_original_distance">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">21.12</span>
+    <span class="corollary_thmtitle">Gauged Distance \(\geq \) Original Distance</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#cor:gauged_distance_ge_original_distance">#</a>
+    
+    <a class="icon proof" href="sect0021.html#a0000000843"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.gaugedDistance_ge_originalDistance" class="lean_decl">GaugingLDPC.gaugedDistance_ge_originalDistance</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  
+<p>The gauged code distance is at least the original code distance: </p>
+<div class="displaymath" id="a0000000844">
+  \[  d_{\text{gauged}} \geq d_{\text{original}}  \]
+</div>
+<p>This combines decoration and stabilizer equivalence to show that every operator in the equivalence class of any decorated logical operator has weight \(\geq d_{\text{original}}\), hence \(d_{\text{gauged}} = \min \) over all such operators \(\geq d_{\text{original}}\). </p>
+<p>The key insight is that for any small subset \(U\) used in stabilizer equivalence, the weight change is non-negative (by Lemma 6 and Criterion 4), so all operators in the equivalence class have weight \(\geq \) the original logical operator weight \(\geq d_{\text{original}}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000843">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We extract the witness: there exist \(\texttt{logicalWeight}\), \(\texttt{decorationWeight}\), \(U\), \(\texttt{matterDecrease}\), and \(\texttt{edgeIncrease}\) such that \(\texttt{logicalWeight} \geq d_{\text{original}}\), \(U\) is a small subset, \(\texttt{matterDecrease} \leq |U|\), \(\texttt{edgeIncrease} \geq |\partial U|\), and \(d_{\text{gauged}} = (\texttt{logicalWeight} + \texttt{decorationWeight}) - \texttt{matterDecrease} + \texttt{edgeIncrease}\). </p>
+<p>Applying <span class="ttfamily">GaugedCodeDistancePreserved</span> with these parameters, we obtain that the right-hand side is at least \(d_{\text{original}}\). </p>
+<p>By linear arithmetic (omega), \(d_{\text{gauged}} \geq d_{\text{original}}\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:gauged_code_is_sparse_and_distance_preserving">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">21.13</span>
+    <span class="theorem_thmtitle">Gauged Code is Sparse and Distance-Preserving</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0021.html#thm:gauged_code_is_sparse_and_distance_preserving">#</a>
+    
+    <a class="icon proof" href="sect0021.html#a0000000845"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0016.html#def:cheeger_constant">Definition 16.20</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.GaugedCodeIsSparseAndDistancePreserving" class="lean_decl">GaugingLDPC.GaugedCodeIsSparseAndDistancePreserving</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>If the gauging graph \(\mathcal{G}\) satisfies all four criteria in Definition 9, then: </p>
+<ol class="enumerate">
+  <li><p><b class="bfseries">Sparse</b>: All stabilizer generators (\(\mathbb {A}_v\), \(\mathbb {B}_p\), \(\mathbb {S}\)) have weight \(O(1)\). </p>
+</li>
+  <li><p><b class="bfseries">Distance-preserving</b>: \(d_{\text{gauged}} \geq d_{\text{original}}\). </p>
+</li>
+</ol>
+<p>Formally: Given a valid gauging graph \(VG\), LDPC code property, incident bound, and original distance \(d_{\text{original}}\): </p>
+<ol class="enumerate">
+  <li><p>(Sparsity) The three weight bounds from Theorem&#160;<a href="sect0021.html#thm:gauged_code_is_sparse">21.6</a> hold. </p>
+</li>
+  <li><p>(Distance preservation) For all \(\texttt{logicalWeight} \geq d_{\text{original}}\), decoration weight, small subset \(U\), matter decrease \(\leq |U|\), and edge increase \(\geq |\partial U|\): </p>
+<div class="displaymath" id="a0000000846">
+  \[  (\texttt{logicalWeight} + \texttt{decorationWeight}) - \texttt{matterDecrease} + \texttt{edgeIncrease} \geq d_{\text{original}}  \]
+</div>
+</li>
+</ol>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000845">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We prove both parts using a constructor. </p>
+<p><b class="bfseries">Part 1</b>: The sparsity result follows directly from <span class="ttfamily">GaugedCodeIsSparse</span> applied with the given parameters. </p>
+<p><b class="bfseries">Part 2</b>: Let \(\texttt{logicalWeight}\), decoration weight, \(U\) (a small subset), matter decrease, and edge increase be given with the required bounds. The distance preservation follows directly from <span class="ttfamily">GaugedCodeDistancePreserved</span> applied with these parameters. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0020.html" title="Lem 6: Weight Non-Decrease Under Stabilizer Equivalence"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Gauging Measurement Formalization Blueprint"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0022.html" title="Def 10: Equivalence Relations in the Gauged Code"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

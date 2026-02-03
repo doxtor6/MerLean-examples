@@ -1,0 +1,15 @@
+[project]
+name = "Gauging Measurement Formalization"
+lean_exe = "lake env lean"
+lean_lib = "gauging_ldpc"
+
+[pdf]
+main = "print.tex"
+
+[web]
+main = "web.tex"
+extra_css = []
+
+[checkdecls]
+enabled = true
+src_dirs = ["../Definition", "../Theorem"]

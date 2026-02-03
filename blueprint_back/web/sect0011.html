@@ -1,0 +1,2758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Def 4: Gauging (Decoration Map)</title>
+<link rel="next" href="sect0012.html" title="Def 5: Circuit Unitaries for Gauging" />
+<link rel="prev" href="sect0010.html" title="Lem 3: Charge Neutrality of Symmetrized Operators" />
+<link rel="up" href="index.html" title="Gauging Measurement Formalization Blueprint" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Gauging Measurement Formalization Blueprint</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Rem 1: Vertex Set Partition</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000025"><span class="toc_ref">1.1</span> <span class="toc_entry">Cell Complex Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000026"><span class="toc_ref">1.2</span> <span class="toc_entry">Vertex Partition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000027"><span class="toc_ref">1.3</span> <span class="toc_entry">Partition Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000037"><span class="toc_ref">1.4</span> <span class="toc_entry">Connection to Setoid.IsPartition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000040"><span class="toc_ref">1.5</span> <span class="toc_entry">Additional Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000046"><span class="toc_ref">1.6</span> <span class="toc_entry">Construction Helpers</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">2</span> <span class="toc_entry">Rem 2: Chain Complex Notation</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">3</span> <span class="toc_entry">Rem 3: Symmetry Action and Abelian Group Structure</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000050"><span class="toc_ref">3.1</span> <span class="toc_entry">Symmetry Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000051"><span class="toc_ref">3.2</span> <span class="toc_entry">Operator Algebra Automorphisms</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000052"><span class="toc_ref">3.3</span> <span class="toc_entry">On-site Symmetry Operator</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000053"><span class="toc_ref">3.4</span> <span class="toc_entry">Character Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000054"><span class="toc_ref">3.5</span> <span class="toc_entry">Duality Pairing</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000055"><span class="toc_ref">3.6</span> <span class="toc_entry">Symmetry Eigenvalues</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">4</span> <span class="toc_entry">Def 1: Charge Projection (Single Site)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000056"><span class="toc_ref">4.1</span> <span class="toc_entry">Character Conjugate Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000057"><span class="toc_ref">4.2</span> <span class="toc_entry">Charge Projection Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000058"><span class="toc_ref">4.3</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000059"><span class="toc_ref">4.4</span> <span class="toc_entry">Character Orthogonality</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">5</span> <span class="toc_entry">Def 2: Charge Projection (Multi-Site Distribution)</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html"><span class="toc_ref">6</span> <span class="toc_entry">Lem 1: Covariance Property of Charge Components</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0006.html#a0000000060"><span class="toc_ref">6.1</span> <span class="toc_entry">Scalar-Fixing Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000061"><span class="toc_ref">6.2</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000062"><span class="toc_ref">6.3</span> <span class="toc_entry">Character Value Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000063"><span class="toc_ref">6.4</span> <span class="toc_entry">Main Covariance Theorem</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000064"><span class="toc_ref">6.5</span> <span class="toc_entry">Corollaries</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0007.html"><span class="toc_ref">7</span> <span class="toc_entry">Lem 2: Completeness of Charge Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">8</span> <span class="toc_entry">Def 3: Symmetrized Operator (Orbit Average)</span></a>
+ </li>
+<li class="">
+  <a href="sect0009.html"><span class="toc_ref">9</span> <span class="toc_entry">Thm 1: Vanishing of Reduced Zeroth Homology for Connected Graphs</span></a>
+ </li>
+<li class="">
+  <a href="sect0010.html"><span class="toc_ref">10</span> <span class="toc_entry">Lem 3: Charge Neutrality of Symmetrized Operators</span></a>
+ </li>
+<li class=" active current">
+  <a href="sect0011.html"><span class="toc_ref">11</span> <span class="toc_entry">Def 4: Gauging (Decoration Map)</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0011.html#a0000000065"><span class="toc_ref">11.1</span> <span class="toc_entry">Chain Complex over ZMod p</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000066"><span class="toc_ref">11.2</span> <span class="toc_entry">Exact Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000067"><span class="toc_ref">11.3</span> <span class="toc_entry">Spanning Basis</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000068"><span class="toc_ref">11.4</span> <span class="toc_entry">Gauge Z-Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000069"><span class="toc_ref">11.5</span> <span class="toc_entry">The Full Gauging Map</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000070"><span class="toc_ref">11.6</span> <span class="toc_entry">Remark on Basis Independence</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">12</span> <span class="toc_entry">Def 5: Circuit Unitaries for Gauging</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0012.html#a0000000071"><span class="toc_ref">12.1</span> <span class="toc_entry">Qudit Space and States</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000072"><span class="toc_ref">12.2</span> <span class="toc_entry">Generalized Pauli Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000073"><span class="toc_ref">12.3</span> <span class="toc_entry">Controlled-X Gate</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000074"><span class="toc_ref">12.4</span> <span class="toc_entry">Boundary Matrix Entry</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000075"><span class="toc_ref">12.5</span> <span class="toc_entry">Full Gauging System State Space</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000076"><span class="toc_ref">12.6</span> <span class="toc_entry">Edge-Vertex Entangling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000077"><span class="toc_ref">12.7</span> <span class="toc_entry">Matter-Symmetry Coupling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000078"><span class="toc_ref">12.8</span> <span class="toc_entry">Measurement Projection</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000079"><span class="toc_ref">12.9</span> <span class="toc_entry">Commutativity of Unitaries</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000080"><span class="toc_ref">12.10</span> <span class="toc_entry">Unitarity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">13</span> <span class="toc_entry">Def 6: Gauged Stabilizers (Vertex and Plaquette Terms)</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html"><span class="toc_ref">14</span> <span class="toc_entry">Def 7: Decorated Stabilizer (Gauged Stabilizer of Original Code)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0014.html#a0000000081"><span class="toc_ref">14.1</span> <span class="toc_entry">Symmetrized Stabilizer Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000082"><span class="toc_ref">14.2</span> <span class="toc_entry">Overlap Set</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000083"><span class="toc_ref">14.3</span> <span class="toc_entry">Components of the Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000084"><span class="toc_ref">14.4</span> <span class="toc_entry">The Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000085"><span class="toc_ref">14.5</span> <span class="toc_entry">Hermiticity Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000086"><span class="toc_ref">14.6</span> <span class="toc_entry">Measurability Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000087"><span class="toc_ref">14.7</span> <span class="toc_entry">Commutativity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0015.html"><span class="toc_ref">15</span> <span class="toc_entry">Thm 2: Equivalence of Algebraic and Circuit Gauging</span></a>
+ </li>
+<li class="">
+  <a href="sect0016.html"><span class="toc_ref">16</span> <span class="toc_entry">Def 8: Cheeger Constant (Isoperimetric Constant)</span></a>
+ </li>
+<li class="">
+  <a href="sect0017.html"><span class="toc_ref">17</span> <span class="toc_entry">Def 9: Gauging Graph Criteria</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html"><span class="toc_ref">18</span> <span class="toc_entry">Lem 4: Charge Convolution for Operator Products</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0018.html#a0000000088"><span class="toc_ref">18.1</span> <span class="toc_entry">Addition of Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000089"><span class="toc_ref">18.2</span> <span class="toc_entry">Multiplicativity of Character Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000090"><span class="toc_ref">18.3</span> <span class="toc_entry">Linearity and Covariance</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000091"><span class="toc_ref">18.4</span> <span class="toc_entry">Key Lemma: Projection of Product of Charge Components</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000092"><span class="toc_ref">18.5</span> <span class="toc_entry">Main Convolution Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0019.html"><span class="toc_ref">19</span> <span class="toc_entry">Lem 5: Gauging is a Homomorphism (up to Flux Equivalence)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0019.html#a0000000093"><span class="toc_ref">19.1</span> <span class="toc_entry">Flux Equivalence Relation</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000094"><span class="toc_ref">19.2</span> <span class="toc_entry">The Delta Chain</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000095"><span class="toc_ref">19.3</span> <span class="toc_entry">Helper Lemmas for gaugeZOperator</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000096"><span class="toc_ref">19.4</span> <span class="toc_entry">Gauge Factor Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000097"><span class="toc_ref">19.5</span> <span class="toc_entry">Product Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000098"><span class="toc_ref">19.6</span> <span class="toc_entry">Axioms for Edge Cases</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000099"><span class="toc_ref">19.7</span> <span class="toc_entry">Flux Equivalence Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000100"><span class="toc_ref">19.8</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0020.html"><span class="toc_ref">20</span> <span class="toc_entry">Lem 6: Weight Non-Decrease Under Stabilizer Equivalence</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html"><span class="toc_ref">21</span> <span class="toc_entry">Lem 7: Gauged Code is Sparse and Distance Preserving</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0021.html#a0000000101"><span class="toc_ref">21.1</span> <span class="toc_entry">LDPC Property of Original Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000102"><span class="toc_ref">21.2</span> <span class="toc_entry">Part 1: Sparsity of the Gauged Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000103"><span class="toc_ref">21.3</span> <span class="toc_entry">Part 2: Distance Preservation</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0022.html"><span class="toc_ref">22</span> <span class="toc_entry">Def 10: Equivalence Relations in the Gauged Code</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0022.html#a0000000104"><span class="toc_ref">22.1</span> <span class="toc_entry">Operators on the Gauged System</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000105"><span class="toc_ref">22.2</span> <span class="toc_entry">Integer Powers of Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000106"><span class="toc_ref">22.3</span> <span class="toc_entry">Products of Stabilizers</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000107"><span class="toc_ref">22.4</span> <span class="toc_entry">Decorated Stabilizer Equivalence \(\sim _{\mathfrak {s}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000108"><span class="toc_ref">22.5</span> <span class="toc_entry">Vertex Stabilizer Equivalence \(\sim _{\mathfrak {A}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000109"><span class="toc_ref">22.6</span> <span class="toc_entry">Flux Stabilizer Equivalence \(\sim _{\mathfrak {B}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000110"><span class="toc_ref">22.7</span> <span class="toc_entry">Full Gauged Code Equivalence \(\sim _g\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000111"><span class="toc_ref">22.8</span> <span class="toc_entry">Inclusion Relations</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000112"><span class="toc_ref">22.9</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000113"><span class="toc_ref">22.10</span> <span class="toc_entry">Single Stabilizer Application Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0023.html"><span class="toc_ref">23</span> <span class="toc_entry">Thm 3: Distance Preservation Under Gauging</span></a>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000012">11 Def 4: Gauging (Decoration Map)</h1>
+<p>This chapter develops the gauging (decoration) map, which attaches gauge field operators to matter operators based on their charge content. Given an exact charge distribution \(\boldsymbol {\chi } \in \partial C_1\) (meaning \(\boldsymbol {\chi } = \partial _1 \boldsymbol {\alpha }\) for some 1-chain \(\boldsymbol {\alpha }\)) and a spanning tree \(T_1 \subset C_1\) that generates all of \(\partial C_1\), the gauging map decorates charge components with appropriate gauge \(Z\)-operators. </p>
+<h1 id="a0000000065">11.1 Chain Complex over ZMod p</h1>
+<p>We work with an oriented graph \(G\) with vertices \(V\) (sites, \(C_0\)) and edges \(E\) (gauge qudits, \(C_1\)). The boundary map \(\partial _1: C_1 \to C_0\) sends each edge to its target minus its source. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="def:boundary_map_zmod">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.1</span>
+    <span class="definition_thmtitle">Boundary Map over \(\mathbb {Z}/p\mathbb {Z}\)</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#def:boundary_map_zmod">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.boundaryMapZMod" class="lean_decl">GaugingLDPC.boundaryMapZMod</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <b class="bfseries">boundary map</b> \(\partial _1: C_1 \to C_0\) over \(\mathbb {Z}/p\mathbb {Z}\) is the linear map </p>
+<div class="displaymath" id="a0000000510">
+  \[  \partial _1 : (E \to _0 \mathbb {Z}/p\mathbb {Z}) \to (V \to _0 \mathbb {Z}/p\mathbb {Z})  \]
+</div>
+<p> defined by sending each edge \(e\) to \(\mathbf{1}_{\mathrm{target}(e)} - \mathbf{1}_{\mathrm{source}(e)}\), where \(\mathbf{1}_v\) denotes the indicator function supported at vertex \(v\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000066">11.2 Exact Charge Distributions</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:exact_charge_submodule">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.2</span>
+    <span class="definition_thmtitle">Exact Charge Submodule</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#def:exact_charge_submodule">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:boundary_map_zmod">Definition 11.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.ExactChargeSubmodule" class="lean_decl">GaugingLDPC.ExactChargeSubmodule</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <b class="bfseries">exact charge submodule</b> \(\partial C_1\) is the image of the boundary map: </p>
+<div class="displaymath" id="a0000000511">
+  \[  \partial C_1 := \mathrm{im}(\partial _1) = \{  \chi \in C_0 : \exists \alpha \in C_1, \partial _1(\alpha ) = \chi \} .  \]
+</div>
+<p> Elements of this submodule are called <b class="bfseries">exact charge distributions</b>—these are the charges that can be “gauged away” by decoration. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:is_exact_charge">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.3</span>
+    <span class="definition_thmtitle">Exact Charge</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#def:is_exact_charge">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:exact_charge_submodule">Definition 11.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.IsExactCharge" class="lean_decl">GaugingLDPC.IsExactCharge</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>A charge distribution \(\chi : V \to _0 \mathbb {Z}/p\mathbb {Z}\) is <b class="bfseries">exact</b> if \(\chi \in \mathrm{im}(\partial _1)\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:is_exact_charge_iff">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.4</span>
+    <span class="theorem_thmtitle">Characterization of Exact Charges</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:is_exact_charge_iff">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000512"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:is_exact_charge">Definition 11.3</a></li>
+          
+          <li><a href="sect0011.html#def:boundary_map_zmod">Definition 11.1</a></li>
+          
+          <li><a href="sect0011.html#def:is_exact_charge">Definition 11.3</a></li>
+          
+          <li><a href="sect0011.html#def:exact_charge_submodule">Definition 11.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.isExactCharge_iff" class="lean_decl">GaugingLDPC.isExactCharge_iff</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>A charge distribution \(\chi \) is exact if and only if there exists a 1-chain \(\alpha : E \to _0 \mathbb {Z}/p\mathbb {Z}\) such that \(\partial _1(\alpha ) = \chi \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000512">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from the definition of image of a linear map: \(\chi \in \mathrm{im}(\partial _1)\) if and only if there exists \(\alpha \) with \(\partial _1(\alpha ) = \chi \). </p>
+
+  </div>
+</div>
+<h1 id="a0000000067">11.3 Spanning Basis</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:spanning_basis">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.5</span>
+    <span class="definition_thmtitle">Spanning Basis</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#def:spanning_basis">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:exact_charge_submodule">Definition 11.2</a></li>
+          
+          <li><a href="sect0011.html#def:boundary_map_zmod">Definition 11.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SpanningBasis" class="lean_decl">GaugingLDPC.SpanningBasis</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>A <b class="bfseries">spanning basis</b> for the gauging construction is a structure consisting of: </p>
+<ul class="itemize">
+  <li><p>A submodule \(T_1 \subseteq C_1\) (the “spanning tree” subspace), </p>
+</li>
+  <li><p>A restricted boundary map \(\partial _1|_{T_1} : T_1 \to \partial C_1\), </p>
+</li>
+  <li><p>A proof that the restriction equals the original boundary on \(T_1\), </p>
+</li>
+  <li><p>A proof that the restriction is surjective (\(T_1\) generates all exact charges), </p>
+</li>
+  <li><p>A proof that the restriction is injective (unique preimages). </p>
+</li>
+</ul>
+<p> The key property is that \(\partial _1|_{T_1} : T_1 \to \partial C_1\) is bijective, ensuring unique lifting of exact charges. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:spanning_basis_bijective">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.6</span>
+    <span class="theorem_thmtitle">Bijectivity of Restricted Boundary</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:spanning_basis_bijective">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000513"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:spanning_basis">Definition 11.5</a></li>
+          
+          <li><a href="sect0011.html#def:spanning_basis">Definition 11.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SpanningBasis.bijective" class="lean_decl">GaugingLDPC.SpanningBasis.bijective</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For a spanning basis \(B\), the restricted boundary map \(\partial _1|_{T_1}\) is bijective. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000513">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This holds by construction: bijectivity is the conjunction of injectivity and surjectivity, both of which are required fields of the spanning basis structure. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:alpha_of_chi">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.7</span>
+    <span class="definition_thmtitle">Alpha of Chi</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#def:alpha_of_chi">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:spanning_basis">Definition 11.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SpanningBasis.alphaOfChi" class="lean_decl">GaugingLDPC.SpanningBasis.alphaOfChi</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>For a spanning basis \(B\) and an exact charge \(\chi \in \partial C_1\), the function \(\alpha (\chi ) : E \to _0 \mathbb {Z}/p\mathbb {Z}\) is defined as the unique element of \(T_1\) satisfying \(\partial _1(\alpha ) = \chi \). This is obtained by taking the inverse function of the restricted boundary map and extracting the underlying 1-chain. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:alpha_of_chi_mem">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.8</span>
+    <span class="theorem_thmtitle">Alpha of Chi Membership</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:alpha_of_chi_mem">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000514"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:alpha_of_chi">Definition 11.7</a></li>
+          
+          <li><a href="sect0011.html#def:spanning_basis">Definition 11.5</a></li>
+          
+          <li><a href="sect0011.html#def:alpha_of_chi">Definition 11.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SpanningBasis.alphaOfChi_mem" class="lean_decl">GaugingLDPC.SpanningBasis.alphaOfChi_mem</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any exact charge \(\chi \), the 1-chain \(\alpha (\chi )\) lies in \(T_1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000514">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By definition, \(\alpha (\chi )\) is the value of the inverse function applied to \(\chi \), and this inverse returns elements of \(T_1\) (as a subtype). The membership follows from the property field of the subtype. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:alpha_of_chi_spec">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.9</span>
+    <span class="theorem_thmtitle">Alpha of Chi Specification</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:alpha_of_chi_spec">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000515"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:alpha_of_chi">Definition 11.7</a></li>
+          
+          <li><a href="sect0011.html#def:boundary_map_zmod">Definition 11.1</a></li>
+          
+          <li><a href="sect0011.html#def:alpha_of_chi">Definition 11.7</a></li>
+          
+          <li><a href="sect0011.html#def:spanning_basis">Definition 11.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SpanningBasis.alphaOfChi_spec" class="lean_decl">GaugingLDPC.SpanningBasis.alphaOfChi_spec</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any exact charge \(\chi \), we have \(\partial _1(\alpha (\chi )) = \chi \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000515">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Unfolding the definition of \(\alpha (\chi )\), we use that the inverse function is a right inverse of the restricted boundary (by surjectivity). Let \(h\) be the fact that the inverse function applied to \(\chi \) maps back to \(\chi \) under the restricted boundary. By the restriction property, the restricted boundary of an element equals the original boundary applied to its underlying value. The result follows by applying congruence under the subtype coercion. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:alpha_of_chi_unique">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.10</span>
+    <span class="theorem_thmtitle">Uniqueness of Alpha of Chi</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:alpha_of_chi_unique">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000516"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:alpha_of_chi">Definition 11.7</a></li>
+          
+          <li><a href="sect0011.html#def:spanning_basis">Definition 11.5</a></li>
+          
+          <li><a href="sect0011.html#def:boundary_map_zmod">Definition 11.1</a></li>
+          
+          <li><a href="sect0011.html#def:alpha_of_chi">Definition 11.7</a></li>
+          
+          <li><a href="sect0011.html#def:spanning_basis">Definition 11.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SpanningBasis.alphaOfChi_unique" class="lean_decl">GaugingLDPC.SpanningBasis.alphaOfChi_unique</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any exact charge \(\chi \) and any \(\alpha ' \in T_1\) satisfying \(\partial _1(\alpha ') = \chi \), we have \(\alpha ' = \alpha (\chi )\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000516">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We first show that \(\partial _1|_{T_1}(\alpha ') = \chi \) by applying subtype extensionality and using the restriction property together with the hypothesis. Then, using that the inverse function is a left inverse (by injectivity), we have that the inverse of \(\partial _1|_{T_1}(\alpha ')\) equals \(\alpha '\). Rewriting with our established equality gives the result by congruence under subtype coercion. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:alpha_of_chi_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.11</span>
+    <span class="theorem_thmtitle">Alpha of Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:alpha_of_chi_zero">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000517"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:alpha_of_chi">Definition 11.7</a></li>
+          
+          <li><a href="sect0011.html#def:spanning_basis">Definition 11.5</a></li>
+          
+          <li><a href="sect0011.html#thm:alpha_of_chi_unique">Theorem 11.10</a></li>
+          
+          <li><a href="sect0011.html#def:boundary_map_zmod">Definition 11.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SpanningBasis.alphaOfChi_zero" class="lean_decl">GaugingLDPC.SpanningBasis.alphaOfChi_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The zero exact charge lifts to the zero 1-chain: \(\alpha (0) = 0\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000517">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>First, \(0 \in T_1\) since \(T_1\) is a submodule. Second, \(\partial _1(0) = 0\) since \(\partial _1\) is a linear map. By uniqueness (Theorem&#160;<a href="sect0011.html#thm:alpha_of_chi_unique">11.10</a>), any element of \(T_1\) mapping to \(0\) must equal \(\alpha (0)\). Applying this to the zero chain gives \(\alpha (0) = 0\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000068">11.4 Gauge Z-Operators</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:gauge_z_basis">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.12</span>
+    <span class="definition_thmtitle">Gauge Z-Basis</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#def:gauge_z_basis">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.GaugeZBasis" class="lean_decl">GaugingLDPC.GaugeZBasis</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>A <b class="bfseries">gauge Z-basis</b> for prime \(p\) and edge set \(E\) consists of: </p>
+<ul class="itemize">
+  <li><p>A function \(Z : E \to O_{\mathrm{gauge}}\) assigning a \(Z\)-operator to each edge, </p>
+</li>
+  <li><p>A proof that \((Z_e)^p = 1\) for all edges \(e\) (the \(p\)-th root of unity property). </p>
+</li>
+</ul>
+<p> Here \(Z_e\) is the generalized Pauli-\(Z\) operator on the gauge qudit at edge \(e\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:z_pow">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.13</span>
+    <span class="definition_thmtitle">Z Power</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#def:z_pow">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:gauge_z_basis">Definition 11.12</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.GaugeZBasis.ZPow" class="lean_decl">GaugingLDPC.GaugeZBasis.ZPow</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>For a gauge Z-basis, edge \(e\), and exponent \(k \in \mathbb {Z}/p\mathbb {Z}\), define </p>
+<div class="displaymath" id="a0000000518">
+  \[  Z_e^k := (Z_e)^{\mathrm{val}(k)}  \]
+</div>
+<p> where \(\mathrm{val}(k) \in \{ 0, 1, \ldots , p-1\} \) is the canonical representative of \(k\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:z_pow_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.14</span>
+    <span class="theorem_thmtitle">Z Power Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:z_pow_zero">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000519"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:z_pow">Definition 11.13</a></li>
+          
+          <li><a href="sect0011.html#def:z_pow">Definition 11.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.GaugeZBasis.ZPow_zero" class="lean_decl">GaugingLDPC.GaugeZBasis.ZPow_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any edge \(e\), \(Z_e^0 = 1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000519">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By simplification: \(Z_e^0 = (Z_e)^{\mathrm{val}(0)} = (Z_e)^0 = 1\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:z_pow_periodic">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.15</span>
+    <span class="theorem_thmtitle">Z Power Periodicity</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:z_pow_periodic">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000520"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:gauge_z_basis">Definition 11.12</a></li>
+          
+          <li><a href="sect0011.html#def:gauge_z_basis">Definition 11.12</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.GaugeZBasis.ZPow_periodic" class="lean_decl">GaugingLDPC.GaugeZBasis.ZPow_periodic</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any edge \(e\) and natural number \(k\), \((Z_e)^k = (Z_e)^{k \mod p}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000520">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Rewrite \(k = (k \div p) \cdot p + (k \mod p)\). Then \((Z_e)^k = (Z_e)^{(k \div p) \cdot p + (k \mod p)} = (Z_e)^{(k \div p) \cdot p} \cdot (Z_e)^{k \mod p} = ((Z_e)^p)^{k \div p} \cdot (Z_e)^{k \mod p} = 1^{k \div p} \cdot (Z_e)^{k \mod p} = (Z_e)^{k \mod p}\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:z_pow_add">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.16</span>
+    <span class="theorem_thmtitle">Z Power Addition</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:z_pow_add">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000521"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:z_pow">Definition 11.13</a></li>
+          
+          <li><a href="sect0011.html#thm:z_pow_periodic">Theorem 11.15</a></li>
+          
+          <li><a href="sect0011.html#def:z_pow">Definition 11.13</a></li>
+          
+          <li><a href="sect0011.html#thm:z_pow_periodic">Theorem 11.15</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.GaugeZBasis.ZPow_add" class="lean_decl">GaugingLDPC.GaugeZBasis.ZPow_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any edge \(e\) and exponents \(k_1, k_2 \in \mathbb {Z}/p\mathbb {Z}\), </p>
+<div class="displaymath" id="a0000000522">
+  \[  Z_e^{k_1 + k_2} = Z_e^{k_1} \cdot Z_e^{k_2}.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000521">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Expanding the definition of \(Z_e^k\) and using \((Z_e)^a \cdot (Z_e)^b = (Z_e)^{a+b}\), we need to show \((Z_e)^{\mathrm{val}(k_1+k_2)} = (Z_e)^{\mathrm{val}(k_1)+\mathrm{val}(k_2)}\). By periodicity, both sides equal \((Z_e)^{(\mathrm{val}(k_1)+\mathrm{val}(k_2)) \mod p}\), and by the definition of addition in \(\mathbb {Z}/p\mathbb {Z}\), this equals \((Z_e)^{\mathrm{val}(k_1+k_2)}\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:gauge_z_operator">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.17</span>
+    <span class="definition_thmtitle">Gauge Z-Operator</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#def:gauge_z_operator">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:gauge_z_basis">Definition 11.12</a></li>
+          
+          <li><a href="sect0011.html#def:z_pow">Definition 11.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.gaugeZOperator" class="lean_decl">GaugingLDPC.gaugeZOperator</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>For a 1-chain \(\alpha : E \to _0 \mathbb {Z}/p\mathbb {Z}\), the <b class="bfseries">gauge Z-operator</b> is </p>
+<div class="displaymath" id="a0000000523">
+  \[  \mathcal{Z}(\alpha ) := \prod _{e \in E} Z_e^{\alpha _e}  \]
+</div>
+<p> where \(\alpha _e\) denotes the coefficient of edge \(e\) in \(\alpha \). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:gauge_z_operator_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.18</span>
+    <span class="theorem_thmtitle">Gauge Z-Operator of Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:gauge_z_operator_zero">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000524"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:gauge_z_operator">Definition 11.17</a></li>
+          
+          <li><a href="sect0011.html#thm:z_pow_zero">Theorem 11.14</a></li>
+          
+          <li><a href="sect0011.html#def:gauge_z_operator">Definition 11.17</a></li>
+          
+          <li><a href="sect0011.html#thm:z_pow_zero">Theorem 11.14</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.gaugeZOperator_zero" class="lean_decl">GaugingLDPC.gaugeZOperator_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>\(\mathcal{Z}(0) = 1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000524">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By simplification: \(\mathcal{Z}(0) = \prod _{e \in E} Z_e^{0_e} = \prod _{e \in E} Z_e^0 = \prod _{e \in E} 1 = 1\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:gauge_z_operator_add">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.19</span>
+    <span class="theorem_thmtitle">Gauge Z-Operator Addition</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:gauge_z_operator_add">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000525"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:gauge_z_operator">Definition 11.17</a></li>
+          
+          <li><a href="sect0011.html#thm:z_pow_add">Theorem 11.16</a></li>
+          
+          <li><a href="sect0011.html#def:gauge_z_operator">Definition 11.17</a></li>
+          
+          <li><a href="sect0011.html#thm:z_pow_add">Theorem 11.16</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.gaugeZOperator_add" class="lean_decl">GaugingLDPC.gaugeZOperator_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For 1-chains \(\alpha \) and \(\beta \), \(\mathcal{Z}(\alpha + \beta ) = \mathcal{Z}(\alpha ) \cdot \mathcal{Z}(\beta )\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000525">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We have </p>
+<div class="displaymath" id="a0000000526">
+  \[  \mathcal{Z}(\alpha + \beta ) = \prod _{e \in E} Z_e^{(\alpha + \beta )_e} = \prod _{e \in E} Z_e^{\alpha _e + \beta _e}.  \]
+</div>
+<p> By Theorem&#160;<a href="sect0011.html#thm:z_pow_add">11.16</a>, \(Z_e^{\alpha _e + \beta _e} = Z_e^{\alpha _e} \cdot Z_e^{\beta _e}\). Thus </p>
+<div class="displaymath" id="a0000000527">
+  \[  \mathcal{Z}(\alpha + \beta ) = \prod _{e \in E} (Z_e^{\alpha _e} \cdot Z_e^{\beta _e}) = \left(\prod _{e \in E} Z_e^{\alpha _e}\right) \cdot \left(\prod _{e \in E} Z_e^{\beta _e}\right) = \mathcal{Z}(\alpha ) \cdot \mathcal{Z}(\beta )  \]
+</div>
+<p> where we used that products distribute over finite sets (in a commutative ring). </p>
+
+  </div>
+</div>
+<h1 id="a0000000069">11.5 The Full Gauging Map</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:charge_distribution_to_0_chain">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.20</span>
+    <span class="definition_thmtitle">Charge Distribution to 0-Chain</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#def:charge_distribution_to_0_chain">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.chargeDistributionTo0Chain" class="lean_decl">GaugingLDPC.chargeDistributionTo0Chain</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>A charge distribution \(\chi : V \to \mathbb {Z}/p\mathbb {Z}\) is converted to a 0-chain \(\chi _0 : V \to _0 \mathbb {Z}/p\mathbb {Z}\) by interpreting the charge assignment \(k_v\) as coefficients of the vertex basis. This uses the equivalence between functions on a finite type and finitely supported functions. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:alpha_map">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.21</span>
+    <span class="definition_thmtitle">Alpha Map</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#def:alpha_map">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:spanning_basis">Definition 11.5</a></li>
+          
+          <li><a href="sect0011.html#def:alpha_of_chi">Definition 11.7</a></li>
+          
+          <li><a href="sect0011.html#def:charge_distribution_to_0_chain">Definition 11.20</a></li>
+          
+          <li><a href="sect0011.html#def:exact_charge_submodule">Definition 11.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.alphaMap" class="lean_decl">GaugingLDPC.alphaMap</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>For a spanning basis \(B\) and a charge distribution \(\chi : V \to \mathbb {Z}/p\mathbb {Z}\), the <b class="bfseries">alpha map</b> returns: </p>
+<div class="displaymath" id="a0000000528">
+  \[  \alpha _B(\chi ) := \begin{cases}  \alpha (\chi _0) &  \text{if } \chi _0 \in \partial C_1 \text{ (i.e., } \chi \text{ is exact)} \\ 0 &  \text{otherwise} \end{cases}  \]
+</div>
+<p> where \(\chi _0\) is the 0-chain corresponding to \(\chi \). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:gauging_map">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.22</span>
+    <span class="definition_thmtitle">Gauging Map</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#def:gauging_map">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+          <li><a href="sect0011.html#def:gauge_z_operator">Definition 11.17</a></li>
+          
+          <li><a href="sect0011.html#def:alpha_map">Definition 11.21</a></li>
+          
+          <li><a href="sect0011.html#def:spanning_basis">Definition 11.5</a></li>
+          
+          <li><a href="sect0011.html#def:gauge_z_basis">Definition 11.12</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.gaugingMap" class="lean_decl">GaugingLDPC.gaugingMap</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <b class="bfseries">gauging (decoration) map</b> \(\mathfrak {D}: \mathcal{O} \to \mathcal{O} \otimes \mathcal{O}_{\mathrm{gauge}}\) is defined by </p>
+<div class="displaymath" id="a0000000529">
+  \[  \mathfrak {D}(O) := \sum _{\chi : V \to \mathbb {Z}/p\mathbb {Z}} \llbracket O \rrbracket _\chi \otimes \mathcal{Z}(\alpha (\chi ))  \]
+</div>
+<p> where: </p>
+<ul class="itemize">
+  <li><p>\(\llbracket O \rrbracket _\chi \) is the charge-\(\chi \) component of \(O\) (via multi-site charge projection), </p>
+</li>
+  <li><p>\(\alpha (\chi )\) is the unique 1-chain in \(T_1\) solving \(\partial _1(\alpha ) = \chi \) (when \(\chi \) is exact), </p>
+</li>
+  <li><p>\(\mathcal{Z}(\alpha )\) is the gauge Z-operator. </p>
+</li>
+</ul>
+<p> The sum is over all charge distributions, implementing the completeness of charge expansion. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:gauging_map_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.23</span>
+    <span class="theorem_thmtitle">Gauging of Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:gauging_map_zero">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000530"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:gauging_map">Definition 11.22</a></li>
+          
+          <li><a href="sect0011.html#def:gauging_map">Definition 11.22</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.gaugingMap_zero" class="lean_decl">GaugingLDPC.gaugingMap_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>\(\mathfrak {D}(0) = 0\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000530">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By simplification: for each charge distribution \(\chi \), the charge projection of zero is zero (since the product action maps zero to zero), so \(\llbracket 0 \rrbracket _\chi = 0\). Thus each term in the sum is \(0 \otimes \mathcal{Z}(\alpha (\chi )) = 0\), and the sum of zeros is zero. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:gauging_map_add">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.24</span>
+    <span class="theorem_thmtitle">Gauging is Additive</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:gauging_map_add">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000531"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:gauging_map">Definition 11.22</a></li>
+          
+          <li><a href="sect0011.html#def:gauging_map">Definition 11.22</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.gaugingMap_add" class="lean_decl">GaugingLDPC.gaugingMap_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For operators \(O_1\) and \(O_2\), \(\mathfrak {D}(O_1 + O_2) = \mathfrak {D}(O_1) + \mathfrak {D}(O_2)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000531">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Expanding the definition of \(\mathfrak {D}\), we use that sums distribute over addition. For each \(\chi \), we need to show that \(\llbracket O_1 + O_2 \rrbracket _\chi \otimes \mathcal{Z}(\alpha (\chi )) = \llbracket O_1 \rrbracket _\chi \otimes \mathcal{Z}(\alpha (\chi )) + \llbracket O_2 \rrbracket _\chi \otimes \mathcal{Z}(\alpha (\chi ))\). </p>
+<p>First, we establish that the charge projection is additive: \(\llbracket O_1 + O_2 \rrbracket _\chi = \llbracket O_1 \rrbracket _\chi + \llbracket O_2 \rrbracket _\chi \). This holds because for all \(g\), the product action satisfies \(\sigma _g(O_1 + O_2) = \sigma _g(O_1) + \sigma _g(O_2)\) (since the composed automorphism is a ring homomorphism), and scalar multiplication distributes over addition. By the distributivity of tensor product over addition, \((A + B) \otimes C = A \otimes C + B \otimes C\), we obtain the result. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:gauging_map_uses_completeness">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.25</span>
+    <span class="theorem_thmtitle">Gauging Uses Completeness</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:gauging_map_uses_completeness">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000532"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.gaugingMap_uses_completeness" class="lean_decl">GaugingLDPC.gaugingMap_uses_completeness</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any operator \(O\), we have the completeness relation </p>
+<div class="displaymath" id="a0000000533">
+  \[  O = \sum _{\chi : V \to \mathbb {Z}/p\mathbb {Z}} \llbracket O \rrbracket _\chi .  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000532">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This is precisely the completeness of the charge expansion (Lemma 2), applied to the multi-site setting. The equality follows from the symmetry of the statement by taking the symmetric version of the completeness theorem. </p>
+
+  </div>
+</div>
+<h1 id="a0000000070">11.6 Remark on Basis Independence</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:chain_equiv_mod">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.26</span>
+    <span class="definition_thmtitle">Chain Equivalence Modulo Kernel</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#def:chain_equiv_mod">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:boundary_map_zmod">Definition 11.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.ChainEquivMod" class="lean_decl">GaugingLDPC.ChainEquivMod</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>Two 1-chains \(\alpha \) and \(\alpha '\) are <b class="bfseries">equivalent modulo \(\ker (\partial _1)\)</b>, written \(\alpha \sim \alpha '\), if \(\partial _1(\alpha - \alpha ') = 0\), i.e., their difference lies in the kernel of the boundary map. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:chain_equiv_mod_refl">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.27</span>
+    <span class="theorem_thmtitle">Chain Equivalence is Reflexive</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:chain_equiv_mod_refl">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000534"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:chain_equiv_mod">Definition 11.26</a></li>
+          
+          <li><a href="sect0011.html#def:chain_equiv_mod">Definition 11.26</a></li>
+          
+          <li><a href="sect0011.html#def:boundary_map_zmod">Definition 11.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.chainEquivMod_refl" class="lean_decl">GaugingLDPC.chainEquivMod_refl</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any 1-chain \(\alpha \), \(\alpha \sim \alpha \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000534">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By simplification: \(\partial _1(\alpha - \alpha ) = \partial _1(0) = 0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:chain_equiv_mod_symm">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.28</span>
+    <span class="theorem_thmtitle">Chain Equivalence is Symmetric</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:chain_equiv_mod_symm">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000535"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:chain_equiv_mod">Definition 11.26</a></li>
+          
+          <li><a href="sect0011.html#def:chain_equiv_mod">Definition 11.26</a></li>
+          
+          <li><a href="sect0011.html#def:boundary_map_zmod">Definition 11.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.chainEquivMod_symm" class="lean_decl">GaugingLDPC.chainEquivMod_symm</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>If \(\alpha \sim \alpha '\), then \(\alpha ' \sim \alpha \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000535">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Assume \(\partial _1(\alpha - \alpha ') = 0\). Then \(\partial _1(\alpha ' - \alpha ) = \partial _1(-(\alpha - \alpha ')) = -\partial _1(\alpha - \alpha ') = -0 = 0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:chain_equiv_mod_trans">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.29</span>
+    <span class="theorem_thmtitle">Chain Equivalence is Transitive</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:chain_equiv_mod_trans">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000536"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:chain_equiv_mod">Definition 11.26</a></li>
+          
+          <li><a href="sect0011.html#def:chain_equiv_mod">Definition 11.26</a></li>
+          
+          <li><a href="sect0011.html#def:boundary_map_zmod">Definition 11.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.chainEquivMod_trans" class="lean_decl">GaugingLDPC.chainEquivMod_trans</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>If \(\alpha _1 \sim \alpha _2\) and \(\alpha _2 \sim \alpha _3\), then \(\alpha _1 \sim \alpha _3\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000536">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Assume \(\partial _1(\alpha _1 - \alpha _2) = 0\) and \(\partial _1(\alpha _2 - \alpha _3) = 0\). Note that \(\alpha _1 - \alpha _3 = (\alpha _1 - \alpha _2) + (\alpha _2 - \alpha _3)\). Thus \(\partial _1(\alpha _1 - \alpha _3) = \partial _1(\alpha _1 - \alpha _2) + \partial _1(\alpha _2 - \alpha _3) = 0 + 0 = 0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:alpha_map_basis_change">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.30</span>
+    <span class="theorem_thmtitle">Alpha Map Basis Change</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0011.html#thm:alpha_map_basis_change">#</a>
+    
+    <a class="icon proof" href="sect0011.html#a0000000537"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0011.html#def:alpha_map">Definition 11.21</a></li>
+          
+          <li><a href="sect0011.html#def:chain_equiv_mod">Definition 11.26</a></li>
+          
+          <li><a href="sect0011.html#def:spanning_basis">Definition 11.5</a></li>
+          
+          <li><a href="sect0011.html#def:alpha_map">Definition 11.21</a></li>
+          
+          <li><a href="sect0011.html#def:chain_equiv_mod">Definition 11.26</a></li>
+          
+          <li><a href="sect0011.html#thm:alpha_of_chi_spec">Theorem 11.9</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.alphaMap_basis_change" class="lean_decl">GaugingLDPC.alphaMap_basis_change</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For two spanning bases \(B\) and \(B'\) and any exact charge distribution \(\chi \), the corresponding alpha values are equivalent modulo \(\ker (\partial _1)\): </p>
+<div class="displaymath" id="a0000000538">
+  \[  \alpha _B(\chi ) \sim \alpha _{B'}(\chi ).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000537">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Since \(\chi \) is exact, both \(\alpha _B(\chi )\) and \(\alpha _{B'}(\chi )\) are well-defined via the alpha-of-chi construction. Let \(h_B\) be the specification that \(\partial _1(\alpha _B(\chi )) = \chi \) and \(h_{B'}\) be the specification that \(\partial _1(\alpha _{B'}(\chi )) = \chi \). Then: </p>
+<div class="displaymath" id="a0000000539">
+  \[  \partial _1(\alpha _B(\chi ) - \alpha _{B'}(\chi )) = \partial _1(\alpha _B(\chi )) - \partial _1(\alpha _{B'}(\chi )) = \chi - \chi = 0.  \]
+</div>
+<p> Thus \(\alpha _B(\chi ) \sim \alpha _{B'}(\chi )\). </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0010.html" title="Lem 3: Charge Neutrality of Symmetrized Operators"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Gauging Measurement Formalization Blueprint"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0012.html" title="Def 5: Circuit Unitaries for Gauging"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>
