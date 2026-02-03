@@ -544,16 +544,16 @@ The total qubit count in the sparsified code includes:
 -/
 
 /-- Total qubit count for sparsified deformed code -/
-def totalQubitCount (numOriginal W R : ℕ) : ℕ :=
+def sparsifiedTotalQubitCount (numOriginal W R : ℕ) : ℕ :=
   numOriginal + W * (R + 1)
 
 /-- The qubit overhead is O(W · R) -/
 theorem qubitOverhead_bound (numOriginal W R : ℕ) :
-    totalQubitCount numOriginal W R = numOriginal + W * (R + 1) := rfl
+    sparsifiedTotalQubitCount numOriginal W R = numOriginal + W * (R + 1) := rfl
 
 /-- For R = O(log² W), the overhead is O(W log² W) -/
 theorem qubitOverhead_logSq (numOriginal W : ℕ) :
-    totalQubitCount numOriginal W ((Nat.log 2 W)^2) =
+    sparsifiedTotalQubitCount numOriginal W ((Nat.log 2 W)^2) =
     numOriginal + W * ((Nat.log 2 W)^2 + 1) := rfl
 
 /-! ## Section 11: Check Weight Analysis
