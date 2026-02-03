@@ -163,7 +163,7 @@ theorem cycleRank_upper_bound (G : BaseGraphWithCycles) (d : ℕ) (hd : Constant
   omega
 
 /-- For a connected graph, the cycle rank is at least 0 (since |E| ≥ |V| - 1) -/
-theorem cycleRank_nonneg (G : BaseGraphWithCycles) :
+theorem cycleRank_nonneg_connected (G : BaseGraphWithCycles) :
     CycleRank G ≥ 0 := by
   unfold CycleRank
   have h := edgeCount_ge_vertices_minus_one G
@@ -228,7 +228,7 @@ theorem cycleRank_theta_V_regular (G : BaseGraphWithCycles) (d : ℕ)
 /-- For constant degree d graphs with V vertices, cycle rank ≤ (d/2)|V| = O(|V|). -/
 theorem cycleRank_linear_in_V (G : BaseGraphWithCycles) (d : ℕ) (hd : ConstantDegree G d) :
     (CycleRank G).toNat ≤ d * Fintype.card G.V / 2 := by
-  have h_nonneg := cycleRank_nonneg G
+  have h_nonneg := cycleRank_nonneg_connected G
   have h_bound := edgeCount_bound G d hd
   -- CycleRank ≤ |E| since CycleRank = |E| - |V| + 1 and |V| ≥ 1
   have h_cr_le_e : CycleRank G ≤ G.graph.edgeFinset.card := by

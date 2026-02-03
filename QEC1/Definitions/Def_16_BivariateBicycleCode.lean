@@ -435,7 +435,7 @@ theorem numPhysicalQubits_eq (C : BivariateBicycleCode ℓ m) :
     C.numPhysicalQubits = 2 * ℓ * m := rfl
 
 /-- Left and right qubits partition the physical qubits -/
-theorem qubit_partition (C : BivariateBicycleCode ℓ m) :
+theorem bb_qubit_partition (C : BivariateBicycleCode ℓ m) :
     C.numLeftQubits + C.numRightQubits = C.numPhysicalQubits := by
   simp only [BivariateBicycleCode.numLeftQubits, BivariateBicycleCode.numRightQubits,
              BivariateBicycleCode.numPhysicalQubits]

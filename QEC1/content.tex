@@ -8235,7 +8235,7 @@ This follows from the flux operator order-two theorem.
 
 \begin{theorem}[Gauss Law Constraint]
 \label{thm:gauss_law_constraint}
-\lean{QEC.gaussLaw_constraint}
+\lean{QEC.deformedCode_gaussLaw_constraint}
 \leanok
 \uses{def:deformed_code_config, def:gauss_law_operator}
 
@@ -30828,7 +30828,7 @@ This holds by definition (reflexivity).
 
 \begin{theorem}[Qubit Partition]
 \label{thm:bb_qubit_partition}
-\lean{QEC.qubit_partition}
+\lean{QEC.bb_qubit_partition}
 \leanok
 \uses{def:bb_num_left_qubits, def:bb_num_right_qubits, def:bb_num_physical_qubits}
 
@@ -42463,7 +42463,7 @@ Unfolding the definitions, the result follows by integer arithmetic (omega).
 
 \begin{theorem}[Cycle Rank is Non-negative]
 \label{thm:cycle_rank_nonneg}
-\lean{QEC.cycleRank_nonneg}
+\lean{QEC.cycleRank_nonneg_connected}
 \leanok
 \uses{def:cycle_rank_connected, def:cycle_rank}
 
@@ -47526,7 +47526,7 @@ By simplification using the definitions. The right-only support $(0, q)$ transpo
 
 \begin{definition}[Overlap Count]
 \label{def:overlap_count}
-\lean{QEC.overlapCount}
+\lean{QEC.bbOverlapCount}
 \leanok
 \uses{def:bivariate_bicycle_code}
 
@@ -47712,7 +47712,7 @@ Let $\alpha$ be any X-check index. We specialize the hypothesis to $\beta = -\al
 
 \begin{definition}[Symplectic Inner Product for BB Codes]
 \label{def:symplectic_inner_product_bb}
-\lean{QEC.symplecticInnerProduct}
+\lean{QEC.bbSymplecticInnerProduct}
 \leanok
 \uses{def:bb_logical_support}
 
@@ -47726,7 +47726,7 @@ This computes whether an X-type and Z-type operator anticommute (odd result) or 
 
 \begin{theorem}[Commutation Preserved Under Transpose]
 \label{thm:commutation_preserved}
-\lean{QEC.commutation_preserved}
+\lean{QEC.bbCommutation_preserved}
 \leanok
 \uses{def:symplectic_inner_product_bb, def:bb_logical_support_transpose, lem:neg_pair_injective}
 

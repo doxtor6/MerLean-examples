@@ -108,7 +108,7 @@ end BBLogicalSupport
     This counts |{k : (α.1 + k.1, α.2 + k.2) ∈ P.support ∧ k ∈ S.support}|.
 
     In F_2 arithmetic, the commutation condition is that this count is even. -/
-def overlapCount (S P : BBPolynomial ℓ m) (α : Fin ℓ × Fin m) : ℕ :=
+def bbOverlapCount (S P : BBPolynomial ℓ m) (α : Fin ℓ × Fin m) : ℕ :=
   (S.support.filter (fun k => (α.1 + k.1, α.2 + k.2) ∈ P.support)).card
 
 /-- The transpose operation on indices: (a, b) ↦ (-a, -b) -/
@@ -135,12 +135,12 @@ theorem transposeIdx_zero : transposeIdx ((0, 0) : Fin ℓ × Fin m) = (0, 0) :=
     overlap(p, B^T, β) + overlap(q, A^T, β) ≡ 0 (mod 2) -/
 def XCommutationAt (C : BivariateBicycleCode ℓ m) (S : BBLogicalSupport ℓ m)
     (α : Fin ℓ × Fin m) : Prop :=
-  (overlapCount S.leftSupport C.polyA α + overlapCount S.rightSupport C.polyB α) % 2 = 0
+  (bbOverlapCount S.leftSupport C.polyA α + bbOverlapCount S.rightSupport C.polyB α) % 2 = 0
 
 def ZCommutationAt (C : BivariateBicycleCode ℓ m) (S : BBLogicalSupport ℓ m)
     (β : Fin ℓ × Fin m) : Prop :=
-  (overlapCount S.leftSupport C.polyB.transpose β +
-   overlapCount S.rightSupport C.polyA.transpose β) % 2 = 0
+  (bbOverlapCount S.leftSupport C.polyB.transpose β +
+   bbOverlapCount S.rightSupport C.polyA.transpose β) % 2 = 0
 
 /-- The negation map on Fin ℓ × Fin m is injective -/
 theorem neg_pair_injective : Function.Injective (fun (ab : Fin ℓ × Fin m) => (-ab.1, -ab.2)) := by
@@ -153,8 +153,8 @@ theorem neg_pair_injective : Function.Injective (fun (ab : Fin ℓ × Fin m) => 
     This uses the fact that k ∈ p^T.support iff -k ∈ p.support,
     and (β + k) ∈ Q^T.support iff -(β + k) ∈ Q.support iff (-β - k) ∈ Q.support. -/
 theorem overlap_transpose_eq (p Q : BBPolynomial ℓ m) (β : Fin ℓ × Fin m) :
-    overlapCount p.transpose Q.transpose β = overlapCount p Q (transposeIdx β) := by
-  simp only [overlapCount, transposeIdx]
+    bbOverlapCount p.transpose Q.transpose β = bbOverlapCount p Q (transposeIdx β) := by
+  simp only [bbOverlapCount, transposeIdx]
   -- We establish a bijection between the two filtered sets
   -- LHS filter: k in p^T.support and (β + k) in Q^T.support
   -- RHS filter: k' in p.support and (-β + k') in Q.support
@@ -269,12 +269,12 @@ theorem parity_check_symmetry (C : BivariateBicycleCode ℓ m) (S : BBLogicalSup
   -- Using overlap_transpose_eq: = overlap(q, B, -β) + overlap(p, A, -β)
   have h1 := overlap_transpose_eq S.rightSupport C.polyB β
   have h2 := overlap_transpose_eq S.leftSupport C.polyA β
-  simp only [overlapCount, transposeIdx] at h1 h2 ⊢
+  simp only [bbOverlapCount, transposeIdx] at h1 h2 ⊢
   rw [h1, h2]
   -- Now we need: overlap(S.right, B, -β) + overlap(S.left, A, -β) ≡ 0
   -- This is exactly X commutation at -β with swapped order
   specialize hX (-β.1, -β.2)
-  simp only [XCommutationAt, overlapCount] at hX
+  simp only [XCommutationAt, bbOverlapCount] at hX
   -- hX says: overlap(left, A, -β) + overlap(right, B, -β) ≡ 0
   -- We need: overlap(right, B, -β) + overlap(left, A, -β) ≡ 0
   -- These are equal by commutativity of addition
@@ -286,12 +286,12 @@ theorem parity_check_symmetry_converse (C : BivariateBicycleCode ℓ m) (S : BBL
     ∀ α, XCommutationAt C S α := by
   intro α
   specialize hZ (-α.1, -α.2)
-  simp only [ZCommutationAt, BBLogicalSupport.transpose, overlapCount] at hZ
+  simp only [ZCommutationAt, BBLogicalSupport.transpose, bbOverlapCount] at hZ
   have h1 := overlap_transpose_eq S.rightSupport C.polyB (-α.1, -α.2)
   have h2 := overlap_transpose_eq S.leftSupport C.polyA (-α.1, -α.2)
-  simp only [transposeIdx, neg_neg, overlapCount] at h1 h2
+  simp only [transposeIdx, neg_neg, bbOverlapCount] at h1 h2
   rw [h1, h2] at hZ
-  simp only [XCommutationAt, overlapCount]
+  simp only [XCommutationAt, bbOverlapCount]
   omega
 
 /-! ## Section 4: Commutation Preservation (Symplectic Inner Product) -/
@@ -300,7 +300,7 @@ theorem parity_check_symmetry_converse (C : BivariateBicycleCode ℓ m) (S : BBL
     ⟨X(p,q), Z(r,s)⟩ = (p · r + q · s) mod 2
 
     For BB codes, this computes whether an X-type and Z-type operator anticommute. -/
-def symplecticInnerProduct (SX SZ : BBLogicalSupport ℓ m) : ℕ :=
+def bbSymplecticInnerProduct (SX SZ : BBLogicalSupport ℓ m) : ℕ :=
   (SX.leftSupport.support ∩ SZ.leftSupport.support).card +
   (SX.rightSupport.support ∩ SZ.rightSupport.support).card
 
@@ -320,12 +320,12 @@ def symplecticInnerProduct (SX SZ : BBLogicalSupport ℓ m) : ℕ :=
     Since transpose is a bijection: |s^T ∩ q^T| = |s ∩ q| = |q ∩ s|
     and |r^T ∩ p^T| = |r ∩ p| = |p ∩ r|
 -/
-theorem commutation_preserved (SX SZ : BBLogicalSupport ℓ m) :
-    symplecticInnerProduct SX SZ % 2 =
-    symplecticInnerProduct
+theorem bbCommutation_preserved (SX SZ : BBLogicalSupport ℓ m) :
+    bbSymplecticInnerProduct SX SZ % 2 =
+    bbSymplecticInnerProduct
       ⟨SZ.rightSupport.transpose, SZ.leftSupport.transpose⟩
       SX.transpose % 2 := by
-  simp only [symplecticInnerProduct, BBLogicalSupport.transpose]
+  simp only [bbSymplecticInnerProduct, BBLogicalSupport.transpose]
   -- LHS: |SX.left ∩ SZ.left| + |SX.right ∩ SZ.right|
   -- RHS: |SZ.right^T ∩ SX.right^T| + |SZ.left^T ∩ SX.left^T|
   -- For intersections: |A^T ∩ B^T| = |A ∩ B| since transpose is a bijection

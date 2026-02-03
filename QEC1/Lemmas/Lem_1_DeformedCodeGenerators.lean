@@ -525,7 +525,7 @@ theorem flux_order_two (cfg : DeformedCodeConfig C L) (c : cfg.fluxCfg.CycleIdx)
 /-! ## Section 13: Helper Lemmas -/
 
 /-- The Gauss law constraint: ∏_v A_v gives all-ones on vertices -/
-theorem gaussLaw_constraint (cfg : DeformedCodeConfig C L) :
+theorem deformedCode_gaussLaw_constraint (cfg : DeformedCodeConfig C L) :
     ∀ v : cfg.graph.Vertex,
       Finset.sum Finset.univ (fun w => (GaussLawOperators cfg.graph w).vertexSupport v) = 1 :=
   gaussLaw_constraint_equation cfg.graph
