@@ -1,0 +1,3638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rem 3: Symmetry Action and Abelian Group Structure</title>
+<link rel="next" href="sect0004.html" title="Def 1: Charge Projection (Single Site)" />
+<link rel="prev" href="sect0002.html" title="Rem 2: Chain Complex Notation" />
+<link rel="up" href="index.html" title="Gauging Measurement Formalization Blueprint" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Gauging Measurement Formalization Blueprint</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Rem 1: Vertex Set Partition</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000025"><span class="toc_ref">1.1</span> <span class="toc_entry">Cell Complex Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000026"><span class="toc_ref">1.2</span> <span class="toc_entry">Vertex Partition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000027"><span class="toc_ref">1.3</span> <span class="toc_entry">Partition Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000037"><span class="toc_ref">1.4</span> <span class="toc_entry">Connection to Setoid.IsPartition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000040"><span class="toc_ref">1.5</span> <span class="toc_entry">Additional Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000046"><span class="toc_ref">1.6</span> <span class="toc_entry">Construction Helpers</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">2</span> <span class="toc_entry">Rem 2: Chain Complex Notation</span></a>
+ </li>
+<li class=" active current">
+  <a href="sect0003.html"><span class="toc_ref">3</span> <span class="toc_entry">Rem 3: Symmetry Action and Abelian Group Structure</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0003.html#a0000000050"><span class="toc_ref">3.1</span> <span class="toc_entry">Symmetry Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000051"><span class="toc_ref">3.2</span> <span class="toc_entry">Operator Algebra Automorphisms</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000052"><span class="toc_ref">3.3</span> <span class="toc_entry">On-site Symmetry Operator</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000053"><span class="toc_ref">3.4</span> <span class="toc_entry">Character Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000054"><span class="toc_ref">3.5</span> <span class="toc_entry">Duality Pairing</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000055"><span class="toc_ref">3.6</span> <span class="toc_entry">Symmetry Eigenvalues</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">4</span> <span class="toc_entry">Def 1: Charge Projection (Single Site)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000056"><span class="toc_ref">4.1</span> <span class="toc_entry">Character Conjugate Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000057"><span class="toc_ref">4.2</span> <span class="toc_entry">Charge Projection Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000058"><span class="toc_ref">4.3</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000059"><span class="toc_ref">4.4</span> <span class="toc_entry">Character Orthogonality</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">5</span> <span class="toc_entry">Def 2: Charge Projection (Multi-Site Distribution)</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html"><span class="toc_ref">6</span> <span class="toc_entry">Lem 1: Covariance Property of Charge Components</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0006.html#a0000000060"><span class="toc_ref">6.1</span> <span class="toc_entry">Scalar-Fixing Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000061"><span class="toc_ref">6.2</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000062"><span class="toc_ref">6.3</span> <span class="toc_entry">Character Value Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000063"><span class="toc_ref">6.4</span> <span class="toc_entry">Main Covariance Theorem</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000064"><span class="toc_ref">6.5</span> <span class="toc_entry">Corollaries</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0007.html"><span class="toc_ref">7</span> <span class="toc_entry">Lem 2: Completeness of Charge Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">8</span> <span class="toc_entry">Def 3: Symmetrized Operator (Orbit Average)</span></a>
+ </li>
+<li class="">
+  <a href="sect0009.html"><span class="toc_ref">9</span> <span class="toc_entry">Thm 1: Vanishing of Reduced Zeroth Homology for Connected Graphs</span></a>
+ </li>
+<li class="">
+  <a href="sect0010.html"><span class="toc_ref">10</span> <span class="toc_entry">Lem 3: Charge Neutrality of Symmetrized Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">11</span> <span class="toc_entry">Def 4: Gauging (Decoration Map)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0011.html#a0000000065"><span class="toc_ref">11.1</span> <span class="toc_entry">Chain Complex over ZMod p</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000066"><span class="toc_ref">11.2</span> <span class="toc_entry">Exact Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000067"><span class="toc_ref">11.3</span> <span class="toc_entry">Spanning Basis</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000068"><span class="toc_ref">11.4</span> <span class="toc_entry">Gauge Z-Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000069"><span class="toc_ref">11.5</span> <span class="toc_entry">The Full Gauging Map</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000070"><span class="toc_ref">11.6</span> <span class="toc_entry">Remark on Basis Independence</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">12</span> <span class="toc_entry">Def 5: Circuit Unitaries for Gauging</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0012.html#a0000000071"><span class="toc_ref">12.1</span> <span class="toc_entry">Qudit Space and States</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000072"><span class="toc_ref">12.2</span> <span class="toc_entry">Generalized Pauli Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000073"><span class="toc_ref">12.3</span> <span class="toc_entry">Controlled-X Gate</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000074"><span class="toc_ref">12.4</span> <span class="toc_entry">Boundary Matrix Entry</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000075"><span class="toc_ref">12.5</span> <span class="toc_entry">Full Gauging System State Space</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000076"><span class="toc_ref">12.6</span> <span class="toc_entry">Edge-Vertex Entangling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000077"><span class="toc_ref">12.7</span> <span class="toc_entry">Matter-Symmetry Coupling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000078"><span class="toc_ref">12.8</span> <span class="toc_entry">Measurement Projection</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000079"><span class="toc_ref">12.9</span> <span class="toc_entry">Commutativity of Unitaries</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000080"><span class="toc_ref">12.10</span> <span class="toc_entry">Unitarity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">13</span> <span class="toc_entry">Def 6: Gauged Stabilizers (Vertex and Plaquette Terms)</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html"><span class="toc_ref">14</span> <span class="toc_entry">Def 7: Decorated Stabilizer (Gauged Stabilizer of Original Code)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0014.html#a0000000081"><span class="toc_ref">14.1</span> <span class="toc_entry">Symmetrized Stabilizer Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000082"><span class="toc_ref">14.2</span> <span class="toc_entry">Overlap Set</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000083"><span class="toc_ref">14.3</span> <span class="toc_entry">Components of the Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000084"><span class="toc_ref">14.4</span> <span class="toc_entry">The Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000085"><span class="toc_ref">14.5</span> <span class="toc_entry">Hermiticity Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000086"><span class="toc_ref">14.6</span> <span class="toc_entry">Measurability Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000087"><span class="toc_ref">14.7</span> <span class="toc_entry">Commutativity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0015.html"><span class="toc_ref">15</span> <span class="toc_entry">Thm 2: Equivalence of Algebraic and Circuit Gauging</span></a>
+ </li>
+<li class="">
+  <a href="sect0016.html"><span class="toc_ref">16</span> <span class="toc_entry">Def 8: Cheeger Constant (Isoperimetric Constant)</span></a>
+ </li>
+<li class="">
+  <a href="sect0017.html"><span class="toc_ref">17</span> <span class="toc_entry">Def 9: Gauging Graph Criteria</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html"><span class="toc_ref">18</span> <span class="toc_entry">Lem 4: Charge Convolution for Operator Products</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0018.html#a0000000088"><span class="toc_ref">18.1</span> <span class="toc_entry">Addition of Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000089"><span class="toc_ref">18.2</span> <span class="toc_entry">Multiplicativity of Character Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000090"><span class="toc_ref">18.3</span> <span class="toc_entry">Linearity and Covariance</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000091"><span class="toc_ref">18.4</span> <span class="toc_entry">Key Lemma: Projection of Product of Charge Components</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000092"><span class="toc_ref">18.5</span> <span class="toc_entry">Main Convolution Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0019.html"><span class="toc_ref">19</span> <span class="toc_entry">Lem 5: Gauging is a Homomorphism (up to Flux Equivalence)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0019.html#a0000000093"><span class="toc_ref">19.1</span> <span class="toc_entry">Flux Equivalence Relation</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000094"><span class="toc_ref">19.2</span> <span class="toc_entry">The Delta Chain</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000095"><span class="toc_ref">19.3</span> <span class="toc_entry">Helper Lemmas for gaugeZOperator</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000096"><span class="toc_ref">19.4</span> <span class="toc_entry">Gauge Factor Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000097"><span class="toc_ref">19.5</span> <span class="toc_entry">Product Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000098"><span class="toc_ref">19.6</span> <span class="toc_entry">Axioms for Edge Cases</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000099"><span class="toc_ref">19.7</span> <span class="toc_entry">Flux Equivalence Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000100"><span class="toc_ref">19.8</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0020.html"><span class="toc_ref">20</span> <span class="toc_entry">Lem 6: Weight Non-Decrease Under Stabilizer Equivalence</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html"><span class="toc_ref">21</span> <span class="toc_entry">Lem 7: Gauged Code is Sparse and Distance Preserving</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0021.html#a0000000101"><span class="toc_ref">21.1</span> <span class="toc_entry">LDPC Property of Original Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000102"><span class="toc_ref">21.2</span> <span class="toc_entry">Part 1: Sparsity of the Gauged Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000103"><span class="toc_ref">21.3</span> <span class="toc_entry">Part 2: Distance Preservation</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0022.html"><span class="toc_ref">22</span> <span class="toc_entry">Def 10: Equivalence Relations in the Gauged Code</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0022.html#a0000000104"><span class="toc_ref">22.1</span> <span class="toc_entry">Operators on the Gauged System</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000105"><span class="toc_ref">22.2</span> <span class="toc_entry">Integer Powers of Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000106"><span class="toc_ref">22.3</span> <span class="toc_entry">Products of Stabilizers</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000107"><span class="toc_ref">22.4</span> <span class="toc_entry">Decorated Stabilizer Equivalence \(\sim _{\mathfrak {s}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000108"><span class="toc_ref">22.5</span> <span class="toc_entry">Vertex Stabilizer Equivalence \(\sim _{\mathfrak {A}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000109"><span class="toc_ref">22.6</span> <span class="toc_entry">Flux Stabilizer Equivalence \(\sim _{\mathfrak {B}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000110"><span class="toc_ref">22.7</span> <span class="toc_entry">Full Gauged Code Equivalence \(\sim _g\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000111"><span class="toc_ref">22.8</span> <span class="toc_entry">Inclusion Relations</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000112"><span class="toc_ref">22.9</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000113"><span class="toc_ref">22.10</span> <span class="toc_entry">Single Stabilizer Application Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0023.html"><span class="toc_ref">23</span> <span class="toc_entry">Thm 3: Distance Preservation Under Gauging</span></a>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000004">3 Rem 3: Symmetry Action and Abelian Group Structure</h1>
+<p>This chapter formalizes the symmetry group structure for quantum codes, including the cyclic group \(\mathbb {Z}_p\) of prime order, operator algebra automorphisms, on-site symmetry operators, and character groups. </p>
+<h1 id="a0000000050">3.1 Symmetry Group</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:symmetry_group">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.1</span>
+    <span class="definition_thmtitle">Symmetry Group</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:symmetry_group">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SymmetryGroup" class="lean_decl">GaugingLDPC.SymmetryGroup</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The symmetry group \(A = \mathbb {Z}_p\) is the cyclic group of prime order \(p\). This is modeled as the additive group \(\mathbb {Z}/p\mathbb {Z}\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetry_group_is_add_cyclic">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.2</span>
+    <span class="theorem_thmtitle">Symmetry Group is Cyclic</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:symmetry_group_is_add_cyclic">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000162"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SymmetryGroup.isAddCyclic" class="lean_decl">GaugingLDPC.SymmetryGroup.isAddCyclic</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>\(\mathbb {Z}_p\) is a cyclic group (with additive group structure). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000162">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from the fact that \(\mathbb {Z}/p\mathbb {Z}\) is cyclic, which is a standard result in Mathlib. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetry_group_card_eq_p">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.3</span>
+    <span class="theorem_thmtitle">Cardinality of Symmetry Group</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:symmetry_group_card_eq_p">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000163"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SymmetryGroup.card_eq_p" class="lean_decl">GaugingLDPC.SymmetryGroup.card_eq_p</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The order of \(\mathbb {Z}_p\) is \(p\): </p>
+<div class="displaymath" id="a0000000164">
+  \[  |\mathbb {Z}_p| = p  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000163">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This is the standard result that \(|\mathbb {Z}/p\mathbb {Z}| = p\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:generator_generates">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.4</span>
+    <span class="theorem_thmtitle">Generator Generates</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:generator_generates">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000165"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SymmetryGroup.generator_generates" class="lean_decl">GaugingLDPC.SymmetryGroup.generator_generates</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The element \(1 \in \mathbb {Z}_p\) generates the entire group: </p>
+<div class="displaymath" id="a0000000166">
+  \[  \forall g \in \mathbb {Z}_p, \exists n \in \mathbb {N}, g = n \cdot 1  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000165">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Let \(g \in \mathbb {Z}_p\) be arbitrary. We take \(n = g.\mathrm{val}\) (the natural number representative of \(g\)). By simplification using \(n \cdot 1 = n\) (as multiplication by one), and by the fact that \(n\) cast back to \(\mathbb {Z}_p\) equals \(g\) (from \(\texttt{ZMod.natCast\_ zmod\_ val}\)), we obtain \(g = n \cdot 1\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:add_order_of_dvd_p">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.5</span>
+    <span class="theorem_thmtitle">Additive Order Divides p</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:add_order_of_dvd_p">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000167"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+          <li><a href="sect0003.html#thm:symmetry_group_card_eq_p">Theorem 3.3</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+          <li><a href="sect0003.html#thm:symmetry_group_card_eq_p">Theorem 3.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SymmetryGroup.addOrderOf_dvd_p" class="lean_decl">GaugingLDPC.SymmetryGroup.addOrderOf_dvd_p</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any element \(g \in \mathbb {Z}_p\), the additive order of \(g\) divides \(p\): </p>
+<div class="displaymath" id="a0000000168">
+  \[  \mathrm{addOrderOf}(g) \mid p  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000167">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We have that the additive order of \(g\) divides the cardinality of the group (by \(\texttt{addOrderOf\_ dvd\_ card}\)). Rewriting using the fact that \(|\mathbb {Z}_p| = p\), we obtain the result. </p>
+
+  </div>
+</div>
+<h1 id="a0000000051">3.2 Operator Algebra Automorphisms</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:operator_algebra">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.6</span>
+    <span class="definition_thmtitle">Operator Algebra</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:operator_algebra">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.OperatorAlgebra" class="lean_decl">GaugingLDPC.OperatorAlgebra</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>An <em>operator algebra</em> over \(\mathbb {C}\) is a ring \(R\) equipped with a \(\mathbb {C}\)-algebra structure. This serves as a placeholder for the algebra of operators acting on a quantum code’s Hilbert space. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:operator_algebra_aut">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.7</span>
+    <span class="definition_thmtitle">Operator Algebra Automorphism</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:operator_algebra_aut">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:operator_algebra">Definition 3.6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.OperatorAlgebraAut" class="lean_decl">GaugingLDPC.OperatorAlgebraAut</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The type of automorphisms of an operator algebra \(R\) is the ring automorphism group \(\mathrm{RingAut}(R)\). For each \(g \in A\), \(\varphi _g\) is an automorphism of \(R\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:symmetry_action">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.8</span>
+    <span class="definition_thmtitle">Symmetry Action</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:symmetry_action">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+          <li><a href="sect0003.html#def:operator_algebra_aut">Definition 3.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SymmetryAction" class="lean_decl">GaugingLDPC.SymmetryAction</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>A <em>symmetry action</em> of the group \(A = \mathbb {Z}_p\) on an operator algebra \(R\) via automorphisms consists of: </p>
+<ul class="itemize">
+  <li><p>A map \(\varphi : \mathbb {Z}_p \to \mathrm{RingAut}(R)\) associating to each group element an automorphism </p>
+</li>
+  <li><p>The map \(\varphi \) is a group homomorphism: \(\varphi (g_1 + g_2) = \varphi (g_1) \circ \varphi (g_2)\) </p>
+</li>
+  <li><p>The map \(\varphi \) sends zero to the identity: \(\varphi (0) = \mathrm{id}\) </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:symmetry_action_automorphism">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.9</span>
+    <span class="definition_thmtitle">Symmetry Action Automorphism</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:symmetry_action_automorphism">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_action">Definition 3.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SymmetryAction.automorphism" class="lean_decl">GaugingLDPC.SymmetryAction.automorphism</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>Given a symmetry action \(\sigma \) and a group element \(g \in \mathbb {Z}_p\), the automorphism \(\varphi _g\) acting on operators is defined as \(\sigma .\varphi (g)\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:automorphism_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.10</span>
+    <span class="theorem_thmtitle">Automorphism at Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:automorphism_zero">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000169"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_action">Definition 3.8</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_action_automorphism">Definition 3.9</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_action">Definition 3.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SymmetryAction.automorphism_zero" class="lean_decl">GaugingLDPC.SymmetryAction.automorphism_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>\(\varphi _0\) is the identity automorphism. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000169">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from the axiom \(\texttt{map\_ zero}\) of the symmetry action structure. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:automorphism_add">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.11</span>
+    <span class="theorem_thmtitle">Automorphism Respects Addition</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:automorphism_add">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000170"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_action">Definition 3.8</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_action_automorphism">Definition 3.9</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_action">Definition 3.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SymmetryAction.automorphism_add" class="lean_decl">GaugingLDPC.SymmetryAction.automorphism_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For \(g_1, g_2 \in \mathbb {Z}_p\): </p>
+<div class="displaymath" id="a0000000171">
+  \[  \varphi _{g_1 + g_2} = \varphi _{g_1} \circ \varphi _{g_2}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000170">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from the axiom \(\texttt{map\_ add}\) of the symmetry action structure. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:symmetry_action_to_monoid_hom">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.12</span>
+    <span class="definition_thmtitle">Symmetry Action to Monoid Homomorphism</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:symmetry_action_to_monoid_hom">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_action">Definition 3.8</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+          <li><a href="sect0003.html#def:operator_algebra_aut">Definition 3.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SymmetryAction.toMonoidHom" class="lean_decl">GaugingLDPC.SymmetryAction.toMonoidHom</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The symmetry action induces a monoid homomorphism from the multiplicative group \((\mathbb {Z}_p)^{\times }\) to \(\mathrm{RingAut}(R)\): </p>
+<div class="displaymath" id="a0000000172">
+  \[  \sigma .\varphi \circ \texttt{toAdd} : (\mathbb {Z}_p)^{\times } \to \mathrm{RingAut}(R)  \]
+</div>
+<p> where the unit element maps to the identity (by \(\texttt{map\_ zero}\)) and multiplication is preserved (by \(\texttt{map\_ add}\)). </p>
+
+  </div>
+</div>
+<h1 id="a0000000052">3.3 On-site Symmetry Operator</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:onsite_symmetry_op">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.13</span>
+    <span class="definition_thmtitle">On-site Symmetry Operator</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:onsite_symmetry_op">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.OnsiteSymmetryOp" class="lean_decl">GaugingLDPC.OnsiteSymmetryOp</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>An <em>on-site symmetry operator</em> \(T\) in a ring \(R\) is a unitary operator satisfying \(T^p = 1\). This represents the generator of the \(\mathbb {Z}_p\) symmetry action. It consists of: </p>
+<ul class="itemize">
+  <li><p>An element \(T \in R\) </p>
+</li>
+  <li><p>A proof that \(T\) is invertible </p>
+</li>
+  <li><p>A proof that \(T^p = 1\) </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:order_divides_p">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.14</span>
+    <span class="theorem_thmtitle">Order Divides p</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:order_divides_p">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000173"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:onsite_symmetry_op">Definition 3.13</a></li>
+          
+          <li><a href="sect0003.html#def:onsite_symmetry_op">Definition 3.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.OnsiteSymmetryOp.order_divides_p" class="lean_decl">GaugingLDPC.OnsiteSymmetryOp.order_divides_p</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The order of \(T\) divides \(p\): there exists \(k\) such that \(k \mid p\) and \(T^k = 1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000173">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We take \(k = p\). Then \(p \mid p\) holds by reflexivity of divisibility, and \(T^p = 1\) holds by the axiom \(\texttt{T\_ pow\_ eq\_ one}\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:t_pow_mul_p">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.15</span>
+    <span class="theorem_thmtitle">T to the Power kp</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:t_pow_mul_p">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000174"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:onsite_symmetry_op">Definition 3.13</a></li>
+          
+          <li><a href="sect0003.html#def:onsite_symmetry_op">Definition 3.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.OnsiteSymmetryOp.T_pow_mul_p" class="lean_decl">GaugingLDPC.OnsiteSymmetryOp.T_pow_mul_p</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any \(k \in \mathbb {N}\), \(T^{kp} = 1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000174">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We calculate: </p>
+<div class="displaymath" id="a0000000175">
+  \[  T^{kp} = (T^p)^k = 1^k = 1  \]
+</div>
+<p> The first equality uses the power rule \(T^{kp} = (T^p)^k\) (rewriting with \(\texttt{pow\_ mul}\) and commutativity of multiplication). The second equality uses \(T^p = 1\). The third equality is \(1^k = 1\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:onsite_symmetry_powers">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.16</span>
+    <span class="definition_thmtitle">Powers of T</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:onsite_symmetry_powers">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:onsite_symmetry_op">Definition 3.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.OnsiteSymmetryOp.powers" class="lean_decl">GaugingLDPC.OnsiteSymmetryOp.powers</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The powers of \(T\) are defined for \(k \in \mathbb {Z}_p\) as: </p>
+<div class="displaymath" id="a0000000176">
+  \[  \texttt{powers}(k) = T^{k.\mathrm{val}}  \]
+</div>
+<p> where \(k.\mathrm{val}\) is the natural number representative of \(k\) in \(\{ 0, 1, \ldots , p-1\} \). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:powers_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.17</span>
+    <span class="theorem_thmtitle">Powers at Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:powers_zero">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000177"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:onsite_symmetry_powers">Definition 3.16</a></li>
+          
+          <li><a href="sect0003.html#def:onsite_symmetry_powers">Definition 3.16</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.OnsiteSymmetryOp.powers_zero" class="lean_decl">GaugingLDPC.OnsiteSymmetryOp.powers_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>\(\texttt{powers}(0) = 1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000177">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By simplification: \(\texttt{powers}(0) = T^{0.\mathrm{val}} = T^0 = 1\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:powers_add">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.18</span>
+    <span class="theorem_thmtitle">Powers Respects Addition</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:powers_add">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000178"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:onsite_symmetry_powers">Definition 3.16</a></li>
+          
+          <li><a href="sect0003.html#def:onsite_symmetry_op">Definition 3.13</a></li>
+          
+          <li><a href="sect0003.html#def:onsite_symmetry_powers">Definition 3.16</a></li>
+          
+          <li><a href="sect0003.html#def:onsite_symmetry_op">Definition 3.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.OnsiteSymmetryOp.powers_add" class="lean_decl">GaugingLDPC.OnsiteSymmetryOp.powers_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For \(k_1, k_2 \in \mathbb {Z}_p\): </p>
+<div class="displaymath" id="a0000000179">
+  \[  \texttt{powers}(k_1 + k_2) = \texttt{powers}(k_1) \cdot \texttt{powers}(k_2)  \]
+</div>
+<p> or </p>
+<div class="displaymath" id="a0000000180">
+  \[  \texttt{powers}(k_1 + k_2) \cdot T^p = \texttt{powers}(k_1) \cdot \texttt{powers}(k_2)  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000178">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We prove the left disjunct holds. By simplification of the definition of \(\texttt{powers}\), we consider two cases based on whether \(k_1.\mathrm{val} + k_2.\mathrm{val} {\lt} p\). </p>
+<p><b class="bfseries">Case 1:</b> If \(k_1.\mathrm{val} + k_2.\mathrm{val} {\lt} p\), then \((k_1 + k_2).\mathrm{val} = k_1.\mathrm{val} + k_2.\mathrm{val}\) (by \(\texttt{ZMod.val\_ add\_ of\_ lt}\)). Rewriting with this and using \(T^{a+b} = T^a \cdot T^b\) (the power addition law), we get the result. </p>
+<p><b class="bfseries">Case 2:</b> If \(k_1.\mathrm{val} + k_2.\mathrm{val} \geq p\), we have: </p>
+<ul class="itemize">
+  <li><p>\(k_1.\mathrm{val} {\lt} p\) and \(k_2.\mathrm{val} {\lt} p\) (since values are in \(\{ 0, \ldots , p-1\} \)) </p>
+</li>
+  <li><p>Thus \(k_1.\mathrm{val} + k_2.\mathrm{val} {\lt} 2p\) </p>
+</li>
+  <li><p>Therefore \((k_1 + k_2).\mathrm{val} = k_1.\mathrm{val} + k_2.\mathrm{val} - p\) (the value wraps around modulo \(p\)) </p>
+</li>
+</ul>
+<p> We calculate: </p>
+<div class="displaymath" id="a0000000181">
+  \begin{align*}  T^{k_1.\mathrm{val} + k_2.\mathrm{val} - p} & = T^{k_1.\mathrm{val} + k_2.\mathrm{val} - p} \cdot 1 \\ & = T^{k_1.\mathrm{val} + k_2.\mathrm{val} - p} \cdot T^p \\ & = T^{(k_1.\mathrm{val} + k_2.\mathrm{val} - p) + p} \\ & = T^{k_1.\mathrm{val} + k_2.\mathrm{val}} \\ & = T^{k_1.\mathrm{val}} \cdot T^{k_2.\mathrm{val}} \end{align*}
+</div>
+<p> The second equality uses \(T^p = 1\), the third uses \(T^a \cdot T^b = T^{a+b}\), the fourth uses \((k_1.\mathrm{val} + k_2.\mathrm{val} - p) + p = k_1.\mathrm{val} + k_2.\mathrm{val}\), and the fifth uses the power addition law. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:onsite_symmetry_restriction">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.19</span>
+    <span class="definition_thmtitle">On-site Symmetry Restriction</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:onsite_symmetry_restriction">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:onsite_symmetry_op">Definition 3.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.OnsiteSymmetryRestriction" class="lean_decl">GaugingLDPC.OnsiteSymmetryRestriction</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The restriction of an on-site symmetry operator to a subset of qudits. For \(\Sigma (v)\) a subset of qudits, \(T|_{\Sigma (v)}\) acts only on qudits in \(\Sigma (v)\). It consists of: </p>
+<ul class="itemize">
+  <li><p>A subset \(\Sigma \) of qudits (the support) </p>
+</li>
+  <li><p>The restricted operator \(T|_{\Sigma }\) </p>
+</li>
+  <li><p>A proof that \((T|_{\Sigma })^p = 1\) </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<h1 id="a0000000053">3.4 Character Group</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:character_group">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.20</span>
+    <span class="definition_thmtitle">Character Group</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:character_group">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup" class="lean_decl">GaugingLDPC.CharacterGroup</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <em>character group</em> of \(\mathbb {Z}_p\) is the group of additive characters: </p>
+<div class="displaymath" id="a0000000182">
+  \[  \hat{A} = \mathrm{AddChar}(\mathbb {Z}_p, \mathbb {C})  \]
+</div>
+<p> A character \(\chi : \mathbb {Z}_p \to \mathbb {C}\) is a group homomorphism mapping addition to multiplication. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:character_mul_property">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.21</span>
+    <span class="theorem_thmtitle">Characters are Multiplicative</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:character_mul_property">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000183"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.mul_property" class="lean_decl">GaugingLDPC.CharacterGroup.mul_property</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any character \(\chi \in \hat{A}\)and elements \(g_1, g_2 \in \mathbb {Z}_p\): </p>
+<div class="displaymath" id="a0000000184">
+  \[  \chi (g_1 + g_2) = \chi (g_1) \cdot \chi (g_2)  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000183">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from \(\texttt{AddChar.map\_ add\_ eq\_ mul}\), which states that additive characters map addition to multiplication. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:character_map_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.22</span>
+    <span class="theorem_thmtitle">Character at Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:character_map_zero">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000185"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.map_zero" class="lean_decl">GaugingLDPC.CharacterGroup.map_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any character \(\chi \in \hat{A}\): </p>
+<div class="displaymath" id="a0000000186">
+  \[  \chi (0) = 1  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000185">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from \(\texttt{AddChar.map\_ zero\_ eq\_ one}\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:character_map_neg_eq_inv">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.23</span>
+    <span class="theorem_thmtitle">Character of Negation</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:character_map_neg_eq_inv">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000187"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+          <li><a href="sect0003.html#thm:character_mul_property">Theorem 3.21</a></li>
+          
+          <li><a href="sect0003.html#thm:character_map_zero">Theorem 3.22</a></li>
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+          <li><a href="sect0003.html#thm:character_mul_property">Theorem 3.21</a></li>
+          
+          <li><a href="sect0003.html#thm:character_map_zero">Theorem 3.22</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.map_neg_eq_inv" class="lean_decl">GaugingLDPC.CharacterGroup.map_neg_eq_inv</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any character \(\chi \in \hat{A}\) and \(g \in \mathbb {Z}_p\): </p>
+<div class="displaymath" id="a0000000188">
+  \[  \chi (-g) = \chi (g)^{-1}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000187">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We first show that \(\chi (g) \cdot \chi (-g) = 1\). Using the multiplicative property, we rewrite the left side as \(\chi (g + (-g)) = \chi (0) = 1\) (by simplification using \(g + (-g) = 0\) and \(\chi (0) = 1\)). </p>
+<p>Similarly, \(\chi (-g) \cdot \chi (g) = 1\) follows by commutativity of multiplication. </p>
+<p>From \(\chi (-g) \cdot \chi (g) = 1\), we conclude \(\chi (-g) = \chi (g)^{-1}\) by the characterization of inverses: if \(ab = 1\) then \(a = b^{-1}\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:primitive_root">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.24</span>
+    <span class="definition_thmtitle">Primitive Root</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:primitive_root">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.primitiveRoot" class="lean_decl">GaugingLDPC.CharacterGroup.primitiveRoot</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The primitive \(p\)-th root of unity is: </p>
+<div class="displaymath" id="a0000000189">
+  \[  \zeta = e^{2\pi i/p}  \]
+</div>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:primitive_root_pow_eq_one">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.25</span>
+    <span class="theorem_thmtitle">Primitive Root Power</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:primitive_root_pow_eq_one">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000190"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:primitive_root">Definition 3.24</a></li>
+          
+          <li><a href="sect0003.html#def:primitive_root">Definition 3.24</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.primitiveRoot_pow_eq_one" class="lean_decl">GaugingLDPC.CharacterGroup.primitiveRoot_pow_eq_one</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>If \(p \neq 0\) in \(\mathbb {C}\), then \(\zeta ^p = 1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000190">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Unfolding the definition of \(\zeta \), we rewrite using the exponential multiplication rule \(\exp (x)^n = \exp (nx)\). We have: </p>
+<div class="displaymath" id="a0000000191">
+  \[  p \cdot \frac{2\pi i}{p} = 2\pi i  \]
+</div>
+<p> by field simplification (since \(p \neq 0\)). Thus \(\zeta ^p = e^{2\pi i} = 1\) by \(\texttt{Complex.exp\_ two\_ pi\_ mul\_ I}\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:standard_char">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.26</span>
+    <span class="definition_thmtitle">Standard Character</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:standard_char">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.standardChar" class="lean_decl">GaugingLDPC.CharacterGroup.standardChar</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <em>standard character</em> \(\chi _k: \mathbb {Z}_p \to \mathbb {C}\) for \(k \in \mathbb {Z}_p\) is defined by: </p>
+<div class="displaymath" id="a0000000192">
+  \[  \chi _k(g) = e^{2\pi i \cdot k \cdot g / p}  \]
+</div>
+<p> This is an additive character mapping addition to multiplication. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:standard_char_apply">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.27</span>
+    <span class="theorem_thmtitle">Standard Character Apply</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:standard_char_apply">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000193"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.standardChar_apply" class="lean_decl">GaugingLDPC.CharacterGroup.standardChar_apply</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For \(k, g \in \mathbb {Z}_p\): </p>
+<div class="displaymath" id="a0000000194">
+  \[  \chi _k(g) = e^{2\pi i \cdot k.\mathrm{val} \cdot g.\mathrm{val} / p}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000193">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This holds by reflexivity (definitional equality). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:standard_char_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.28</span>
+    <span class="theorem_thmtitle">Trivial Character</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:standard_char_zero">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000195"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+          <li><a href="sect0003.html#thm:standard_char_apply">Theorem 3.27</a></li>
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+          <li><a href="sect0003.html#thm:standard_char_apply">Theorem 3.27</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.standardChar_zero" class="lean_decl">GaugingLDPC.CharacterGroup.standardChar_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>\(\chi _0\) is the trivial character: for all \(g \in \mathbb {Z}_p\), </p>
+<div class="displaymath" id="a0000000196">
+  \[  \chi _0(g) = 1  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000195">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By simplification: \(\chi _0(g) = e^{2\pi i \cdot 0 \cdot g / p} = e^0 = 1\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:standard_char_at_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.29</span>
+    <span class="theorem_thmtitle">Standard Character at Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:standard_char_at_zero">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000197"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+          <li><a href="sect0003.html#thm:standard_char_apply">Theorem 3.27</a></li>
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+          <li><a href="sect0003.html#thm:standard_char_apply">Theorem 3.27</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.standardChar_at_zero" class="lean_decl">GaugingLDPC.CharacterGroup.standardChar_at_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For all \(k \in \mathbb {Z}_p\): </p>
+<div class="displaymath" id="a0000000198">
+  \[  \chi _k(0) = 1  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000197">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By simplification: \(\chi _k(0) = e^{2\pi i \cdot k \cdot 0 / p} = e^0 = 1\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:standard_char_mul">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.30</span>
+    <span class="theorem_thmtitle">Standard Character Multiplicativity</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:standard_char_mul">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000199"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+          <li><a href="sect0003.html#thm:character_mul_property">Theorem 3.21</a></li>
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+          <li><a href="sect0003.html#thm:character_mul_property">Theorem 3.21</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.standardChar_mul" class="lean_decl">GaugingLDPC.CharacterGroup.standardChar_mul</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For \(k, g_1, g_2 \in \mathbb {Z}_p\): </p>
+<div class="displaymath" id="a0000000200">
+  \[  \chi _k(g_1 + g_2) = \chi _k(g_1) \cdot \chi _k(g_2)  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000199">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows from the general multiplicative property of characters applied to \(\chi _k\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:standard_char_at_one">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.31</span>
+    <span class="theorem_thmtitle">Standard Character at One</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:standard_char_at_one">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000201"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+          <li><a href="sect0003.html#thm:standard_char_apply">Theorem 3.27</a></li>
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+          <li><a href="sect0003.html#thm:standard_char_apply">Theorem 3.27</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.standardChar_at_one" class="lean_decl">GaugingLDPC.CharacterGroup.standardChar_at_one</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For \(k \in \mathbb {Z}_p\): </p>
+<div class="displaymath" id="a0000000202">
+  \[  \chi _k(1) = e^{2\pi i \cdot k.\mathrm{val} / p}  \]
+</div>
+<p> which is the \(k\)-th power of the primitive root. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000201">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By simplification using \(1.\mathrm{val} = 1\) (i.e., \(\texttt{ZMod.val\_ one}\)) and the multiplicative identity, followed by ring arithmetic to simplify the exponent. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:character_group_card_eq_p">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.32</span>
+    <span class="theorem_thmtitle">Cardinality of Character Group</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:character_group_card_eq_p">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000203"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.card_eq_p" class="lean_decl">GaugingLDPC.CharacterGroup.card_eq_p</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The character group \(\hat{A}\) has order \(p\): </p>
+<div class="displaymath" id="a0000000204">
+  \[  |\hat{A}| = p  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000203">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Since \(p\) is prime, \(p \neq 0\), so we have a \(\texttt{NeZero}\) instance. Using \(\texttt{AddChar.card\_ eq}\) for \(\mathbb {Z}_p\), we obtain \(|\mathrm{AddChar}(\mathbb {Z}_p, \mathbb {C})| = |\mathbb {Z}_p|\). By \(\texttt{ZMod.card}\), this equals \(p\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:val_mem_roots_of_unity">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.33</span>
+    <span class="theorem_thmtitle">Character Values are Roots of Unity</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:val_mem_roots_of_unity">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000205"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+          <li><a href="sect0003.html#thm:character_map_zero">Theorem 3.22</a></li>
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+          <li><a href="sect0003.html#thm:character_map_zero">Theorem 3.22</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.val_mem_rootsOfUnity" class="lean_decl">GaugingLDPC.CharacterGroup.val_mem_rootsOfUnity</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For any character \(\chi \in \hat{A}\) and \(g \in \mathbb {Z}_p\): </p>
+<div class="displaymath" id="a0000000206">
+  \[  \chi (g)^p = 1  \]
+</div>
+<p> That is, character values are \(p\)-th roots of unity. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000205">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We have \(\chi (p \cdot g) = 1\) because \(p \cdot g = 0\) in \(\mathbb {Z}_p\) (since \(p \equiv 0 \pmod{p}\)), and \(\chi (0) = 1\). Rewriting using \(\texttt{AddChar.map\_ nsmul\_ eq\_ pow}\), which states \(\chi (n \cdot g) = \chi (g)^n\), we obtain \(\chi (g)^p = 1\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:standard_char_spans">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.34</span>
+    <span class="theorem_thmtitle">Standard Characters Span</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:standard_char_spans">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000207"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.CharacterGroup.standardChar_spans" class="lean_decl">GaugingLDPC.CharacterGroup.standardChar_spans</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The standard characters \(\chi _0, \chi _1, \ldots , \chi _{p-1}\) form the entire character group: </p>
+<div class="displaymath" id="a0000000208">
+  \[  \forall \chi \in \hat{A}, \exists k \in \mathbb {Z}_p, \chi = \chi _k  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000207">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Let \(\chi \in \hat{A}\) be arbitrary. Using the Mathlib equivalence \(\texttt{AddChar.zmodAddEquiv}: \mathbb {Z}_p \simeq \mathrm{AddChar}(\mathbb {Z}_p, \mathbb {C})\), we obtain from surjectivity that there exists \(k \in \mathbb {Z}_p\) such that \(\chi = \texttt{zmodAddEquiv}(k)\). </p>
+<p>We claim \(\chi _k = \texttt{zmodAddEquiv}(k)\). By function extensionality, we verify this for arbitrary \(g\). Using the definition of \(\chi _k\) and the characterization of \(\texttt{zmodAddEquiv}\), which maps via circle equivalence: </p>
+<div class="displaymath" id="a0000000209">
+  \begin{align*}  \texttt{zmodAddEquiv}(k)(g) & = \texttt{circleEquivComplex}(\texttt{zmod}(p)(k))(g) \\ & = e^{2\pi \cdot k \cdot g / p} \end{align*}
+</div>
+<p> We rewrite \(k = k.\mathrm{val}\) and \(g = g.\mathrm{val}\) (modulo \(p\)), then use \(\texttt{AddChar.zmod\_ intCast}\) which gives: </p>
+<div class="displaymath" id="a0000000210">
+  \[  \texttt{zmod}(p)(k)(g) = \texttt{Circle.exp}(2\pi \cdot k.\mathrm{val} \cdot g.\mathrm{val} / p)  \]
+</div>
+<p> Composing with the circle-to-complex embedding yields \(e^{2\pi i \cdot k.\mathrm{val} \cdot g.\mathrm{val} / p}\), which equals \(\chi _k(g)\) after ring simplification. </p>
+
+  </div>
+</div>
+<h1 id="a0000000054">3.5 Duality Pairing</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:duality_pairing">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.35</span>
+    <span class="definition_thmtitle">Duality Pairing</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:duality_pairing">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_group">Definition 3.1</a></li>
+          
+          <li><a href="sect0003.html#def:character_group">Definition 3.20</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.dualityPairing" class="lean_decl">GaugingLDPC.dualityPairing</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <em>duality pairing</em> between \(g \in A\) and \(\chi \in \hat{A}\) is: </p>
+<div class="displaymath" id="a0000000211">
+  \[  \langle g, \chi \rangle = \chi (g) \in \mathbb {C}^*  \]
+</div>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:duality_pairing_add_left">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.36</span>
+    <span class="theorem_thmtitle">Duality Pairing is Bilinear (Left)</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:duality_pairing_add_left">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000212"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:duality_pairing">Definition 3.35</a></li>
+          
+          <li><a href="sect0003.html#thm:character_mul_property">Theorem 3.21</a></li>
+          
+          <li><a href="sect0003.html#def:duality_pairing">Definition 3.35</a></li>
+          
+          <li><a href="sect0003.html#thm:character_mul_property">Theorem 3.21</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.dualityPairing_add_left" class="lean_decl">GaugingLDPC.dualityPairing_add_left</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The pairing is multiplicative in the first argument: </p>
+<div class="displaymath" id="a0000000213">
+  \[  \langle g_1 + g_2, \chi \rangle = \langle g_1, \chi \rangle \cdot \langle g_2, \chi \rangle  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000212">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows from the multiplicative property of characters: \(\chi (g_1 + g_2) = \chi (g_1) \cdot \chi (g_2)\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:duality_pairing_standard_char">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.37</span>
+    <span class="theorem_thmtitle">Duality Pairing with Standard Character</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:duality_pairing_standard_char">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000214"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:duality_pairing">Definition 3.35</a></li>
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+          <li><a href="sect0003.html#thm:standard_char_apply">Theorem 3.27</a></li>
+          
+          <li><a href="sect0003.html#def:duality_pairing">Definition 3.35</a></li>
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+          <li><a href="sect0003.html#thm:standard_char_apply">Theorem 3.27</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.dualityPairing_standardChar" class="lean_decl">GaugingLDPC.dualityPairing_standardChar</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For \(g, k \in \mathbb {Z}_p\): </p>
+<div class="displaymath" id="a0000000215">
+  \[  \langle g, \chi _k \rangle = e^{2\pi i \cdot k.\mathrm{val} \cdot g.\mathrm{val} / p}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000214">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from the formula for \(\chi _k(g)\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000055">3.6 Symmetry Eigenvalues</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:symmetry_eigenvalue">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">3.38</span>
+    <span class="definition_thmtitle">Symmetry Eigenvalue</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#def:symmetry_eigenvalue">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:standard_char">Definition 3.26</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetryEigenvalue" class="lean_decl">GaugingLDPC.symmetryEigenvalue</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>Given an on-site symmetry \(T\) and a character \(\chi _k\), the <em>symmetry eigenvalue</em> is: </p>
+<div class="displaymath" id="a0000000216">
+  \[  \lambda _k(g) = \chi _k(g) = e^{2\pi i k g / p}  \]
+</div>
+<p> If \(T\) acts as \(e^{2\pi i g/p}\) on a state, then \(\chi _k\) gives eigenvalue \(e^{2\pi i kg/p}\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetry_eigenvalue_trivial">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.39</span>
+    <span class="theorem_thmtitle">Trivial Eigenvalue</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:symmetry_eigenvalue_trivial">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000217"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_eigenvalue">Definition 3.38</a></li>
+          
+          <li><a href="sect0003.html#thm:standard_char_zero">Theorem 3.28</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_eigenvalue">Definition 3.38</a></li>
+          
+          <li><a href="sect0003.html#thm:standard_char_zero">Theorem 3.28</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetryEigenvalue_trivial" class="lean_decl">GaugingLDPC.symmetryEigenvalue_trivial</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The eigenvalue for the trivial character is always 1: </p>
+<div class="displaymath" id="a0000000218">
+  \[  \lambda _0(g) = 1  \]
+</div>
+<p> for all \(g \in \mathbb {Z}_p\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000217">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows from \(\chi _0(g) = 1\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetry_eigenvalue_identity">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">3.40</span>
+    <span class="theorem_thmtitle">Eigenvalue at Identity</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0003.html#thm:symmetry_eigenvalue_identity">#</a>
+    
+    <a class="icon proof" href="sect0003.html#a0000000219"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#def:symmetry_eigenvalue">Definition 3.38</a></li>
+          
+          <li><a href="sect0003.html#thm:standard_char_at_zero">Theorem 3.29</a></li>
+          
+          <li><a href="sect0003.html#def:symmetry_eigenvalue">Definition 3.38</a></li>
+          
+          <li><a href="sect0003.html#thm:standard_char_at_zero">Theorem 3.29</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetryEigenvalue_identity" class="lean_decl">GaugingLDPC.symmetryEigenvalue_identity</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The eigenvalue at the identity element is always 1: </p>
+<div class="displaymath" id="a0000000220">
+  \[  \lambda _k(0) = 1  \]
+</div>
+<p> for all \(k \in \mathbb {Z}_p\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000219">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows from \(\chi _k(0) = 1\). </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0002.html" title="Rem 2: Chain Complex Notation"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Gauging Measurement Formalization Blueprint"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0004.html" title="Def 1: Charge Projection (Single Site)"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

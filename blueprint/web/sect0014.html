@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Def 7: Decorated Stabilizer (Gauged Stabilizer of Original Code)</title>
+<link rel="next" href="sect0015.html" title="Thm 2: Equivalence of Algebraic and Circuit Gauging" />
+<link rel="prev" href="sect0013.html" title="Def 6: Gauged Stabilizers (Vertex and Plaquette Terms)" />
+<link rel="up" href="index.html" title="Gauging Measurement Formalization Blueprint" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Gauging Measurement Formalization Blueprint</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Rem 1: Vertex Set Partition</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000025"><span class="toc_ref">1.1</span> <span class="toc_entry">Cell Complex Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000026"><span class="toc_ref">1.2</span> <span class="toc_entry">Vertex Partition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000027"><span class="toc_ref">1.3</span> <span class="toc_entry">Partition Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000037"><span class="toc_ref">1.4</span> <span class="toc_entry">Connection to Setoid.IsPartition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000040"><span class="toc_ref">1.5</span> <span class="toc_entry">Additional Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000046"><span class="toc_ref">1.6</span> <span class="toc_entry">Construction Helpers</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">2</span> <span class="toc_entry">Rem 2: Chain Complex Notation</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">3</span> <span class="toc_entry">Rem 3: Symmetry Action and Abelian Group Structure</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000050"><span class="toc_ref">3.1</span> <span class="toc_entry">Symmetry Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000051"><span class="toc_ref">3.2</span> <span class="toc_entry">Operator Algebra Automorphisms</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000052"><span class="toc_ref">3.3</span> <span class="toc_entry">On-site Symmetry Operator</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000053"><span class="toc_ref">3.4</span> <span class="toc_entry">Character Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000054"><span class="toc_ref">3.5</span> <span class="toc_entry">Duality Pairing</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000055"><span class="toc_ref">3.6</span> <span class="toc_entry">Symmetry Eigenvalues</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">4</span> <span class="toc_entry">Def 1: Charge Projection (Single Site)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000056"><span class="toc_ref">4.1</span> <span class="toc_entry">Character Conjugate Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000057"><span class="toc_ref">4.2</span> <span class="toc_entry">Charge Projection Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000058"><span class="toc_ref">4.3</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000059"><span class="toc_ref">4.4</span> <span class="toc_entry">Character Orthogonality</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">5</span> <span class="toc_entry">Def 2: Charge Projection (Multi-Site Distribution)</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html"><span class="toc_ref">6</span> <span class="toc_entry">Lem 1: Covariance Property of Charge Components</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0006.html#a0000000060"><span class="toc_ref">6.1</span> <span class="toc_entry">Scalar-Fixing Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000061"><span class="toc_ref">6.2</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000062"><span class="toc_ref">6.3</span> <span class="toc_entry">Character Value Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000063"><span class="toc_ref">6.4</span> <span class="toc_entry">Main Covariance Theorem</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000064"><span class="toc_ref">6.5</span> <span class="toc_entry">Corollaries</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0007.html"><span class="toc_ref">7</span> <span class="toc_entry">Lem 2: Completeness of Charge Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">8</span> <span class="toc_entry">Def 3: Symmetrized Operator (Orbit Average)</span></a>
+ </li>
+<li class="">
+  <a href="sect0009.html"><span class="toc_ref">9</span> <span class="toc_entry">Thm 1: Vanishing of Reduced Zeroth Homology for Connected Graphs</span></a>
+ </li>
+<li class="">
+  <a href="sect0010.html"><span class="toc_ref">10</span> <span class="toc_entry">Lem 3: Charge Neutrality of Symmetrized Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">11</span> <span class="toc_entry">Def 4: Gauging (Decoration Map)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0011.html#a0000000065"><span class="toc_ref">11.1</span> <span class="toc_entry">Chain Complex over ZMod p</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000066"><span class="toc_ref">11.2</span> <span class="toc_entry">Exact Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000067"><span class="toc_ref">11.3</span> <span class="toc_entry">Spanning Basis</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000068"><span class="toc_ref">11.4</span> <span class="toc_entry">Gauge Z-Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000069"><span class="toc_ref">11.5</span> <span class="toc_entry">The Full Gauging Map</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000070"><span class="toc_ref">11.6</span> <span class="toc_entry">Remark on Basis Independence</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">12</span> <span class="toc_entry">Def 5: Circuit Unitaries for Gauging</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0012.html#a0000000071"><span class="toc_ref">12.1</span> <span class="toc_entry">Qudit Space and States</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000072"><span class="toc_ref">12.2</span> <span class="toc_entry">Generalized Pauli Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000073"><span class="toc_ref">12.3</span> <span class="toc_entry">Controlled-X Gate</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000074"><span class="toc_ref">12.4</span> <span class="toc_entry">Boundary Matrix Entry</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000075"><span class="toc_ref">12.5</span> <span class="toc_entry">Full Gauging System State Space</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000076"><span class="toc_ref">12.6</span> <span class="toc_entry">Edge-Vertex Entangling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000077"><span class="toc_ref">12.7</span> <span class="toc_entry">Matter-Symmetry Coupling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000078"><span class="toc_ref">12.8</span> <span class="toc_entry">Measurement Projection</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000079"><span class="toc_ref">12.9</span> <span class="toc_entry">Commutativity of Unitaries</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000080"><span class="toc_ref">12.10</span> <span class="toc_entry">Unitarity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">13</span> <span class="toc_entry">Def 6: Gauged Stabilizers (Vertex and Plaquette Terms)</span></a>
+ </li>
+<li class=" active current">
+  <a href="sect0014.html"><span class="toc_ref">14</span> <span class="toc_entry">Def 7: Decorated Stabilizer (Gauged Stabilizer of Original Code)</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0014.html#a0000000081"><span class="toc_ref">14.1</span> <span class="toc_entry">Symmetrized Stabilizer Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000082"><span class="toc_ref">14.2</span> <span class="toc_entry">Overlap Set</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000083"><span class="toc_ref">14.3</span> <span class="toc_entry">Components of the Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000084"><span class="toc_ref">14.4</span> <span class="toc_entry">The Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000085"><span class="toc_ref">14.5</span> <span class="toc_entry">Hermiticity Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000086"><span class="toc_ref">14.6</span> <span class="toc_entry">Measurability Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000087"><span class="toc_ref">14.7</span> <span class="toc_entry">Commutativity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0015.html"><span class="toc_ref">15</span> <span class="toc_entry">Thm 2: Equivalence of Algebraic and Circuit Gauging</span></a>
+ </li>
+<li class="">
+  <a href="sect0016.html"><span class="toc_ref">16</span> <span class="toc_entry">Def 8: Cheeger Constant (Isoperimetric Constant)</span></a>
+ </li>
+<li class="">
+  <a href="sect0017.html"><span class="toc_ref">17</span> <span class="toc_entry">Def 9: Gauging Graph Criteria</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html"><span class="toc_ref">18</span> <span class="toc_entry">Lem 4: Charge Convolution for Operator Products</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0018.html#a0000000088"><span class="toc_ref">18.1</span> <span class="toc_entry">Addition of Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000089"><span class="toc_ref">18.2</span> <span class="toc_entry">Multiplicativity of Character Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000090"><span class="toc_ref">18.3</span> <span class="toc_entry">Linearity and Covariance</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000091"><span class="toc_ref">18.4</span> <span class="toc_entry">Key Lemma: Projection of Product of Charge Components</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000092"><span class="toc_ref">18.5</span> <span class="toc_entry">Main Convolution Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0019.html"><span class="toc_ref">19</span> <span class="toc_entry">Lem 5: Gauging is a Homomorphism (up to Flux Equivalence)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0019.html#a0000000093"><span class="toc_ref">19.1</span> <span class="toc_entry">Flux Equivalence Relation</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000094"><span class="toc_ref">19.2</span> <span class="toc_entry">The Delta Chain</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000095"><span class="toc_ref">19.3</span> <span class="toc_entry">Helper Lemmas for gaugeZOperator</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000096"><span class="toc_ref">19.4</span> <span class="toc_entry">Gauge Factor Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000097"><span class="toc_ref">19.5</span> <span class="toc_entry">Product Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000098"><span class="toc_ref">19.6</span> <span class="toc_entry">Axioms for Edge Cases</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000099"><span class="toc_ref">19.7</span> <span class="toc_entry">Flux Equivalence Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000100"><span class="toc_ref">19.8</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0020.html"><span class="toc_ref">20</span> <span class="toc_entry">Lem 6: Weight Non-Decrease Under Stabilizer Equivalence</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html"><span class="toc_ref">21</span> <span class="toc_entry">Lem 7: Gauged Code is Sparse and Distance Preserving</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0021.html#a0000000101"><span class="toc_ref">21.1</span> <span class="toc_entry">LDPC Property of Original Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000102"><span class="toc_ref">21.2</span> <span class="toc_entry">Part 1: Sparsity of the Gauged Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000103"><span class="toc_ref">21.3</span> <span class="toc_entry">Part 2: Distance Preservation</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0022.html"><span class="toc_ref">22</span> <span class="toc_entry">Def 10: Equivalence Relations in the Gauged Code</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0022.html#a0000000104"><span class="toc_ref">22.1</span> <span class="toc_entry">Operators on the Gauged System</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000105"><span class="toc_ref">22.2</span> <span class="toc_entry">Integer Powers of Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000106"><span class="toc_ref">22.3</span> <span class="toc_entry">Products of Stabilizers</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000107"><span class="toc_ref">22.4</span> <span class="toc_entry">Decorated Stabilizer Equivalence \(\sim _{\mathfrak {s}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000108"><span class="toc_ref">22.5</span> <span class="toc_entry">Vertex Stabilizer Equivalence \(\sim _{\mathfrak {A}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000109"><span class="toc_ref">22.6</span> <span class="toc_entry">Flux Stabilizer Equivalence \(\sim _{\mathfrak {B}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000110"><span class="toc_ref">22.7</span> <span class="toc_entry">Full Gauged Code Equivalence \(\sim _g\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000111"><span class="toc_ref">22.8</span> <span class="toc_entry">Inclusion Relations</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000112"><span class="toc_ref">22.9</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000113"><span class="toc_ref">22.10</span> <span class="toc_entry">Single Stabilizer Application Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0023.html"><span class="toc_ref">23</span> <span class="toc_entry">Thm 3: Distance Preservation Under Gauging</span></a>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000015">14 Def 7: Decorated Stabilizer (Gauged Stabilizer of Original Code)</h1>
+<p>This chapter defines the decorated stabilizer \(\mathbb {S} := \mathfrak {D}(\overline{S})\), which is the gauged version of a symmetrized stabilizer from the original code. The key formula is: </p>
+<div class="displaymath" id="a0000000611">
+  \[  \mathbb {S} = \sum _{\vec{b} \in \mathbb {F}_w^{|\Omega (\overline{S})|}} |\vec{b}\rangle \langle \vec{b}|_{\Omega (\overline{S})} \otimes \mathsf{T}^{\vec{b}} \overline{S} [\mathsf{T}^{\vec{b}}]^\dagger  \]
+</div>
+<p> where \(\Omega (\overline{S}) := \{ v \in \mathcal{G}_0 : \Sigma (v) \cap \mathrm{Supp}(\overline{S}) \neq \emptyset \} \) is the set of vertices whose vertex sets intersect the support of \(\overline{S}\). </p>
+<h1 id="a0000000081">14.1 Symmetrized Stabilizer Structure</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:symmetrized_stabilizer">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">14.1</span>
+    <span class="definition_thmtitle">Symmetrized Stabilizer</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#def:symmetrized_stabilizer">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0013.html#def:gauged_system_state">Definition 13.7</a></li>
+          
+          <li><a href="sect0012.html#def:matter_assignment">Definition 12.19</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.SymmetrizedStabilizer" class="lean_decl">GaugingLDPC.SymmetrizedStabilizer</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>A <b class="bfseries">symmetrized stabilizer</b> \(\overline{S}\) of the original code bundles together: </p>
+<ul class="itemize">
+  <li><p>An operator \(\mathrm{op} : \mathrm{GaugedSystemState} \to \mathrm{GaugedSystemState}\) representing the symmetrized operator \(\overline{S}\) acting on states. </p>
+</li>
+  <li><p>A support set \(\mathrm{support} \subseteq M\): the matter qudits on which \(\overline{S}\) acts non-trivially. </p>
+</li>
+  <li><p>A boolean \(\mathrm{isHermitian}\) indicating whether the original stabilizer \(S\) was Hermitian. </p>
+</li>
+  <li><p>A proof \(\mathrm{op\_ hermitian}\) that when \(\mathrm{isHermitian} = \mathrm{true}\), the operator satisfies the Hermiticity condition in amplitude representation: \(\mathrm{op}(\Psi )(f_V, f_E, f_M) = \overline{\mathrm{op}(\overline{\Psi })(f_V, f_E, f_M)}\) where \(\overline{\Psi }(f_V', f_E', f_M') = \overline{\Psi (f_V', f_E', f_M')}\). </p>
+</li>
+  <li><p>Linearity: \(\mathrm{op}(c \cdot \Psi ) = c \cdot \mathrm{op}(\Psi )\) for scalar \(c \in \mathbb {C}\). </p>
+</li>
+  <li><p>Edge phase factorization: \(\mathrm{op}(\mathrm{phase}(f_E') \cdot \Psi ) = \mathrm{phase}(f_E) \cdot \mathrm{op}(\Psi )\) for any edge-dependent phase function. </p>
+</li>
+  <li><p>Edge shift commutativity: shifting edges in the input is equivalent to shifting edges in the output. </p>
+</li>
+  <li><p>Symmetry invariance: \(\overline{S}\) is invariant under matter shifts (by construction as orbit average), i.e., for any vertex \(v\) and shift \(\sigma \), the operator commutes with matter translations on \(\Sigma (v)\). </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<h1 id="a0000000082">14.2 Overlap Set</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:overlap_vertices">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">14.2</span>
+    <span class="definition_thmtitle">Overlap Vertices</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#def:overlap_vertices">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0012.html#def:matter_assignment">Definition 12.19</a></li>
+          
+          <li><a href="sect0014.html#def:symmetrized_stabilizer">Definition 14.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.OverlapVertices" class="lean_decl">GaugingLDPC.OverlapVertices</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <b class="bfseries">overlap set</b> \(\Omega (\overline{S})\) for a symmetrized stabilizer \(\overline{S}\) with respect to a matter assignment \(\sigma \) is the set of vertices whose matter sets intersect the support of \(\overline{S}\): </p>
+<div class="displaymath" id="a0000000612">
+  \[  \Omega (\overline{S}) := \{ v \in V : \exists m \in M,\  m \in \Sigma (v) \land m \in \mathrm{Supp}(\overline{S})\}   \]
+</div>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:mem_overlap_vertices">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">14.3</span>
+    <span class="lemma_thmtitle">Membership in Overlap Vertices</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#lem:mem_overlap_vertices">#</a>
+    
+    <a class="icon proof" href="sect0014.html#a0000000613"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0014.html#def:overlap_vertices">Definition 14.2</a></li>
+          
+          <li><a href="sect0014.html#def:symmetrized_stabilizer">Definition 14.1</a></li>
+          
+          <li><a href="sect0012.html#def:matter_assignment">Definition 12.19</a></li>
+          
+          <li><a href="sect0014.html#def:overlap_vertices">Definition 14.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.mem_overlapVertices" class="lean_decl">GaugingLDPC.mem_overlapVertices</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>A vertex \(v\) belongs to the overlap set \(\Omega (\overline{S})\) if and only if there exists a matter qudit \(m\) such that \(m \in \Sigma (v)\) and \(m \in \mathrm{Supp}(\overline{S})\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000613">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> By simplification using the definition of \(\mathrm{OverlapVertices}\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000083">14.3 Components of the Decorated Stabilizer</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:product_basis_projector">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">14.4</span>
+    <span class="definition_thmtitle">Product Basis Projector</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#def:product_basis_projector">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0013.html#def:gauged_system_state">Definition 13.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.productBasisProjector" class="lean_decl">GaugingLDPC.productBasisProjector</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <b class="bfseries">product basis projector</b> \(\bigotimes _{v \in \Omega } |b_v\rangle \langle b_v|\) for a finite set of vertices \(\Omega \) and a function \(b : V \to \mathbb {Z}_w\) is the operator that projects a state \(\Psi \) onto the subspace where \(f_V(v) = b(v)\) for all \(v \in \Omega \): </p>
+<div class="displaymath" id="a0000000614">
+  \[  \mathrm{productBasisProjector}(\Omega , b)(\Psi )(f_V, f_E, f_M) = \begin{cases}  \Psi (f_V, f_E, f_M) &  \text{if } \forall v \in \Omega ,\  f_V(v) = b(v) \\ 0 &  \text{otherwise} \end{cases}  \]
+</div>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:symmetry_transform_t">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">14.5</span>
+    <span class="definition_thmtitle">Symmetry Transformation \(T^b\)</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#def:symmetry_transform_t">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0012.html#def:matter_assignment">Definition 12.19</a></li>
+          
+          <li><a href="sect0013.html#def:gauged_system_state">Definition 13.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetryTransformT" class="lean_decl">GaugingLDPC.symmetryTransformT</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <b class="bfseries">symmetry transformation</b> \(\mathsf{T}^b := \prod _{v \in \Omega } [\mathsf{T}|_{\Sigma (v)}]^{b_v}\) for a finite set \(\Omega \) of vertices and a function \(b : V \to \mathbb {Z}_w\) shifts matter qudits in \(\Sigma (v)\) by \(b(v)\) for each \(v \in \Omega \): </p>
+<div class="displaymath" id="a0000000615">
+  \[  \mathsf{T}^b(\Psi )(f_V, f_E, f_M) = \Psi \left(f_V, f_E, m \mapsto f_M(m) - \sum _{v \in \Omega } \mathbf{1}_{m \in \Sigma (v)} \cdot b(v)\right)  \]
+</div>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:symmetry_transform_t_adj">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">14.6</span>
+    <span class="definition_thmtitle">Adjoint Symmetry Transformation \((T^b)^\dagger \)</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#def:symmetry_transform_t_adj">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0012.html#def:matter_assignment">Definition 12.19</a></li>
+          
+          <li><a href="sect0013.html#def:gauged_system_state">Definition 13.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetryTransformTAdj" class="lean_decl">GaugingLDPC.symmetryTransformTAdj</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <b class="bfseries">adjoint (inverse) transformation</b> \((\mathsf{T}^b)^\dagger = \mathsf{T}^{-b}\) is defined by: </p>
+<div class="displaymath" id="a0000000616">
+  \[  (\mathsf{T}^b)^\dagger (\Psi )(f_V, f_E, f_M) = \Psi \left(f_V, f_E, m \mapsto f_M(m) + \sum _{v \in \Omega } \mathbf{1}_{m \in \Sigma (v)} \cdot b(v)\right)  \]
+</div>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:conjugate_by_t">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">14.7</span>
+    <span class="definition_thmtitle">Conjugation by \(T^b\)</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#def:conjugate_by_t">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0014.html#def:symmetry_transform_t">Definition 14.5</a></li>
+          
+          <li><a href="sect0014.html#def:symmetry_transform_t_adj">Definition 14.6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.conjugateByT" class="lean_decl">GaugingLDPC.conjugateByT</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <b class="bfseries">conjugation</b> of an operator \(O\) by \(\mathsf{T}^b\) is: </p>
+<div class="displaymath" id="a0000000617">
+  \[  \mathsf{T}^b \circ O \circ (\mathsf{T}^b)^\dagger  \]
+</div>
+
+  </div>
+</div>
+<h1 id="a0000000084">14.4 The Decorated Stabilizer</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:decorated_stabilizer">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">14.8</span>
+    <span class="definition_thmtitle">Decorated Stabilizer</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#def:decorated_stabilizer">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0012.html#def:matter_assignment">Definition 12.19</a></li>
+          
+          <li><a href="sect0014.html#def:symmetrized_stabilizer">Definition 14.1</a></li>
+          
+          <li><a href="sect0014.html#def:overlap_vertices">Definition 14.2</a></li>
+          
+          <li><a href="sect0014.html#def:product_basis_projector">Definition 14.4</a></li>
+          
+          <li><a href="sect0014.html#def:conjugate_by_t">Definition 14.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.decoratedStabilizer" class="lean_decl">GaugingLDPC.decoratedStabilizer</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <b class="bfseries">decorated stabilizer</b> (gauged stabilizer) \(\mathbb {S} := \mathfrak {D}(\overline{S})\) is defined using the overlap formula: </p>
+<div class="displaymath" id="a0000000618">
+  \[  \mathbb {S} = \sum _{b : V \to \mathbb {Z}_w} |b\rangle \langle b|_{\Omega (\overline{S})} \otimes \mathsf{T}^b \overline{S} (\mathsf{T}^b)^\dagger  \]
+</div>
+<p> where \(\Omega = \Omega (\overline{S})\) is the overlap set computed from \(\overline{S}\). The sum is taken pointwise at each configuration \((f_V, f_E, f_M)\): </p>
+<div class="displaymath" id="a0000000619">
+  \[  \mathbb {S}(\Psi )(f_V, f_E, f_M) = \sum _{b : V \to \mathbb {Z}_w} \mathrm{productBasisProjector}(\Omega , b)\big(\mathsf{T}^b \circ \overline{S} \circ (\mathsf{T}^b)^\dagger (\Psi )\big)(f_V, f_E, f_M)  \]
+</div>
+
+  </div>
+</div>
+<h1 id="a0000000085">14.5 Hermiticity Property</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:is_hermitian_op">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">14.9</span>
+    <span class="definition_thmtitle">Hermitian Operator</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#def:is_hermitian_op">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0013.html#def:gauged_system_state">Definition 13.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.IsHermitianOp" class="lean_decl">GaugingLDPC.IsHermitianOp</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>An operator \(O\) on the gauged system state space is <b class="bfseries">Hermitian</b> (self-adjoint) if \(O^\dagger = O\). In the amplitude representation, this means: </p>
+<div class="displaymath" id="a0000000620">
+  \[  O(\Psi )(f_V, f_E, f_M) = \overline{O(\overline{\Psi })(f_V, f_E, f_M)}  \]
+</div>
+<p> where \(\overline{\Psi }(f_V', f_E', f_M') = \overline{\Psi (f_V', f_E', f_M')}\) denotes pointwise complex conjugation. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:decorated_stabilizer_hermitian">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">14.10</span>
+    <span class="theorem_thmtitle">Decorated Stabilizer is Hermitian</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#thm:decorated_stabilizer_hermitian">#</a>
+    
+    <a class="icon proof" href="sect0014.html#a0000000621"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0014.html#def:is_hermitian_op">Definition 14.9</a></li>
+          
+          <li><a href="sect0014.html#def:symmetrized_stabilizer">Definition 14.1</a></li>
+          
+          <li><a href="sect0014.html#def:product_basis_projector">Definition 14.4</a></li>
+          
+          <li><a href="sect0014.html#def:conjugate_by_t">Definition 14.7</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0014.html#def:is_hermitian_op">Definition 14.9</a></li>
+          
+          <li><a href="sect0014.html#def:symmetrized_stabilizer">Definition 14.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.decoratedStabilizer_hermitian" class="lean_decl">GaugingLDPC.decoratedStabilizer_hermitian</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>If the original stabilizer \(S\) was Hermitian (i.e., \(\overline{S}.\mathrm{isHermitian} = \mathrm{true}\)), then the decorated stabilizer \(\mathbb {S} = \mathfrak {D}(\overline{S})\) is also Hermitian. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000621">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>First, we establish that \(\overline{S}.\mathrm{op}\) is Hermitian by applying the \(\mathrm{op\_ hermitian}\) field of the symmetrized stabilizer structure with the hypothesis that \(\mathrm{isHermitian} = \mathrm{true}\). </p>
+<p>Let \(\Psi \) be an arbitrary state and \((f_V, f_E, f_M)\) an arbitrary configuration. By the definition of \(\mathrm{decoratedStabilizer}\), we need to show: </p>
+<div class="displaymath" id="a0000000622">
+  \[  \mathbb {S}(\Psi )(f_V, f_E, f_M) = \overline{\mathbb {S}(\overline{\Psi })(f_V, f_E, f_M)}  \]
+</div>
+<p>Since complex conjugation distributes over finite sums, we have \(\overline{\sum _b \cdots } = \sum _b \overline{\cdots }\). It suffices to show equality for each summand indexed by \(b\). </p>
+<p>For each \(b\), we analyze the product basis projector. When the projector condition holds (i.e., \(\forall v \in \Omega , f_V(v) = b(v)\)), the conjugation by \(\mathsf{T}^b\) involves only the symmetry transformations which shift \(f_M\). Applying the Hermiticity of \(\overline{S}.\mathrm{op}\), and noting that the symmetry transformations commute with complex conjugation (since they only shift indices, not values), we obtain the desired equality. </p>
+<p>When the projector condition fails, both sides equal \(0\), and \(\overline{0} = 0\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000086">14.6 Measurability Property</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:is_measurable_op">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">14.11</span>
+    <span class="definition_thmtitle">Measurable Operator</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#def:is_measurable_op">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0013.html#def:gauged_system_state">Definition 13.7</a></li>
+          
+          <li><a href="sect0014.html#def:product_basis_projector">Definition 14.4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.IsMeasurableOp" class="lean_decl">GaugingLDPC.IsMeasurableOp</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>An operator \(O\) is <b class="bfseries">measurable</b> if it has the form \(\sum _b P_b \cdot O_b\) where \(P_b\) are orthogonal projectors. Specifically, there exists a finite set \(\Omega \subseteq V\) and operators \(\mathrm{terms}(b)\) indexed by \(b : V \to \mathbb {Z}_w\) such that: </p>
+<div class="displaymath" id="a0000000623">
+  \[  O(\Psi )(f_V, f_E, f_M) = \sum _{b : V \to \mathbb {Z}_w} \mathrm{productBasisProjector}(\Omega , b)(\mathrm{terms}(b)(\Psi ))(f_V, f_E, f_M)  \]
+</div>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:decorated_stabilizer_measurable">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">14.12</span>
+    <span class="theorem_thmtitle">Decorated Stabilizer is Measurable</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#thm:decorated_stabilizer_measurable">#</a>
+    
+    <a class="icon proof" href="sect0014.html#a0000000624"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0014.html#def:is_measurable_op">Definition 14.11</a></li>
+          
+          <li><a href="sect0014.html#def:overlap_vertices">Definition 14.2</a></li>
+          
+          <li><a href="sect0014.html#def:conjugate_by_t">Definition 14.7</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0014.html#def:is_measurable_op">Definition 14.11</a></li>
+          
+          <li><a href="sect0014.html#def:overlap_vertices">Definition 14.2</a></li>
+          
+          <li><a href="sect0014.html#def:conjugate_by_t">Definition 14.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.decoratedStabilizer_measurable" class="lean_decl">GaugingLDPC.decoratedStabilizer_measurable</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The decorated stabilizer \(\mathbb {S} = \mathfrak {D}(\overline{S})\) is a measurable operator. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000624">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We take \(\Omega = \Omega (\overline{S})\) (the overlap vertices) and \(\mathrm{terms}(b) = \mathsf{T}^b \circ \overline{S}.\mathrm{op} \circ (\mathsf{T}^b)^\dagger \). By definition, \(\mathrm{decoratedStabilizer}\) has exactly this form, so the result follows by reflexivity. </p>
+
+  </div>
+</div>
+<h1 id="a0000000087">14.7 Commutativity Properties</h1>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:decorated_stabilizer_commutes_plaquette">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">14.13</span>
+    <span class="theorem_thmtitle">Decorated Stabilizer Commutes with Plaquette Stabilizers</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#thm:decorated_stabilizer_commutes_plaquette">#</a>
+    
+    <a class="icon proof" href="sect0014.html#a0000000625"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0013.html#def:plaquette_stabilizer">Definition 13.11</a></li>
+          
+          <li><a href="sect0013.html#def:gauged_cell_complex">Definition 13.1</a></li>
+          
+          <li><a href="sect0014.html#def:symmetrized_stabilizer">Definition 14.1</a></li>
+          
+          <li><a href="sect0014.html#def:product_basis_projector">Definition 14.4</a></li>
+          
+          <li><a href="sect0014.html#def:conjugate_by_t">Definition 14.7</a></li>
+          
+          <li><a href="sect0014.html#def:symmetry_transform_t">Definition 14.5</a></li>
+          
+          <li><a href="sect0014.html#def:symmetry_transform_t_adj">Definition 14.6</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0013.html#def:plaquette_stabilizer">Definition 13.11</a></li>
+          
+          <li><a href="sect0013.html#thm:plaquette_stabilizer_apply">Theorem 13.12</a></li>
+          
+          <li><a href="sect0014.html#def:product_basis_projector">Definition 14.4</a></li>
+          
+          <li><a href="sect0014.html#def:conjugate_by_t">Definition 14.7</a></li>
+          
+          <li><a href="sect0014.html#def:symmetry_transform_t_adj">Definition 14.6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.decoratedStabilizer_commutes_plaquette" class="lean_decl">GaugingLDPC.decoratedStabilizer_commutes_plaquette</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The decorated stabilizer \(\mathbb {S}\) commutes with all plaquette stabilizers \(\mathbb {B}_p\): </p>
+<div class="displaymath" id="a0000000626">
+  \[  \mathbb {S} \circ \mathbb {B}_p = \mathbb {B}_p \circ \mathbb {S}  \]
+</div>
+<p> for all plaquettes \(p \in P\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000625">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By extensionality, it suffices to show equality at each state \(\Psi \) and configuration \((f_V, f_E, f_M)\). </p>
+<p>The plaquette stabilizer \(\mathbb {B}_p\) acts only on edges by multiplying by a phase \(\zeta _p(f_E)\). Since this is a scalar multiplication, it distributes over the sum in \(\mathrm{decoratedStabilizer}\). </p>
+<p>For each summand indexed by \(b\), we split cases on whether the projector condition holds. When the condition holds, we have: </p>
+<div class="displaymath" id="a0000000627">
+  \[  \mathrm{LHS} = \zeta _p(f_E) \cdot \mathrm{productBasisProjector}(\Omega , b)(\mathsf{T}^b \circ \overline{S} \circ (\mathsf{T}^b)^\dagger (\Psi ))(f_V, f_E, f_M)  \]
+</div>
+<p>The key observation is that \(\mathrm{symmetryTransformTAdj}\) applied to \(\mathbb {B}_p(\Psi )\) can be rewritten by noting that \(\mathbb {B}_p\) only multiplies by a phase depending on \(f_E'\), while \(\mathrm{symmetryTransformTAdj}\) only shifts \(f_M'\). Thus: </p>
+<div class="displaymath" id="a0000000628">
+  \[  (\mathsf{T}^b)^\dagger (\mathbb {B}_p(\Psi ))(f_V', f_E', f_M') = \zeta _p(f_E') \cdot (\mathsf{T}^b)^\dagger (\Psi )(f_V', f_E', f_M')  \]
+</div>
+<p>Applying the \(\mathrm{op\_ edge\_ phase}\) property of \(\overline{S}\) with \(\mathrm{phase} = \zeta _p\), the phase factors through to give the same result on both sides. </p>
+<p>When the projector condition fails, both sides equal \(0\), and by ring arithmetic the equality holds. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:decorated_stabilizer_commutes_vertex">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">14.14</span>
+    <span class="theorem_thmtitle">Decorated Stabilizer Commutes with Vertex Stabilizers</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0014.html#thm:decorated_stabilizer_commutes_vertex">#</a>
+    
+    <a class="icon proof" href="sect0014.html#a0000000629"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0013.html#def:vertex_stabilizer">Definition 13.8</a></li>
+          
+          <li><a href="sect0013.html#def:gauged_cell_complex">Definition 13.1</a></li>
+          
+          <li><a href="sect0014.html#def:symmetrized_stabilizer">Definition 14.1</a></li>
+          
+          <li><a href="sect0012.html#def:matter_assignment">Definition 12.19</a></li>
+          
+          <li><a href="sect0014.html#def:product_basis_projector">Definition 14.4</a></li>
+          
+          <li><a href="sect0014.html#def:conjugate_by_t">Definition 14.7</a></li>
+          
+          <li><a href="sect0014.html#def:symmetry_transform_t">Definition 14.5</a></li>
+          
+          <li><a href="sect0014.html#def:symmetry_transform_t_adj">Definition 14.6</a></li>
+          
+          <li><a href="sect0013.html#def:boundary1_matrix_entry">Definition 13.2</a></li>
+          
+          <li><a href="sect0013.html#thm:vertex_stabilizer_apply">Theorem 13.9</a></li>
+          
+          <li><a href="sect0014.html#def:decorated_stabilizer">Definition 14.8</a></li>
+          
+          <li><a href="sect0013.html#def:vertex_stabilizer">Definition 13.8</a></li>
+          
+          <li><a href="sect0014.html#def:product_basis_projector">Definition 14.4</a></li>
+          
+          <li><a href="sect0014.html#def:conjugate_by_t">Definition 14.7</a></li>
+          
+          <li><a href="sect0014.html#def:symmetry_transform_t_adj">Definition 14.6</a></li>
+          
+          <li><a href="sect0013.html#def:boundary1_matrix_entry">Definition 13.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.decoratedStabilizer_commutes_vertex" class="lean_decl">GaugingLDPC.decoratedStabilizer_commutes_vertex</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The decorated stabilizer \(\mathbb {S}\) commutes with all vertex stabilizers \(\mathbb {A}_v\): </p>
+<div class="displaymath" id="a0000000630">
+  \[  \mathbb {S} \circ \mathbb {A}_{v_0} = \mathbb {A}_{v_0} \circ \mathbb {S}  \]
+</div>
+<p> for all vertices \(v_0 \in V\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000629">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By extensionality, it suffices to show equality at each state \(\Psi \) and configuration \((f_V, f_E, f_M)\). </p>
+<p>The vertex stabilizer \(\mathbb {A}_{v_0}\) shifts: </p>
+<ul class="itemize">
+  <li><p>\(f_E \mapsto f_E - \partial _1(v_0, \cdot )\) (where \(\partial _1\) is the boundary matrix) </p>
+</li>
+  <li><p>\(f_M|_{\Sigma (v_0)} \mapsto f_M|_{\Sigma (v_0)} - 1\) (shift by \(-1\) on matter qudits in \(\Sigma (v_0)\)) </p>
+</li>
+</ul>
+<p>The projector condition \(|b\rangle \langle b|\) depends only on \(f_V\), which is unchanged by \(\mathbb {A}_{v_0}\). </p>
+<p>We show that for each \(b\), the summands on both sides are equal. When the projector condition fails, both sides equal \(0\). </p>
+<p>When the projector condition holds, we proceed in steps: </p>
+<ol class="enumerate">
+  <li><p><b class="bfseries">Expand LHS</b>: We have \((\mathsf{T}^b)^\dagger (\mathbb {A}_{v_0}(\Psi ))(f_V', f_E', f_M')\) equals \(\Psi \) evaluated at \((f_V', f_E' - \delta , f_M')\) with a shifted matter argument that combines the \((\mathsf{T}^b)^\dagger \) shift and the \(\mathbb {A}_{v_0}\) shift, where \(\delta (e) = \partial _1(v_0, e)\). </p>
+</li>
+  <li><p><b class="bfseries">Apply edge shift commutativity</b>: Using the \(\mathrm{op\_ edge\_ shift}\) property of \(\overline{S}\) with the edge shift \(\delta \), we can move the edge shift \(f_E' - \delta \) from inside the operator to outside: the edge evaluation becomes \(f_E - \delta \). </p>
+</li>
+  <li><p><b class="bfseries">Apply symmetry</b>: Using the \(\mathrm{symmetric}\) property of \(\overline{S}\) with vertex \(v_0\) and shift \(-1\), we can move the matter shift on \(\Sigma (v_0)\) from inside the operator to outside. </p>
+</li>
+</ol>
+<p>After these transformations, the matter arguments match: for any \(m\), we have equality between the shifted arguments by considering whether \(m \in \Sigma (v_0)\) and using ring arithmetic to verify that the expressions coincide. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0013.html" title="Def 6: Gauged Stabilizers (Vertex and Plaquette Terms)"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Gauging Measurement Formalization Blueprint"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0015.html" title="Thm 2: Equivalence of Algebraic and Circuit Gauging"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

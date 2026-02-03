@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lem 1: Covariance Property of Charge Components</title>
+<link rel="next" href="sect0007.html" title="Lem 2: Completeness of Charge Expansion" />
+<link rel="prev" href="sect0005.html" title="Def 2: Charge Projection (Multi-Site Distribution)" />
+<link rel="up" href="index.html" title="Gauging Measurement Formalization Blueprint" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Gauging Measurement Formalization Blueprint</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Rem 1: Vertex Set Partition</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000025"><span class="toc_ref">1.1</span> <span class="toc_entry">Cell Complex Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000026"><span class="toc_ref">1.2</span> <span class="toc_entry">Vertex Partition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000027"><span class="toc_ref">1.3</span> <span class="toc_entry">Partition Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000037"><span class="toc_ref">1.4</span> <span class="toc_entry">Connection to Setoid.IsPartition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000040"><span class="toc_ref">1.5</span> <span class="toc_entry">Additional Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000046"><span class="toc_ref">1.6</span> <span class="toc_entry">Construction Helpers</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">2</span> <span class="toc_entry">Rem 2: Chain Complex Notation</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">3</span> <span class="toc_entry">Rem 3: Symmetry Action and Abelian Group Structure</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000050"><span class="toc_ref">3.1</span> <span class="toc_entry">Symmetry Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000051"><span class="toc_ref">3.2</span> <span class="toc_entry">Operator Algebra Automorphisms</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000052"><span class="toc_ref">3.3</span> <span class="toc_entry">On-site Symmetry Operator</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000053"><span class="toc_ref">3.4</span> <span class="toc_entry">Character Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000054"><span class="toc_ref">3.5</span> <span class="toc_entry">Duality Pairing</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000055"><span class="toc_ref">3.6</span> <span class="toc_entry">Symmetry Eigenvalues</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">4</span> <span class="toc_entry">Def 1: Charge Projection (Single Site)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000056"><span class="toc_ref">4.1</span> <span class="toc_entry">Character Conjugate Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000057"><span class="toc_ref">4.2</span> <span class="toc_entry">Charge Projection Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000058"><span class="toc_ref">4.3</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000059"><span class="toc_ref">4.4</span> <span class="toc_entry">Character Orthogonality</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">5</span> <span class="toc_entry">Def 2: Charge Projection (Multi-Site Distribution)</span></a>
+ </li>
+<li class=" active current">
+  <a href="sect0006.html"><span class="toc_ref">6</span> <span class="toc_entry">Lem 1: Covariance Property of Charge Components</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0006.html#a0000000060"><span class="toc_ref">6.1</span> <span class="toc_entry">Scalar-Fixing Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000061"><span class="toc_ref">6.2</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000062"><span class="toc_ref">6.3</span> <span class="toc_entry">Character Value Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000063"><span class="toc_ref">6.4</span> <span class="toc_entry">Main Covariance Theorem</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000064"><span class="toc_ref">6.5</span> <span class="toc_entry">Corollaries</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0007.html"><span class="toc_ref">7</span> <span class="toc_entry">Lem 2: Completeness of Charge Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0008.html"><span class="toc_ref">8</span> <span class="toc_entry">Def 3: Symmetrized Operator (Orbit Average)</span></a>
+ </li>
+<li class="">
+  <a href="sect0009.html"><span class="toc_ref">9</span> <span class="toc_entry">Thm 1: Vanishing of Reduced Zeroth Homology for Connected Graphs</span></a>
+ </li>
+<li class="">
+  <a href="sect0010.html"><span class="toc_ref">10</span> <span class="toc_entry">Lem 3: Charge Neutrality of Symmetrized Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">11</span> <span class="toc_entry">Def 4: Gauging (Decoration Map)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0011.html#a0000000065"><span class="toc_ref">11.1</span> <span class="toc_entry">Chain Complex over ZMod p</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000066"><span class="toc_ref">11.2</span> <span class="toc_entry">Exact Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000067"><span class="toc_ref">11.3</span> <span class="toc_entry">Spanning Basis</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000068"><span class="toc_ref">11.4</span> <span class="toc_entry">Gauge Z-Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000069"><span class="toc_ref">11.5</span> <span class="toc_entry">The Full Gauging Map</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000070"><span class="toc_ref">11.6</span> <span class="toc_entry">Remark on Basis Independence</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">12</span> <span class="toc_entry">Def 5: Circuit Unitaries for Gauging</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0012.html#a0000000071"><span class="toc_ref">12.1</span> <span class="toc_entry">Qudit Space and States</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000072"><span class="toc_ref">12.2</span> <span class="toc_entry">Generalized Pauli Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000073"><span class="toc_ref">12.3</span> <span class="toc_entry">Controlled-X Gate</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000074"><span class="toc_ref">12.4</span> <span class="toc_entry">Boundary Matrix Entry</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000075"><span class="toc_ref">12.5</span> <span class="toc_entry">Full Gauging System State Space</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000076"><span class="toc_ref">12.6</span> <span class="toc_entry">Edge-Vertex Entangling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000077"><span class="toc_ref">12.7</span> <span class="toc_entry">Matter-Symmetry Coupling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000078"><span class="toc_ref">12.8</span> <span class="toc_entry">Measurement Projection</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000079"><span class="toc_ref">12.9</span> <span class="toc_entry">Commutativity of Unitaries</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000080"><span class="toc_ref">12.10</span> <span class="toc_entry">Unitarity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">13</span> <span class="toc_entry">Def 6: Gauged Stabilizers (Vertex and Plaquette Terms)</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html"><span class="toc_ref">14</span> <span class="toc_entry">Def 7: Decorated Stabilizer (Gauged Stabilizer of Original Code)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0014.html#a0000000081"><span class="toc_ref">14.1</span> <span class="toc_entry">Symmetrized Stabilizer Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000082"><span class="toc_ref">14.2</span> <span class="toc_entry">Overlap Set</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000083"><span class="toc_ref">14.3</span> <span class="toc_entry">Components of the Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000084"><span class="toc_ref">14.4</span> <span class="toc_entry">The Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000085"><span class="toc_ref">14.5</span> <span class="toc_entry">Hermiticity Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000086"><span class="toc_ref">14.6</span> <span class="toc_entry">Measurability Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000087"><span class="toc_ref">14.7</span> <span class="toc_entry">Commutativity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0015.html"><span class="toc_ref">15</span> <span class="toc_entry">Thm 2: Equivalence of Algebraic and Circuit Gauging</span></a>
+ </li>
+<li class="">
+  <a href="sect0016.html"><span class="toc_ref">16</span> <span class="toc_entry">Def 8: Cheeger Constant (Isoperimetric Constant)</span></a>
+ </li>
+<li class="">
+  <a href="sect0017.html"><span class="toc_ref">17</span> <span class="toc_entry">Def 9: Gauging Graph Criteria</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html"><span class="toc_ref">18</span> <span class="toc_entry">Lem 4: Charge Convolution for Operator Products</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0018.html#a0000000088"><span class="toc_ref">18.1</span> <span class="toc_entry">Addition of Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000089"><span class="toc_ref">18.2</span> <span class="toc_entry">Multiplicativity of Character Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000090"><span class="toc_ref">18.3</span> <span class="toc_entry">Linearity and Covariance</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000091"><span class="toc_ref">18.4</span> <span class="toc_entry">Key Lemma: Projection of Product of Charge Components</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000092"><span class="toc_ref">18.5</span> <span class="toc_entry">Main Convolution Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0019.html"><span class="toc_ref">19</span> <span class="toc_entry">Lem 5: Gauging is a Homomorphism (up to Flux Equivalence)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0019.html#a0000000093"><span class="toc_ref">19.1</span> <span class="toc_entry">Flux Equivalence Relation</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000094"><span class="toc_ref">19.2</span> <span class="toc_entry">The Delta Chain</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000095"><span class="toc_ref">19.3</span> <span class="toc_entry">Helper Lemmas for gaugeZOperator</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000096"><span class="toc_ref">19.4</span> <span class="toc_entry">Gauge Factor Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000097"><span class="toc_ref">19.5</span> <span class="toc_entry">Product Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000098"><span class="toc_ref">19.6</span> <span class="toc_entry">Axioms for Edge Cases</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000099"><span class="toc_ref">19.7</span> <span class="toc_entry">Flux Equivalence Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000100"><span class="toc_ref">19.8</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0020.html"><span class="toc_ref">20</span> <span class="toc_entry">Lem 6: Weight Non-Decrease Under Stabilizer Equivalence</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html"><span class="toc_ref">21</span> <span class="toc_entry">Lem 7: Gauged Code is Sparse and Distance Preserving</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0021.html#a0000000101"><span class="toc_ref">21.1</span> <span class="toc_entry">LDPC Property of Original Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000102"><span class="toc_ref">21.2</span> <span class="toc_entry">Part 1: Sparsity of the Gauged Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000103"><span class="toc_ref">21.3</span> <span class="toc_entry">Part 2: Distance Preservation</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0022.html"><span class="toc_ref">22</span> <span class="toc_entry">Def 10: Equivalence Relations in the Gauged Code</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0022.html#a0000000104"><span class="toc_ref">22.1</span> <span class="toc_entry">Operators on the Gauged System</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000105"><span class="toc_ref">22.2</span> <span class="toc_entry">Integer Powers of Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000106"><span class="toc_ref">22.3</span> <span class="toc_entry">Products of Stabilizers</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000107"><span class="toc_ref">22.4</span> <span class="toc_entry">Decorated Stabilizer Equivalence \(\sim _{\mathfrak {s}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000108"><span class="toc_ref">22.5</span> <span class="toc_entry">Vertex Stabilizer Equivalence \(\sim _{\mathfrak {A}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000109"><span class="toc_ref">22.6</span> <span class="toc_entry">Flux Stabilizer Equivalence \(\sim _{\mathfrak {B}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000110"><span class="toc_ref">22.7</span> <span class="toc_entry">Full Gauged Code Equivalence \(\sim _g\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000111"><span class="toc_ref">22.8</span> <span class="toc_entry">Inclusion Relations</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000112"><span class="toc_ref">22.9</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000113"><span class="toc_ref">22.10</span> <span class="toc_entry">Single Stabilizer Application Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0023.html"><span class="toc_ref">23</span> <span class="toc_entry">Thm 3: Distance Preservation Under Gauging</span></a>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000007">6 Lem 1: Covariance Property of Charge Components</h1>
+<p>This chapter establishes the covariance property of charge components under symmetry actions. The main result shows that the charge-\(\boldsymbol {\chi }\) component of an operator is an eigen-operator of the symmetry action with eigenvalue \(\boldsymbol {\chi }(\mathbf{g})\). </p>
+<h1 id="a0000000060">6.1 Scalar-Fixing Property</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="def:fixes_scalars">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">6.1</span>
+    <span class="definition_thmtitle">Fixes Scalars</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0006.html#def:fixes_scalars">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_symmetry_action">Definition 5.9</a></li>
+          
+          <li><a href="sect0005.html#def:composed_automorphism">Definition 5.11</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple">Definition 5.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.MultiSiteSymmetryAction.FixesScalars" class="lean_decl">GaugingLDPC.MultiSiteSymmetryAction.FixesScalars</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>A multi-site symmetry action \(\sigma \) <em>fixes scalars</em> if every automorphism in the composed automorphism preserves elements of the scalar embedding. That is, for all \(\mathbf{g} \in A^{C_0}\) and all \(c \in \mathbb {C}\), </p>
+<div class="displaymath" id="a0000000305">
+  \[  \varphi _{\mathbf{g}}(\operatorname {algebraMap}(c)) = \operatorname {algebraMap}(c).  \]
+</div>
+
+  </div>
+</div>
+<h1 id="a0000000061">6.2 Helper Lemmas</h1>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:local_product_commute">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">6.2</span>
+    <span class="lemma_thmtitle">Local Product Commute</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0006.html#lem:local_product_commute">#</a>
+    
+    <a class="icon proof" href="sect0006.html#a0000000306"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_symmetry_action">Definition 5.9</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple">Definition 5.7</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_symmetry_action">Definition 5.9</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.local_product_commute" class="lean_decl">GaugingLDPC.local_product_commute</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>For a multi-site symmetry action \(\sigma \), group tuples \(g, h\), and distinct vertices \(v_1 \neq v_2\), the local automorphisms satisfy: </p>
+<div class="displaymath" id="a0000000307">
+  \[  \phi _{v_1}(g_{v_1}) \cdot \phi _{v_1}(h_{v_1}) \cdot \phi _{v_2}(g_{v_2}) \cdot \phi _{v_2}(h_{v_2}) = \phi _{v_2}(g_{v_2}) \cdot \phi _{v_2}(h_{v_2}) \cdot \phi _{v_1}(g_{v_1}) \cdot \phi _{v_1}(h_{v_1}).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000306">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We use the commutativity relations from the multi-site symmetry action: </p>
+<ol class="enumerate">
+  <li><p>Let \(c_1 := \sigma .\text{actions\_ commute}(v_1, v_2, g_{v_1}, g_{v_2})\) </p>
+</li>
+  <li><p>Let \(c_2 := \sigma .\text{actions\_ commute}(v_1, v_2, h_{v_1}, h_{v_2})\) </p>
+</li>
+  <li><p>Let \(c_3 := \sigma .\text{actions\_ commute}(v_1, v_2, g_{v_1}, h_{v_2})\) </p>
+</li>
+  <li><p>Let \(c_4 := \sigma .\text{actions\_ commute}(v_1, v_2, h_{v_1}, g_{v_2})\) </p>
+</li>
+</ol>
+<p>From these, we establish: </p>
+<div class="displaymath" id="a0000000308">
+  \begin{align*}  \phi _{v_1}(h_{v_1}) \cdot \phi _{v_2}(g_{v_2}) & = \phi _{v_2}(g_{v_2}) \cdot \phi _{v_1}(h_{v_1}) \\ \phi _{v_1}(g_{v_1}) \cdot \phi _{v_2}(g_{v_2}) & = \phi _{v_2}(g_{v_2}) \cdot \phi _{v_1}(g_{v_1}) \\ \phi _{v_1}(g_{v_1}) \cdot \phi _{v_2}(h_{v_2}) & = \phi _{v_2}(h_{v_2}) \cdot \phi _{v_1}(g_{v_1}) \\ \phi _{v_1}(h_{v_1}) \cdot \phi _{v_2}(h_{v_2}) & = \phi _{v_2}(h_{v_2}) \cdot \phi _{v_1}(h_{v_1}) \end{align*}
+</div>
+<p>The result follows by a sequence of associativity rewrites and applications of these commutativity relations. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:product_action_add">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">6.3</span>
+    <span class="lemma_thmtitle">Product Action Add</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0006.html#lem:product_action_add">#</a>
+    
+    <a class="icon proof" href="sect0006.html#a0000000309"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_symmetry_action">Definition 5.9</a></li>
+          
+          <li><a href="sect0005.html#def:product_action">Definition 5.12</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple">Definition 5.7</a></li>
+          
+          <li><a href="sect0006.html#lem:local_product_commute">Lemma 6.2</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_symmetry_action">Definition 5.9</a></li>
+          
+          <li><a href="sect0005.html#def:product_action">Definition 5.12</a></li>
+          
+          <li><a href="sect0005.html#def:composed_automorphism">Definition 5.11</a></li>
+          
+          <li><a href="sect0006.html#lem:local_product_commute">Lemma 6.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.MultiSiteSymmetryAction.productAction_add" class="lean_decl">GaugingLDPC.MultiSiteSymmetryAction.productAction_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>The product action is compatible with group addition: for all \(g, h \in A^{C_0}\) and \(O \in R\), </p>
+<div class="displaymath" id="a0000000310">
+  \[  \varphi _{g+h}(O) = \varphi _g(\varphi _h(O)).  \]
+</div>
+<p> This follows from the fact that each local action is a group homomorphism. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000309">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We unfold the definitions of product action and composed automorphism. First, we use that \(\phi _v(g_v + h_v) = \phi _v(g_v) \cdot \phi _v(h_v)\) from the homomorphism property of each local action. </p>
+<p>Building the congruence proof for noncommutative products, we have: </p>
+<div class="displaymath" id="a0000000311">
+  \[  \prod _{v \in C_0} \phi _v(g_v + h_v) = \prod _{v \in C_0} (\phi _v(g_v) \cdot \phi _v(h_v)).  \]
+</div>
+<p>We then apply the noncommutative product distributivity lemma, which shows: </p>
+<div class="displaymath" id="a0000000312">
+  \[  \prod _{v} (\phi _v(g_v) \cdot \phi _v(h_v)) = \left(\prod _{v} \phi _v(g_v)\right) \cdot \left(\prod _{v} \phi _v(h_v)\right).  \]
+</div>
+<p>This uses the pairwise commutativity conditions established by the multi-site symmetry action structure, verified via the <span class="ttfamily">local_product_commute</span> lemma for products of local automorphisms. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:product_action_add_op">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">6.4</span>
+    <span class="lemma_thmtitle">Product Action Add Operator</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0006.html#lem:product_action_add_op">#</a>
+    
+    <a class="icon proof" href="sect0006.html#a0000000313"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_symmetry_action">Definition 5.9</a></li>
+          
+          <li><a href="sect0005.html#def:product_action">Definition 5.12</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple">Definition 5.7</a></li>
+          
+          <li><a href="sect0005.html#def:product_action">Definition 5.12</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.MultiSiteSymmetryAction.productAction_add_op" class="lean_decl">GaugingLDPC.MultiSiteSymmetryAction.productAction_add_op</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>The product action preserves addition of operators: for all \(g \in A^{C_0}\) and \(O_1, O_2 \in R\), </p>
+<div class="displaymath" id="a0000000314">
+  \[  \varphi _g(O_1 + O_2) = \varphi _g(O_1) + \varphi _g(O_2).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000313">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By unfolding the definition of product action and applying the fact that ring automorphisms preserve addition (<span class="ttfamily">map_add</span>). </p>
+
+  </div>
+</div>
+<h1 id="a0000000062">6.3 Character Value Properties</h1>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:multi_site_character_value_neg">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">6.5</span>
+    <span class="lemma_thmtitle">Multi-Site Character Value Negation</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0006.html#lem:multi_site_character_value_neg">#</a>
+    
+    <a class="icon proof" href="sect0006.html#a0000000315"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_character_value">Definition 5.15</a></li>
+          
+          <li><a href="sect0005.html#def:charge_distribution">Definition 5.1</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple">Definition 5.7</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_character_value">Definition 5.15</a></li>
+          
+          <li><a href="sect0005.html#def:charge_distribution">Definition 5.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.multiSiteCharacterValue_neg" class="lean_decl">GaugingLDPC.multiSiteCharacterValue_neg</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>The multi-site character value at the negation satisfies \(\boldsymbol {\chi }(-\mathbf{g}) = \boldsymbol {\chi }(\mathbf{g})^{-1}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000315">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By unfolding the definition of multi-site character value and applying the product of inverses formula. For each vertex \(v\), we use the character group property \(\chi _v(-g_v) = \chi _v(g_v)^{-1}\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="lem:multi_site_char_conj_value_sub">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">6.6</span>
+    <span class="lemma_thmtitle">Multi-Site Char Conj Value Subtraction</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0006.html#lem:multi_site_char_conj_value_sub">#</a>
+    
+    <a class="icon proof" href="sect0006.html#a0000000316"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_char_conj_value">Definition 5.19</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_character_value">Definition 5.15</a></li>
+          
+          <li><a href="sect0005.html#def:charge_distribution">Definition 5.1</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple">Definition 5.7</a></li>
+          
+          <li><a href="sect0005.html#lem:multi_site_char_conj_value_mul">Lemma 5.23</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_char_conj_value">Definition 5.19</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_character_value">Definition 5.15</a></li>
+          
+          <li><a href="sect0004.html#def:char_conj_value">Definition 4.1</a></li>
+          
+          <li><a href="sect0005.html#lem:multi_site_char_conj_value_mul">Lemma 5.23</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.multiSiteCharConjValue_sub" class="lean_decl">GaugingLDPC.multiSiteCharConjValue_sub</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  
+<p>The character value at \(\mathbf{k} - \mathbf{g}\) satisfies: </p>
+<div class="displaymath" id="a0000000317">
+  \[  \overline{\boldsymbol {\chi }}(\mathbf{k} - \mathbf{g}) = \overline{\boldsymbol {\chi }}(\mathbf{k}) \cdot \boldsymbol {\chi }(\mathbf{g}).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000316">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>First, we observe that \(\mathbf{k} - \mathbf{g} = \mathbf{k} + (-\mathbf{g})\), so by the multiplicative property: </p>
+<div class="displaymath" id="a0000000318">
+  \[  \overline{\boldsymbol {\chi }}(\mathbf{k} - \mathbf{g}) = \overline{\boldsymbol {\chi }}(\mathbf{k}) \cdot \overline{\boldsymbol {\chi }}(-\mathbf{g}).  \]
+</div>
+<p>It remains to show \(\overline{\boldsymbol {\chi }}(-\mathbf{g}) = \boldsymbol {\chi }(\mathbf{g})\). For each vertex \(v\): </p>
+<ol class="enumerate">
+  <li><p>By the character group property, \(\chi _v(-g_v) = \chi _v(g_v)^{-1}\). </p>
+</li>
+  <li><p>So \(\overline{\chi _v(-g_v)} = \overline{\chi _v(g_v)^{-1}} = (\overline{\chi _v(g_v)})^{-1}\). </p>
+</li>
+  <li><p>Since \(|\chi _v(g_v)| = 1\) (as character values are \(p\)-th roots of unity), we have \(\overline{\chi _v(g_v)} = \chi _v(g_v)^{-1}\). </p>
+</li>
+  <li><p>Therefore \((\overline{\chi _v(g_v)})^{-1} = \chi _v(g_v)\). </p>
+</li>
+</ol>
+<p>The norm condition \(|\chi _v(g_v)| = 1\) follows from the fact that \(\chi _v(g_v)^p = 1\) where \(p\) is prime. </p>
+
+  </div>
+</div>
+<h1 id="a0000000063">6.4 Main Covariance Theorem</h1>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:multi_site_charge_projection_covariance">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">6.7</span>
+    <span class="theorem_thmtitle">Covariance Property of Charge Components</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0006.html#thm:multi_site_charge_projection_covariance">#</a>
+    
+    <a class="icon proof" href="sect0006.html#a0000000319"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_symmetry_action">Definition 5.9</a></li>
+          
+          <li><a href="sect0005.html#def:product_action">Definition 5.12</a></li>
+          
+          <li><a href="sect0005.html#def:charge_distribution">Definition 5.1</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple">Definition 5.7</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_character_value">Definition 5.15</a></li>
+          
+          <li><a href="sect0006.html#def:fixes_scalars">Definition 6.1</a></li>
+          
+          <li><a href="sect0006.html#lem:product_action_add">Lemma 6.3</a></li>
+          
+          <li><a href="sect0006.html#lem:multi_site_char_conj_value_sub">Lemma 6.6</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+          <li><a href="sect0005.html#def:product_action">Definition 5.12</a></li>
+          
+          <li><a href="sect0005.html#def:composed_automorphism">Definition 5.11</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_char_conj_value">Definition 5.19</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_character_value">Definition 5.15</a></li>
+          
+          <li><a href="sect0006.html#lem:product_action_add">Lemma 6.3</a></li>
+          
+          <li><a href="sect0006.html#lem:multi_site_char_conj_value_sub">Lemma 6.6</a></li>
+          
+          <li><a href="sect0006.html#def:fixes_scalars">Definition 6.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.multiSiteChargeProjection_covariance" class="lean_decl">GaugingLDPC.multiSiteChargeProjection_covariance</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The charge-\(\boldsymbol {\chi }\) component of an operator is an eigen-operator of the symmetry action: </p>
+<div class="displaymath" id="a0000000320">
+  \[  \varphi _{\mathbf{g}}(\llbracket O \rrbracket _{\boldsymbol {\chi }}) = \boldsymbol {\chi }(\mathbf{g}) \cdot \llbracket O \rrbracket _{\boldsymbol {\chi }}  \]
+</div>
+<p> for all \(\mathbf{g} \in A^{C_0}\). </p>
+<p><b class="bfseries">Key Assumption</b>: The symmetry action fixes scalars, i.e., \(\varphi _{\mathbf{g}}(\operatorname {algebraMap}(c)) = \operatorname {algebraMap}(c)\) for all \(c \in \mathbb {C}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000319">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>We unfold the definition of multi-site charge projection. </p>
+<p><b class="bfseries">Step 1: Distribute automorphism over scalar multiplication and sum.</b> Using the algebra scalar definition and linearity of ring homomorphisms: </p>
+<div class="displaymath" id="a0000000321">
+  \[  \varphi _{\mathbf{g}}\left(\frac{1}{p^n} \sum _{\mathbf{h}} \overline{\boldsymbol {\chi }}(\mathbf{h}) \cdot \varphi _{\mathbf{h}}(O)\right) = \frac{1}{p^n} \sum _{\mathbf{h}} \varphi _{\mathbf{g}}(\overline{\boldsymbol {\chi }}(\mathbf{h})) \cdot \varphi _{\mathbf{g}}(\varphi _{\mathbf{h}}(O)).  \]
+</div>
+<p><b class="bfseries">Step 2: Use the group property \(\varphi _{\mathbf{g}} \circ \varphi _{\mathbf{h}} = \varphi _{\mathbf{g}+\mathbf{h}}\).</b> By the product action addition lemma, we rewrite: </p>
+<div class="displaymath" id="a0000000322">
+  \[  \varphi _{\mathbf{g}}(\varphi _{\mathbf{h}}(O)) = \varphi _{\mathbf{g}+\mathbf{h}}(O).  \]
+</div>
+<p><b class="bfseries">Step 3: Change of variables \(\mathbf{k} = \mathbf{g} + \mathbf{h}\), so \(\mathbf{h} = \mathbf{k} - \mathbf{g}\).</b> We define the equivalence \(\text{shift}: \mathbf{h} \mapsto \mathbf{g} + \mathbf{h}\) with inverse \(\mathbf{k} \mapsto \mathbf{k} - \mathbf{g}\). The sum over \(\mathbf{h}\) becomes a sum over \(\mathbf{k}\): </p>
+<div class="displaymath" id="a0000000323">
+  \[  \sum _{\mathbf{h}} \varphi _{\mathbf{g}}(\overline{\boldsymbol {\chi }}(\mathbf{h})) \cdot \varphi _{\mathbf{g}+\mathbf{h}}(O) = \sum _{\mathbf{k}} \varphi _{\mathbf{g}}(\overline{\boldsymbol {\chi }}(\mathbf{k}-\mathbf{g})) \cdot \varphi _{\mathbf{k}}(O).  \]
+</div>
+<p><b class="bfseries">Step 4: Use character multiplicativity \(\overline{\boldsymbol {\chi }}(\mathbf{k} - \mathbf{g}) = \overline{\boldsymbol {\chi }}(\mathbf{k}) \cdot \boldsymbol {\chi }(\mathbf{g})\).</b> Substituting this identity: </p>
+<div class="displaymath" id="a0000000324">
+  \[  \sum _{\mathbf{k}} \varphi _{\mathbf{g}}(\overline{\boldsymbol {\chi }}(\mathbf{k}) \cdot \boldsymbol {\chi }(\mathbf{g})) \cdot \varphi _{\mathbf{k}}(O).  \]
+</div>
+<p><b class="bfseries">Step 5: Factor out \(\boldsymbol {\chi }(\mathbf{g})\) using scalar-fixing.</b> Since \(\varphi _{\mathbf{g}}\) fixes scalars: </p>
+<div class="displaymath" id="a0000000325">
+  \[  \varphi _{\mathbf{g}}(\overline{\boldsymbol {\chi }}(\mathbf{k}) \cdot \boldsymbol {\chi }(\mathbf{g})) = \overline{\boldsymbol {\chi }}(\mathbf{k}) \cdot \boldsymbol {\chi }(\mathbf{g}).  \]
+</div>
+<p>Rearranging and factoring out the common \(\boldsymbol {\chi }(\mathbf{g})\) term: </p>
+<div class="displaymath" id="a0000000326">
+  \[  \sum _{\mathbf{k}} \boldsymbol {\chi }(\mathbf{g}) \cdot \overline{\boldsymbol {\chi }}(\mathbf{k}) \cdot \varphi _{\mathbf{k}}(O) = \boldsymbol {\chi }(\mathbf{g}) \cdot \sum _{\mathbf{k}} \overline{\boldsymbol {\chi }}(\mathbf{k}) \cdot \varphi _{\mathbf{k}}(O).  \]
+</div>
+<p>Using scalar-fixing for the normalization factor \((p^n)^{-1}\) and ring commutativity, the result follows. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:multi_site_charge_projection_eigenoperator">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">6.8</span>
+    <span class="theorem_thmtitle">Charge Projection Eigenoperator</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0006.html#thm:multi_site_charge_projection_eigenoperator">#</a>
+    
+    <a class="icon proof" href="sect0006.html#a0000000327"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_symmetry_action">Definition 5.9</a></li>
+          
+          <li><a href="sect0005.html#def:product_action">Definition 5.12</a></li>
+          
+          <li><a href="sect0005.html#def:charge_distribution">Definition 5.1</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple">Definition 5.7</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_character_value">Definition 5.15</a></li>
+          
+          <li><a href="sect0006.html#def:fixes_scalars">Definition 6.1</a></li>
+          
+          <li><a href="sect0006.html#thm:multi_site_charge_projection_covariance">Theorem 6.7</a></li>
+          
+          <li><a href="sect0006.html#thm:multi_site_charge_projection_covariance">Theorem 6.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.multiSiteChargeProjection_eigenoperator" class="lean_decl">GaugingLDPC.multiSiteChargeProjection_eigenoperator</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>Alternative statement: The charge component is an eigen-operator with eigenvalue \(\boldsymbol {\chi }(\mathbf{g})\). For all \(\mathbf{g} \in A^{C_0}\): </p>
+<div class="displaymath" id="a0000000328">
+  \[  \varphi _{\mathbf{g}}(\llbracket O \rrbracket _{\boldsymbol {\chi }}) = \boldsymbol {\chi }(\mathbf{g}) \cdot \llbracket O \rrbracket _{\boldsymbol {\chi }}.  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000327">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from the covariance theorem by instantiating for each \(\mathbf{g}\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:multi_site_charge_projection_by_index_covariance">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">6.9</span>
+    <span class="theorem_thmtitle">Covariance for Index-Based Projection</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0006.html#thm:multi_site_charge_projection_by_index_covariance">#</a>
+    
+    <a class="icon proof" href="sect0006.html#a0000000329"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection_by_index">Definition 5.25</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_symmetry_action">Definition 5.9</a></li>
+          
+          <li><a href="sect0005.html#def:product_action">Definition 5.12</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple">Definition 5.7</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_character_value">Definition 5.15</a></li>
+          
+          <li><a href="sect0005.html#def:charge_distribution_standard_by_index">Definition 5.4</a></li>
+          
+          <li><a href="sect0006.html#def:fixes_scalars">Definition 6.1</a></li>
+          
+          <li><a href="sect0006.html#thm:multi_site_charge_projection_covariance">Theorem 6.7</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection_by_index">Definition 5.25</a></li>
+          
+          <li><a href="sect0006.html#thm:multi_site_charge_projection_covariance">Theorem 6.7</a></li>
+          
+          <li><a href="sect0005.html#def:charge_distribution_standard_by_index">Definition 5.4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.multiSiteChargeProjectionByIndex_covariance" class="lean_decl">GaugingLDPC.multiSiteChargeProjectionByIndex_covariance</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For the index-based charge projection with index function \(k: C_0 \to \mathbb {Z}_p\): </p>
+<div class="displaymath" id="a0000000330">
+  \[  \varphi _{\mathbf{g}}(\llbracket O \rrbracket _k) = \boldsymbol {\chi }^{(k)}(\mathbf{g}) \cdot \llbracket O \rrbracket _k  \]
+</div>
+<p> where \(\boldsymbol {\chi }^{(k)}\) is the standard charge distribution with index \(k\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000329">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By unfolding the definition of index-based projection and applying the main covariance theorem with the standard charge distribution by index. </p>
+
+  </div>
+</div>
+<h1 id="a0000000064">6.5 Corollaries</h1>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:multi_site_charge_projection_invariant_trivial_dist">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">6.10</span>
+    <span class="theorem_thmtitle">Invariance for Trivial Distribution</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0006.html#thm:multi_site_charge_projection_invariant_trivial_dist">#</a>
+    
+    <a class="icon proof" href="sect0006.html#a0000000331"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_symmetry_action">Definition 5.9</a></li>
+          
+          <li><a href="sect0005.html#def:product_action">Definition 5.12</a></li>
+          
+          <li><a href="sect0005.html#def:charge_distribution_trivial">Definition 5.2</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple">Definition 5.7</a></li>
+          
+          <li><a href="sect0006.html#def:fixes_scalars">Definition 6.1</a></li>
+          
+          <li><a href="sect0006.html#thm:multi_site_charge_projection_covariance">Theorem 6.7</a></li>
+          
+          <li><a href="sect0005.html#lem:multi_site_character_value_trivial">Lemma 5.17</a></li>
+          
+          <li><a href="sect0006.html#thm:multi_site_charge_projection_covariance">Theorem 6.7</a></li>
+          
+          <li><a href="sect0005.html#lem:multi_site_character_value_trivial">Lemma 5.17</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.multiSiteChargeProjection_invariant_trivialDist" class="lean_decl">GaugingLDPC.multiSiteChargeProjection_invariant_trivialDist</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>For the trivial charge distribution, the charge projection is invariant under symmetry: </p>
+<div class="displaymath" id="a0000000332">
+  \[  \varphi _{\mathbf{g}}(\llbracket O \rrbracket _{\mathbf{1}}) = \llbracket O \rrbracket _{\mathbf{1}}  \]
+</div>
+<p> for all \(\mathbf{g} \in A^{C_0}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000331">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By the covariance theorem and the fact that the trivial character evaluates to \(1\) at any group element, so \(\mathbf{1}(\mathbf{g}) = 1\) and \(1 \cdot \llbracket O \rrbracket _{\mathbf{1}} = \llbracket O \rrbracket _{\mathbf{1}}\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:multi_site_charge_projection_eigenvalue_at_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">6.11</span>
+    <span class="theorem_thmtitle">Eigenvalue at Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0006.html#thm:multi_site_charge_projection_eigenvalue_at_zero">#</a>
+    
+    <a class="icon proof" href="sect0006.html#a0000000333"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_symmetry_action">Definition 5.9</a></li>
+          
+          <li><a href="sect0005.html#def:product_action">Definition 5.12</a></li>
+          
+          <li><a href="sect0005.html#def:charge_distribution">Definition 5.1</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple_zero">Definition 5.8</a></li>
+          
+          <li><a href="sect0006.html#def:fixes_scalars">Definition 6.1</a></li>
+          
+          <li><a href="sect0006.html#thm:multi_site_charge_projection_covariance">Theorem 6.7</a></li>
+          
+          <li><a href="sect0005.html#lem:multi_site_character_value_at_zero">Lemma 5.16</a></li>
+          
+          <li><a href="sect0006.html#thm:multi_site_charge_projection_covariance">Theorem 6.7</a></li>
+          
+          <li><a href="sect0005.html#lem:multi_site_character_value_at_zero">Lemma 5.16</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.multiSiteChargeProjection_eigenvalue_at_zero" class="lean_decl">GaugingLDPC.multiSiteChargeProjection_eigenvalue_at_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The identity action fixes the charge projection: \(\varphi _{\mathbf{0}}(\llbracket O \rrbracket _{\boldsymbol {\chi }}) = \llbracket O \rrbracket _{\boldsymbol {\chi }}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000333">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By the covariance theorem and the fact that \(\boldsymbol {\chi }(\mathbf{0}) = 1\) (the character value at the identity is \(1\)), so \(1 \cdot \llbracket O \rrbracket _{\boldsymbol {\chi }} = \llbracket O \rrbracket _{\boldsymbol {\chi }}\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:multi_site_charge_projection_eigenvalue_mul">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">6.12</span>
+    <span class="theorem_thmtitle">Eigenvalue Multiplicativity</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0006.html#thm:multi_site_charge_projection_eigenvalue_mul">#</a>
+    
+    <a class="icon proof" href="sect0006.html#a0000000334"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_character_value">Definition 5.15</a></li>
+          
+          <li><a href="sect0005.html#def:charge_distribution">Definition 5.1</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple">Definition 5.7</a></li>
+          
+          <li><a href="sect0005.html#lem:multi_site_character_value_mul">Lemma 5.18</a></li>
+          
+          <li><a href="sect0005.html#lem:multi_site_character_value_mul">Lemma 5.18</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.multiSiteChargeProjection_eigenvalue_mul" class="lean_decl">GaugingLDPC.multiSiteChargeProjection_eigenvalue_mul</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The eigenvalue is multiplicative in \(\mathbf{g}\): </p>
+<div class="displaymath" id="a0000000335">
+  \[  \boldsymbol {\chi }(\mathbf{g}_1 + \mathbf{g}_2) = \boldsymbol {\chi }(\mathbf{g}_1) \cdot \boldsymbol {\chi }(\mathbf{g}_2).  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000334">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from the multiplicative property of multi-site character values. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0005.html" title="Def 2: Charge Projection (Multi-Site Distribution)"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Gauging Measurement Formalization Blueprint"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0007.html" title="Lem 2: Completeness of Charge Expansion"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

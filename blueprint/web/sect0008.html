@@ -1,0 +1,2784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Def 3: Symmetrized Operator (Orbit Average)</title>
+<link rel="next" href="sect0009.html" title="Thm 1: Vanishing of Reduced Zeroth Homology for Connected Graphs" />
+<link rel="prev" href="sect0007.html" title="Lem 2: Completeness of Charge Expansion" />
+<link rel="up" href="index.html" title="Gauging Measurement Formalization Blueprint" />
+<link rel="stylesheet" href="styles/theme-white.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/extra_styles.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Gauging Measurement Formalization Blueprint</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Rem 1: Vertex Set Partition</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000025"><span class="toc_ref">1.1</span> <span class="toc_entry">Cell Complex Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000026"><span class="toc_ref">1.2</span> <span class="toc_entry">Vertex Partition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000027"><span class="toc_ref">1.3</span> <span class="toc_entry">Partition Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000037"><span class="toc_ref">1.4</span> <span class="toc_entry">Connection to Setoid.IsPartition</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000040"><span class="toc_ref">1.5</span> <span class="toc_entry">Additional Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000046"><span class="toc_ref">1.6</span> <span class="toc_entry">Construction Helpers</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">2</span> <span class="toc_entry">Rem 2: Chain Complex Notation</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">3</span> <span class="toc_entry">Rem 3: Symmetry Action and Abelian Group Structure</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000050"><span class="toc_ref">3.1</span> <span class="toc_entry">Symmetry Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000051"><span class="toc_ref">3.2</span> <span class="toc_entry">Operator Algebra Automorphisms</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000052"><span class="toc_ref">3.3</span> <span class="toc_entry">On-site Symmetry Operator</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000053"><span class="toc_ref">3.4</span> <span class="toc_entry">Character Group</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000054"><span class="toc_ref">3.5</span> <span class="toc_entry">Duality Pairing</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000055"><span class="toc_ref">3.6</span> <span class="toc_entry">Symmetry Eigenvalues</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">4</span> <span class="toc_entry">Def 1: Charge Projection (Single Site)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000056"><span class="toc_ref">4.1</span> <span class="toc_entry">Character Conjugate Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000057"><span class="toc_ref">4.2</span> <span class="toc_entry">Charge Projection Definition</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000058"><span class="toc_ref">4.3</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000059"><span class="toc_ref">4.4</span> <span class="toc_entry">Character Orthogonality</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">5</span> <span class="toc_entry">Def 2: Charge Projection (Multi-Site Distribution)</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html"><span class="toc_ref">6</span> <span class="toc_entry">Lem 1: Covariance Property of Charge Components</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0006.html#a0000000060"><span class="toc_ref">6.1</span> <span class="toc_entry">Scalar-Fixing Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000061"><span class="toc_ref">6.2</span> <span class="toc_entry">Helper Lemmas</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000062"><span class="toc_ref">6.3</span> <span class="toc_entry">Character Value Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000063"><span class="toc_ref">6.4</span> <span class="toc_entry">Main Covariance Theorem</span></a>
+ </li>
+<li class="">
+  <a href="sect0006.html#a0000000064"><span class="toc_ref">6.5</span> <span class="toc_entry">Corollaries</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0007.html"><span class="toc_ref">7</span> <span class="toc_entry">Lem 2: Completeness of Charge Expansion</span></a>
+ </li>
+<li class=" active current">
+  <a href="sect0008.html"><span class="toc_ref">8</span> <span class="toc_entry">Def 3: Symmetrized Operator (Orbit Average)</span></a>
+ </li>
+<li class="">
+  <a href="sect0009.html"><span class="toc_ref">9</span> <span class="toc_entry">Thm 1: Vanishing of Reduced Zeroth Homology for Connected Graphs</span></a>
+ </li>
+<li class="">
+  <a href="sect0010.html"><span class="toc_ref">10</span> <span class="toc_entry">Lem 3: Charge Neutrality of Symmetrized Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html"><span class="toc_ref">11</span> <span class="toc_entry">Def 4: Gauging (Decoration Map)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0011.html#a0000000065"><span class="toc_ref">11.1</span> <span class="toc_entry">Chain Complex over ZMod p</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000066"><span class="toc_ref">11.2</span> <span class="toc_entry">Exact Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000067"><span class="toc_ref">11.3</span> <span class="toc_entry">Spanning Basis</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000068"><span class="toc_ref">11.4</span> <span class="toc_entry">Gauge Z-Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000069"><span class="toc_ref">11.5</span> <span class="toc_entry">The Full Gauging Map</span></a>
+ </li>
+<li class="">
+  <a href="sect0011.html#a0000000070"><span class="toc_ref">11.6</span> <span class="toc_entry">Remark on Basis Independence</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0012.html"><span class="toc_ref">12</span> <span class="toc_entry">Def 5: Circuit Unitaries for Gauging</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0012.html#a0000000071"><span class="toc_ref">12.1</span> <span class="toc_entry">Qudit Space and States</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000072"><span class="toc_ref">12.2</span> <span class="toc_entry">Generalized Pauli Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000073"><span class="toc_ref">12.3</span> <span class="toc_entry">Controlled-X Gate</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000074"><span class="toc_ref">12.4</span> <span class="toc_entry">Boundary Matrix Entry</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000075"><span class="toc_ref">12.5</span> <span class="toc_entry">Full Gauging System State Space</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000076"><span class="toc_ref">12.6</span> <span class="toc_entry">Edge-Vertex Entangling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000077"><span class="toc_ref">12.7</span> <span class="toc_entry">Matter-Symmetry Coupling Unitary</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000078"><span class="toc_ref">12.8</span> <span class="toc_entry">Measurement Projection</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000079"><span class="toc_ref">12.9</span> <span class="toc_entry">Commutativity of Unitaries</span></a>
+ </li>
+<li class="">
+  <a href="sect0012.html#a0000000080"><span class="toc_ref">12.10</span> <span class="toc_entry">Unitarity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0013.html"><span class="toc_ref">13</span> <span class="toc_entry">Def 6: Gauged Stabilizers (Vertex and Plaquette Terms)</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html"><span class="toc_ref">14</span> <span class="toc_entry">Def 7: Decorated Stabilizer (Gauged Stabilizer of Original Code)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0014.html#a0000000081"><span class="toc_ref">14.1</span> <span class="toc_entry">Symmetrized Stabilizer Structure</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000082"><span class="toc_ref">14.2</span> <span class="toc_entry">Overlap Set</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000083"><span class="toc_ref">14.3</span> <span class="toc_entry">Components of the Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000084"><span class="toc_ref">14.4</span> <span class="toc_entry">The Decorated Stabilizer</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000085"><span class="toc_ref">14.5</span> <span class="toc_entry">Hermiticity Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000086"><span class="toc_ref">14.6</span> <span class="toc_entry">Measurability Property</span></a>
+ </li>
+<li class="">
+  <a href="sect0014.html#a0000000087"><span class="toc_ref">14.7</span> <span class="toc_entry">Commutativity Properties</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0015.html"><span class="toc_ref">15</span> <span class="toc_entry">Thm 2: Equivalence of Algebraic and Circuit Gauging</span></a>
+ </li>
+<li class="">
+  <a href="sect0016.html"><span class="toc_ref">16</span> <span class="toc_entry">Def 8: Cheeger Constant (Isoperimetric Constant)</span></a>
+ </li>
+<li class="">
+  <a href="sect0017.html"><span class="toc_ref">17</span> <span class="toc_entry">Def 9: Gauging Graph Criteria</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html"><span class="toc_ref">18</span> <span class="toc_entry">Lem 4: Charge Convolution for Operator Products</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0018.html#a0000000088"><span class="toc_ref">18.1</span> <span class="toc_entry">Addition of Charge Distributions</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000089"><span class="toc_ref">18.2</span> <span class="toc_entry">Multiplicativity of Character Values</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000090"><span class="toc_ref">18.3</span> <span class="toc_entry">Linearity and Covariance</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000091"><span class="toc_ref">18.4</span> <span class="toc_entry">Key Lemma: Projection of Product of Charge Components</span></a>
+ </li>
+<li class="">
+  <a href="sect0018.html#a0000000092"><span class="toc_ref">18.5</span> <span class="toc_entry">Main Convolution Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0019.html"><span class="toc_ref">19</span> <span class="toc_entry">Lem 5: Gauging is a Homomorphism (up to Flux Equivalence)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0019.html#a0000000093"><span class="toc_ref">19.1</span> <span class="toc_entry">Flux Equivalence Relation</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000094"><span class="toc_ref">19.2</span> <span class="toc_entry">The Delta Chain</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000095"><span class="toc_ref">19.3</span> <span class="toc_entry">Helper Lemmas for gaugeZOperator</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000096"><span class="toc_ref">19.4</span> <span class="toc_entry">Gauge Factor Decomposition</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000097"><span class="toc_ref">19.5</span> <span class="toc_entry">Product Expansion</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000098"><span class="toc_ref">19.6</span> <span class="toc_entry">Axioms for Edge Cases</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000099"><span class="toc_ref">19.7</span> <span class="toc_entry">Flux Equivalence Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0019.html#a0000000100"><span class="toc_ref">19.8</span> <span class="toc_entry">Main Theorem</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0020.html"><span class="toc_ref">20</span> <span class="toc_entry">Lem 6: Weight Non-Decrease Under Stabilizer Equivalence</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html"><span class="toc_ref">21</span> <span class="toc_entry">Lem 7: Gauged Code is Sparse and Distance Preserving</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0021.html#a0000000101"><span class="toc_ref">21.1</span> <span class="toc_entry">LDPC Property of Original Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000102"><span class="toc_ref">21.2</span> <span class="toc_entry">Part 1: Sparsity of the Gauged Code</span></a>
+ </li>
+<li class="">
+  <a href="sect0021.html#a0000000103"><span class="toc_ref">21.3</span> <span class="toc_entry">Part 2: Distance Preservation</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0022.html"><span class="toc_ref">22</span> <span class="toc_entry">Def 10: Equivalence Relations in the Gauged Code</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0022.html#a0000000104"><span class="toc_ref">22.1</span> <span class="toc_entry">Operators on the Gauged System</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000105"><span class="toc_ref">22.2</span> <span class="toc_entry">Integer Powers of Operators</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000106"><span class="toc_ref">22.3</span> <span class="toc_entry">Products of Stabilizers</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000107"><span class="toc_ref">22.4</span> <span class="toc_entry">Decorated Stabilizer Equivalence \(\sim _{\mathfrak {s}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000108"><span class="toc_ref">22.5</span> <span class="toc_entry">Vertex Stabilizer Equivalence \(\sim _{\mathfrak {A}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000109"><span class="toc_ref">22.6</span> <span class="toc_entry">Flux Stabilizer Equivalence \(\sim _{\mathfrak {B}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000110"><span class="toc_ref">22.7</span> <span class="toc_entry">Full Gauged Code Equivalence \(\sim _g\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000111"><span class="toc_ref">22.8</span> <span class="toc_entry">Inclusion Relations</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000112"><span class="toc_ref">22.9</span> <span class="toc_entry">Basic Properties</span></a>
+ </li>
+<li class="">
+  <a href="sect0022.html#a0000000113"><span class="toc_ref">22.10</span> <span class="toc_entry">Single Stabilizer Application Lemmas</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0023.html"><span class="toc_ref">23</span> <span class="toc_entry">Thm 3: Distance Preservation Under Gauging</span></a>
+ </li>
+<li ><a href="dep_graph_document.html">Dependency graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000009">8 Def 3: Symmetrized Operator (Orbit Average)</h1>
+<p>This chapter defines the symmetrized operator (orbit average), which is the projection of an operator onto the symmetric subspace under a group action. We show that this is equivalent to the charge-0 projection and establish key properties including additivity, idempotence, and invariance. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="def:symmetrized_operator">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8.1</span>
+    <span class="definition_thmtitle">Symmetrized Operator</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#def:symmetrized_operator">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperator" class="lean_decl">GaugingLDPC.symmetrizedOperator</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>Let \(A\) be an Abelian symmetry group acting on operators via automorphisms \(\varphi _g\). For any operator \(S\), the <b class="bfseries">symmetrized operator</b> (also called orbit average) is defined as: </p>
+<div class="displaymath" id="a0000000367">
+  \[  \overline{S} := \frac{1}{|A|} \sum _{g \in A} \varphi _g(S)  \]
+</div>
+<p> This is the average of \(S\) over its orbit under the symmetry group action. The normalization factor \(1/|A| = 1/p\) ensures the result is properly scaled. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.2</span>
+    <span class="theorem_thmtitle">Symmetrized Operator of Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_zero">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000368"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperator_zero" class="lean_decl">GaugingLDPC.symmetrizedOperator_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>Symmetrizing zero gives zero: \(\overline{0} = 0\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000368">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Unfolding the definition of the symmetrized operator, we have \(\overline{0} = \frac{1}{p} \sum _{g \in A} \varphi _g(0)\). Since each automorphism \(\varphi _g\) maps zero to zero (by linearity of ring automorphisms), the sum is zero. Thus \(\overline{0} = \frac{1}{p} \cdot 0 = 0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_one">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.3</span>
+    <span class="theorem_thmtitle">Symmetrized Operator of One</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_one">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000369"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperator_one" class="lean_decl">GaugingLDPC.symmetrizedOperator_one</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>Symmetrizing one gives one: \(\overline{1} = 1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000369">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Unfolding the definition, we have \(\overline{1} = \frac{1}{p} \sum _{g \in A} \varphi _g(1)\). Since \(\varphi _g(1) = 1\) for all \(g\) (ring automorphisms preserve the identity), the sum becomes \(\frac{1}{p} \sum _{g \in A} 1 = \frac{1}{p} \cdot p \cdot 1 = 1\), using that \(|A| = p\) and \(p \neq 0\) (since \(p\) is prime). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_add">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.4</span>
+    <span class="theorem_thmtitle">Symmetrized Operator is Additive</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_add">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000370"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperator_add" class="lean_decl">GaugingLDPC.symmetrizedOperator_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>Symmetrization is additive: for any operators \(S_1, S_2\), </p>
+<div class="displaymath" id="a0000000371">
+  \[  \overline{S_1 + S_2} = \overline{S_1} + \overline{S_2}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000370">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Unfolding the definition of the symmetrized operator and using that each automorphism \(\varphi _g\) is additive, we have: </p>
+<div class="displaymath" id="a0000000372">
+  \[  \overline{S_1 + S_2} = \frac{1}{p} \sum _{g \in A} \varphi _g(S_1 + S_2) = \frac{1}{p} \sum _{g \in A} (\varphi _g(S_1) + \varphi _g(S_2))  \]
+</div>
+<p> By distributivity of sums and scalar multiplication, this equals: </p>
+<div class="displaymath" id="a0000000373">
+  \[  \frac{1}{p} \sum _{g \in A} \varphi _g(S_1) + \frac{1}{p} \sum _{g \in A} \varphi _g(S_2) = \overline{S_1} + \overline{S_2}  \]
+</div>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:orbit_fun">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8.5</span>
+    <span class="definition_thmtitle">Orbit Function</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#def:orbit_fun">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.orbitFun" class="lean_decl">GaugingLDPC.orbitFun</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <b class="bfseries">orbit</b> of an operator \(S\) under the symmetry action is defined as the function: </p>
+<div class="displaymath" id="a0000000374">
+  \[  O^T(S) : A \to R, \quad g \mapsto \varphi _g(S)  \]
+</div>
+<p> This gives the set \(\{ \varphi _g(S) : g \in A\} \) as the range of this function. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:orbit_fun_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.6</span>
+    <span class="theorem_thmtitle">Orbit Function at Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:orbit_fun_zero">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000375"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:orbit_fun">Definition 8.5</a></li>
+          
+          <li><a href="sect0008.html#def:orbit_fun">Definition 8.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.orbitFun_zero" class="lean_decl">GaugingLDPC.orbitFun_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The orbit function at the identity element gives back the original operator: </p>
+<div class="displaymath" id="a0000000376">
+  \[  O^T(S)(0) = S  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000375">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By definition \(O^T(S)(0) = \varphi _0(S)\). Since the symmetry action is a group homomorphism, \(\varphi _0 = \mathrm{id}\), so \(\varphi _0(S) = S\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:orbit_fun_add">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.7</span>
+    <span class="theorem_thmtitle">Orbit Function is Equivariant</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:orbit_fun_add">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000377"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:orbit_fun">Definition 8.5</a></li>
+          
+          <li><a href="sect0008.html#def:orbit_fun">Definition 8.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.orbitFun_add" class="lean_decl">GaugingLDPC.orbitFun_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The orbit function satisfies the equivariance property: </p>
+<div class="displaymath" id="a0000000378">
+  \[  O^T(S)(g + h) = \varphi _g(O^T(S)(h))  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000377">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By definition of the orbit function, \(O^T(S)(g + h) = \varphi _{g+h}(S)\). Since the symmetry action is a group homomorphism, \(\varphi _{g+h} = \varphi _g \circ \varphi _h\). Thus \(\varphi _{g+h}(S) = \varphi _g(\varphi _h(S)) = \varphi _g(O^T(S)(h))\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_invariant">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.8</span>
+    <span class="theorem_thmtitle">Symmetrized Operator is Invariant</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_invariant">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000379"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperator_invariant" class="lean_decl">GaugingLDPC.symmetrizedOperator_invariant</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The symmetrized operator is invariant under the symmetry action: for all \(h \in A\), </p>
+<div class="displaymath" id="a0000000380">
+  \[  \varphi _h(\overline{S}) = \overline{S}  \]
+</div>
+<p> This is the key property that makes \(\overline{S}\) “symmetric.” </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000379">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Assume that the symmetry action commutes with \(\mathbb {C}\)-scalars: \(\varphi _g(c \cdot x) = c \cdot \varphi _g(x)\) for all \(c \in \mathbb {C}\). Unfolding the definition: </p>
+<div class="displaymath" id="a0000000381">
+  \[  \varphi _h(\overline{S}) = \varphi _h\left(\frac{1}{p} \sum _{g \in A} \varphi _g(S)\right) = \frac{1}{p} \varphi _h\left(\sum _{g \in A} \varphi _g(S)\right)  \]
+</div>
+<p> Since \(\varphi _h\) distributes over sums: </p>
+<div class="displaymath" id="a0000000382">
+  \[  = \frac{1}{p} \sum _{g \in A} \varphi _h(\varphi _g(S)) = \frac{1}{p} \sum _{g \in A} \varphi _{g+h}(S)  \]
+</div>
+<p> We apply a reindexing bijection \(g \mapsto g + h\) with inverse \(g' \mapsto g' - h\). This is a bijection on the finite group \(A\), so: </p>
+<div class="displaymath" id="a0000000383">
+  \[  \frac{1}{p} \sum _{g \in A} \varphi _{g+h}(S) = \frac{1}{p} \sum _{g' \in A} \varphi _{g'}(S) = \overline{S}  \]
+</div>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_fixed">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.9</span>
+    <span class="theorem_thmtitle">Symmetrized Operator is Fixed Point</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_fixed">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000384"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#thm:symmetrized_operator_invariant">Theorem 8.8</a></li>
+          
+          <li><a href="sect0008.html#thm:symmetrized_operator_invariant">Theorem 8.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperator_fixed" class="lean_decl">GaugingLDPC.symmetrizedOperator_fixed</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>\(\overline{S}\) is a fixed point of all automorphisms \(\varphi _g\): for all \(g \in A\), </p>
+<div class="displaymath" id="a0000000385">
+  \[  \varphi _g(\overline{S}) = \overline{S}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000384">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from Theorem&#160;<a href="sect0008.html#thm:symmetrized_operator_invariant">8.8</a> applied to each \(g \in A\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_idempotent">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.10</span>
+    <span class="theorem_thmtitle">Symmetrized Operator is Idempotent</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_idempotent">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000386"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+          <li><a href="sect0008.html#thm:symmetrized_operator_invariant">Theorem 8.8</a></li>
+          
+          <li><a href="sect0008.html#thm:symmetrized_operator_invariant">Theorem 8.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperator_idempotent" class="lean_decl">GaugingLDPC.symmetrizedOperator_idempotent</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>Symmetrizing an already symmetric operator gives the same result: </p>
+<div class="displaymath" id="a0000000387">
+  \[  \overline{\overline{S}} = \overline{S}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000386">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Unfolding the definition of the symmetrized operator for \(\overline{\overline{S}}\): </p>
+<div class="displaymath" id="a0000000388">
+  \[  \overline{\overline{S}} = \frac{1}{p} \sum _{g \in A} \varphi _g(\overline{S})  \]
+</div>
+<p> By Theorem&#160;<a href="sect0008.html#thm:symmetrized_operator_invariant">8.8</a>, \(\varphi _g(\overline{S}) = \overline{S}\) for all \(g \in A\). Therefore: </p>
+<div class="displaymath" id="a0000000389">
+  \[  \overline{\overline{S}} = \frac{1}{p} \sum _{g \in A} \overline{S} = \frac{1}{p} \cdot p \cdot \overline{S} = \overline{S}  \]
+</div>
+<p> using that \(|A| = p\) and \(p \neq 0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_eq_charge_projection_trivial">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.11</span>
+    <span class="theorem_thmtitle">Symmetrized Operator Equals Trivial Charge Projection</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_eq_charge_projection_trivial">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000390"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+          <li><a href="sect0004.html#def:charge_projection">Definition 4.6</a></li>
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+          <li><a href="sect0004.html#def:charge_projection">Definition 4.6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperator_eq_chargeProjection_trivial" class="lean_decl">GaugingLDPC.symmetrizedOperator_eq_chargeProjection_trivial</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The symmetrized operator equals the charge projection with trivial character (charge 0): </p>
+<div class="displaymath" id="a0000000391">
+  \[  \overline{S} = [S]_{\chi =1} = [S]_0  \]
+</div>
+<p> This shows that symmetrization extracts the “charge-0” or “symmetric” component. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000390">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Unfolding the definitions of symmetrized operator and charge projection, and noting that the character conjugate value for the trivial character is 1 (since \(\chi (g) = 1\) for all \(g\)), we have: </p>
+<div class="displaymath" id="a0000000392">
+  \[  \overline{S} = \frac{1}{p} \sum _{g \in A} \varphi _g(S)  \]
+</div>
+<p> and </p>
+<div class="displaymath" id="a0000000393">
+  \[  [S]_{\chi =1} = \frac{1}{p} \sum _{g \in A} \overline{\chi (g)} \cdot \varphi _g(S) = \frac{1}{p} \sum _{g \in A} 1 \cdot \varphi _g(S)  \]
+</div>
+<p> These are equal, completing the proof. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_eq_charge_projection_by_index_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.12</span>
+    <span class="theorem_thmtitle">Symmetrized Operator Equals Zero-Index Charge Projection</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_eq_charge_projection_by_index_zero">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000394"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#thm:symmetrized_operator_eq_charge_projection_trivial">Theorem 8.11</a></li>
+          
+          <li><a href="sect0004.html#def:charge_projection_by_index">Definition 4.7</a></li>
+          
+          <li><a href="sect0008.html#thm:symmetrized_operator_eq_charge_projection_trivial">Theorem 8.11</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperator_eq_chargeProjectionByIndex_zero" class="lean_decl">GaugingLDPC.symmetrizedOperator_eq_chargeProjectionByIndex_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The symmetrized operator equals the charge-0 projection by index: </p>
+<div class="displaymath" id="a0000000395">
+  \[  \overline{S} = [S]_0  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000394">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By Theorem&#160;<a href="sect0008.html#thm:symmetrized_operator_eq_charge_projection_trivial">8.11</a>, \(\overline{S} = [S]_{\chi =1}\). Unfolding the definition of charge projection by index and using that the standard character at index 0 is the trivial character (so \(\chi _0(g) = 1\) for all \(g\)), the result follows by extensionality. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:symmetrized_operator_multi_site">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8.13</span>
+    <span class="definition_thmtitle">Multi-Site Symmetrized Operator</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#def:symmetrized_operator_multi_site">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperatorMultiSite" class="lean_decl">GaugingLDPC.symmetrizedOperatorMultiSite</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <b class="bfseries">multi-site symmetrized operator</b> (orbit average) under product symmetry action is defined as: </p>
+<div class="displaymath" id="a0000000396">
+  \[  \overline{S} := \frac{1}{|A|^{|C_0|}} \sum _{\mathbf{g} \in A^{C_0}} \varphi _{\mathbf{g}}(S)  \]
+</div>
+<p> where the sum is over all configurations of group elements on all vertices. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_multi_site_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.14</span>
+    <span class="theorem_thmtitle">Multi-Site Symmetrized Operator of Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_multi_site_zero">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000397"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator_multi_site">Definition 8.13</a></li>
+          
+          <li><a href="sect0008.html#def:symmetrized_operator_multi_site">Definition 8.13</a></li>
+          
+          <li><a href="sect0005.html#lem:product_action_operator_zero">Lemma 5.14</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperatorMultiSite_zero" class="lean_decl">GaugingLDPC.symmetrizedOperatorMultiSite_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>Multi-site symmetrizing zero gives zero: \(\overline{0} = 0\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000397">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Unfolding the definition of the multi-site symmetrized operator and using that the product action on zero gives zero for all group tuples, the sum is zero. Thus the scalar multiple is also zero. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_multi_site_add">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.15</span>
+    <span class="theorem_thmtitle">Multi-Site Symmetrized Operator is Additive</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_multi_site_add">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000398"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator_multi_site">Definition 8.13</a></li>
+          
+          <li><a href="sect0008.html#def:symmetrized_operator_multi_site">Definition 8.13</a></li>
+          
+          <li><a href="sect0005.html#def:product_action">Definition 5.12</a></li>
+          
+          <li><a href="sect0005.html#def:composed_automorphism">Definition 5.11</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperatorMultiSite_add" class="lean_decl">GaugingLDPC.symmetrizedOperatorMultiSite_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>Multi-site symmetrization is additive: for any operators \(S_1, S_2\), </p>
+<div class="displaymath" id="a0000000399">
+  \[  \overline{S_1 + S_2} = \overline{S_1} + \overline{S_2}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000398">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Unfolding the definition of multi-site symmetrized operator and product action, and using that the composed automorphism is additive (as a ring automorphism), the sum distributes and scalar multiplication distributes over addition. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_multi_site_eq_charge_projection_trivial">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.16</span>
+    <span class="theorem_thmtitle">Multi-Site Symmetrized Operator Equals Trivial Charge Distribution Projection</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_multi_site_eq_charge_projection_trivial">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000400"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator_multi_site">Definition 8.13</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+          <li><a href="sect0005.html#def:charge_distribution_trivial">Definition 5.2</a></li>
+          
+          <li><a href="sect0008.html#def:symmetrized_operator_multi_site">Definition 8.13</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection">Definition 5.24</a></li>
+          
+          <li><a href="sect0005.html#lem:multi_site_char_conj_value_trivial">Lemma 5.21</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperatorMultiSite_eq_chargeProjection_trivial" class="lean_decl">GaugingLDPC.symmetrizedOperatorMultiSite_eq_chargeProjection_trivial</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The multi-site symmetrized operator equals the multi-site charge projection with trivial charge distribution: </p>
+<div class="displaymath" id="a0000000401">
+  \[  \overline{S} = [S]_{\boldsymbol {\chi } = \mathbf{1}}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000400">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Unfolding the definitions and using that the multi-site character conjugate value for the trivial distribution equals 1 for all group tuples (by Lemma&#160;<a href="sect0005.html#lem:multi_site_char_conj_value_trivial">5.21</a>), the sums are equal termwise, completing the proof. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_multi_site_eq_charge_projection_by_index_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.17</span>
+    <span class="theorem_thmtitle">Multi-Site Symmetrized Operator Equals Zero-Index Charge Projection</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_multi_site_eq_charge_projection_by_index_zero">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000402"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#thm:symmetrized_operator_multi_site_eq_charge_projection_trivial">Theorem 8.16</a></li>
+          
+          <li><a href="sect0005.html#def:multi_site_charge_projection_by_index">Definition 5.25</a></li>
+          
+          <li><a href="sect0008.html#thm:symmetrized_operator_multi_site_eq_charge_projection_trivial">Theorem 8.16</a></li>
+          
+          <li><a href="sect0005.html#lem:charge_distribution_standard_by_index_zero">Lemma 5.6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperatorMultiSite_eq_chargeProjectionByIndex_zero" class="lean_decl">GaugingLDPC.symmetrizedOperatorMultiSite_eq_chargeProjectionByIndex_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The multi-site symmetrized operator equals the multi-site charge projection with the zero-index charge distribution: </p>
+<div class="displaymath" id="a0000000403">
+  \[  \overline{S} = [S]_{\mathbf{0}}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000402">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By Theorem&#160;<a href="sect0008.html#thm:symmetrized_operator_multi_site_eq_charge_projection_trivial">8.16</a>, \(\overline{S}\) equals the projection with trivial charge distribution. Unfolding the definition of charge projection by index and using that the standard charge distribution at index 0 equals the trivial distribution (Lemma&#160;<a href="sect0005.html#lem:charge_distribution_standard_by_index_zero">5.6</a>), the result follows. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:orbit_multi_site_fun">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8.18</span>
+    <span class="definition_thmtitle">Multi-Site Orbit Function</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#def:orbit_multi_site_fun">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator_multi_site">Definition 8.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.orbitMultiSiteFun" class="lean_decl">GaugingLDPC.orbitMultiSiteFun</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  
+<p>The <b class="bfseries">multi-site orbit function</b> for an operator \(S\) under the product symmetry action is: </p>
+<div class="displaymath" id="a0000000404">
+  \[  O^T(S) : A^{C_0} \to R, \quad \mathbf{g} \mapsto \varphi _{\mathbf{g}}(S)  \]
+</div>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:orbit_multi_site_fun_zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.19</span>
+    <span class="theorem_thmtitle">Multi-Site Orbit Function at Zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:orbit_multi_site_fun_zero">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000405"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:orbit_multi_site_fun">Definition 8.18</a></li>
+          
+          <li><a href="sect0005.html#def:group_tuple_zero">Definition 5.8</a></li>
+          
+          <li><a href="sect0008.html#def:orbit_multi_site_fun">Definition 8.18</a></li>
+          
+          <li><a href="sect0005.html#lem:product_action_zero">Lemma 5.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.orbitMultiSiteFun_zero" class="lean_decl">GaugingLDPC.orbitMultiSiteFun_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The multi-site orbit function at the zero tuple gives back the original element: </p>
+<div class="displaymath" id="a0000000406">
+  \[  O^T(S)(\mathbf{0}) = S  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000405">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from the fact that the product action at the zero tuple is the identity. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_multi_site_singleton">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.20</span>
+    <span class="theorem_thmtitle">Multi-Site Symmetrization Reduces to Single-Site for Singleton</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_multi_site_singleton">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000407"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator_multi_site">Definition 8.13</a></li>
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+          <li><a href="sect0005.html#thm:multi_site_charge_projection_singleton">Theorem 5.33</a></li>
+          
+          <li><a href="sect0008.html#thm:symmetrized_operator_multi_site_eq_charge_projection_trivial">Theorem 8.16</a></li>
+          
+          <li><a href="sect0008.html#thm:symmetrized_operator_eq_charge_projection_trivial">Theorem 8.11</a></li>
+          
+          <li><a href="sect0005.html#thm:multi_site_charge_projection_singleton">Theorem 5.33</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperatorMultiSite_singleton" class="lean_decl">GaugingLDPC.symmetrizedOperatorMultiSite_singleton</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>When \(C_0\) has a single element, multi-site symmetrization reduces to single-site symmetrization: </p>
+<div class="displaymath" id="a0000000408">
+  \[  \overline{S}_{\text{multi}} = \overline{S}_{\text{single}}  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000407">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Rewriting both sides using their equivalence to charge projections with trivial distribution/character (Theorems&#160;<a href="sect0008.html#thm:symmetrized_operator_multi_site_eq_charge_projection_trivial">8.16</a> and <a href="sect0008.html#thm:symmetrized_operator_eq_charge_projection_trivial">8.11</a>), the result follows from Theorem&#160;<a href="sect0005.html#thm:multi_site_charge_projection_singleton">5.33</a>. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_normalization">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.21</span>
+    <span class="theorem_thmtitle">Single-Site Normalization Factor</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_normalization">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000409"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperator_normalization" class="lean_decl">GaugingLDPC.symmetrizedOperator_normalization</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The normalization factor satisfies: \(p^{-1} \cdot p = 1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000409">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Since \(p\) is prime, \(p \neq 0\) in \(\mathbb {C}\). Therefore \(p^{-1} \cdot p = 1\) by the definition of multiplicative inverse. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_multi_site_normalization">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.22</span>
+    <span class="theorem_thmtitle">Multi-Site Normalization Factor</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_multi_site_normalization">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000410"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator_multi_site">Definition 8.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperatorMultiSite_normalization" class="lean_decl">GaugingLDPC.symmetrizedOperatorMultiSite_normalization</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The multi-site normalization factor satisfies: \((p^{|C_0|})^{-1} \cdot p^{|C_0|} = 1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000410">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>Since \(p\) is prime, \(p \neq 0\) in \(\mathbb {C}\), hence \(p^{|C_0|} \neq 0\). Therefore \((p^{|C_0|})^{-1} \cdot p^{|C_0|} = 1\) by the definition of multiplicative inverse. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:orbit_fun_zero_operator">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.23</span>
+    <span class="theorem_thmtitle">Orbit of Zero Operator</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:orbit_fun_zero_operator">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000411"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:orbit_fun">Definition 8.5</a></li>
+          
+          <li><a href="sect0008.html#def:orbit_fun">Definition 8.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.orbitFun_zero_operator" class="lean_decl">GaugingLDPC.orbitFun_zero_operator</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The orbit of zero is constantly zero: for all \(g \in A\), </p>
+<div class="displaymath" id="a0000000412">
+  \[  O^T(0)(g) = 0  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000411">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>By definition, \(O^T(0)(g) = \varphi _g(0) = 0\) since ring automorphisms preserve zero. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:orbit_multi_site_fun_zero_operator">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.24</span>
+    <span class="theorem_thmtitle">Multi-Site Orbit of Zero Operator</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:orbit_multi_site_fun_zero_operator">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000413"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:orbit_multi_site_fun">Definition 8.18</a></li>
+          
+          <li><a href="sect0005.html#lem:product_action_operator_zero">Lemma 5.14</a></li>
+          
+          <li><a href="sect0005.html#lem:product_action_operator_zero">Lemma 5.14</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.orbitMultiSiteFun_zero_operator" class="lean_decl">GaugingLDPC.orbitMultiSiteFun_zero_operator</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The multi-site orbit of zero is constantly zero: for all \(\mathbf{g} \in A^{C_0}\), </p>
+<div class="displaymath" id="a0000000414">
+  \[  O^T(0)(\mathbf{g}) = 0  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000413">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from Lemma&#160;<a href="sect0005.html#lem:product_action_operator_zero">5.14</a>, which states that the product action on zero gives zero. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_eq_inv_smul_sum">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.25</span>
+    <span class="theorem_thmtitle">Symmetrized Operator as Inverse Smul Sum</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_eq_inv_smul_sum">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000415"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+          <li><a href="sect0008.html#def:symmetrized_operator">Definition 8.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperator_eq_inv_smul_sum" class="lean_decl">GaugingLDPC.symmetrizedOperator_eq_inv_smul_sum</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The symmetrized operator can be written as: </p>
+<div class="displaymath" id="a0000000416">
+  \[  \overline{S} = \frac{1}{p} \cdot \sum _{g \in A} \varphi _g(S)  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000415">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This holds by reflexivity (definition of the symmetrized operator). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_multi_site_eq_inv_smul_sum">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.26</span>
+    <span class="theorem_thmtitle">Multi-Site Symmetrized Operator as Inverse Smul Sum</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_multi_site_eq_inv_smul_sum">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000417"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0008.html#def:symmetrized_operator_multi_site">Definition 8.13</a></li>
+          
+          <li><a href="sect0008.html#def:symmetrized_operator_multi_site">Definition 8.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperatorMultiSite_eq_inv_smul_sum" class="lean_decl">GaugingLDPC.symmetrizedOperatorMultiSite_eq_inv_smul_sum</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The multi-site symmetrized operator can be written as: </p>
+<div class="displaymath" id="a0000000418">
+  \[  \overline{S} = \frac{1}{p^{|C_0|}} \cdot \sum _{\mathbf{g} \in A^{C_0}} \varphi _{\mathbf{g}}(S)  \]
+</div>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000417">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This holds by reflexivity (definition of the multi-site symmetrized operator). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_card_factor">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.27</span>
+    <span class="theorem_thmtitle">Symmetry Group Cardinality Factor</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_card_factor">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000419"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0003.html#thm:symmetry_group_card_eq_p">Theorem 3.3</a></li>
+          
+          <li><a href="sect0003.html#thm:symmetry_group_card_eq_p">Theorem 3.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperator_card_factor" class="lean_decl">GaugingLDPC.symmetrizedOperator_card_factor</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The cardinality factor equals the group size: \(|\mathrm{SymmetryGroup}_p| = p\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000419">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from Theorem&#160;<a href="sect0003.html#thm:symmetry_group_card_eq_p">3.3</a>. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:symmetrized_operator_multi_site_card_factor">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.28</span>
+    <span class="theorem_thmtitle">Multi-Site Cardinality Factor</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0008.html#thm:symmetrized_operator_multi_site_card_factor">#</a>
+    
+    <a class="icon proof" href="sect0008.html#a0000000420"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0005.html#lem:group_tuple_card">Lemma 5.29</a></li>
+          
+          <li><a href="sect0005.html#lem:group_tuple_card">Lemma 5.29</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://doxtor6.github.io/Lean-QuantumGauge/docs/find/#doc/GaugingLDPC.symmetrizedOperatorMultiSite_card_factor" class="lean_decl">GaugingLDPC.symmetrizedOperatorMultiSite_card_factor</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  
+<p>The multi-site cardinality factor equals the product group size: \(|A^{C_0}| = p^{|C_0|}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000420">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  
+<p>This follows directly from Lemma&#160;<a href="sect0005.html#lem:group_tuple_card">5.29</a>. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0007.html" title="Lem 2: Completeness of Charge Expansion"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Gauging Measurement Formalization Blueprint"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0009.html" title="Thm 1: Vanishing of Reduced Zeroth Homology for Connected Graphs"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

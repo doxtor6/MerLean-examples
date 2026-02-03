@@ -1,0 +1,1258 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+% Theorem environments
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{proposition*}{Proposition}
+\theoremstyle{definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{remark*}{Remark}
+
+% Common math commands
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+
+\title{QEC1: Informal Mathematical Statements\\[0.5em]\large Summarized from Lean 4 Formalization}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+%==============================================================================
+% WARNING: UNPROVEN AXIOMS USED IN THIS LIBRARY
+%==============================================================================
+%
+% The following axioms are assumed without proof:
+%
+%   From Prop_3_FluxOperatorCommutation.lean:
+%     - in
+%
+% These axioms were introduced because the full proofs were not completed.
+% The mathematical validity of results depends on these assumptions.
+%==============================================================================
+
+\begin{abstract}
+This document contains summarized formal statements from the \texttt{QEC1} Lean 4 library.
+Each statement is a concise summary of the formalized content.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Formal Statements}
+
+\subsection{Rem_1: NotationConventions}
+\label{Rem_1}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 1/66
+
+\begin{remark*}[NotationConventions]
+**Definition (Pauli Operators)**: The single-qubit Pauli operators are $I$ (identity), $X$ (bit flip), $Y$, and $Z$ (phase flip), forming a 4-element set.
+
+**Definition (Pauli Multiplication)**: Pauli multiplication satisfies $P \cdot I = I \cdot P = P$, $X^2 = Y^2 = Z^2 = I$, and the anticommutation relations $XY = YX = Z$, $YZ = ZY = X$, $ZX = XZ = Y$.
+
+**Definition (Stabilizer Code)**: An $[[n,k,d]]$ stabilizer code is a $2^k$-dimensional subspace of $(\mathbb{C}^2)^{\otimes n}$ defined as the simultaneous $+1$ eigenspace of an abelian subgroup $S$ of the $n$-qubit Pauli group with $-I \notin S$, where the distance $d$ is the minimum weight of a Pauli operator commuting with all stabilizers but not in $S$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_1: StabilizerCode}
+\label{Def_1}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 2/66
+
+\begin{definition*}[StabilizerCode]
+**Definition (Phase Factor).** A phase factor is an element of $\mathbb{Z}/4\mathbb{Z}$ representing powers of the imaginary unit $i^\sigma$ where $\sigma \in \{0, 1, 2, 3\}$ corresponds to $1, i, -1, -i$ respectively.
+
+**Definition (Phase Multiplication).** For phases $a, b \in \mathbb{Z}/4\mathbb{Z}$, their product is defined as $i^a \cdot i^b = i^{(a+b) \bmod 4}$.
+
+**Theorem.** Phase multiplication is commutative and associative with identity element $0 \in \mathbb{Z}/4\mathbb{Z}$, forming a group structure on the phase factors.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_2: LogicalOperator}
+\label{Def_2}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 3/66
+
+\begin{definition*}[LogicalOperator]
+**Definition (Logical Operator):** Let $C$ be an $[[n, k, d]]$ stabilizer code with stabilizer generators $\{s_i\}$. A **logical operator** is a Pauli operator $L$ such that $[L, s_i] = 0$ for all $i$ and $L \notin \langle s_1, \ldots, s_{n-k} \rangle$.
+
+The **weight** of a logical operator $L$ is $|L| = |S_X(L) \cup S_Z(L)|$, and the code distance satisfies $d = \min\{|L| : L \text{ is a logical operator}\}$. Two logical operators $L$ and $L'$ are **equivalent** if $L' = L \cdot \prod_{i \in T} s_i$ for some subset $T$.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_3: GaugingGraph}
+\label{Def_3}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 4/66
+
+\begin{definition*}[GaugingGraph]
+**Definition (Gauging Graph).** Let $C$ be an $[[n, k, d]]$ stabilizer code and $L = \prod_{v \in \mathcal{L}} X_v$ be an $X$-type logical operator with support $\mathcal{L}$. A **gauging graph** for $L$ is a connected graph $G = (V, E)$ with vertices $V \supseteq \mathcal{L}$ (via injective embedding), where each edge corresponds to an auxiliary qubit. The graph may contain dummy vertices $V \setminus \mathcal{L}$ corresponding to auxiliary qubits in $|+\rangle$ state. The **cycle rank** is defined as $|E| - |V| + 1$, counting the number of independent cycles in the graph.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_4: ChainSpacesBoundaryMaps}
+\label{Def_4}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 5/66
+
+\begin{definition*}[ChainSpacesBoundaryMaps]
+For a finite connected graph $G = (V, E)$ with generating cycles $\mathcal{C}$, we define chain spaces $C_0(G; \mathbb{Z}_2) = \mathbb{Z}_2^V$, $C_1(G; \mathbb{Z}_2) = \mathbb{Z}_2^E$, and $C_2(G; \mathbb{Z}_2) = \mathbb{Z}_2^{\mathcal{C}}$ representing formal sums of vertices, edges, and cycles respectively. The boundary maps are $\partial_1: C_1 \to C_0$ defined by $\partial_1(e) = v + v'$ for edge $e = \{v, v'\}$, and $\partial_2: C_2 \to C_1$ defined by $\partial_2(c) = \sum_{e \in c} e$, with coboundary maps $\delta_0 = \partial_1^T$ and $\delta_1 = \partial_2^T$. A valid cycle is a set of edges $S \subseteq E$ where every vertex has even degree: $|\{e \in S : v \text{ is an endpoint of } e\}| \equiv 0 \pmod{2}$ for all $v \in V$. The key property is $\partial_1 \circ \partial_2 = 0$, ensuring that the boundary of any cycle is zero.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_2: ExactnessOfChainComplex}
+\label{Rem_2}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 6/66
+
+\begin{remark*}[ExactnessOfChainComplex]
+**Remark (Exactness of Chain Complex):** For a connected graph $G = (V, E)$ with chain complex $C_2 \xrightarrow{\partial_2} C_1 \xrightarrow{\partial_1} C_0$, exactness holds at $C_1$ when $\ker(\partial_1) = \mathrm{im}(\partial_2)$ for generating cycle sets, and at $C_0$ where $\mathrm{im}(\partial_1) = \{c \in C_0 : |c| \equiv 0 \pmod{2}\}$. The dual complex satisfies $\delta_1 \circ \delta_0 = 0$ with $\ker(\delta_0) = \mathbb{Z}_2 \cdot \mathbf{1}_V$ for connected graphs.
+
+**Theorem (Coboundary Sum Swap):** For any $\alpha \in C_0$ and cycle $c \in C$, the sum $\sum_{e \in \mathrm{cycleEdges}(c)} \bigl(\alpha((\mathrm{endpoints}(e))_1) + \alpha((\mathrm{endpoints}(e))_2)\bigr) = 0$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_5: CheegerConstant}
+\label{Def_5}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 7/66
+
+\begin{definition*}[CheegerConstant]
+**Definition.** For a finite graph $G = (V, E)$, the **edge boundary** of a subset $S \subseteq V$ is $\delta(S) = \{e \in E : |e \cap S| = 1\}$, the set of edges with exactly one endpoint in $S$. The **Cheeger constant** (isoperimetric number) of $G$ is defined as:
+$$h(G) = \min_{\substack{S \subseteq V \\ 0 < |S| \leq |V|/2}} \frac{|\delta(S)|}{|S|}$$
+where the minimum is taken over all nonempty subsets $S$ with $|S| \leq |V|/2$, and $h(G) = 0$ if no such subsets exist. A graph $G$ is a **$(c,n)$-expander** if $|V| \geq n$ and $h(G) \geq c$, and is an **expander graph** if $h(G) \geq c$ for some constant $c > 0$.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_6: GaussLawOperators}
+\label{Def_6}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 8/66
+
+\begin{definition*}[GaussLawOperators]
+**Definition (Gauss's Law Operators):** Let $C$ be an $[[n, k, d]]$ stabilizer code, $L = \prod_{v \in L} X_v$ an $X$-type logical operator, and $G = (V, E)$ a gauging graph for $L$. The **Gauss's law operators** are the set $\mathcal{A} = \{A_v\}_{v \in V}$ where each $A_v = X_v \cdot \prod_{e \ni v} X_e$, with $X_v$ acting on vertex qubit $v$ and $X_e$ acting on auxiliary edge qubit $e$. These operators are Hermitian with eigenvalues $\pm 1$, mutually commute, satisfy $\prod_{v \in V} A_v = L$, and generate an abelian group of order $2^{|V|-1}$.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_7: FluxOperators}
+\label{Def_7}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 9/66
+
+\begin{definition*}[FluxOperators]
+\begin{definition}[Flux Configuration and Operators]
+A \textbf{flux configuration} for a stabilizer code $C$ with $X$-type logical operator $L$ consists of a gauging graph $G = (V, E)$, an index type $\mathcal{C}$ for cycles, and a function $\texttt{cycleEdges} : \mathcal{C} \to \mathcal{P}(E)$ where each cycle satisfies the closure condition $\partial_1(\text{cycle}) = 0$. A \textbf{flux operator} $B_c$ for cycle index $c \in \mathcal{C}$ is a $Z$-type operator with support exactly on the edges $\texttt{cycleEdges}(c)$. The collection of all flux operators $\{B_c\}_{c \in \mathcal{C}}$ forms a commuting set of $Z$-operators, with cardinality equal to the number of cycles in the generating set.
+\end{definition}
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_8: DeformedOperator}
+\label{Def_8}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 10/66
+
+\begin{definition*}[DeformedOperator]
+**Definition (Deformed Operator).** Let $C$ be an $[[n, k, d]]$ stabilizer code with $X$-type logical operator $L = \prod_{v \in L} X_v$ and gauging graph $G = (V, E)$. For a Pauli operator $P = i^{\sigma} \prod_{v \in S_X} X_v \prod_{v \in S_Z} Z_v$ that commutes with $L$ (i.e., $|S_Z \cap L| \equiv 0 \pmod{2}$), the **deformed operator** is defined as $\tilde{P} = P \cdot \prod_{e \in \gamma} Z_e$, where $\gamma \subseteq E$ is an edge-path satisfying the boundary condition $\partial_1(\gamma) = S_Z(P) \cap V$.
+
+**Theorem.** A Pauli operator $P$ commutes with $X$-type logical operator $L$ if and only if $|S_Z(P) \cap \text{support}(L)| \equiv 0 \pmod{2}$.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_3: NoncommutingOperatorsNoDeformation}
+\label{Rem_3}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 11/66
+
+\begin{remark*}[NoncommutingOperatorsNoDeformation]
+**Remark**: For a stabilizer code with $X$-type logical operator $L$ and gauging graph $G$, there exists no deformed version of any Pauli operator $P$ that anticommutes with $L$.
+
+**Definition**: A Pauli operator $P$ anticommutes with an $X$-type logical operator $L$ if and only if $|S_Z(P) \cap \operatorname{support}(L)| \equiv 1 \pmod{2}$.
+
+**Theorem**: For any Pauli operator $P$ and $X$-type logical $L$: $P \text{ anticommutes with } L \iff \neg(P \text{ commutes with } L)$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_9: DeformedCheck}
+\label{Def_9}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 12/66
+
+\begin{definition*}[DeformedCheck]
+For a stabilizer code with checks $\{s_j\}$, $X$-type logical operator $L$, and gauging graph $G = (V, E)$, the **deformed check** is defined as $\tilde{s}_j = s_j \cdot \prod_{e \in \gamma_j} Z_e$ where $\gamma_j \subseteq E$ satisfies $\partial_1(\gamma_j) = S_{Z,j} \cap V$. Checks are classified as **Type C** if $S_{Z,j} \cap L = \emptyset$ (then $\gamma_j = \emptyset$ and $\tilde{s}_j = s_j$) or **Type S** if $S_{Z,j} \cap L \neq \emptyset$ (then $\gamma_j \neq \emptyset$). Every stabilizer check is either Type C or Type S with respect to any logical operator $L$.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Lem_1: DeformedCodeGenerators}
+\label{Lem_1}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 13/66
+
+\begin{lemma*}[DeformedCodeGenerators]
+**Lemma 1 (Deformed Code Generators):** For a stabilizer code $C$ with X-type logical operator $L$, a deformed code configuration consists of a deformation configuration and a collection of deformed checks. The configuration defines $|V|$ Gauss law operators $A_v$, $|C|$ flux operators, and $n-k$ deformed checks, where $|V|$ is the number of vertices in the gauging graph, $|C|$ is the cycle basis size, $n$ is the number of physical qubits, and $k$ is the code dimension. Each Gauss law operator $A_v$ satisfies $A_v^2 = I$, having eigenvalues $\pm 1$.
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_4: CodespaceDimensionReduction}
+\label{Rem_4}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 14/66
+
+\begin{remark*}[CodespaceDimensionReduction]
+**Codespace Dimension Reduction for Gauged Stabilizer Codes**: For an $[[n, k, d]]$ stabilizer code $C$ with gauging procedure applied using graph $G = (V, E)$, the deformed code encodes exactly $k-1$ logical qubits. The dimension reduction occurs because while the gauging structure (adding $|E|$ qubits, $|V|-1$ independent $X$-stabilizers, and $|E|-|V|+1$ independent $Z$-stabilizers) maintains the qubit-stabilizer balance with $\Delta k = 0$, the measured logical operator $L$ is consumed in the process. The final logical qubit count is:
+$$k' = (n + |E|) - (n - k) - (|V| - 1) - (|E| - |V| + 1) = k - 1$$
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_5: FreedomInDeformedChecks}
+\label{Rem_5}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 15/66
+
+\begin{remark*}[FreedomInDeformedChecks]
+**Definition (Path Difference)**: Given two alternative edge paths $\gamma_1$ and $\gamma_2$ satisfying the same boundary condition, their path difference is $\gamma_1 \triangle \gamma_2 = (\gamma_1 \setminus \gamma_2) \cup (\gamma_2 \setminus \gamma_1)$.
+
+**Remark (Freedom in Deformed Checks)**: For deformed quantum error correction checks $\tilde{s}_j = s_j \prod_{e \in \gamma_j} Z_e$, there exists significant freedom in choosing: (i) paths $\gamma_j$ with $\partial_1(\gamma_j) = S_{Z,j} \cap V$, and (ii) cycle basis $\mathcal{C}$ for flux operators $B_p$. Different path choices yield equivalent checks related by $\tilde{s}_j' = \tilde{s}_j \cdot \prod_p B_p^{a_p}$ for $a_p \in \mathbb{Z}_2$. The optimization goal is to minimize check weight $|\tilde{s}_j| = |s_j| + |\gamma_j|$ and edge degree by choosing minimum weight paths.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_10: CycleSparsifiedGraph}
+\label{Def_10}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 16/66
+
+\begin{definition*}[CycleSparsifiedGraph]
+**Definition (Cycle-Sparsified Graph):** Let $G = (V, E)$ be a connected graph with generating set of cycles $C$ and cycle-degree bound $c > 0$. A cycle-sparsification $\bar{\bar{G}}$ of $G$ is constructed with $R+1$ layers where layer 0 copies $G$, each vertex $v$ in layer $i < R$ connects to its copy in layer $i+1$, and each generating cycle is cellulated into triangles via added edges across layers. The sparsity condition requires that each edge in $\bar{\bar{G}}$ participates in at most $c$ generating cycles.
+
+**Definition (Layered Vertex):** Given base graph $G$ with $R$ layers, the layered vertex type is $\mathrm{LayeredVertex}(G, R) := \mathrm{Fin}(R+1) \times V$ where vertices are pairs $(i, v)$ of layer index and original vertex.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_6: CycleSparsificationBounds}
+\label{Rem_6}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 17/66
+
+\begin{remark*}[CycleSparsificationBounds]
+For a constant-degree graph $G$ with $W$ vertices, cycle sparsification requires $R_G^c$ layers where $R_G^c = O(\log^2 W)$ in the worst case and $R_G^c = O(\log W)$ for random expanders. The cycle rank (minimal generating set size) is $\Theta(W)$ for constant-degree connected graphs. The total auxiliary qubit overhead is $|E_{\bar{\bar{G}}}| = O(W \cdot R_G^c) = O(W \log^2 W)$ for the gauging measurement procedure. Big-O notation is defined as $f(n) = O(g(n))$ if $\exists C, N > 0$ such that $f(n) \leq C \cdot g(n)$ for all $n \geq N$, with analogous definitions for $\Omega$ and $\Theta = O \cap \Omega$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_7: SparsifiedDeformedChecks}
+\label{Rem_7}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 18/66
+
+\begin{remark*}[SparsifiedDeformedChecks]
+**Definition (Sparsified Flux Cycle Types)**: In a cycle-sparsified graph, flux operators use two types of cycles: square cycles of weight 4 (connecting edges across adjacent layers) and triangle cycles of weight 3 (from cycle cellulation).
+
+**Theorem (LDPC Preservation)**: A deformed quantum error-correcting code remains LDPC when the original code is LDPC, the gauging graph has constant degree, and deformation path lengths are bounded by a constant.
+
+**Theorem (Cycle Weight Bound)**: For all sparsified flux cycle types $t$, $\text{weight}(t) \leq 4$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_8: DesiderataForGaugingGraph}
+\label{Rem_8}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 19/66
+
+\begin{remark*}[DesiderataForGaugingGraph]
+**Definition (Desiderata for Gauging Graph)**: A constant-degree gauging graph $G = (V, E)$ for measuring logical operator $L$ must satisfy: (i) short deforming paths with constant-length edge-paths between vertices in $Z$-type support of checks, (ii) sufficient expansion with Cheeger constant $h(G) \geq 1$, and (iii) low-weight cycle basis with cycles bounded by constant weight. When satisfied, the deformed code preserves LDPC property and distance $d_{\text{deformed}} \geq d_{\text{original}}$ with qubit overhead $O(|V| \cdot R_G^c)$.
+
+**Definition (Graph Path)**: A path in graph $G$ is a structure $(\texttt{start}, \texttt{endpoint}, \texttt{edges})$ where $\texttt{start}, \texttt{endpoint} \in V$ and $\texttt{edges}$ is a list of valid graph edges. The length is $\text{length}(p) := |\texttt{edges}(p)|$, and the trivial path at vertex $v$ has $\texttt{start} = \texttt{endpoint} = v$ with empty edge list and length $0$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_9: WorstCaseGraphConstruction}
+\label{Rem_9}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 20/66
+
+\begin{remark*}[WorstCaseGraphConstruction]
+**Theorem (Worst-Case Graph Construction).** Given an X-type logical operator $L$ with weight $W = |\mathcal{L}|$, there exists a three-step construction that produces a gauging graph $G$ satisfying all required properties using $O(W \log^2 W)$ auxiliary qubits. The construction involves: (1) adding matching edges for $\mathbb{Z}_2$-perfect matchings within each check's Z-support intersecting $\mathcal{L}$, (2) adding expansion edges to achieve Cheeger constant $h(G) \geq 1$, and (3) applying Freedman-Hastings cycle sparsification with $O(\log^2 W)$ dummy vertex layers. The resulting graph $\bar{\bar{G}}$ has $|V| = O(W \log^2 W)$ vertices, $|E| = O(W \log^2 W)$ edges, maintained expansion $h(\bar{\bar{G}}) \geq 1$, and constant-weight cycles after cellulation.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Thm_1: GaugingMeasurement}
+\label{Thm_1}
+
+\noindent\textbf{Type:} Theorem \hfill \textbf{Order:} 21/66
+
+\begin{theorem*}[GaugingMeasurement]
+Looking at this LaTeX content, I can see it contains foundational definitions for a gauging measurement procedure in quantum error correction. Let me summarize the essential mathematical content:
+
+**Definition (Gauging Measurement Framework).** For a stabilizer code $C$ with $X$-type logical operator $L$, a measurement configuration consists of a flux configuration with gauging graph and a root vertex $v_0$. The measurement procedure involves Gauss law outcomes $\varepsilon_v \in \{0,1\}$ at each vertex $v$ and edge flux outcomes $\omega_e \in \{0,1\}$ at each edge $e$, where $0$ represents $+1$ and $1$ represents $-1$. The algebraic structure is built on 0-chains (vertex chains) and 1-chains (edge chains) as functions from vertices/edges to $\mathbb{Z}/2\mathbb{Z}$, with a coboundary map $\delta_0$ connecting the chain spaces.
+\end{theorem*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Lem_2: SpaceDistanceBound}
+\label{Lem_2}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 22/66
+
+\begin{lemma*}[SpaceDistanceBound]
+**Definition (Deformed Operator Weight):** For a deformed quantum error-correcting code operator $\tilde{P}$, the weight is $|\tilde{P}| := |P_{\text{orig}}| + |E_{\text{path}}| = |\tilde{P}|_V + |\tilde{P}|_E$, where $|\tilde{P}|_V = |P_{\text{orig}}|$ is the weight on original qubits and $|\tilde{P}|_E = |E_{\text{path}}|$ is the weight on edge qubits.
+
+**Definition (Cheeger Factor):** The Cheeger factor of a graph $G$ is $\chi(G) := \min(h(G), 1)$, where $h(G)$ is the Cheeger constant.
+
+**Main Result:** The distance bound for deformed codes is $d^* \geq \chi(G) \cdot d$, where $d$ is the distance of the original code.
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_10: OptimalCheegerConstant}
+\label{Rem_10}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 23/66
+
+\begin{remark*}[OptimalCheegerConstant]
+**Theorem (Optimal Cheeger Constant).** For a graph $G$ with Cheeger constant $h(G)$, the Cheeger factor $\min(h(G), 1)$ characterizes distance preservation in quantum error correction. If $h(G) \geq 1$, then the Cheeger factor equals $1$ and the code distance is fully preserved: $d^* \geq d$. If $h(G) < 1$, then the Cheeger factor equals $h(G)$ and the distance may be reduced by factor $h(G)$, making $h(G) = 1$ the optimal threshold for distance preservation.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_11: LogicalPreservation}
+\label{Rem_11}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 24/66
+
+\begin{remark*}[LogicalPreservation]
+**Remark (Logical Preservation):** The gauging procedure establishes a bijection between logical operators of the deformed code and logical operators of the original code that commute with the measured logical $L$. The forward mapping sends a commuting logical $\tilde{P}$ to its deformation $\tilde{P} \cdot \prod_{e \in \gamma} Z_e$, while the backward mapping restricts a deformed logical $L'$ to $\bar{L}|_V$. This bijection preserves commutation relations among logical operators, with operators equivalent to $L$ mapping to stabilizers in the deformed code.
+
+**Definition (Commuting Logical):** A commuting logical operator of stabilizer code $C$ with respect to measured logical $L$ is a logical operator $P$ of $C$ such that the Z-support of $P$ has even overlap with the support of $L$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_12: CircuitImplementation}
+\label{Rem_12}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 25/66
+
+\begin{remark*}[CircuitImplementation]
+**Remark (Circuit Implementation of Gauging Measurement):** The gauging measurement procedure can be implemented by a 6-step quantum circuit: initialize edge qubits $|0\rangle_E$, apply entangling circuit $\prod_v \prod_{e \ni v} \mathrm{CX}_{v \to e}$, measure $X_v$ on all vertices, reapply the entangling circuit, measure $Z_e$ on all edges, and apply byproduct corrections.
+
+**Definition (CX Gate):** A CX gate consists of a control vertex $v \in G.\text{Vertex}$, a target edge $e \in \text{Sym}_2(G.\text{Vertex})$, and a proof that $v \in e$.
+
+**Theorem:** Two CX gates $g_1$ and $g_2$ are equal if and only if $g_1.\text{controlVertex} = g_2.\text{controlVertex}$ and $g_1.\text{targetEdge} = g_2.\text{targetEdge}$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_13: Parallelization}
+\label{Rem_13}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 26/66
+
+\begin{remark*}[Parallelization]
+**Remark (Parallelization):** Logical operators $L_1, \ldots, L_m$ can be measured in parallel if for all $i \neq j$ and qubits $v$, either $v \notin \mathrm{supp}(L_i)$, or $v \notin \mathrm{supp}(L_j)$, or $L_i$ and $L_j$ act on $v$ by the same Pauli operator. This enables a time-space tradeoff: $d/m$ syndrome rounds plus $2m-1$ parallel logical measurements with majority voting.
+
+**Definition (Pauli Types):** The Pauli types are $X$, $Y$, $Z$ with combination $\mathrm{combine}(p_1, p_2)$ defined by multiplication: same types combine to themselves, $X \cdot Z = Y$, $X \cdot Y = Z$, $Y \cdot Z = X$.
+
+**Theorem:** $\mathrm{combine}(p, p) = p$ for any Pauli type $p$, and $\mathrm{combine}(p_1, p_2) = \mathrm{combine}(p_2, p_1)$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_14: HypergraphGeneralization}
+\label{Rem_14}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 27/66
+
+\begin{remark*}[HypergraphGeneralization]
+**Hypergraph Generalization**: The gauging measurement procedure generalizes from graphs to hypergraphs $H = (V, E)$ where hyperedges are arbitrary non-empty subsets of vertices. For each vertex $v$, the generalized Gauss's law defines $A_v = X_v \prod_{e \in E : v \in e} X_e$. The hypergraph gauging measures the group $\{P \in \langle X_v : v \in V\rangle : [P, B_e] = 0 \text{ for all } e \in E\}$ where $B_e = \prod_{v \in e} Z_v$, which corresponds to $\ker(H^T)$ for the hypergraph incidence matrix $H$ over $\mathbb{F}_2$. This allows simultaneous measurement of multiple commuting logical operators by choosing a hypergraph whose kernel equals the group generated by those logicals.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_11: SpaceTimeFault}
+\label{Def_11}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 28/66
+
+\begin{definition*}[SpaceTimeFault]
+**Definition (Fault Classification in Quantum Error Correction).** A quantum computation system admits three fundamental fault types: (1) *space-faults* - Pauli errors on qubits, (2) *time-faults* - flipped measurement outcomes, and (3) *initialization faults* - qubits starting in wrong states (equivalent to space-faults at $t=0$). Time steps are indexed by $t \in \mathbb{N}$, qubits by $q \in \{0,1,\ldots,n-1\}$, and measurements by $i \in \{0,1,\ldots,m-1\}$. Space-faults and initialization faults are equivalent for counting purposes, while time-faults form a distinct category.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_12: Detector}
+\label{Def_12}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 29/66
+
+\begin{definition*}[Detector]
+**Definition 12 (Detector):** A detector $D$ is a collection of qubit initializations and measurements with a parity constraint requiring the product of measurement outcomes to equal a fixed value. A spacetime fault $F$ violates detector $D$ if it causes the parity constraint to fail. The syndrome of fault $F$ is $\mathrm{syn}(F) = \{D : F \text{ violates } D\}$.
+
+**Initialization states** are qubits prepared in known states: computational basis $\{|0\rangle, |1\rangle\}$ or Hadamard basis $\{|+\rangle, |-\rangle\}$, with $|\mathtt{InitState}| = 4$.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Lem_3: SpacetimeCodeDetectors}
+\label{Lem_3}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 30/66
+
+\begin{lemma*}[SpacetimeCodeDetectors]
+**Definition (Time Region):** A time region consists of start time $t_i$, end time $t_o$, and validity condition $t_i < t_o$.
+
+**Definition (Time Region Predicates):** For time region $R$ with boundaries $t_i, t_o$ and time $t$: $\texttt{isBefore}(t) \iff t < t_i$, $\texttt{isDuring}(t) \iff t_i < t < t_o$, $\texttt{isAfter}(t) \iff t > t_o$, $\texttt{isStart}(t) \iff t = t_i$, $\texttt{isEnd}(t) \iff t = t_o$.
+
+**Theorem (Region Classification):** For any time region $R$ and time $t$, exactly one predicate holds: $\texttt{isBefore}(t) \lor \texttt{isStart}(t) \lor \texttt{isDuring}(t) \lor \texttt{isEnd}(t) \lor \texttt{isAfter}(t)$.
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_15: SpacetimeSyndromes}
+\label{Rem_15}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 31/66
+
+\begin{remark*}[SpacetimeSyndromes]
+I'll read the LaTeX mathematical content and provide a concise formal statement.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_16: SyndromeMobility}
+\label{Rem_16}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 32/66
+
+\begin{remark*}[SyndromeMobility]
+**Definition (Syndrome Actions).** In quantum error correction, syndromes can undergo three fundamental actions: $\texttt{create}$ (syndrome introduction), $\texttt{move}$ (syndrome relocation), and $\texttt{destroy}$ (syndrome annihilation).
+
+**Definition (Syndrome Action Inverse).** The inverse operation satisfies $\texttt{create}^{-1} = \texttt{destroy}$, $\texttt{destroy}^{-1} = \texttt{create}$, and $\texttt{move}^{-1} = \texttt{move}$.
+
+**Theorem.** The inverse operation is an involution: $(a^{-1})^{-1} = a$ for any syndrome action $a$.
+
+**Remark (Syndrome Mobility).** Syndromes are locally conserved in the spacetime picture except at fault locations and boundaries, where they can be created/destroyed by Pauli errors, measurement errors, or boundary condensation effects.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_13: SpacetimeLogicalFault}
+\label{Def_13}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 33/66
+
+\begin{definition*}[SpacetimeLogicalFault]
+**Definition 13 (Spacetime Logical Fault).** A spacetime logical fault is a collection of space and time faults $F$ such that (i) $\mathrm{syn}(F) = \emptyset$ (does not violate any detector) and (ii) $F$ is not a spacetime stabilizer.
+
+**Definition (Undetectable Fault).** A spacetime fault $F$ is undetectable with respect to detectors $D$ if $\mathrm{syndromeFinset}(F, D) = \emptyset$.
+
+**Theorem.** $\mathrm{isUndetectable}(F, D) \iff \mathrm{syndromeWeight}(F, D) = 0 \iff \forall d \in D,\, \neg\mathrm{violates}(F, d)$.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_14: SpacetimeStabilizer}
+\label{Def_14}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 34/66
+
+\begin{definition*}[SpacetimeStabilizer]
+\begin{definition}[Time Faults Cancel]
+A collection of time faults \emph{cancels} if for each measurement index $\mathrm{idx} \in \mathrm{Fin}(m)$, the number of time faults at that index is even:
+\[
+\forall \, \mathrm{idx} : \mathrm{Fin}(m), \quad \text{Even}\big(|\{f \in \text{timeFaults} : f.\text{measurementIndex} = \mathrm{idx}\}|\big).
+\]
+\end{definition}
+
+\begin{definition}[Space Faults to Check]
+Convert a set of space faults to a \texttt{StabilizerCheck} by accumulating their Pauli operators, where $\mathrm{supportX}$ contains qubits with an odd count of $X$ or $Y$ errors and $\mathrm{supportZ}$ contains qubits with an odd count of $Z$ or $Y$ errors.
+\end{definition}
+
+\begin{definition}[Space Faults Are Stabilizer]
+Space faults form a \emph{stabilizer element} if their net effect (computed via \texttt{spaceFaultsToCheck}) is an element of the stabilizer group.
+\end{definition}
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Lem_4: SpacetimeStabilizerGenerators}
+\label{Lem_4}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 35/66
+
+\begin{lemma*}[SpacetimeStabilizerGenerators]
+**Definition (Check Anticommutation).** For a stabilizer check $\mathsf{check}$ and Pauli error $p$ on qubit $q$:
+- $\mathrm{checkAnticommutesWithX}(\mathsf{check}, q) \iff q \in \mathsf{check}.\mathsf{supportZ}$
+- $\mathrm{checkAnticommutesWithZ}(\mathsf{check}, q) \iff q \in \mathsf{check}.\mathsf{supportX}$  
+- $\mathrm{checkAnticommutesWithY}(\mathsf{check}, q) \iff (q \in \mathsf{check}.\mathsf{supportX}) \neq (q \in \mathsf{check}.\mathsf{supportZ})$
+
+**Definition (Pauli-Check Anticommutation).** A Pauli error $p$ on qubit $q$ anticommutes with check $\mathsf{check}$ according to:
+$$\mathrm{pauliAnticommutesWithCheck}(p, q, \mathsf{check}) = \begin{cases}
+\mathrm{checkAnticommutesWithX}(\mathsf{check}, q) & \text{if } p = X \\
+\mathrm{checkAnticommutesWithZ}(\mathsf{check}, q) & \text{if } p = Z \\
+\mathrm{checkAnticommutesWithY}(\mathsf{check}, q) & \text{if } p = Y
+\end{cases}$$
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_15: SpacetimeFaultDistance}
+\label{Def_15}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 36/66
+
+\begin{definition*}[SpacetimeFaultDistance]
+**Definition (Spacetime Fault Distance):** The spacetime fault distance is $d_{\text{ST}} = \min\{|F| : F \text{ is a spacetime logical fault}\}$, where $|F|$ counts single-qubit Pauli errors plus single measurement errors. Equivalently, $d_{\text{ST}}$ is the minimum weight of an undetectable fault pattern that is not equivalent to a spacetime stabilizer.
+
+**Theorem:** The set of weights of spacetime logical faults equals the set of weights of undetectable faults that are not stabilizers: $\text{logicalFaultWeights}(C, \text{detectors}) = \text{undetectableNonStabilizerWeights}(C, \text{detectors})$.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Lem_5: TimeFaultDistance}
+\label{Lem_5}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 37/66
+
+\begin{lemma*}[TimeFaultDistance]
+**Definition.** A spacetime fault $F$ is a *pure time fault* if $F.\mathrm{spaceFaults} = \emptyset$.
+
+**Theorem.** For a pure time fault $F$, the weight satisfies $F.\mathrm{weight} = |F.\mathrm{timeFaults}|$.
+
+**Lemma 5 (Time Fault Distance).** Any spacetime logical fault consisting only of measurement/initialization errors has weight $\geq t_o - t_i$, where $t_o - t_i$ is the number of rounds in the code deformation interval.
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Lem_6: SpaceTimeFaultDecoupling}
+\label{Lem_6}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 38/66
+
+\begin{lemma*}[SpaceTimeFaultDecoupling]
+**Lemma 6 (Spacetime Fault Decoupling):** Any spacetime logical fault can be decomposed into the product of a space logical fault and a time logical fault, up to multiplication with spacetime stabilizers.
+
+**Definition:** A space-only fault is a spacetime fault where all space errors occur at a single time slice $t$ with no time faults, i.e., $F.\mathrm{timeFaults} = \emptyset$.
+
+**Theorem:** For a space-only fault $F$, the weight satisfies $\mathrm{weight}(F) = |F.\mathrm{fault}.\mathrm{spaceFaults}|$.
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Thm_2: FaultTolerance}
+\label{Thm_2}
+
+\noindent\textbf{Type:} Theorem \hfill \textbf{Order:} 39/66
+
+\begin{theorem*}[FaultTolerance]
+**Definition (Fault Tolerance Parameters):** A fault tolerance parameter structure consists of $n$ physical qubits, $k$ encoded qubits, code distance $d$, $m$ measurement types, a stabilizer code $C$ on $n$ qubits encoding $k$ logical qubits, detectors for syndrome extraction, and a code deformation interval $[t_i, t_o]$ where the number of syndrome measurement rounds is $\text{numRounds} := t_o - t_i$.
+
+**Theorem (Fault Tolerance):** If the gauging graph satisfies $h(G) \geq 1$ and $t_o - t_i \geq d$, then any undetectable fault pattern has weight at least $d$.
+
+**Lemma (Time Distance Bound):** Pure time spacetime faults that do not violate comparison detectors have weight $\geq \text{numRounds}$.
+\end{theorem*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_17: HighWeightFluxChecks}
+\label{Rem_17}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 40/66
+
+\begin{remark*}[HighWeightFluxChecks]
+**Remark** (High Weight Flux Checks): The fault-distance bound (Theorem 2) holds even when flux checks $B_p$ have high weight, are measured infrequently, or are only inferred via initialization and final read-out, provided that $A_v$ syndromes are local and frequently measured, deformed checks $\tilde{s}_j$ are frequently measured, and $B_p$ information remains inferable.
+
+**Definition** (Check Measurement Type): Quantum error correction checks are classified into three types: $A_v$ (Gauss law checks requiring local, frequent measurement), $\tilde{s}_j$ (deformed checks requiring frequent measurement), and $B_p$ (flux checks requiring only inferability, not direct measurement).
+
+**Lemma**: $|\texttt{CheckMeasurementType}| = 3$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_18: BoundaryConditions}
+\label{Rem_18}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 41/66
+
+\begin{remark*}[BoundaryConditions]
+\begin{definition}[Boundary Configuration]
+A boundary configuration for code deformation consists of a gauging interval $[t_i, t_o]$ with $d$ buffer rounds of error correction before and after, where $d$ is the code distance. The total duration is $\texttt{totalDuration} = 2d + (t_o - t_i)$, with pre-gauging starting at $t_i - d$ and post-gauging ending at $t_o + d$. This ensures any fault pattern involving both the gauging measurement and initial/final boundaries has total weight $> d$.
+\end{definition}
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_16: BivariateBicycleCode}
+\label{Def_16}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 42/66
+
+\begin{definition*}[BivariateBicycleCode]
+**Definition**: A **Bivariate Bicycle (BB) code** is a CSS code on $n = 2\ell m$ qubits with parity check matrices $H_X = [A \mid B]$ and $H_Z = [B^T \mid A^T]$, where $A, B \in \mathbb{F}_2[x, y]$ are polynomials with $x = C_\ell \otimes I_m$ and $y = I_\ell \otimes C_m$ for cyclic permutation matrices $C_r$. The code divides qubits into $\ell m$ left (L) and $\ell m$ right (R) qubits, with $X$ checks $(\alpha, X)$ acting on qubits $(\alpha A, L)$ and $(\alpha B, R)$, and $Z$ checks $(\beta, Z)$ acting on qubits $(\beta B^T, L)$ and $(\beta A^T, R)$.
+
+**Theorem**: The cyclic permutation matrix $C_r$ with entries $(C_r)_{ij} = 1$ iff $j \equiv i + 1 \pmod{r}$ is a permutation matrix, meaning for each row $i$, there exists a unique column $j$ with $(C_r)_{ij} = 1$.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_17: GrossCode}
+\label{Def_17}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 43/66
+
+\begin{definition*}[GrossCode]
+**Definition (Gross Code).** The Gross code is a $[[144, 12, 12]]$ Bivariate Bicycle quantum error-correcting code with parameters $\ell = 12$ and $m = 6$, giving $2 \cdot \ell \cdot m = 144$ physical qubits. It is defined by the polynomials $A = x^3 + y^2 + y$ and $B = y^3 + x^2 + x$. The name "gross" refers to $12 \times 12 = 144$, where 12 dozen equals one gross.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_18: DoubleGrossCode}
+\label{Def_18}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 44/66
+
+\begin{definition*}[DoubleGrossCode]
+**Definition (Double Gross Code).** The Double Gross code is a quantum error-correcting code with parameters $\ell = 12$ and $m = 12$, giving $n = 2\ell m = 288$ physical qubits. The code is defined by polynomials $A = x^3 + y^7 + y^2$ and $B = y^3 + x^2 + x$, each having $|A| = |B| = 3$ terms. The name derives from $288 = 2 \times 144 = 2 \times \text{gross}$.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Prop_1: GrossCodeGaugingConstruction}
+\label{Prop_1}
+
+\noindent\textbf{Type:} Proposition \hfill \textbf{Order:} 45/66
+
+\begin{proposition*}[GrossCodeGaugingConstruction]
+**Definition (Gross Code Gauging Construction).** The Gross code gauging graph has vertex type $\text{Fin}\, 12$, where each vertex corresponds to a monomial in the logical operator support $f = 1 + x + x^2 + x^3 + x^6 + x^7 + x^8 + x^9 + (x + x^5 + x^7 + x^{11})y^3$. The mapping $\text{grossVertexToMonomial}: \text{Fin}\, 12 \to \mathbb{N}^2$ is defined by $0 \mapsto (0,0), 1 \mapsto (1,0), \ldots, 11 \mapsto (11,3)$ and establishes an injective correspondence between vertices and the monomial exponents in the logical polynomial support.
+
+**Theorem.** The vertex mapping satisfies $\text{grossVertexToMonomial}(v) \in \text{logicalXPolyF.support}$ for all $v \in \text{Fin}\, 12$.
+\end{proposition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Prop_2: DoubleGrossCodeGaugingConstruction}
+\label{Prop_2}
+
+\noindent\textbf{Type:} Proposition \hfill \textbf{Order:} 46/66
+
+\begin{proposition*}[DoubleGrossCodeGaugingConstruction]
+**Proposition 2 (Double Gross Code Gauging Construction).** For the Double Gross code $[[288, 12, 18]]$, there exists a gauging graph $G$ with vertex set $\text{Fin}\,18$ to measure the logical operator $\bar{X}_\alpha$. The gauging construction employs an injective mapping $\varphi : \text{Fin}\,18 \to \text{Fin}\,\ell \times \text{Fin}\,m$ from vertices to monomial exponents $(a,b)$ in the logical operator support polynomial $f$. Each vertex corresponds to a specific monomial in $f$, with $\varphi(v) \in \text{support}(f)$ for all $v \in \text{Fin}\,18$.
+\end{proposition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_19: RelationToLatticeSurgery}
+\label{Rem_19}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 47/66
+
+\begin{remark*}[RelationToLatticeSurgery]
+**Definition**: A \emph{ladder vertex} for an $n$-rung ladder graph is an element of the inductive type $\texttt{LadderVertex}(n) ::= \texttt{rail1}(i : \text{Fin } n) \mid \texttt{rail2}(i : \text{Fin } n)$, where rail 1 and rail 2 correspond to edges of adjacent surface code patches.
+
+**Theorem**: The gauging measurement generalizes surface code lattice surgery by using a ladder gauging graph $G$ to connect logical operators $\bar{X}_1 \otimes \bar{X}_2$ on adjacent patches, resulting in a deformed code that is a single larger surface code where the final measurement step is standard lattice surgery.
+
+**Extension**: For non-adjacent patches, dummy vertices are added between them, and the procedure extends to any pair of matching logical $X$ operators on code blocks with the same gauging graph $G$ satisfying appropriate expansion properties.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_20: RelationToShorMeasurement}
+\label{Rem_20}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 48/66
+
+\begin{remark*}[RelationToShorMeasurement]
+**Definition (Shor Vertex Types):** For a logical operator with support size $n$, the Shor measurement graph uses vertices $\texttt{ShorVertex}(n) ::= \mathrm{code} : \mathrm{Fin}(n) \to \texttt{ShorVertex}(n) \mid \mathrm{dummy} : \mathrm{Fin}(n) \to \texttt{ShorVertex}(n)$, where $\mathrm{code}(i)$ represents the $i$-th code qubit in $\mathrm{supp}(L)$ and $\mathrm{dummy}(i)$ represents the corresponding auxiliary dummy qubit.
+
+**Theorem (Gauging-Shor Equivalence):** Gauging measurement with a graph containing dummy vertices connected to code qubits via "rung edges" and interconnected by "dummy-connection edges" is equivalent to Shor-style logical measurement, where measuring the dummy-connection edges first projects dummies into a GHZ state, then measuring rung edges recovers the result of transversal CX gates followed by $X$ measurements with gates commuted backward.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_21: RelationToCohenEtAl}
+\label{Rem_21}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 49/66
+
+\begin{remark*}[RelationToCohenEtAl]
+**Definition (Cohen Construction):** A Cohen construction is a quantum error correction structure characterized by parameters $(\text{supportSize}, \text{numLayers}, \text{numChecks}) \in \mathbb{N}^3$ where $\text{supportSize} = |L|$ is the logical operator support size, $\text{numLayers} = d$ provides distance-$d$ fault tolerance, and $\text{numChecks}$ counts the restricted $Z$-checks.
+
+**Theorem (Equivalence to Generalized Gauging):** The Cohen et al. construction is equivalent to applying generalized hypergraph gauging measurement to the hypergraph defined by restricted $Z$-checks with specified layering structure.
+
+**Corollary (Structural Parameters):** The Cohen construction has total vertices $|L| \times (d+1)$ and edges consisting of $|L| \times d$ line graph edges plus $(d+1) \times |\text{checks}|$ hypergraph copy edges.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_22: CSSCodeInitialization}
+\label{Rem_22}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 50/66
+
+\begin{remark*}[CSSCodeInitialization]
+**Definition (CSS Code):** A CSS (Calderbank-Shor-Steane) code consists of $n$ physical qubits with X-type and Z-type stabilizer generators specified by support functions $\mathtt{xCheckSupport}$ and $\mathtt{zCheckSupport}$, subject to the CSS orthogonality condition: every X-check commutes with every Z-check, i.e., $|\mathtt{xCheckSupport}(i) \cap \mathtt{zCheckSupport}(j)| \equiv 0 \pmod{2}$ for all $i,j$.
+
+**Definition (Number of Logical Qubits):** For a CSS code $C$, the number of logical qubits is $\mathtt{numLogicalQubits}(C) := \mathtt{numQubits} - \mathtt{numXChecks} - \mathtt{numZChecks}$.
+
+**Remark (CSS Code Initialization):** CSS code initialization can be implemented via generalized hypergraph gauging measurement, where the CSS orthogonality condition ensures that X-type checks lie in the kernel of the Z-check hypergraph transpose matrix, enabling "measuring X-checks via Z-hypergraph gauging."
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Cor_1: QubitOverheadBound}
+\label{Cor_1}
+
+\noindent\textbf{Type:} Corollary \hfill \textbf{Order:} 51/66
+
+\begin{corollary*}[QubitOverheadBound]
+**Corollary 1 (Qubit Overhead Bound):** For an arbitrary Pauli operator $L$ of weight $W$, the worst-case qubit overhead of the gauging measurement procedure is $O(W \log^2 W)$.
+
+**Definition:** The auxiliary qubit count in a cycle-sparsified graph with $W$ vertices and $R$ layers is $\mathrm{auxiliaryQubitCount}(W, R) := W \cdot (R + 1)$.
+
+**Theorem:** For $R = O(\log^2 W)$, this yields $O(W \log^2 W)$ total auxiliary qubits, and $\mathrm{auxiliaryQubitCount}(W, R)$ is monotonically increasing in both $W$ and $R$.
+\end{corollary*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_23: NonabelianGeneralization}
+\label{Rem_23}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 52/66
+
+\begin{remark*}[NonabelianGeneralization]
+You've hit your limit · resets 7pm (America/New_York)
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Lem_7: GaussLawConstraint}
+\label{Lem_7}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 53/66
+
+\begin{lemma*}[GaussLawConstraint]
+You've hit your limit · resets 7pm (America/New_York)
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_19: CSSCode}
+\label{Def_19}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 54/66
+
+\begin{definition*}[CSSCode]
+You've hit your limit · resets 7pm (America/New_York)
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Lem_8: CommutationConditionPauli}
+\label{Lem_8}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 55/66
+
+\begin{lemma*}[CommutationConditionPauli]
+You've hit your limit · resets 7pm (America/New_York)
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Prop_3: FluxOperatorCommutation}
+\label{Prop_3}
+
+\noindent\textbf{Type:} Proposition \hfill \textbf{Order:} 56/66
+
+\begin{proposition*}[FluxOperatorCommutation]
+You've hit your limit · resets 7pm (America/New_York)
+\end{proposition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_20: SubsystemCode}
+\label{Def_20}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 57/66
+
+\begin{definition*}[SubsystemCode]
+You've hit your limit · resets 7pm (America/New_York)
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_24: AlgorithmCorrectness}
+\label{Rem_24}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 58/66
+
+\begin{remark*}[AlgorithmCorrectness]
+You've hit your limit · resets 7pm (America/New_York)
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Lem_9: CycleRankFormula}
+\label{Lem_9}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 59/66
+
+\begin{lemma*}[CycleRankFormula]
+You've hit your limit · resets 7pm (America/New_York)
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Def_21: TannerGraph}
+\label{Def_21}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 60/66
+
+\begin{definition*}[TannerGraph]
+You've hit your limit · resets 7pm (America/New_York)
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_25: MatchingMatrixM}
+\label{Rem_25}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 61/66
+
+\begin{remark*}[MatchingMatrixM]
+You've hit your limit · resets 7pm (America/New_York)
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Lem_10: RedundantCyclesInBBCode}
+\label{Lem_10}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 62/66
+
+\begin{lemma*}[RedundantCyclesInBBCode]
+You've hit your limit · resets 7pm (America/New_York)
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Cor_2: GrossCodeRedundantCycles}
+\label{Cor_2}
+
+\noindent\textbf{Type:} Corollary \hfill \textbf{Order:} 63/66
+
+\begin{corollary*}[GrossCodeRedundantCycles]
+You've hit your limit · resets 7pm (America/New_York)
+\end{corollary*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_26: DecoderRequirements}
+\label{Rem_26}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 64/66
+
+\begin{remark*}[DecoderRequirements]
+You've hit your limit · resets 7pm (America/New_York)
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\subsection{Rem_27: ComparisonToPriorWork}
+\label{Rem_27}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 65/66
+
+\begin{remark*}[ComparisonToPriorWork]
+You've hit your limit · resets 7pm (America/New_York)
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Def_19: CSSCode}
+\label{Def_19}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 1/13
+
+\begin{definition*}[CSSCode]
+**Definition (Binary Vector):** A binary vector of length $n$ is a function $v : \{0, 1, \ldots, n-1\} \to \mathbb{Z}/2\mathbb{Z}$.
+
+**Definition (Hamming Weight):** The Hamming weight of a binary vector $v \in (\mathbb{Z}/2\mathbb{Z})^n$ is $\operatorname{wt}(v) = |\{i : v_i \neq 0\}|$.
+
+**Definition (Classical Linear Code):** A classical linear code over $\mathbb{F}_2$ with parity check matrix $H \in \mathbb{F}_2^{r \times n}$ is $C = \{v \in \mathbb{F}_2^n : Hv = 0\}$.
+
+**Definition (Syndrome):** The syndrome of a vector $v \in \mathbb{F}_2^n$ under parity check matrix $H$ is $Hv \in \mathbb{F}_2^r$.
+
+**Theorem:** The zero vector is always a codeword and has zero syndrome.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Lem_8: CommutationConditionPauli}
+\label{Lem_8}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 2/13
+
+\begin{lemma*}[CommutationConditionPauli]
+**Definition (Symplectic Inner Product):** For Pauli operators $P = \prod_v X_v^{a_v} Z_v^{b_v}$ and $Q = \prod_v X_v^{c_v} Z_v^{d_v}$ on $n$ qubits, the symplectic inner product is $\omega(P, Q) = \sum_{v=1}^{n} (a_v \cdot d_v + b_v \cdot c_v) \mod 2$, which measures their non-commutativity. **Theorem:** Two single-qubit Pauli operators $P$ and $Q$ anticommute if and only if they form one of the pairs $(X,Z)$, $(Z,X)$, $(X,Y)$, $(Y,X)$, $(Z,Y)$, or $(Y,Z)$.
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Prop_3: FluxOperatorCommutation}
+\label{Prop_3}
+
+\noindent\textbf{Type:} Proposition \hfill \textbf{Order:} 3/13
+
+\begin{proposition*}[FluxOperatorCommutation]
+**Definition (Cycle Circuit):** A cycle circuit in a graph $G$ with vertex set $V$ consists of a base vertex $\mathtt{base} \in V$ and a walk from $\mathtt{base}$ to $\mathtt{base}$ that is a circuit (closed trail).
+
+**Theorem (Circuit Vertex Degree Even):** For any circuit in a graph $G$ and any vertex $x \in V$, the count of edges containing $x$ in the circuit is even: $\text{Even}\left(\left|\{e \in \text{edges}(\mathtt{walk}) : x \in e\}\right|\right)$.
+
+**Definition (Flux Config Circuit):** A flux configuration with circuits for a stabilizer code $C$ and X-type logical operator $L$ consists of an underlying gauging graph, an index type $\mathtt{CycleIdx}$ for cycles in the generating set with finiteness and decidable equality instances, and a function $\mathtt{cycles} : \mathtt{CycleIdx} \to \text{CycleCircuit}(\mathtt{graph})$ assigning each cycle index to a cycle circuit.
+\end{proposition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Def_20: SubsystemCode}
+\label{Def_20}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 4/13
+
+\begin{definition*}[SubsystemCode]
+**Definition (Gauge Operator):** A gauge operator on $n$ qubits is a Pauli operator with the same binary vector encoding as stabilizer checks, formally $\mathrm{GaugeOperator}(n) := \mathrm{StabilizerCheck}(n)$. 
+
+**Properties:** Two gauge operators $g_1, g_2$ commute if $\mathrm{commutes}(g_1, g_2) \Leftrightarrow \mathrm{commutes}(g_2, g_1)$ (symmetric), every gauge operator commutes with itself $\mathrm{commutes}(g,g)$, and the identity commutes with all gauge operators $\mathrm{commutes}(\mathrm{identity}(n), g)$. The weight of a gauge operator counts its non-identity Pauli terms.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Rem_24: AlgorithmCorrectness}
+\label{Rem_24}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 5/13
+
+\begin{remark*}[AlgorithmCorrectness]
+**Algorithm 1 Correctness:** The gauging measurement procedure produces the correct post-measurement state up to a byproduct operator $X_V(c')$ where $c' \in C_0(G; \mathbb{Z}_2)$ satisfies $\delta_0(c') = z$ for measurement outcomes $z_e = \frac{1-\omega_e}{2}$.
+
+**Constructive Byproduct Determination:** Given a spanning tree $T$ rooted at $v_0$, the byproduct is computed as $c'_v = \bigoplus_{e \in \gamma_v} z_e$ where $\gamma_v$ is the unique path from $v_0$ to $v$ in $T$.
+
+**Outcome Encoding:** The outcome encoding $\texttt{outcomeEncoding}: \mathbb{Z}_2 \to \mathbb{Z}_2$ is the identity function, preserving both individual outcomes and addition: $\texttt{outcomeEncoding}(\omega_1 + \omega_2) = \texttt{outcomeEncoding}(\omega_1) + \texttt{outcomeEncoding}(\omega_2)$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Lem_9: CycleRankFormula}
+\label{Lem_9}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 6/13
+
+\begin{lemma*}[CycleRankFormula]
+**Definition (Cycle Rank):** The cycle rank $\beta_1(G)$ of a graph $G$ with $|E|$ edges, $|V|$ vertices, and $c$ connected components is defined as $\beta_1(G) = |E| - |V| + c$. For a connected graph ($c = 1$), this reduces to $\beta_1(G) = |E| - |V| + 1$. The cycle rank equals the dimension of the cycle space $\ker(\partial_1)$ and represents the minimum number of edges that must be removed to make the graph acyclic. **Theorem:** Cycle rank is additive over disjoint unions of graphs.
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Def_21: TannerGraph}
+\label{Def_21}
+
+\noindent\textbf{Type:} Definition \hfill \textbf{Order:} 7/13
+
+\begin{definition*}[TannerGraph]
+A **Tanner graph** of a stabilizer code is a bipartite graph $T = (Q \cup C, E_T)$ where $Q$ is the set of qubit nodes, $C$ is the set of check nodes (one per stabilizer generator), and edges connect qubit $q$ to check $c$ if and only if $c$ acts non-trivially on $q$. For CSS codes, the graph splits into X-type and Z-type subgraphs $T_X$ and $T_Z$. A code is LDPC if and only if its Tanner graph has bounded degree. Nodes are represented as $\text{TannerNode} ::= \text{qubit}(q) \mid \text{check}(c)$ with $\text{qubit}(q) \neq \text{check}(c)$ for any indices $q, c$.
+\end{definition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Rem_25: MatchingMatrixM}
+\label{Rem_25}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 8/13
+
+\begin{remark*}[MatchingMatrixM]
+**Definition (Matching Matrix)**: For a stabilizer code with logical operator $L$ and gauging graph $G$, the matching matrix $M$ is a binary matrix with rows indexed by Type $S$ checks $\{j : (\text{checks}(j))_Z \cap \mathrm{supp}(L) \neq \emptyset\}$ and columns indexed by edges in $G$, where $M_{j,e} = 1$ if and only if edge $e$ lies in the deforming path $\gamma_j$ for check $s_j$.
+
+**Definition (Type S Checks)**: The number of Type $S$ checks is $|\{j \in \mathrm{Fin}(n-k) : (\text{checks}(j))_Z \cap \mathrm{supp}(L) \neq \emptyset\}|$.
+
+**Optimization Goal**: Choose deforming paths $\{\gamma_j\}$ to minimize both row weights (path lengths) and column weights (edge participation) of $M$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Lem_10: RedundantCyclesInBBCode}
+\label{Lem_10}
+
+\noindent\textbf{Type:} Lemma \hfill \textbf{Order:} 9/13
+
+\begin{lemma*}[RedundantCyclesInBBCode]
+\begin{definition}[Left Logical Support]
+A \emph{left logical support} for a bivariate bicycle code with parameters $\ell, m$ is a structure with support set $S \subseteq \mathrm{Fin}(\ell) \times \mathrm{Fin}(m)$ representing a logical operator $\bar{X}_\alpha = \prod_{\beta \in S} X_{(\beta, L)}$ on left qubits.
+\end{definition}
+
+\begin{definition}[Check Overlap Classification]
+For a bivariate bicycle code $C$ and left logical support $L$, a Z-check indexed by $\beta$ \emph{overlaps} with the logical operator if it acts on any left qubit in $L$'s support. The \emph{overlapping checks} are $\mathrm{overlappingChecks}(C, L) = \{\beta : \mathrm{zCheckOverlapsLogical}(C, L, \beta)\}$.
+\end{definition}
+\end{lemma*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Cor_2: GrossCodeRedundantCycles}
+\label{Cor_2}
+
+\noindent\textbf{Type:} Corollary \hfill \textbf{Order:} 10/13
+
+\begin{corollary*}[GrossCodeRedundantCycles]
+**Definition (Gross Logical Support):** The logical support for $\bar{X}_\alpha$ in the Gross code $[[144, 12, 12]]$ is the set of 12 monomial indices corresponding to the polynomial $f = 1 + x + x^2 + x^3 + x^6 + x^7 + x^8 + x^9 + (x + x^5 + x^7 + x^{11})y^3$.
+
+**Theorem (Cycle Structure):** For the Gross code gauging graph $G$ with 12 vertices and 22 edges, the cycle rank is $\beta_1 = |E| - |V| + 1 = 11$, with 4 redundant cycles requiring 7 independent flux checks.
+
+**Theorem:** The logical operator $\bar{X}_\alpha$ has weight 12, matching the cardinality of its logical support.
+\end{corollary*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Rem_26: DecoderRequirements}
+\label{Rem_26}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 11/13
+
+\begin{remark*}[DecoderRequirements]
+**Definition (Syndrome Types)**: In fault-tolerant quantum error correction with gauging measurements, there are exactly three syndrome types: $A_v$ syndromes created by $Z$ errors on vertex and edge qubits, $B_p$ syndromes created by $X$ errors on edge qubits, and $\tilde{s}_j$ syndromes created by both $X$ and $Z$ errors on vertex and edge qubits.
+
+**Definition (Error Specification)**: An error specification consists of a qubit location (vertex or edge) and a Pauli error type ($X$ or $Z$), yielding exactly $2 \times 2 = 4$ possible error specifications.
+
+**Theorem**: $|\texttt{SyndromeType}| = 3$ and the number of error specifications is $4$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Rem_27: ComparisonToPriorWork}
+\label{Rem_27}
+
+\noindent\textbf{Type:} Remark \hfill \textbf{Order:} 12/13
+
+\begin{remark*}[ComparisonToPriorWork]
+**Definition (Cohen Overhead):** For stabilizer codes, the Cohen et al. measurement scheme requires overhead $W \times d$ where $W = |\operatorname{supp}(L)|$ is the logical weight and $d$ is the code distance.
+
+**Definition (Cross Overhead):** The Cross et al. measurement scheme achieves overhead $c \times W$ (linear in logical weight $W$) when sufficient expansion conditions hold in the logical's Tanner subgraph.
+
+**Theorem (Cohen Quadratic Scaling):** For good codes with $W = \Theta(n)$ and $d = \Theta(n)$, Cohen's method yields overhead $\Theta(n^2)$.
+
+**Result (Gauging Measurement):** This work achieves overhead $O(W \log^2 W)$ via cycle-sparsification, always applicable with flexibility in choosing the gauging graph $G$.
+\end{remark*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\subsection{Prop_4: BBCodeSymmetry}
+\label{Prop_4}
+
+\noindent\textbf{Type:} Proposition \hfill \textbf{Order:} 13/13
+
+\begin{proposition*}[BBCodeSymmetry]
+**Definition.** A BB logical support for a bivariate bicycle code consists of two BB polynomials $(p, q)$ representing left and right qubit positions respectively, where a logical operator $X(p, q)$ acts on qubits at positions given by these polynomials.
+
+**Definition.** The transpose of a BB logical support $S = (p, q)$ is $S^T = (q^T, p^T)$ where $p^T = p(x^{-1}, y^{-1})$.
+
+**Theorem.** The transpose operation is an involution: $(S^T)^T = S$ for any BB logical support $S$.
+\end{proposition*}
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\end{document}
