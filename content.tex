@@ -7,6 +7,7 @@
 
 %--- Rem_1: StabilizerCodeConvention ---
 \chapter{Rem 1: Stabilizer Code Convention}
+\label{def:QEC1.StabilizerCodeConvention}
 
 Throughout this work, we consider an $[[n,k,d]]$ quantum low-density parity-check (qLDPC) stabilizer code on $n$ physical qubits, encoding $k$ logical qubits with distance $d$. The code is specified by a set of stabilizer checks $\{s_i\}$. A logical operator $L$ is a Pauli operator that commutes with all stabilizers but is not itself a stabilizer. By choosing an appropriate single-qubit basis for each physical qubit, we ensure that the logical operator $L$ being measured is a product of Pauli-$X$ matrices:
 \[
@@ -469,6 +470,7 @@ A stabilizer code $C$ is \emph{Low-Density Parity-Check (LDPC)} if there exist c
 
 %--- Rem_2: GraphConvention ---
 \chapter{Rem 2: Graph Convention}
+\label{def:QEC1.GraphConvention}
 
 This chapter formalizes the graph convention for the gauging measurement protocol. Given a connected graph $G = (V_G, E_G)$, we identify vertices with qubits in the support of a logical operator $L$. Each edge receives an auxiliary gauge qubit initialized in $\ket{0}$, and dummy vertices (those outside $\operatorname{supp}(L)$) receive auxiliary qubits initialized in $\ket{+}$. The key property is that dummy vertices do not affect the measurement outcome, since measuring $X$ on $\ket{+}$ always returns $+1$.
 
@@ -976,6 +978,7 @@ Let $v$ be a vertex and $h_v$ a proof that $v$ is a dummy vertex. By simplificat
 
 %--- Rem_3: BinaryVectorNotation ---
 \chapter{Rem 3: Binary Vector Notation}
+\label{def:QEC1.BinaryVectorNotation}
 
 Throughout this work, we abuse notation by identifying a subset of vertices, edges, or cycles with its characteristic binary vector over $\mathbb{Z}_2 = \mathbb{F}_2$. For a set $S$ of vertices/edges/cycles, the corresponding binary vector has a $1$ in position $i$ if and only if element $i$ belongs to $S$. Addition of binary vectors corresponds to symmetric difference of sets. This identification allows us to use linear algebra over $\mathbb{Z}_2$ to reason about graph-theoretic properties.
 
@@ -1454,6 +1457,7 @@ We use the standard cardinality identity $|S \cup T| + |S \cap T| = |S| + |T|$ (
 
 %--- Rem_4: ZTypeSupportConvention ---
 \chapter{Rem 4: Z-Type Support Convention}
+\label{def:QEC1.ZTypeSupportConvention}
 
 This chapter establishes the Z-type support convention for Pauli operators. For a Pauli operator $P$, the \emph{Z-type support} $\mathcal{S}_Z$ is the set of qubits on which $P$ acts via $Y$ or $Z$, and the \emph{X-type support} $\mathcal{S}_X$ is the set of qubits on which $P$ acts via $X$ or $Y$. A Pauli operator can be decomposed as $P = i^{\sigma} \prod_{v \in \mathcal{S}_X} X_v \prod_{v \in \mathcal{S}_Z} Z_v$ for some phase $\sigma \in \{0,1,2,3\}$. The main result is that if $P$ commutes with an $X$-type logical operator $L = \prod_v X_v$, then $|\mathcal{S}_Z \cap \mathrm{supp}(L)| \equiv 0 \pmod{2}$.
 
@@ -1824,6 +1828,7 @@ By extensionality on an arbitrary qubit $i$. We unfold the definitions of $\math
 
 %--- Rem_5: CheegerConstantDefinition ---
 \chapter{Rem 5: Cheeger Constant Definition}
+\label{def:QEC1.CheegerConstantDefinition}
 
 For a graph $G = (V, E)$, the \textbf{Cheeger constant} (also called isoperimetric number or edge expansion) is defined as $h(G) = \min_{S \subseteq V,\, 0 < |S| \leq |V|/2} \frac{|\partial S|}{|S|}$, where $\partial S$ is the edge boundary of $S$, i.e., the set of edges with exactly one endpoint in $S$. A graph is called an \textbf{expander} if $h(G) \geq c$ for some constant $c > 0$. In this work, we require $h(G) \geq 1$ to ensure that the deformed code preserves the distance of the original code.
 
@@ -1992,6 +1997,7 @@ We show that $0$ is a lower bound for the infimum defining $h(G)$. We apply \tex
 
 %--- Rem_6: CircuitImplementation ---
 \chapter{Rem 6: Circuit Implementation of the Gauging Procedure}
+\label{def:QEC1.CircuitImplementation}
 
 The gauging procedure can be implemented by a quantum circuit with no additional ancilla qubits beyond the edge qubits. After initializing the edge qubits in $\ket{0}$, one performs the entangling circuit $\prod_v \prod_{e \ni v} \mathrm{CX}_{v \to e}$, where $\mathrm{CX}_{v \to e}$ is a controlled-$X$ gate with control qubit $v$ and target qubit $e$. Next, one projectively measures $X_v$ on all vertices $v \in G$ and keeps the post-measurement state. Then one repeats the same entangling circuit $\prod_v \prod_{e \ni v} \mathrm{CX}_{v \to e}$. Finally, one measures $Z_e$ on all edge qubits and discards them.
 
@@ -2558,6 +2564,7 @@ Unfolding the definition of $\mathrm{totalCXGates}$, we have $\mathrm{totalCXGat
 
 %--- Def_1: BoundaryCoboundaryMaps ---
 \chapter{Def 1: Boundary and Coboundary Maps}
+\label{def:QEC1.BoundaryCoboundaryMaps}
 
 Let $G = (V, E)$ be a graph with a chosen collection $\mathcal{C}$ of cycles. We define the boundary and coboundary maps as $\mathbb{Z}_2$-linear maps using binary vector representations.
 
@@ -3221,6 +3228,7 @@ By the cycle characterization, $\delta_2(f)(c) = \sum_{e \in \mathrm{cycles}(c)}
 
 %--- Rem_7: ExactnessOfBoundaryCoboundary ---
 \chapter{Rem 7: Exactness of Boundary and Coboundary Maps}
+\label{def:QEC1.ExactnessOfBoundaryCoboundary}
 
 This chapter establishes the exactness of boundary and coboundary maps for graphs with cycles. When a generating set of cycles for a graph $G$ is chosen, the maps $\partial_2$ (from cycles to edges) and $\partial$ (from edges to vertices) form an exact sequence: $\operatorname{im}(\partial_2) = \ker(\partial)$. Dually, the coboundary maps $\delta$ and $\delta_2$ satisfy $\ker(\delta_2) = \operatorname{im}(\delta)$. A key observation is that $\ker(\delta) = \{0, \mathbf{1}\}$ for connected graphs, since every edge has exactly two endpoints.
 
@@ -3790,6 +3798,7 @@ This follows directly from \texttt{ker\_coboundary\_iff}.
 
 %--- Rem_8: DesiderataForG ---
 \chapter{Rem 8: Desiderata for Graph $G$ in Gauging Measurement}
+\label{def:QEC1.DesiderataForG}
 
 This chapter formalizes the three desiderata for choosing the graph $G$ in the gauging measurement procedure: short paths between $Z$-type support vertices, sufficient expansion (Cheeger constant $h(G) \geq 1$), and low-weight generating cycles. When all three hold simultaneously, the gauging measurement has constant qubit overhead and maintains fault tolerance.
 
@@ -3902,6 +3911,7 @@ The result follows directly by applying the hypothesis $\mathrm{hlw}$ (which sta
 
 %--- Rem_9: WorstCaseGraphConstruction ---
 \chapter{Rem 9: Worst-Case Graph Construction}
+\label{def:QEC1.WorstCaseGraphConstruction}
 
 This chapter formalizes the worst-case graph construction described in Remark~9 of~\cite{QEC1}. A graph $G$ satisfying the desiderata from Remark~8 can be constructed with $O(W \log^2 W)$ qubit overhead, where $W = |\mathrm{supp}(L)|$ is the weight of the logical operator being measured. The construction proceeds in three steps:
 
@@ -4694,6 +4704,7 @@ This follows directly from $\mathrm{Nat.odd\_iff.mp}$ applied to the fact that t
 
 %--- Def_2: GaussLawOperators ---
 \chapter{Def 2: Gauss's Law Operators}
+\label{def:QEC1.GaussLawOperators}
 
 Given a connected graph $G = (V_G, E_G)$ whose vertices are identified with the qubits in the support of a logical operator $L = \prod_{v \in V_G} X_v$, the \textbf{Gauss's law operators} are the set $\mathcal{A} = \{A_v\}_{v \in V_G}$ where
 \[
@@ -5250,6 +5261,7 @@ Unfolding the definitions of $\mathrm{measurementProduct}$ and $\mathrm{measurem
 
 %--- Def_3: FluxOperators ---
 \chapter{Def 3: Flux Operators}
+\label{def:QEC1.FluxOperators}
 
 Given a connected graph $G = (V_G, E_G)$ with a generating set of cycles $\{p\}_C$ (where $C = |E_G| - |V_G| + 1$ is the number of independent cycles by Euler's formula for connected graphs), the \textbf{flux operators} are the set $\mathcal{B} = \{B_p\}_{p \in C}$ where:
 $$B_p = \prod_{e \in p} Z_e$$
@@ -5756,6 +5768,7 @@ By simplification using the definition of \texttt{independentCycleCount}. Rewrit
 
 %--- Def_4: DeformedOperator ---
 \chapter{Def 4: Deformed Operator}
+\label{def:QEC1.DeformedOperator}
 
 In this chapter, we define the \emph{deformed operator} $\tilde{P}$ associated to a Pauli operator $P$ that commutes with the logical operator $L = \prod_{v \in V} X_v$. The deformation is constructed by choosing an edge-path $\gamma$ whose boundary equals the $Z$-type support of $P$ restricted to graph vertices, and forming $\tilde{P} = P \cdot \prod_{e \in \gamma} Z_e$. The key result is that $\tilde{P}$ commutes with all Gauss law operators.
 
@@ -6309,6 +6322,7 @@ We claim $\gamma_{\min}$ is a minimum-weight valid path. First, $\gamma_{\min} \
 
 %--- Def_5: DeformedCheck ---
 \chapter{Def 5: Deformed Check}
+\label{def:QEC1.DeformedCheck}
 
 This chapter formalizes the \emph{deformed check} construction. Given a stabilizer check $s_j$ from the original code, the deformed check $\tilde{s}_j$ is obtained by multiplying $s_j$ with additional $Z$-operators along an edge-path $\gamma$ in the graph $G$. The original stabilizer checks are partitioned into two sets: \textbf{Set $\mathcal{C}$} (checks with $\mathcal{S}_Z \cap V_G = \emptyset$, requiring no deformation) and \textbf{Set $\mathcal{S}$} (checks with nontrivial $Z$-type support on $V_G$, genuinely deformed by the gauging procedure).
 
@@ -6979,6 +6993,7 @@ We case-split using $\mathrm{partition\_complete}$. In the left case (Set~$\math
 
 %--- Def_6: CycleSparsifiedGraph ---
 \chapter{Def 6: Cycle-Sparsified Graph}
+\label{def:QEC1.CycleSparsifiedGraph}
 
 This chapter formalizes the \emph{cycle-sparsification} construction for a graph $G$ with a chosen generating set of cycles. The construction builds $R+1$ copies (layers) of $G$, connects them by inter-layer edges, and adds triangulation edges to cellulate cycles within designated layers. The key constraint is that every edge participates in at most $c$ cycles from the generating set.
 
@@ -7640,6 +7655,7 @@ From the $\mathrm{HasDecongestionBound}$ instance, we obtain a layer bound $\mat
 
 %--- Def_7: SpaceAndTimeFaults ---
 \chapter{Def 7: Space and Time Faults}
+\label{def:QEC1.SpaceAndTimeFaults}
 
 In the context of fault-tolerant implementation of the gauging measurement procedure, we formalize the notions of space-faults (single-qubit Pauli errors), time-faults (measurement errors), initialization faults, and their collective description as spacetime faults forming a group.
 
@@ -8272,6 +8288,7 @@ This is verified to be closed under multiplication (since $I \cdot I = I$), cont
 
 %--- Def_8: Detector ---
 \chapter{Def 8: Detector}
+\label{def:QEC1.Detector}
 
 A \textbf{detector} is a collection of state initializations and measurement events that yield a deterministic result in the absence of faults. Specifically, a detector is a subset of initialization events and measurement events such that in a fault-free execution, the product of all measurement outcomes (treating $+1$ outcomes as $0$ and $-1$ outcomes as $1$ modulo $2$) combined with initialization parities equals a fixed value (conventionally $+1$, or equivalently $0 \bmod 2$). A fault that causes a detector to report $-1$ instead of $+1$ is said to \emph{violate} that detector.
 
@@ -9333,6 +9350,7 @@ Let $D \in \mathrm{syndrome}(\mathrm{DC}, \mathrm{base}, F)$. By the definition 
 
 %--- Def_10: SpacetimeLogicalFault ---
 \chapter{Def 10: Spacetime Logical Fault}
+\label{def:QEC1.SpacetimeLogicalFault}
 
 A \textbf{spacetime logical fault} is a collection of space-faults and time-faults that does not violate any detector (has empty syndrome) and causes a logical error. A \textbf{spacetime stabilizer} is a collection of space-faults and time-faults that does not violate any detector and does \emph{not} affect the logical information. Every fault with empty syndrome is either a spacetime stabilizer (trivial) or a spacetime logical fault (non-trivial). The set of spacetime stabilizers forms a group, and two faults are \textbf{equivalent} if they differ by a spacetime stabilizer.
 
@@ -9706,6 +9724,7 @@ We prove both directions. For the forward direction, assume $f$ is a logical fau
 
 %--- Def_11: SpacetimeFaultDistance ---
 \chapter{Def 11: Spacetime Fault-Distance}
+\label{def:QEC1.SpacetimeFaultDistance}
 
 The \textbf{spacetime fault-distance} of the fault-tolerant gauging measurement procedure is defined as:
 $$d_{\mathrm{spacetime}} = \min\{|F| : F \text{ is a spacetime logical fault}\}$$
@@ -10052,6 +10071,7 @@ We verify the two conditions for $\mathrm{IsGLB}$:
 
 %--- Def_12: TimeStepConvention ---
 \chapter{Def 12: Time Step Convention}
+\label{def:QEC1.TimeStepConvention}
 
 We use a half-integer time step convention for the fault-tolerant gauging measurement procedure. Integer time steps $t = 0, 1, 2, \ldots$ are associated with qubit states and Pauli space-errors, while half-integer time steps $t + \tfrac{1}{2}$ are associated with measurements and measurement errors.
 
@@ -10507,6 +10527,7 @@ The set of all half-integer times between integer times $t_1$ and $t_2$:
 
 %--- Lem_1: DeformedCode ---
 \chapter{Lem 1: Deformed Code Stabilizer Structure}
+\label{lem:QEC1.DeformedCode}
 
 The following operators form a generating set of stabilizer checks for the deformed (gauged) code:
 \begin{enumerate}
@@ -11120,6 +11141,7 @@ This follows directly from \texttt{one\_logical\_measured} applied to $k$ and th
 
 %--- Lem_2: SpaceDistance ---
 \chapter{Lem 2: Space Distance Bound for Deformed Code}
+\label{lem:QEC1.SpaceDistance}
 
 This chapter establishes that the distance $d^*$ of the deformed code satisfies
 \[
@@ -12439,6 +12461,7 @@ We verify each of the eight conditions:
 
 %--- Lem_4: SpacetimeStabilizers ---
 \chapter{Lem 4: Spacetime Stabilizers}
+\label{lem:QEC1.SpacetimeStabilizers}
 
 This chapter formalizes Lemma~4: the listed generators form a generating set of local spacetime stabilizers for the fault-tolerant gauging measurement procedure. For each generator type, we verify (a) empty syndrome (all detectors are satisfied), (b) preservation of logical information (no logical error is introduced), and (c) completeness (any local spacetime stabilizer can be decomposed into a product of these generators).
 
@@ -13073,6 +13096,7 @@ This follows from \texttt{generators\_span\_local\_stabilizers} applied to $\mat
 
 %--- Lem_5: TimeFaultDistance ---
 \chapter{Lem 5: Time Fault Distance}
+\label{lem:QEC1.TimeFaultDistance}
 
 This chapter proves that the fault-distance for pure measurement and initialization errors (time-faults) is exactly $(t_o - t_i)$, where $t_i$ is the time of the initial gauging deformation and $t_o$ is the time of the final ungauging deformation.
 
@@ -13613,6 +13637,7 @@ This follows directly from Theorem~\ref{thm:TimeFaultDistance.Av_chain_weight_ex
 
 %--- Lem_6: SpacetimeDecoupling ---
 \chapter{Lem 6: Spacetime Decoupling}
+\label{lem:QEC1.SpacetimeDecoupling}
 
 This chapter establishes the spacetime decoupling lemma: any spacetime logical fault $F$ is equivalent, up to multiplication by spacetime stabilizers, to the product of a pure space logical fault and a pure time logical fault:
 \[
@@ -13818,6 +13843,7 @@ The argument is symmetric to the previous theorem. We construct the proof that $
 
 %--- Lem_7: SpacetimeFaultDistanceLemma ---
 \chapter{Lem 7: Spacetime Fault-Distance Lemma}
+\label{lem:QEC1.SpacetimeFaultDistanceLemma}
 
 This chapter formalizes the \textbf{Spacetime Fault-Distance Lemma}: the spacetime fault-distance of the fault-tolerant gauging measurement procedure equals exactly $d$ (the distance of the original code), provided the Cheeger constant $h(G) \geq 1$ and the number of measurement rounds satisfies $(t_o - t_i) \geq d$.
 
@@ -16055,6 +16081,7 @@ We use $\mathrm{refine} \langle \mathrm{minCheegerOne\_at\_one'}, ?, ? \rangle$ 
 
 %--- Rem_11: InitialFinalBoundaryConditions ---
 \chapter{Rem 11: Initial and Final Boundary Conditions}
+\label{def:QEC1.InitialFinalBoundaryConditions}
 
 Following standard practice, we use the convention that the initial and final round of stabilizer measurements are perfect. This facilitates clean statements of results and should not be taken literally. The justification is that $d$ rounds of error correction in the original code before and after the gauging measurement ensure that any error process involving both the gauging measurement and the initial or final boundary condition must have distance greater than $d$. In practice, the gauging measurement is one component of a larger fault-tolerant quantum computation which determines the appropriate realistic boundary conditions.
 
@@ -17541,6 +17568,7 @@ We case-split on $\mathrm{dir}$ and simplify using the definition of $\mathrm{ha
 
 %--- Rem_15: HypergraphGeneralization ---
 \chapter{Rem 15: Hypergraph Generalization of Gauging Measurement}
+\label{def:QEC1.HypergraphGeneralization}
 
 The gauging measurement procedure can be generalized by replacing the graph $G$ with a \textbf{hypergraph} to measure multiple operators simultaneously. For qubits, this is equivalent to replacing the graph $G$ with a hypergraph. The generalized gauging procedure performs a code deformation by introducing a qubit for each hyperedge and measuring into new Gauss's law checks $A_v$ given by the product of $X$ on a vertex and the adjacent hyperedges.
 
@@ -20007,6 +20035,7 @@ This follows directly from $\mathrm{gaussLaw\_product\_is\_L}$ applied to the $\
 
 %--- Rem_20: CohenSchemeAsGauging ---
 \chapter{Rem 20: Cohen Scheme as Gauging}
+\label{def:QEC1.CohenSchemeAsGauging}
 
 This chapter establishes that the Cohen et al.\ scheme for logical measurement can be recovered as a hypergraph gauging measurement. The construction restricts Z-type checks to the support of an irreducible X logical $L$, forming a hypergraph whose kernel is $\{0, L\}$, then builds a layered structure with dummy vertices, chain connections, and hypergraph copies. The Cross et al.\ modification and product measurement via bridge edges are also formalized.
 
@@ -21127,6 +21156,7 @@ By extensionality, it suffices to show equality for an arbitrary vertex $v$. We 
 
 %--- Def_13: BivariateBicycleCode ---
 \chapter{Def 13: Bivariate Bicycle Code}
+\label{def:QEC1.BivariateBicycleCode}
 
 A \textbf{Bivariate Bicycle (BB) code} is a CSS code built from two polynomials over a product of cyclic groups. Let $\ell, m$ be positive integers. The code is defined using cyclic shift operators $x = C_\ell \otimes I_m$ and $y = I_\ell \otimes C_m$ acting on $\mathbb{F}_2^{\ell m}$, where $C_r$ denotes the $r \times r$ cyclic permutation matrix. Given polynomials $A, B \in \mathbb{F}_2[x, y]$, the parity check matrices are $H_X = [A \mid B]$ and $H_Z = [B^\top \mid A^\top]$, where $A^\top = A(x^{-1}, y^{-1})$.
 
@@ -21635,6 +21665,7 @@ Rewriting the transpose of a permutation matrix as the permutation matrix of the
 
 %--- Def_14: GrossCode ---
 \chapter{Def 14: Gross Code}
+\label{def:QEC1.GrossCode}
 
 The \textbf{Gross code} is a specific $[[144, 12, 12]]$ Bivariate Bicycle code, so named because a ``gross'' is a dozen dozens ($144 = 12 \times 12$).
 
