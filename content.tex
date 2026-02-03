@@ -3891,7 +3891,7 @@ The result follows directly by applying the hypothesis $\mathrm{hlw}$ (which sta
 %--- Rem_9: WorstCaseGraphConstruction ---
 \chapter{Rem 9: Worst-Case Graph Construction}
 
-This chapter formalizes the worst-case graph construction described in Remark~9 of~\cite{QEC1}. A graph $G$ satisfying the desiderata from Remark~8 can be constructed with $O(W \log^2 W)$ qubit overhead, where $W = |\mathrm{supp}(L)|$ is the weight of the logical operator being measured. The construction proceeds in three steps:
+This chapter formalizes the worst-case graph construction described in Remark~9 of~[QEC1]. A graph $G$ satisfying the desiderata from Remark~8 can be constructed with $O(W \log^2 W)$ qubit overhead, where $W = |\mathrm{supp}(L)|$ is the weight of the logical operator being measured. The construction proceeds in three steps:
 
 \begin{enumerate}
 \item \textbf{Perfect matching:} For each original code check that overlaps the target logical $L$, pick a $\mathbb{Z}_2$-perfect matching of the vertices in the $Z$-type support of that check. Add an edge to $G$ for each pair of matched vertices, ensuring short paths (length~1) between matched vertices.
@@ -6369,7 +6369,7 @@ No stabilizer check is in both Set~$\mathcal{C}$ and Set~$\mathcal{S}$:
 \begin{proof}
 \leanok
 \uses{def:GraphWithCycles.InSetC, def:GraphWithCycles.InSetS}
-Assume both $h_\mathcal{C} : s.\mathrm{zSupportOnV} = \emptyset$ and $h_\mathcal{S} : s.\mathrm{zSupportOnV} \neq \emptyset$ hold. Then $h_\mathcal{S}$ contradicts $h_\mathcal{C}$ directly.
+Assume both $h_{\mathcal{C}} : s.\mathrm{zSupportOnV} = \emptyset$ and $h_{\mathcal{S}} : s.\mathrm{zSupportOnV} \neq \emptyset$ hold. Then $h_{\mathcal{S}}$ contradicts $h_{\mathcal{C}}$ directly.
 \end{proof}
 
 \begin{lemma}[InSetS iff Exists Vertex with $Z$-Support]
@@ -6945,7 +6945,7 @@ Every stabilizer check falls into exactly one of two categories:
 \begin{proof}
 \leanok
 \uses{thm:GraphWithCycles.partition_complete, thm:GraphWithCycles.deformedCheck_eq_original_for_SetC, thm:GraphWithCycles.empty_path_invalid_for_setS}
-We case-split using $\mathrm{partition\_complete}$. In the left case (Set~$\mathcal{C}$), we combine the hypothesis $h_\mathcal{C}$ with $\mathrm{deformedCheck\_eq\_original\_for\_SetC}$ to show the deformed check equals the original. In the right case (Set~$\mathcal{S}$), we combine the hypothesis $h_\mathcal{S}$ with $\mathrm{empty\_path\_invalid\_for\_setS}$ to show the empty path is not valid.
+We case-split using $\mathrm{partition\_complete}$. In the left case (Set~$\mathcal{C}$), we combine the hypothesis $h_{\mathcal{C}}$ with $\mathrm{deformedCheck\_eq\_original\_for\_SetC}$ to show the deformed check equals the original. In the right case (Set~$\mathcal{S}$), we combine the hypothesis $h_{\mathcal{S}}$ with $\mathrm{empty\_path\_invalid\_for\_setS}$ to show the empty path is not valid.
 \end{proof}
 
 %--- Def_6: CycleSparsifiedGraph ---
@@ -10622,7 +10622,7 @@ For a valid cycle $p$ and any vertex $v$, the number of cycle edges incident to 
 \begin{proof}
 \leanok
 \uses{thm:GraphWithCycles.cycleEdgesIncidentTo_card_even}
-This follows directly from \texttt{cycleEdgesIncidentTo\_card\_even} applied to $G$, $p$, $v$, and the validity hypothesis $h_\mathrm{valid}(v)$.
+This follows directly from \texttt{cycleEdgesIncidentTo\_card\_even} applied to $G$, $p$, $v$, and the validity hypothesis $h_{\mathrm{valid}}(v)$.
 \end{proof}
 
 \begin{theorem}[Flux Commutes with Gauss Law]
@@ -11835,7 +11835,7 @@ For any finite set of edges, $\bigl(\prod_{e} Z_e\bigr)|0\rangle^{\otimes |E|} =
 \begin{proof}
 \leanok
 \uses{def:SpacetimeCodeDetectors.z_eigenvalue_on_zero}
-By simplification: each summand is $0$ (since $z\_\mathrm{eigenvalue\_on\_zero} = 0$), and the sum of zeros over any finite set is zero.
+By simplification: each summand is $0$ (since $z\_{\mathrm{eigenvalue\_on\_zero}} = 0$), and the sum of zeros over any finite set is zero.
 \end{proof}
 
 \begin{theorem}[Initial $B_p$ Parity from $|0\rangle$ Initialization]
@@ -21008,7 +21008,7 @@ M = \{x^a y^b : a \in \mathbb{Z}/\ell\mathbb{Z},\; b \in \mathbb{Z}/m\mathbb{Z}\
 This is an additive abelian group where addition represents multiplication of monomials.
 \end{definition}
 
-\begin{definition}[Group Algebra $\mathbb{F}_2[M]$]
+\begin{definition}[Group Algebra $\mathbb{F}_2{[M]}$]
 \label{def:QEC1.BivariateBicycle.GroupAlg}
 \lean{QEC1.BivariateBicycle.GroupAlg}
 \leanok
