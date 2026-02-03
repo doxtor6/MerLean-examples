@@ -40,10 +40,10 @@ We formalize:
 4. Steane measurement structure (data + ancilla blocks)
 
 ## Main Results
-- `CSSCode`: CSS code structure with X and Z type checks
-- `CSSCode.xCheck_in_kernel`: X-checks are in ker(H^T) by CSS orthogonality
-- `CSSCode.xCheck_commutes_with_hyperedge`: X-checks commute with Z-hyperedge operators
-- `CSSCode.xChecks_in_measurable_group`: X-checks are measurable via hypergraph gauging
+- `SimpleCSSCode`: CSS code structure with X and Z type checks
+- `SimpleCSSCode.xCheck_in_kernel`: X-checks are in ker(H^T) by CSS orthogonality
+- `SimpleCSSCode.xCheck_commutes_with_hyperedge`: X-checks commute with Z-hyperedge operators
+- `SimpleCSSCode.xChecks_in_measurable_group`: X-checks are measurable via hypergraph gauging
 - `pairwiseXX_weight`: Pairwise XX operators have weight 2
 
 ## File Structure
@@ -69,7 +69,7 @@ In support notation: |supp(X_check) ∩ supp(Z_check)| ≡ 0 (mod 2).
 
 /-- A CSS (Calderbank-Shor-Steane) code.
     CSS codes have separate X-type and Z-type checks satisfying orthogonality. -/
-structure CSSCode where
+structure SimpleCSSCode where
   /-- Number of physical qubits -/
   numQubits : ℕ
   /-- Number of X-type check generators -/
@@ -91,9 +91,9 @@ structure CSSCode where
   css_orthogonality : ∀ (i : Fin numXChecks) (j : Fin numZChecks),
     (xCheckSupport i ∩ zCheckSupport j).card % 2 = 0
 
-namespace CSSCode
+namespace SimpleCSSCode
 
-variable (C : CSSCode)
+variable (C : SimpleCSSCode)
 
 /-- Number of logical qubits (informally: n - rx - rz where rx, rz are ranks) -/
 def numLogicalQubits : ℕ := C.numQubits - C.numXChecks - C.numZChecks
@@ -104,7 +104,7 @@ def xCheckWeight (i : Fin C.numXChecks) : ℕ := (C.xCheckSupport i).card
 /-- The weight of a Z-type check -/
 def zCheckWeight (i : Fin C.numZChecks) : ℕ := (C.zCheckSupport i).card
 
-end CSSCode
+end SimpleCSSCode
 
 /-! ## Section 2: Initialization Hypergraph
 
@@ -117,7 +117,7 @@ This hypergraph defines the "gauging structure" for initialization.
 
 /-- The initialization hypergraph for a CSS code.
     Vertices are qubits, hyperedges are Z-check supports. -/
-def CSSCode.initializationHypergraph (C : CSSCode) : Hypergraph where
+def SimpleCSSCode.initializationHypergraph (C : SimpleCSSCode) : Hypergraph where
   Vertex := Fin C.numQubits
   EdgeIdx := Fin C.numZChecks
   vertexFintype := inferInstance
@@ -128,19 +128,19 @@ def CSSCode.initializationHypergraph (C : CSSCode) : Hypergraph where
   hyperedge_nonempty := C.zCheck_nonempty
 
 /-- The initialization hypergraph vertices are the qubits -/
-theorem CSSCode.initHypergraph_vertex (C : CSSCode) :
+theorem SimpleCSSCode.initHypergraph_vertex (C : SimpleCSSCode) :
     C.initializationHypergraph.Vertex = Fin C.numQubits := rfl
 
 /-- The initialization hypergraph edges correspond to Z-checks -/
-theorem CSSCode.initHypergraph_edge_count (C : CSSCode) :
+theorem SimpleCSSCode.initHypergraph_edge_count (C : SimpleCSSCode) :
     C.initializationHypergraph.numEdges = C.numZChecks := by
-  unfold Hypergraph.numEdges CSSCode.initializationHypergraph
+  unfold Hypergraph.numEdges SimpleCSSCode.initializationHypergraph
   simp only [Fintype.card_fin]
 
 /-- The initialization hypergraph vertices count -/
-theorem CSSCode.initHypergraph_vertex_count (C : CSSCode) :
+theorem SimpleCSSCode.initHypergraph_vertex_count (C : SimpleCSSCode) :
     C.initializationHypergraph.numVertices = C.numQubits := by
-  unfold Hypergraph.numVertices CSSCode.initializationHypergraph
+  unfold Hypergraph.numVertices SimpleCSSCode.initializationHypergraph
   simp only [Fintype.card_fin]
 
 /-! ## Section 3: X-Checks in Kernel of H^T
@@ -153,7 +153,7 @@ operators in ker(H^T) commute with all Z-type hyperedge operators B_e.
 -/
 
 /-- X-check support as an operator support function over ZMod 2 -/
-def CSSCode.xCheckAsOperator (C : CSSCode) (i : Fin C.numXChecks) :
+def SimpleCSSCode.xCheckAsOperator (C : SimpleCSSCode) (i : Fin C.numXChecks) :
     XOperatorSupport C.initializationHypergraph :=
   fun v => if v ∈ C.xCheckSupport i then 1 else 0
 
@@ -164,12 +164,12 @@ def CSSCode.xCheckAsOperator (C : CSSCode) (i : Fin C.numXChecks) :
 
     Proof: (H^T · x_i)_e = Σ_v H[v,e] · x_i[v] = |xSupp_i ∩ zSupp_e| ≡ 0 (mod 2)
     by the CSS orthogonality condition. -/
-theorem CSSCode.xCheck_in_kernel (C : CSSCode) (i : Fin C.numXChecks) :
+theorem SimpleCSSCode.xCheck_in_kernel (C : SimpleCSSCode) (i : Fin C.numXChecks) :
     inKernelOfTranspose C.initializationHypergraph (C.xCheckAsOperator i) := by
   intro e
   unfold matrixVectorProduct
   simp only [incidenceMatrix_apply]
-  unfold CSSCode.xCheckAsOperator CSSCode.initializationHypergraph
+  unfold SimpleCSSCode.xCheckAsOperator SimpleCSSCode.initializationHypergraph
   simp only
   -- The sum is |xCheckSupport i ∩ zCheckSupport e| mod 2
   have h_transform : ∀ v, (if v ∈ C.zCheckSupport e then (1 : ZMod 2) else 0) *
@@ -209,14 +209,14 @@ theorem CSSCode.xCheck_in_kernel (C : CSSCode) (i : Fin C.numXChecks) :
 
 /-- X-checks commute with all Z-type hyperedge operators.
     This follows from the kernel characterization. -/
-theorem CSSCode.xCheck_commutes_with_hyperedge (C : CSSCode) (i : Fin C.numXChecks) :
+theorem SimpleCSSCode.xCheck_commutes_with_hyperedge (C : SimpleCSSCode) (i : Fin C.numXChecks) :
     commutesWithAllChecks C.initializationHypergraph (C.xCheckAsOperator i) := by
   rw [commutes_iff_in_kernel]
   exact C.xCheck_in_kernel i
 
 /-- X-checks are in the measurable group of the initialization hypergraph.
     This means they can be measured via the hypergraph gauging procedure. -/
-theorem CSSCode.xChecks_in_measurable_group (C : CSSCode) (i : Fin C.numXChecks) :
+theorem SimpleCSSCode.xChecks_in_measurable_group (C : SimpleCSSCode) (i : Fin C.numXChecks) :
     C.xCheckAsOperator i ∈ measurableGroup C.initializationHypergraph := by
   simp only [measurableGroup, Set.mem_setOf_eq]
   exact C.xCheck_commutes_with_hyperedge i
@@ -229,14 +229,14 @@ measurement outcome.
 -/
 
 /-- Vertex type for CSS initialization: physical qubits plus dummy vertices -/
-inductive CSSInitVertex (C : CSSCode) where
+inductive CSSInitVertex (C : SimpleCSSCode) where
   | qubit : Fin C.numQubits → CSSInitVertex C
   | dummy : Fin C.numXChecks → CSSInitVertex C
   deriving DecidableEq
 
 namespace CSSInitVertex
 
-variable {C : CSSCode}
+variable {C : SimpleCSSCode}
 
 /-- Qubit vertices are injective -/
 theorem qubit_injective : Function.Injective (qubit : Fin C.numQubits → CSSInitVertex C) := by
@@ -257,7 +257,7 @@ theorem qubit_ne_dummy (i : Fin C.numQubits) (j : Fin C.numXChecks) :
 end CSSInitVertex
 
 /-- Fintype instance for CSSInitVertex -/
-instance (C : CSSCode) : Fintype (CSSInitVertex C) :=
+instance (C : SimpleCSSCode) : Fintype (CSSInitVertex C) :=
   Fintype.ofEquiv (Fin C.numQubits ⊕ Fin C.numXChecks) {
     toFun := fun x => match x with
       | Sum.inl i => CSSInitVertex.qubit i
@@ -270,7 +270,7 @@ instance (C : CSSCode) : Fintype (CSSInitVertex C) :=
   }
 
 /-- Total vertices = qubits + dummies (one dummy per X-check) -/
-theorem cssInitVertex_card (C : CSSCode) :
+theorem cssInitVertex_card (C : SimpleCSSCode) :
     Fintype.card (CSSInitVertex C) = C.numQubits + C.numXChecks := by
   have h := Fintype.card_congr (β := Fin C.numQubits ⊕ Fin C.numXChecks) {
     toFun := fun v => match v with
@@ -396,12 +396,12 @@ theorem pairwiseXX_weight {n : ℕ} [NeZero n] (i : Fin n) :
 /-! ## Section 6: Measurable Group Properties -/
 
 /-- The identity operator is in the measurable group -/
-theorem identity_measurable (C : CSSCode) :
+theorem identity_measurable (C : SimpleCSSCode) :
     (fun _ => 0) ∈ measurableGroup C.initializationHypergraph :=
   zero_in_measurableGroup C.initializationHypergraph
 
 /-- Sum (XOR) of X-checks is measurable (closed under addition in ZMod 2) -/
-theorem xCheck_sum_measurable (C : CSSCode)
+theorem xCheck_sum_measurable (C : SimpleCSSCode)
     (i j : Fin C.numXChecks) :
     (fun v => C.xCheckAsOperator i v + C.xCheckAsOperator j v) ∈
     measurableGroup C.initializationHypergraph := by
@@ -413,28 +413,28 @@ theorem xCheck_sum_measurable (C : CSSCode)
 
 /-- X-check operator at support is 1 -/
 @[simp]
-theorem xCheckAsOperator_at_support (C : CSSCode) (i : Fin C.numXChecks)
+theorem xCheckAsOperator_at_support (C : SimpleCSSCode) (i : Fin C.numXChecks)
     (v : Fin C.numQubits) (h : v ∈ C.xCheckSupport i) :
     C.xCheckAsOperator i v = 1 := by
-  simp only [CSSCode.xCheckAsOperator, h, ↓reduceIte]
+  simp only [SimpleCSSCode.xCheckAsOperator, h, ↓reduceIte]
 
 /-- X-check operator outside support is 0 -/
 @[simp]
-theorem xCheckAsOperator_outside_support (C : CSSCode) (i : Fin C.numXChecks)
+theorem xCheckAsOperator_outside_support (C : SimpleCSSCode) (i : Fin C.numXChecks)
     (v : Fin C.numQubits) (h : v ∉ C.xCheckSupport i) :
     C.xCheckAsOperator i v = 0 := by
-  simp only [CSSCode.xCheckAsOperator, h, ↓reduceIte]
+  simp only [SimpleCSSCode.xCheckAsOperator, h, ↓reduceIte]
 
 /-- X-check weights are positive -/
-theorem xCheck_weight_pos (C : CSSCode) (i : Fin C.numXChecks) :
+theorem xCheck_weight_pos (C : SimpleCSSCode) (i : Fin C.numXChecks) :
     0 < C.xCheckWeight i := by
-  unfold CSSCode.xCheckWeight
+  unfold SimpleCSSCode.xCheckWeight
   exact Finset.Nonempty.card_pos (C.xCheck_nonempty i)
 
 /-- Z-check weights are positive -/
-theorem zCheck_weight_pos (C : CSSCode) (i : Fin C.numZChecks) :
+theorem zCheck_weight_pos (C : SimpleCSSCode) (i : Fin C.numZChecks) :
     0 < C.zCheckWeight i := by
-  unfold CSSCode.zCheckWeight
+  unfold SimpleCSSCode.zCheckWeight
   exact Finset.Nonempty.card_pos (C.zCheck_nonempty i)
 
 end QEC

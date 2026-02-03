@@ -42,45 +42,45 @@ The product of outcomes ∏ ε_v corresponds to the sum ∑ outcomes in ZMod 2.
 
 /-- A measurement outcome in {±1}, represented as ZMod 2.
     0 represents +1, 1 represents -1. -/
-abbrev MeasurementOutcome := ZMod 2
+abbrev GaussLawOutcome := ZMod 2
 
 /-- The positive outcome (+1) -/
-def MeasurementOutcome.positive : MeasurementOutcome := 0
+def GaussLawOutcome.positive : GaussLawOutcome := 0
 
 /-- The negative outcome (-1) -/
-def MeasurementOutcome.negative : MeasurementOutcome := 1
+def GaussLawOutcome.negative : GaussLawOutcome := 1
 
 /-- Convert a ZMod 2 value to the corresponding sign:
     0 → +1, 1 → -1, represented as the integer 1 or -1. -/
-def outcomeToSign (ε : MeasurementOutcome) : ℤ :=
+def gaussOutcomeToSign (ε : GaussLawOutcome) : ℤ :=
   if ε = 0 then 1 else -1
 
 /-- Positive outcome has sign +1 -/
 @[simp]
-theorem positive_sign : outcomeToSign MeasurementOutcome.positive = 1 := by
-  simp [outcomeToSign, MeasurementOutcome.positive]
+theorem positive_sign : gaussOutcomeToSign GaussLawOutcome.positive = 1 := by
+  simp [gaussOutcomeToSign, GaussLawOutcome.positive]
 
 /-- Negative outcome has sign -1 -/
 @[simp]
-theorem negative_sign : outcomeToSign MeasurementOutcome.negative = -1 := by
-  simp [outcomeToSign, MeasurementOutcome.negative]
+theorem negative_sign : gaussOutcomeToSign GaussLawOutcome.negative = -1 := by
+  simp [gaussOutcomeToSign, GaussLawOutcome.negative]
 
 /-- In ZMod 2, 1 + 1 = 0 -/
 private theorem zmod2_one_plus_one : (1 : ZMod 2) + 1 = 0 := by decide
 
 /-- The product of two signs corresponds to XOR in ZMod 2.
     (+1)(+1) = +1, (+1)(-1) = -1, (-1)(-1) = +1 matches 0+0=0, 0+1=1, 1+1=0. -/
-theorem sign_product_eq_xor (ε₁ ε₂ : MeasurementOutcome) :
-    outcomeToSign (ε₁ + ε₂) = outcomeToSign ε₁ * outcomeToSign ε₂ := by
-  fin_cases ε₁ <;> fin_cases ε₂ <;> simp [outcomeToSign, zmod2_one_plus_one]
+theorem sign_product_eq_xor (ε₁ ε₂ : GaussLawOutcome) :
+    gaussOutcomeToSign (ε₁ + ε₂) = gaussOutcomeToSign ε₁ * gaussOutcomeToSign ε₂ := by
+  fin_cases ε₁ <;> fin_cases ε₂ <;> simp [gaussOutcomeToSign, zmod2_one_plus_one]
 
 /-- The product of signs over a finset corresponds to sum in ZMod 2. -/
 theorem sign_product_sum {ι : Type*} (s : Finset ι)
-    (ε : ι → MeasurementOutcome) :
-    outcomeToSign (s.sum ε) = s.prod (fun i => outcomeToSign (ε i)) := by
+    (ε : ι → GaussLawOutcome) :
+    gaussOutcomeToSign (s.sum ε) = s.prod (fun i => gaussOutcomeToSign (ε i)) := by
   classical
   induction s using Finset.induction_on with
-  | empty => simp [outcomeToSign]
+  | empty => simp [gaussOutcomeToSign]
   | @insert a s' hnotin ih =>
     rw [Finset.sum_insert hnotin, Finset.prod_insert hnotin, sign_product_eq_xor, ih]
 
@@ -268,7 +268,7 @@ In ZMod 2: ∑_v outcome_v = logical_eigenvalue (mod 2)
 
 /-- Measurement outcomes for all vertices -/
 def VertexOutcomes {n k : ℕ} {C : StabilizerCode n k} {L : XTypeLogical C}
-    (G : GaugingGraph C L) := G.Vertex → MeasurementOutcome
+    (G : GaugingGraph C L) := G.Vertex → GaussLawOutcome
 
 /-- The sum of all measurement outcomes in ZMod 2 -/
 noncomputable def outcomeSum {n k : ℕ} {C : StabilizerCode n k} {L : XTypeLogical C}
@@ -285,17 +285,17 @@ noncomputable def outcomeSum {n k : ℕ} {C : StabilizerCode n k} {L : XTypeLogi
     - So σ = ∏_v ε_v, or in ZMod 2: logical_outcome = ∑_v outcome_v -/
 theorem gaussLaw_outcome_constraint {n k : ℕ} {C : StabilizerCode n k}
     {L : XTypeLogical C} (G : GaugingGraph C L)
-    (outcomes : VertexOutcomes G) (σ : MeasurementOutcome)
+    (outcomes : VertexOutcomes G) (σ : GaussLawOutcome)
     (h_consistent : outcomeSum G outcomes = σ) :
-    outcomeToSign (outcomeSum G outcomes) = outcomeToSign σ := by
+    gaussOutcomeToSign (outcomeSum G outcomes) = gaussOutcomeToSign σ := by
   simp only [h_consistent]
 
 /-- The product of outcome signs equals the logical eigenvalue sign -/
 theorem gaussLaw_sign_constraint {n k : ℕ} {C : StabilizerCode n k}
     {L : XTypeLogical C} (G : GaugingGraph C L)
-    (outcomes : VertexOutcomes G) (σ : MeasurementOutcome)
+    (outcomes : VertexOutcomes G) (σ : GaussLawOutcome)
     (h_consistent : outcomeSum G outcomes = σ) :
-    Finset.univ.prod (fun v => outcomeToSign (outcomes v)) = outcomeToSign σ := by
+    Finset.univ.prod (fun v => gaussOutcomeToSign (outcomes v)) = gaussOutcomeToSign σ := by
   rw [← sign_product_sum Finset.univ outcomes]
   simp only [outcomeSum] at h_consistent
   rw [h_consistent]
@@ -335,8 +335,8 @@ theorem outcomeSum_add {n k : ℕ} {C : StabilizerCode n k}
 /-- All +1 outcomes sum to 0 (representing σ = +1). -/
 theorem all_positive_outcomes_sum {n k : ℕ} {C : StabilizerCode n k}
     {L : XTypeLogical C} (G : GaugingGraph C L) :
-    outcomeSum G (fun _ => MeasurementOutcome.positive) = 0 := by
-  unfold outcomeSum MeasurementOutcome.positive
+    outcomeSum G (fun _ => GaussLawOutcome.positive) = 0 := by
+  unfold outcomeSum GaussLawOutcome.positive
   simp
 
 /-- For even number of -1 outcomes, the sum is 0 (σ = +1). -/

@@ -169,31 +169,31 @@ theorem postBufferInterval_numRounds (bc : BoundaryConfiguration) :
 
 /-- A time region classification for fault locations.
     Used to determine if a fault is internal to gauging or crosses boundaries. -/
-inductive TimeRegion where
+inductive BoundaryTimeRegion where
   /-- Pre-gauging buffer: [preGaugingStart, t_i) -/
-  | preBuffer : TimeRegion
+  | preBuffer : BoundaryTimeRegion
   /-- Gauging measurement period: [t_i, t_o] -/
-  | gauging : TimeRegion
+  | gauging : BoundaryTimeRegion
   /-- Post-gauging buffer: (t_o, postGaugingEnd] -/
-  | postBuffer : TimeRegion
+  | postBuffer : BoundaryTimeRegion
   deriving DecidableEq, Repr
 
-namespace TimeRegion
+namespace BoundaryTimeRegion
 
-instance : Fintype TimeRegion where
+instance : Fintype BoundaryTimeRegion where
   elems := {preBuffer, gauging, postBuffer}
   complete := fun x => by cases x <;> simp
 
 /-- There are exactly 3 time regions -/
-theorem card_timeRegion : Fintype.card TimeRegion = 3 := rfl
+theorem card_timeRegion : Fintype.card BoundaryTimeRegion = 3 := rfl
 
-end TimeRegion
+end BoundaryTimeRegion
 
 /-- Classify a time step into its region -/
-def classifyTimeStep (bc : BoundaryConfiguration) (t : TimeStep) : TimeRegion :=
-  if t < bc.interval.t_i then TimeRegion.preBuffer
-  else if t ≤ bc.interval.t_o then TimeRegion.gauging
-  else TimeRegion.postBuffer
+def classifyTimeStep (bc : BoundaryConfiguration) (t : TimeStep) : BoundaryTimeRegion :=
+  if t < bc.interval.t_i then BoundaryTimeRegion.preBuffer
+  else if t ≤ bc.interval.t_o then BoundaryTimeRegion.gauging
+  else BoundaryTimeRegion.postBuffer
 
 /-- A fault is in the gauging region if its time step is in [t_i, t_o] -/
 def isInGaugingRegion (bc : BoundaryConfiguration) (t : TimeStep) : Prop :=

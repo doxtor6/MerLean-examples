@@ -418,25 +418,25 @@ because there is no detector on the other side of the boundary.
 -/
 
 /-- Time region classification relative to deformation boundaries -/
-inductive TimeRegion where
+inductive SyndromeTimeRegion where
   /-- Before t_i: standard code, A_v not measured -/
-  | beforeStart : TimeRegion
+  | beforeStart : SyndromeTimeRegion
   /-- t = t_i: start boundary where A_v measurements begin -/
-  | atStart : TimeRegion
+  | atStart : SyndromeTimeRegion
   /-- t_i < t < t_o: during deformation, A_v is measured -/
-  | duringDeformation : TimeRegion
+  | duringDeformation : SyndromeTimeRegion
   /-- t = t_o: end boundary where A_v measurements end -/
-  | atEnd : TimeRegion
+  | atEnd : SyndromeTimeRegion
   /-- After t_o: standard code, A_v not measured -/
-  | afterEnd : TimeRegion
+  | afterEnd : SyndromeTimeRegion
   deriving DecidableEq, Repr
 
-instance : Fintype TimeRegion where
+instance : Fintype SyndromeTimeRegion where
   elems := {.beforeStart, .atStart, .duringDeformation, .atEnd, .afterEnd}
   complete := fun x => by cases x <;> simp
 
 /-- Whether A_v stabilizers are measured in a given time region -/
-def TimeRegion.AvMeasured : TimeRegion → Bool
+def SyndromeTimeRegion.AvMeasured : SyndromeTimeRegion → Bool
   | .beforeStart => false
   | .atStart => true
   | .duringDeformation => true
@@ -444,14 +444,14 @@ def TimeRegion.AvMeasured : TimeRegion → Bool
   | .afterEnd => false
 
 /-- Whether a region is a boundary (start or end) -/
-def TimeRegion.isBoundary : TimeRegion → Bool
+def SyndromeTimeRegion.isBoundary : SyndromeTimeRegion → Bool
   | .atStart => true
   | .atEnd => true
   | _ => false
 
 /-- Start and end are boundaries -/
-theorem start_is_boundary : TimeRegion.atStart.isBoundary = true := rfl
-theorem end_is_boundary : TimeRegion.atEnd.isBoundary = true := rfl
+theorem start_is_boundary : SyndromeTimeRegion.atStart.isBoundary = true := rfl
+theorem end_is_boundary : SyndromeTimeRegion.atEnd.isBoundary = true := rfl
 
 /-- **Condensation Theorem**: At boundaries, A_v syndromes can condense.
 
@@ -460,14 +460,14 @@ theorem end_is_boundary : TimeRegion.atEnd.isBoundary = true := rfl
     - At t_o: no A_v detector after t_o (A_v not measured)
 
     This means a single syndrome can appear/disappear, changing parity by 1. -/
-theorem Av_condensation_at_boundary (region : TimeRegion)
+theorem Av_condensation_at_boundary (region : SyndromeTimeRegion)
     (h_boundary : region.isBoundary = true) :
     -- At boundaries, Av is measured
     region.AvMeasured = true ∧
     -- A single syndrome changes parity by 1 (not conserved at boundary)
     ∀ (initial_parity : ZMod 2), initial_parity + 1 ≠ initial_parity := by
   constructor
-  · cases region <;> simp_all [TimeRegion.isBoundary, TimeRegion.AvMeasured]
+  · cases region <;> simp_all [SyndromeTimeRegion.isBoundary, SyndromeTimeRegion.AvMeasured]
   · intro initial_parity h
     have h2 : (1 : ZMod 2) = 0 := by
       calc (1 : ZMod 2) = initial_parity + 1 - initial_parity := by ring
@@ -477,16 +477,16 @@ theorem Av_condensation_at_boundary (region : TimeRegion)
 
 /-- At start boundary: A_v can appear (no detector before) -/
 theorem start_boundary_Av_condensation :
-    TimeRegion.atStart.isBoundary = true ∧
-    TimeRegion.beforeStart.AvMeasured = false ∧
-    TimeRegion.atStart.AvMeasured = true := by
+    SyndromeTimeRegion.atStart.isBoundary = true ∧
+    SyndromeTimeRegion.beforeStart.AvMeasured = false ∧
+    SyndromeTimeRegion.atStart.AvMeasured = true := by
   exact ⟨rfl, rfl, rfl⟩
 
 /-- At end boundary: A_v can disappear (no detector after) -/
 theorem end_boundary_Av_condensation :
-    TimeRegion.atEnd.isBoundary = true ∧
-    TimeRegion.atEnd.AvMeasured = true ∧
-    TimeRegion.afterEnd.AvMeasured = false := by
+    SyndromeTimeRegion.atEnd.isBoundary = true ∧
+    SyndromeTimeRegion.atEnd.AvMeasured = true ∧
+    SyndromeTimeRegion.afterEnd.AvMeasured = false := by
   exact ⟨rfl, rfl, rfl⟩
 
 /-! ## Section 7: Boundary Propagation via ∂∂ = 0
