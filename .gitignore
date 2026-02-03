@@ -1,1 +1,13 @@
 /.lake
+
+# Blueprint build artifacts
+/blueprint/lean_decls
+/blueprint/web/
+/blueprint/print/
+/blueprint/src/web.paux
+
+# Claude Code local settings
+/.claude/settings.local.json
+
+# Windows artifact
+nul
