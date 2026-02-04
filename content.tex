@@ -7630,7 +7630,6 @@ In the context of fault-tolerant implementation of the gauging measurement proce
 \label{def:PauliType}
 \lean{PauliType}
 \leanok
-\uses{def:InitializationFault.identity, def:SpaceFault.identity, def:SpacetimeFault.identity, def:TimeFault.identity}
 The \emph{Pauli error type} is an inductive type with four constructors:
 \[
 \texttt{PauliType} ::= I \mid X \mid Y \mid Z,
@@ -7852,7 +7851,6 @@ A space-fault on an edge qubit $e$ at time $t$ with Pauli type $p$ is $\langle \
 \label{def:TimeFault}
 \lean{TimeFault}
 \leanok
-\uses{def:InitializationFault.identity, def:SpaceFault.identity, def:SpacetimeFault.identity, def:TimeFault.identity}
 A \emph{time-fault} (measurement error) over measurement type $M$ is a structure consisting of:
 \begin{itemize}
   \item \texttt{measurement} : $M$ --- the measurement that is affected,
@@ -9036,7 +9034,7 @@ By simplification using the definitions of $\mathrm{card}$ and $\mathrm{empty}$,
 \label{def:applyFaultToOutcomes'}
 \lean{applyFaultToOutcomes'}
 \leanok
-\uses{def:DetectorCollection.syndrome, def:OutcomeAssignment, def:SpacetimeFault, def:syndrome}
+\uses{def:OutcomeAssignment, def:SpacetimeFault}
 Given base measurement outcomes and a spacetime fault, the \emph{faulted outcomes} are obtained by flipping the classical measurement outcome at each location where a time-fault is active:
 \[
 \mathrm{applyFaultToOutcomes'}(\mathrm{base}, F)(m, t) :=
@@ -17961,7 +17959,6 @@ This chapter formalizes the observation that the $d$ rounds of quantum error cor
 \label{def:RoundRequirementType}
 \lean{QEC1.RoundRequirementType}
 \leanok
-\uses{def:RoundRequirement}
 
 An inductive type classifying round requirements:
 \begin{itemize}
