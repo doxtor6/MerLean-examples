@@ -2002,6 +2002,7 @@ The gauging procedure can be implemented by a quantum circuit with no additional
 \label{def:CXGate}
 \lean{QEC1.CXGate}
 \leanok
+\uses{def:QubitType}
 A \emph{controlled-$X$ gate specification} for a qubit type $Q$ consists of:
 \begin{itemize}
   \item a \emph{control} qubit $c \in Q$,
@@ -2154,6 +2155,7 @@ This follows directly from \texttt{SimpleGraph.card\_incidenceFinset\_eq\_degree
 \label{def:XMeasurementSpec}
 \lean{QEC1.XMeasurementSpec}
 \leanok
+\uses{def:QubitType}
 An \emph{$X$-measurement specification} for a qubit type $Q$ consists of:
 \begin{itemize}
   \item a finite set $\mathcal{Q} \subseteq Q$ of qubits to measure in the Pauli-$X$ basis,
@@ -2165,6 +2167,7 @@ An \emph{$X$-measurement specification} for a qubit type $Q$ consists of:
 \label{def:ZMeasurementSpec}
 \lean{QEC1.ZMeasurementSpec}
 \leanok
+\uses{def:QubitType}
 A \emph{$Z$-measurement specification} for a qubit type $Q$ consists of:
 \begin{itemize}
   \item a finite set $\mathcal{Q} \subseteq Q$ of qubits to measure in the Pauli-$Z$ basis,
@@ -2499,6 +2502,7 @@ This is verified by computation (the \texttt{decide} tactic).
 \label{def:numCXGates}
 \lean{QEC1.numCXGates}
 \leanok
+\uses{def:CXGate}
 The \emph{number of CX gates} in one round of the entangling circuit for a graph $G = (V,E)$ is
 \[
 \mathrm{numCXGates}(G) = \sum_{v \in V} \deg(v).
@@ -3788,6 +3792,7 @@ This chapter formalizes the three desiderata for choosing the graph $G$ in the g
 \label{def:ShortPathsProperty}
 \lean{QEC1.ShortPathsProperty}
 \leanok
+\uses{def:IsStrongExpander}
 
 \textbf{Desideratum 1: Short Paths Property.}
 
@@ -3804,6 +3809,7 @@ This ensures that deformed checks have bounded weight.
 \label{def:SufficientExpansion}
 \lean{QEC1.SufficientExpansion}
 \leanok
+\uses{def:IsStrongExpander}
 
 \textbf{Desideratum 2: Sufficient Expansion.}
 
@@ -3832,6 +3838,7 @@ This holds by reflexivity, since $\mathrm{SufficientExpansion}(G)$ is defined to
 \label{def:LowWeightCyclesProperty}
 \lean{QEC1.LowWeightCyclesProperty}
 \leanok
+\uses{def:GraphWithCycles}
 
 \textbf{Desideratum 3: Low-Weight Cycles Property.}
 
@@ -5261,6 +5268,7 @@ $$\operatorname{independentCycleCount} := (\operatorname{card}(E) : \mathbb{Z}) 
 \label{def:GraphWithCycles.fluxOperator_vertexSupport}
 \lean{GraphWithCycles.fluxOperator_vertexSupport}
 \leanok
+\uses{def:GraphWithCycles, def:GraphWithCycles.VectorV'}
 The vertex support of flux operator $B_p$: zero everywhere. Since $B_p$ is a $Z$-type operator, it has no $X$ component on vertices. For any graph $G$ and cycle $p$:
 $$\operatorname{fluxOperator\_vertexSupport}(G, p) := \mathbf{0} \in (\mathbb{Z}/2\mathbb{Z})^V.$$
 \end{definition}
@@ -5269,6 +5277,7 @@ $$\operatorname{fluxOperator\_vertexSupport}(G, p) := \mathbf{0} \in (\mathbb{Z}
 \label{def:GraphWithCycles.fluxOperator_edgeSupport}
 \lean{GraphWithCycles.fluxOperator_edgeSupport}
 \leanok
+\uses{def:GraphWithCycles, def:GraphWithCycles.boundary2OfCycle}
 The edge support of flux operator $B_p$: $1$ at edges in cycle $p$, $0$ elsewhere. This represents $B_p = \prod_{e \in p} Z_e$. For a graph $G$ and cycle $p$:
 $$\operatorname{fluxOperator\_edgeSupport}(G, p) := \partial_2(e_p),$$
 i.e., the image of cycle $p$ under the second boundary map.
@@ -5348,6 +5357,7 @@ Let $e$ be an arbitrary edge. Rewriting $2 \cdot x$ as $\operatorname{Nat.cast}(
 \label{def:GraphWithCycles.flux_XSupport_vertex}
 \lean{GraphWithCycles.flux_XSupport_vertex}
 \leanok
+\uses{def:GraphWithCycles}
 The $X$-support of a flux operator on vertices is empty ($Z$-type operators have no $X$ component):
 $$\operatorname{flux\_XSupport\_vertex}(G, p) := \emptyset.$$
 \end{definition}
@@ -5356,6 +5366,7 @@ $$\operatorname{flux\_XSupport\_vertex}(G, p) := \emptyset.$$
 \label{def:GraphWithCycles.flux_XSupport_edge}
 \lean{GraphWithCycles.flux_XSupport_edge}
 \leanok
+\uses{def:GraphWithCycles}
 The $X$-support of a flux operator on edges is also empty:
 $$\operatorname{flux\_XSupport\_edge}(G, p) := \emptyset.$$
 \end{definition}
@@ -5452,6 +5463,7 @@ By simplification using the definition of \texttt{flux\_gaussLaw\_symplectic}, t
 \label{thm:GraphWithCycles.flux_eigenvalue_on_zero_state}
 \lean{GraphWithCycles.flux_eigenvalue_on_zero_state}
 \leanok
+\uses{def:GraphWithCycles}
 In the computational basis, $\lvert 0\rangle$ is a $+1$ eigenstate of $Z$. The eigenvalue of $B_p$ on $\lvert 0\rangle^{\otimes E}$ is $(+1)^{|p|} = +1$. In $\mathbb{Z}/2\mathbb{Z}$, the phase contribution from $Z$ operators on $\lvert 0\rangle$ states is $0$:
 $$\sum_{e \in \operatorname{cycles}(G,p)} 0 = 0.$$
 \end{theorem}
@@ -5528,6 +5540,7 @@ We show the two finsets are equal by applying \texttt{congr 1} and then extensio
 \label{def:GraphWithCycles.fluxOperator_weight}
 \lean{GraphWithCycles.fluxOperator_weight}
 \leanok
+\uses{def:GraphWithCycles}
 The weight of flux operator $B_p$, defined as the number of edges in cycle $p$:
 $$\operatorname{fluxOperator\_weight}(G, p) := |\operatorname{cycles}(G, p)|.$$
 \end{definition}
@@ -5570,6 +5583,7 @@ By simplification using pointwise addition and \texttt{fluxOperator\_edgeSupport
 \label{def:GraphWithCycles.flux_ZSupport}
 \lean{GraphWithCycles.flux_ZSupport}
 \leanok
+\uses{def:GraphWithCycles}
 The $Z$-support of $B_p$ on edges (edges in cycle $p$):
 $$\operatorname{flux\_ZSupport}(G, p) := \operatorname{cycles}(G, p).$$
 \end{definition}
@@ -7616,6 +7630,7 @@ In the context of fault-tolerant implementation of the gauging measurement proce
 \label{def:PauliType}
 \lean{PauliType}
 \leanok
+\uses{def:InitializationFault.identity, def:SpaceFault.identity, def:SpacetimeFault.identity, def:TimeFault.identity}
 The \emph{Pauli error type} is an inductive type with four constructors:
 \[
 \texttt{PauliType} ::= I \mid X \mid Y \mid Z,
@@ -7837,6 +7852,7 @@ A space-fault on an edge qubit $e$ at time $t$ with Pauli type $p$ is $\langle \
 \label{def:TimeFault}
 \lean{TimeFault}
 \leanok
+\uses{def:InitializationFault.identity, def:SpaceFault.identity, def:SpacetimeFault.identity, def:TimeFault.identity}
 A \emph{time-fault} (measurement error) over measurement type $M$ is a structure consisting of:
 \begin{itemize}
   \item \texttt{measurement} : $M$ --- the measurement that is affected,
@@ -8313,6 +8329,7 @@ An \emph{initialization event} for vertex type $V$ and edge type $E$ consists of
 \label{def:MeasurementEvent}
 \lean{MeasurementEvent}
 \leanok
+\uses{def:InitializationEvent}
 A \emph{measurement event} for measurement type $M$ consists of:
 \begin{itemize}
   \item A measurement index $\mathrm{measurement} : M$,
@@ -8870,6 +8887,7 @@ Key properties:
 \label{def:Syndrome}
 \lean{Syndrome}
 \leanok
+\uses{def:Detector, def:DetectorCollection.syndrome, def:syndrome}
 The \emph{syndrome} of a spacetime fault over types $V$, $E$, $M$ is defined as a finite set of detectors:
 \[
 \mathrm{Syndrome}(V, E, M) := \mathrm{Finset}(\mathrm{Detector}\; V\; E\; M).
@@ -9018,6 +9036,7 @@ By simplification using the definitions of $\mathrm{card}$ and $\mathrm{empty}$,
 \label{def:applyFaultToOutcomes'}
 \lean{applyFaultToOutcomes'}
 \leanok
+\uses{def:DetectorCollection.syndrome, def:OutcomeAssignment, def:SpacetimeFault, def:syndrome}
 Given base measurement outcomes and a spacetime fault, the \emph{faulted outcomes} are obtained by flipping the classical measurement outcome at each location where a time-fault is active:
 \[
 \mathrm{applyFaultToOutcomes'}(\mathrm{base}, F)(m, t) :=
@@ -10480,6 +10499,7 @@ Moreover, the logical subspace of the deformed code has dimension $2^{k-1}$, one
 \label{def:GraphWithCycles.GaugingMeasurement}
 \lean{GraphWithCycles.GaugingMeasurement}
 \leanok
+\uses{def:GraphWithCycles}
 A \emph{gauging measurement} for a graph $G$ consists of a measurement outcome function $\varepsilon : V \to \mathbb{Z}/2\mathbb{Z}$, recording the outcome $\varepsilon_v \in \{+1, -1\}$ for each Gauss law operator $A_v$ (where $0$ encodes $+1$ and $1$ encodes $-1$).
 \end{definition}
 
@@ -10851,6 +10871,7 @@ The total qubit count in the deformed system is $n + |E|$, where $n$ is the numb
 \label{def:GraphWithCycles.total_stabilizers'}
 \lean{GraphWithCycles.total_stabilizers'}
 \leanok
+\uses{def:GraphWithCycles.CodeParams.dimension}
 The total number of independent stabilizers in the deformed system is
 \[
   |E| + (n - k) + 1,
@@ -11088,6 +11109,7 @@ The proof proceeds by showing that any logical operator $L'$ of the deformed cod
 \label{def:DeformedPauliOperator}
 \lean{QEC1.DeformedPauliOperator}
 \leanok
+\uses{def:GraphWithCycles, def:PauliOp}
 A \emph{Pauli operator on the deformed system} (vertices $+$ edges) is a structure
 \[
   L \;=\; \bigl(\, S_X^V,\; S_Z^V,\; S_X^E,\; S_Z^E,\; \phi \,\bigr)
@@ -11134,6 +11156,7 @@ A deformed Pauli operator $L$ is \emph{nontrivial} if at least one of the four s
 \label{def:fluxCommutationCount}
 \lean{QEC1.fluxCommutationCount}
 \leanok
+\uses{def:GraphWithCycles}
 The \emph{flux commutation count} of an edge support set $S_X^E \subseteq E$ with a cycle $p \in C$ is the parity
 \[
   \operatorname{fluxComm}(S_X^E, p) \;=\; |S_X^E \cap p| \pmod{2} \;\in\; \mathbb{Z}/2\mathbb{Z}.
@@ -11155,6 +11178,7 @@ An edge support set $S_X^E \subseteq E$ is a \emph{$1$-cocycle} if it has even i
 \label{def:vertexCut}
 \lean{QEC1.vertexCut}
 \leanok
+\uses{def:GraphWithCycles}
 The \emph{vertex cut} (edge boundary) of a vertex set $S \subseteq V$ is
 \[
   \partial S \;=\; \{\, e \in E \;\mid\; \text{exactly one endpoint of } e \text{ lies in } S \,\}.
@@ -11165,6 +11189,7 @@ The \emph{vertex cut} (edge boundary) of a vertex set $S \subseteq V$ is
 \label{def:ExactnessCondition}
 \lean{QEC1.ExactnessCondition}
 \leanok
+\uses{def:GraphWithCycles, def:GraphWithCycles.CutsGenerate, def:GraphWithCycles.IsValidCycleEdgeSet, thm:GraphWithCycles.exactness_coboundary_iff}
 The \emph{exactness condition} for a graph with cycles $G$ consists of:
 \begin{enumerate}
   \item \textbf{Cycles valid}: every cycle $c \in C$ is a valid cycle edge set (every vertex has even degree in $c$).
@@ -11192,6 +11217,7 @@ where $\triangle$ denotes the symmetric difference.
 \label{def:OriginalCodeOperator}
 \lean{QEC1.OriginalCodeOperator}
 \leanok
+\uses{def:LogicalOp.xSupport, def:LogicalOp.zSupport, def:PauliOp.identity, def:PauliOp.xSupport, def:PauliOp.zSupport}
 
 A \emph{vertex-only Pauli operator} on the original code (before deformation) is a pair $(S_X, S_Z)$ where $S_X, S_Z \subseteq V$ are the $X$- and $Z$-supports on vertex qubits.
 \end{definition}
@@ -12773,6 +12799,7 @@ We case-split on $g$. In each case, $\mathrm{logicalEffect}(g) = 0$ holds by ref
 \label{def:SpacetimeStabilizers.SpacetimeFaultPattern}
 \lean{SpacetimeStabilizers.SpacetimeFaultPattern}
 \leanok
+\uses{def:QubitLoc, def:SpacetimeFault}
 A \emph{spacetime fault pattern} consists of:
 \begin{itemize}
   \item A finite set of \emph{Pauli faults}, indexed by (qubit location, time step, Pauli kind);
@@ -13069,6 +13096,7 @@ This follows directly from $t_i < t_o$ by $\texttt{Nat.le\_of\_lt}$.
 \label{def:TimeFaultDistance.isPureTimeFault}
 \lean{TimeFaultDistance.isPureTimeFault}
 \leanok
+\uses{def:SpacetimeFault, def:SpacetimeFault.isPureTime, def:TimeFault}
 A spacetime fault $F$ is a \emph{pure time fault} if it has no space errors, i.e., $F.\mathrm{isPureTime}$ holds.
 \end{definition}
 
@@ -13091,6 +13119,7 @@ We unfold $\texttt{SpacetimeFault.weight}$. Since $F$ is a pure time fault, we e
 \label{def:TimeFaultDistance.ComparisonDetector}
 \lean{TimeFaultDistance.ComparisonDetector}
 \leanok
+\uses{def:Detector}
 A \emph{comparison detector} $c^t$ for check type $M$ consists of a check $c : M$ and a round $t$. It compares measurements at $t - 1/2$ and $t + 1/2$.
 \end{definition}
 
@@ -13098,6 +13127,7 @@ A \emph{comparison detector} $c^t$ for check type $M$ consists of a check $c : M
 \label{def:TimeFaultDistance.timeFaultCountAt}
 \lean{TimeFaultDistance.timeFaultCountAt}
 \leanok
+\uses{def:SpacetimeFault}
 The \emph{time fault count} at check $m$ and time $t$ for fault $F$ is $1$ if $F.\mathrm{timeErrors}(m, t)$ is true, and $0$ otherwise.
 \end{definition}
 
@@ -13175,6 +13205,7 @@ The \emph{interval rounds} of a deformation interval $I$ is the finite set $\{t_
 \label{def:TimeFaultDistance.coveredRounds}
 \lean{TimeFaultDistance.coveredRounds}
 \leanok
+\uses{def:SpacetimeFault}
 The \emph{covered rounds} of a fault $F$ over a set of times is the subset of times $t$ such that there exists some check $m$ with $F.\mathrm{timeErrors}(m, t) = \mathrm{true}$.
 \end{definition}
 
@@ -13578,6 +13609,7 @@ F.\mathrm{spaceErrors}(q, t) = I.
 \label{def:SpacetimeDecoupling.EquivModStabilizers}
 \lean{SpacetimeDecoupling.EquivModStabilizers}
 \leanok
+\uses{def:Detector, def:DetectorCollection, def:IsSpacetimeStabilizer, def:OutcomeAssignment, def:SpacetimeFault, def:SpacetimeStabilizers.logicalEffect}
 Two spacetime faults $F$ and $G$ are \emph{equivalent modulo stabilizers} (with respect to a detector collection $\mathrm{DC}$, base outcomes, and logical effect predicate) if there exists a spacetime stabilizer $S$ such that $F = G \cdot S$.
 \end{definition}
 
@@ -13597,6 +13629,7 @@ A \emph{gauging interval} $[t_i, t_o]$ consists of:
 \label{def:SpacetimeDecoupling.PauliPairMove}
 \lean{SpacetimeDecoupling.PauliPairMove}
 \leanok
+\uses{def:PauliType, def:QubitLoc}
 A \emph{Pauli pair move} captures a single operation of moving a Pauli error from time $t$ to $t+1$ using a Pauli pair stabilizer. It consists of:
 \begin{itemize}
 \item A qubit location (vertex or edge).
@@ -13630,6 +13663,7 @@ The \emph{combined measurement errors} of a cleaning sequence is the function $M
 \label{lem:SpacetimeDecoupling.stabilizer_inv}
 \lean{SpacetimeDecoupling.stabilizer_inv}
 \leanok
+\uses{def:Detector, def:DetectorCollection, def:DetectorCollection.syndrome, def:IsSpacetimeStabilizer, def:LogicalEffectIsGroupLike, def:OutcomeAssignment, def:SpacetimeFault, def:SpacetimeStabilizers.logicalEffect, def:SyndromeIsGroupHomomorphism}
 Let $\mathrm{DC}$ be a detector collection, and suppose the logical effect predicate is group-like and the syndrome is a group homomorphism. If $S$ is a spacetime stabilizer, then $S^{-1}$ is also a spacetime stabilizer.
 \end{lemma}
 
@@ -13696,6 +13730,7 @@ using the identity law, the inverse cancellation $S_{\mathrm{clean}} \cdot S_{\m
 \label{thm:SpacetimeDecoupling.decoupling_components_partition}
 \lean{SpacetimeDecoupling.decoupling_components_partition}
 \leanok
+\uses{def:Detector, def:DetectorCollection, def:IsSpacetimeLogicalFault, def:IsSpacetimeStabilizer, def:OutcomeAssignment, def:SpacetimeFault, def:SpacetimeStabilizers.SpacetimeFaultPattern.hasEmptySyndrome, def:SpacetimeStabilizers.logicalEffect, def:hasEmptySyndrome, thm:emptySyndrome_partition}
 Let $F_{\mathrm{space}}$ and $F_{\mathrm{time}}$ be spacetime faults, both with empty syndrome. Then each of $F_{\mathrm{space}}$ and $F_{\mathrm{time}}$ is either a spacetime stabilizer or a spacetime logical fault.
 \end{theorem}
 
@@ -13708,6 +13743,7 @@ We apply the empty syndrome partition theorem (which states that any fault with 
 \label{thm:SpacetimeDecoupling.space_logical_when_time_stabilizer}
 \lean{SpacetimeDecoupling.space_logical_when_time_stabilizer}
 \leanok
+\uses{def:Detector, def:DetectorCollection, def:IsSpacetimeLogicalFault, def:IsSpacetimeStabilizer, def:LogicalEffectIsGroupLike, def:OutcomeAssignment, def:SpacetimeFault, def:SpacetimeStabilizers.SpacetimeFaultPattern.hasEmptySyndrome, def:SpacetimeStabilizers.logicalEffect, def:affectsLogicalInfo, def:hasEmptySyndrome}
 Let the logical effect be group-like. If $F_{\mathrm{space}} \cdot F_{\mathrm{time}}$ affects the logical information, $F_{\mathrm{space}}$ has empty syndrome, and $F_{\mathrm{time}}$ is a spacetime stabilizer, then $F_{\mathrm{space}}$ is a spacetime logical fault.
 \end{theorem}
 
@@ -13724,6 +13760,7 @@ We construct the proof that $F_{\mathrm{space}}$ is a spacetime logical fault:
 \label{thm:SpacetimeDecoupling.time_logical_when_space_stabilizer}
 \lean{SpacetimeDecoupling.time_logical_when_space_stabilizer}
 \leanok
+\uses{def:Detector, def:DetectorCollection, def:IsSpacetimeLogicalFault, def:IsSpacetimeStabilizer, def:LogicalEffectIsGroupLike, def:OutcomeAssignment, def:SpacetimeFault, def:SpacetimeStabilizers.SpacetimeFaultPattern.hasEmptySyndrome, def:SpacetimeStabilizers.logicalEffect, def:affectsLogicalInfo, def:hasEmptySyndrome}
 Let the logical effect be group-like. If $F_{\mathrm{space}} \cdot F_{\mathrm{time}}$ affects the logical information, $F_{\mathrm{time}}$ has empty syndrome, and $F_{\mathrm{space}}$ is a spacetime stabilizer, then $F_{\mathrm{time}}$ is a spacetime logical fault.
 \end{theorem}
 
@@ -13842,6 +13879,7 @@ Given a fault distance configuration $\mathrm{cfg}$, define the corresponding de
 \label{def:SpacetimeFaultDistanceLemma.CleaningPreservesParity}
 \lean{SpacetimeFaultDistanceLemma.CleaningPreservesParity}
 \leanok
+\uses{def:Detector, def:DetectorCollection, def:IsSpacetimeStabilizer, def:OutcomeAssignment, def:PauliType, def:QubitLoc, def:SpacetimeFault, def:SpacetimeStabilizers.logicalEffect}
 A \emph{cleaning preserves parity} structure, for a fault $F$ and its cleaned version $F_{\mathrm{cleaned}}$, asserts:
 \begin{enumerate}
   \item \textbf{Equivalence:} There exists a spacetime stabilizer $S$ such that $F_{\mathrm{cleaned}} = F \cdot S$.
@@ -13961,6 +13999,7 @@ We perform case analysis on the decomposition case:
 \label{def:SpacetimeFaultDistanceLemma.OriginalLogicalAtTime}
 \lean{SpacetimeFaultDistanceLemma.OriginalLogicalAtTime}
 \leanok
+\uses{def:InitializationFault.identity, def:PauliType, def:SpaceFault.identity, def:SpacetimeFault.identity, def:TimeFault.identity}
 An \emph{original logical operator applied at a specific time} consists of:
 \begin{itemize}
   \item A time step $t$ (intended to be outside the deformation region),
@@ -14124,6 +14163,7 @@ This represents $\prod_{v : c_v = 1} \varepsilon_v^{c_v}$ in additive notation.
 \label{def:GaugingMeasurement.X_V}
 \lean{GaugingMeasurement.X_V}
 \leanok
+\uses{def:GraphWithCycles.VectorV'}
 For a $0$-cochain $c \in (\mathbb{Z}/2\mathbb{Z})^V$, the operator $X_V(c) = \prod_{v : c_v = 1} X_v$ is represented by its support vector, which is simply $c$ itself.
 \end{definition}
 
@@ -14131,6 +14171,7 @@ For a $0$-cochain $c \in (\mathbb{Z}/2\mathbb{Z})^V$, the operator $X_V(c) = \pr
 \label{def:GaugingMeasurement.L_support}
 \lean{GaugingMeasurement.L_support}
 \leanok
+\uses{def:GraphWithCycles.VectorV', def:GraphWithCycles.allOnesV}
 The logical operator $L = \prod_v X_v$ has support equal to the all-ones vector $\mathbf{1} \in (\mathbb{Z}/2\mathbb{Z})^V$.
 \end{definition}
 
@@ -14189,6 +14230,7 @@ By the additivity of $\varepsilon$ (Lemma~\ref{lem:GaugingMeasurement.epsilon_ad
 \label{thm:GaugingMeasurement.ker_coboundary_two_elements}
 \lean{GaugingMeasurement.ker_coboundary_two_elements}
 \leanok
+\uses{def:GraphWithCycles, def:GraphWithCycles.IsConnected, def:GraphWithCycles.VectorV', def:GraphWithCycles.allOnesV, def:GraphWithCycles.coboundaryMap, thm:GraphWithCycles.ker_coboundary_classification}
 For a connected graph $G$, if $\delta c = 0$ then $c = 0$ or $c = \mathbf{1}$. That is, $\ker(\delta) = \{0, \mathbf{1}\}$.
 \end{theorem}
 
@@ -14347,6 +14389,7 @@ This follows directly from Theorem~\ref{thm:GaugingMeasurement.sigma_mul_self}.
 \label{def:GaugingMeasurement.byproductCochain}
 \lean{GaugingMeasurement.byproductCochain}
 \leanok
+\uses{def:GraphWithCycles, def:GraphWithCycles.VectorV', def:GraphWithCycles.coboundaryMap}
 Given $z \in (\mathbb{Z}/2\mathbb{Z})^E$ in the image of $\delta$ (i.e., there exists $c$ with $\delta c = z$), the \emph{byproduct cochain} $c' = \mathrm{byproductCochain}(G, z)$ is a chosen $0$-cochain satisfying $\delta c' = z$, obtained by the axiom of choice.
 \end{definition}
 
@@ -14843,6 +14886,7 @@ The gauging measurement procedure for measuring a logical operator $L$ of weight
 \label{def:QubitOverhead}
 \lean{QEC1.QubitOverhead}
 \leanok
+\uses{def:OverheadConfig.numLayers}
 
 A \textbf{QubitOverhead} structure records the components of the qubit overhead in the gauging measurement construction. Each edge qubit is an auxiliary qubit initialized in $|0\rangle$. It consists of:
 \begin{itemize}
@@ -16224,6 +16268,7 @@ Let $\textit{ep}$ be an error process with $\texttt{weight} \leq d$. We first es
 \label{def:initialBoundaryTime}
 \lean{QEC1.initialBoundaryTime}
 \leanok
+\uses{def:GaugingTimeConfig}
 The initial boundary occurs at time $t_0 = \texttt{config.t\_start}$, the start of the procedure.
 \end{definition}
 
@@ -16231,6 +16276,7 @@ The initial boundary occurs at time $t_0 = \texttt{config.t\_start}$, the start 
 \label{def:finalBoundaryTime}
 \lean{QEC1.finalBoundaryTime}
 \leanok
+\uses{def:GaugingTimeConfig}
 The final boundary occurs at time $t_{\mathrm{final}} = \texttt{config.t\_final}$.
 \end{definition}
 
@@ -16238,6 +16284,7 @@ The final boundary occurs at time $t_{\mathrm{final}} = \texttt{config.t\_final}
 \label{def:gaugingTimeRange}
 \lean{QEC1.gaugingTimeRange}
 \leanok
+\uses{def:GaugingTimeConfig}
 The gauging measurement occurs at times in the range
 \[
 \{ t \mid t_{\mathrm{initial}} \leq t \leq t_{\mathrm{final}} \}.
@@ -16248,6 +16295,7 @@ The gauging measurement occurs at times in the range
 \label{def:initialBoundarySeparation}
 \lean{QEC1.initialBoundarySeparation}
 \leanok
+\uses{def:GaugingTimeConfig}
 The time separation between the initial boundary and the start of gauging, defined as $(t_{\mathrm{initial}} - t_{\mathrm{start}})$ converted to a natural number.
 \end{definition}
 
@@ -16255,6 +16303,7 @@ The time separation between the initial boundary and the start of gauging, defin
 \label{def:finalBoundarySeparation}
 \lean{QEC1.finalBoundarySeparation}
 \leanok
+\uses{def:GaugingTimeConfig}
 The time separation between the end of gauging and the final boundary. Since the final boundary is at $t_{\mathrm{final}}$, this is defined to be $0$.
 \end{definition}
 
@@ -16420,6 +16469,7 @@ Suppose for contradiction there exists $\gamma$ with $\mathrm{boundarySupport}(G
 \label{def:GraphWithCycles.anticommutesWithL}
 \lean{GraphWithCycles.anticommutesWithL}
 \leanok
+\uses{def:PauliOp.commutes, def:StabPauliType.commutes}
 A Pauli operator $P$ (represented by its $Z$-support on $V$) \emph{anticommutes with $L$} if its $Z$-support has odd cardinality:
 \[
 \mathrm{anticommutesWithL}(\mathcal{S}_Z) \iff |\mathcal{S}_Z| \bmod 2 = 1.
@@ -16771,6 +16821,7 @@ Both conditions hold by reflexivity: the Gauss law and deformed frequencies are 
 \label{def:EdgeInitializationData}
 \lean{QEC1.EdgeInitializationData}
 \leanok
+\uses{def:GaugingGraphConvention.numEdges}
 Abstract representation of initialization data for edge qubits. It records the number of edge qubits and the fact that all edges are initialized in the $|0\rangle$ state (i.e., each $Z_e$ eigenvalue is $+1$).
 \end{definition}
 
@@ -16778,6 +16829,7 @@ Abstract representation of initialization data for edge qubits. It records the n
 \label{def:EdgeReadoutData}
 \lean{QEC1.EdgeReadoutData}
 \leanok
+\uses{def:GaugingGraphConvention.numEdges}
 Abstract representation of readout data from edge qubits. It records the number of edge qubits measured and the $Z$-measurement outcome for each edge.
 \end{definition}
 
@@ -17909,6 +17961,7 @@ This chapter formalizes the observation that the $d$ rounds of quantum error cor
 \label{def:RoundRequirementType}
 \lean{QEC1.RoundRequirementType}
 \leanok
+\uses{def:RoundRequirement}
 
 An inductive type classifying round requirements:
 \begin{itemize}
@@ -18701,6 +18754,7 @@ This follows directly from $\mathrm{no\_original\_original\_adj}'(G)(u)(v)$ appl
 \label{thm:edge_qubits_double'}
 \lean{QEC1.edge_qubits_double'}
 \leanok
+\uses{def:subdivideGraph', thm:no_original_original_adj', thm:num_dummy_eq_edges', thm:subdivided_is_bipartite', thm:subdivided_vertex_count', thm:subdivision_two_edges_per_original'}
 The cost of subdivision is that the number of edge qubits doubles. For any $n \in \mathbb{N}$:
 \[
 2n = n + n.
@@ -19145,6 +19199,7 @@ By simplification of the adjacency definition, the adjacency holds via the first
 \label{def:LatticeSurgeryAsGauging.RelaxedExpansionProperty}
 \lean{QEC1.LatticeSurgeryAsGauging.RelaxedExpansionProperty}
 \leanok
+\uses{def:edgeBoundary}
 Relaxed expansion: the condition $|\partial S| \geq |S|$ is required only for subsets $S \subseteq V$ satisfying $0 < |S|$, $2|S| \leq |V|$, and $(S \cap \mathrm{logicalSupport}) \neq \emptyset$. Formally,
 \[
   \forall S \subseteq V,\; 0 < |S| \implies 2|S| \leq |V| \implies (S \cap \mathrm{logicalSupport}) \neq \emptyset \implies |\partial_E S| \geq |S|.
@@ -19897,6 +19952,7 @@ This chapter establishes that the Cohen et al.\ scheme for logical measurement c
 \label{def:CohenSchemeAsGauging.CohenHypergraph}
 \lean{QEC1.CohenSchemeAsGauging.CohenHypergraph}
 \leanok
+\uses{def:HypergraphGeneralization.Hypergraph}
 The \emph{Cohen hypergraph} $\mathrm{CohenHypergraph}(W, \mathrm{numChecks})$ is a hypergraph with vertex set $\mathrm{Fin}(W)$ and hyperedge set $\mathrm{Fin}(\mathrm{numChecks})$. The vertices represent the $W$ qubits in $\mathrm{supp}(L)$, and the hyperedges are the restricted Z-type checks.
 \end{definition}
 
@@ -19904,6 +19960,7 @@ The \emph{Cohen hypergraph} $\mathrm{CohenHypergraph}(W, \mathrm{numChecks})$ is
 \label{def:CohenSchemeAsGauging.logicalVector}
 \lean{QEC1.CohenSchemeAsGauging.logicalVector}
 \leanok
+\uses{def:HypergraphGeneralization.Hypergraph}
 The \emph{logical vector} $\mathbf{L} \in (\mathrm{Fin}(W) \to \mathbb{Z}/2\mathbb{Z})$ is the all-ones vector, defined by $\mathbf{L}(v) = 1$ for all $v$. This represents the logical operator $L = \prod_{v \in \mathrm{supp}(L)} X_v$.
 \end{definition}
 
@@ -19981,6 +20038,7 @@ We construct the pair. For $0 \in \mathrm{operatorKernel}(HG)$, we use the backw
 \label{thm:CohenSchemeAsGauging.layered_vertex_count}
 \lean{QEC1.CohenSchemeAsGauging.layered_vertex_count}
 \leanok
+\uses{def:LayeredVertex}
 The layered construction has vertex type $\mathrm{Fin}(d+1) \times \mathrm{Fin}(W)$, where layer $0$ is the original (base) layer and layers $1, \ldots, d$ are dummy layers. The total number of vertices is $(d+1) \cdot W$.
 \end{definition}
 
@@ -19994,6 +20052,7 @@ By simplification using the cardinality of the product type $\mathrm{Fin}(d+1) \
 \label{def:CohenSchemeAsGauging.baseLayerVertices}
 \lean{QEC1.CohenSchemeAsGauging.baseLayerVertices}
 \leanok
+\uses{def:LayeredVertex}
 The \emph{base layer vertices} are the vertices $(l, i)$ with $l = 0$:
 \[
 \mathrm{baseLayerVertices}(W, d) = \{v \in \mathrm{Fin}(d+1) \times \mathrm{Fin}(W) \mid v_1 = 0\}.
@@ -20005,6 +20064,7 @@ These correspond to the original qubits in $\mathrm{supp}(L)$.
 \label{def:CohenSchemeAsGauging.dummyLayerVertices}
 \lean{QEC1.CohenSchemeAsGauging.dummyLayerVertices}
 \leanok
+\uses{def:LayeredVertex}
 The \emph{dummy layer vertices} are the vertices $(l, i)$ with $l \neq 0$:
 \[
 \mathrm{dummyLayerVertices}(W, d) = \{v \in \mathrm{Fin}(d+1) \times \mathrm{Fin}(W) \mid v_1 \neq 0\}.
@@ -20132,6 +20192,7 @@ By simplification using the definition of the layered construction, the incidenc
 \label{def:CohenSchemeAsGauging.baseLogicalVector}
 \lean{QEC1.CohenSchemeAsGauging.baseLogicalVector}
 \leanok
+\uses{def:HypergraphGeneralization.Hypergraph, def:LayeredVertex}
 The \emph{base logical vector} is all-ones on the base layer and zeros elsewhere:
 \[
 \mathrm{baseLogicalVector}(v) = \begin{cases} 1 & \text{if } v_1 = 0, \\ 0 & \text{otherwise.} \end{cases}
@@ -20142,6 +20203,7 @@ The \emph{base logical vector} is all-ones on the base layer and zeros elsewhere
 \label{def:CohenSchemeAsGauging.allLayersLogicalVector}
 \lean{QEC1.CohenSchemeAsGauging.allLayersLogicalVector}
 \leanok
+\uses{def:HypergraphGeneralization.Hypergraph, def:LayeredVertex}
 The \emph{all-layers logical vector} is the all-ones vector on the full layered vertex set:
 \[
 \mathrm{allLayersLogicalVector}(v) = 1 \quad \text{for all } v.
@@ -21163,6 +21225,7 @@ By extensionality, it suffices to show equality for arbitrary $\alpha, \beta \in
 \label{def:BivariateBicycle.LabelType}
 \lean{QEC1.BivariateBicycle.LabelType}
 \leanok
+\uses{def:BivariateBicycle.monomial}
 
 The four label types for checks and qubits of a BB code are:
 \begin{itemize}
@@ -21887,6 +21950,7 @@ W := 12.
 \label{def:GrossCodeGaugingExample.codeDistance}
 \lean{QEC1.GrossCodeGaugingExample.codeDistance}
 \leanok
+\uses{def:GrossCodeGaugingExample.logicalWeight}
 The code distance of the Gross code:
 \[
 d := 12.
