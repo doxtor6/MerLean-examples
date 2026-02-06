@@ -37,6 +37,13 @@ a:hover {
   padding: 60px 0 10px;
 }
 
+.site-logo {
+  display: block;
+  margin: 0 auto 18px;
+  width: 180px;
+  height: auto;
+}
+
 .title {
   font-size: 2.4rem;
   font-weight: 700;

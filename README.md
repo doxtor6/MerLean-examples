@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="home_page/assets/img/MerLean_logo.png" alt="MerLean Logo" width="200">
+</p>
+
 # MerLean-examples
 
 Example output from [MerLean], a fully automated agentic framework that formalizes mathematical research papers into verified [Lean 4](https://lean-lang.org/) + [Mathlib](https://leanprover-community.github.io/) libraries and translates them back into human-readable LaTeX blueprints.
