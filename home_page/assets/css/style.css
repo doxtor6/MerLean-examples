@@ -101,14 +101,16 @@ a:hover {
   margin-bottom: 24px;
 }
 
-.links {
+.links,
+.header-links {
   display: flex;
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
 }
 
-.links a {
+.links a,
+.header-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -122,13 +124,15 @@ a:hover {
   transition: background 0.15s, border-color 0.15s;
 }
 
-.links a:hover {
+.links a:hover,
+.header-btn:hover {
   background: #f0f4ff;
   border-color: #93a3d0;
   text-decoration: none;
 }
 
-.links svg {
+.links svg,
+.header-links svg {
   flex-shrink: 0;
 }
 
