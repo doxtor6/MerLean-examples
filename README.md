@@ -6,7 +6,7 @@
 
 Example output from [MerLean], a fully automated agentic framework that formalizes mathematical research papers into verified [Lean 4](https://lean-lang.org/) + [Mathlib](https://leanprover-community.github.io/) libraries and translates them back into human-readable LaTeX blueprints.
 
-**Paper:** Yuanjie Ren\*, Jinzheng Li\*, Yidi Qi\*. *MerLean: An Agentic Framework for Autoformalization in Quantum Computation.* [[arXiv]](https://arxiv.org/abs/2410.02213)
+**Paper:** Yuanjie Ren\*, Jinzheng Li\*, Yidi Qi\*. *MerLean: An Agentic Framework for Autoformalization in Quantum Computation.
 
 ## What is this repository?
 
