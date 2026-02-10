@@ -2,6 +2,7 @@ title: MerLean
 description: An Agentic Framework for Autoformalization in Quantum Computation
 baseurl: "/MerLean-examples"
 url: "https://doxtor6.github.io/MerLean-examples"
+image: /MerLean-examples/assets/img/MerLean_logo.png
 github_username: doxtor6
 repository: doxtor6/MerLean-examples
 
