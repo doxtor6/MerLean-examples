@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.3) (preloaded format=xelatex 2026.2.3)  3 FEB 2026 22:41
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.3) (preloaded format=xelatex 2026.2.3)  14 FEB 2026 02:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -137,6 +137,11 @@ Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 \xmathstrut@dim=\dimen157
 ) (C:\Users\timmy\AppData\Local\Programs\MiKTeX\tex/latex/braket\braket.sty) (C:\Users\timmy\AppData\Local\Programs\MiKTeX\tex/latex/doublestroke\dsfont.sty
 Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
+) (C:\Users\timmy\AppData\Local\Programs\MiKTeX\tex/latex/stmaryrd\stmaryrd.sty
+Package: stmaryrd 1994/03/03 St Mary's Road symbol package
+\symstmry=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
+(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
 ) (C:\Users\timmy\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
 \labelindent=\skip59
@@ -297,30 +302,30 @@ File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
 ) (print.aux)
 \openout1 = `print.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 53.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 54.
  (C:\Users\timmy\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
  (C:\Users\timmy\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
  (C:\Users\timmy\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
@@ -369,7 +374,7 @@ Package graphics Info: Driver file: xetex.def on input line 107.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 53.
+Package hyperref Info: Link coloring OFF on input line 54.
 (C:\Users\timmy\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (C:\Users\timmy\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
@@ -379,62 +384,209 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count295
 )
-LaTeX Info: Redefining \ref on input line 53.
-LaTeX Info: Redefining \pageref on input line 53.
-LaTeX Info: Redefining \nameref on input line 53.
+LaTeX Info: Redefining \ref on input line 54.
+LaTeX Info: Redefining \pageref on input line 54.
+LaTeX Info: Redefining \nameref on input line 54.
  (print.out) (print.out)
 \@outlinefile=\write3
 \openout3 = `print.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 55.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
  (C:\Users\timmy\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
  (C:\Users\timmy\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (print.toc [1
+)
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 56.
+ (C:\Users\timmy\AppData\Local\Programs\MiKTeX\tex/latex/stmaryrd\ustmry.fd)
+Overfull \hbox (39.21895pt too wide) in paragraph at lines 65--66
+\TU/lmtt/m/n/10 generators_span_all_detectors\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 initXe_isGaugingStabilizer\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 readoutXe_isGaugingStabilizer\TU/lmr/m/n/10 ,
+ []
+
+
+Overfull \hbox (60.21895pt too wide) in paragraph at lines 65--66
+\TU/lmtt/m/n/10 space_fault_cleaning\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 spacetimeStabilizer_completeness\TU/lmr/m/n/10 , \TU/lmtt/m/n/10 syndromeFree_pureSpace_inCentralizer\TU/lmr/m/n/10 ,
+ []
+
+(print.toc [1
 
 ])
 \tf@toc=\write4
 \openout4 = `print.toc'.
 
- [2] [3] [4] [5] [6]
-Overfull \hbox (19.8008pt too wide) detected at line 264
-[] \OML/cmm/m/it/10.95 < [] < [] < [] < []
+ [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14]
+Overfull \hbox (69.55965pt too wide) in paragraph at lines 686--687
+[]\TU/lmr/m/n/10.95 Unfolding the definition of $[]$, the condition becomes $[][] []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )(\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 ) =
  []
 
-[7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23]
-Overfull \hbox (10.52055pt too wide) in paragraph at lines 903--904
-[]\TU/lmr/m/n/10.95 For the final boundary at $\OML/cmm/m/it/10.95 t \OT1/cmr/m/n/10.95 = \OML/cmm/m/it/10.95 t[]$\TU/lmr/m/n/10.95 , symmetric conditions apply. Detectors $\OMS/cmsy/m/n/10.95 h[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 p\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; t[]; []\OMS/cmsy/m/n/10.95 i$
+
+Overfull \hbox (40.03845pt too wide) in paragraph at lines 710--711
+[]\TU/lmr/m/n/10.95 Unfolding the definition of $[]$, we need to show $[][] []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )(\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 ) =
  []
 
-[24] [25] [26] [27] [28] [29] [30] [31]
-Overfull \hbox (0.68146pt too wide) in paragraph at lines 1217--1218
-[]\TU/lmr/m/it/10.95 Case 1 (Time-dominated): \TU/lmr/m/n/10.95 There exists a pure time fault $\OML/cmm/m/it/10.95 F[]$ \TU/lmr/m/n/10.95 with $[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 F[]\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^U []$
+
+Overfull \hbox (17.22382pt too wide) in paragraph at lines 710--711
+\OT1/cmr/m/n/10.95 0$\TU/lmr/m/n/10.95 . Unfolding the boundary condition $\OML/cmm/m/it/10.95 @^^M \OT1/cmr/m/n/10.95 = [](\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )$\TU/lmr/m/n/10.95 , we rewrite the goal as $[][]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 @^^M\OT1/cmr/m/n/10.95 )(\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 ) =
  []
 
-[32] [33] [34] [35] [36] [37] [38] [39] [40] [41]
-Overfull \hbox (23.52654pt too wide) in paragraph at lines 1595--1596
-\TU/lmr/m/it/10.95 connects an original vertex to a dummy vertex. Formally, for all $\OML/cmm/m/it/10.95 x; y \OMS/cmsy/m/n/10.95 2 []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 V; []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 V\OT1/cmr/m/n/10.95 ))$
+[15]
+Overfull \hbox (64.1419pt too wide) in paragraph at lines 738--739
+[][] \OT1/cmr/bx/n/10.95 1[] \OMS/cmsy/m/n/10.95 ^^A \OML/cmm/m/it/10.95 ^^M\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 e\OT1/cmr/m/n/10.95 )$\TU/lmr/m/n/10.95 . Rewriting using the boundary condition, the total becomes $\OML/cmm/m/it/10.95 P: []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 ) + [](\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )(\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 )$\TU/lmr/m/n/10.95 .
  []
 
-[42] [43] [44]
-Overfull \hbox (0.40326pt too wide) in paragraph at lines 1691--1692
-[]\TU/lmr/bx/n/10.95 Steane Measurement\TU/lmr/m/n/10.95 : Syndrome extraction for a stabilizer group can be performed through
+[16]
+Overfull \hbox (30.54245pt too wide) in paragraph at lines 770--771
+[]\TU/lmr/bx/n/10.95 Theorem \TU/lmr/m/n/10.95 (Theorem 1: Noncommuting Operators Cannot Be Deformed)\TU/lmr/bx/n/10.95 . []\TU/lmr/m/it/10.95 If $\OMS/cmsy/m/n/10.95 : []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )$\TU/lmr/m/it/10.95 ,
  []
 
-[45] [46] [47] [48] (print.aux)
+
+Overfull \hbox (13.70567pt too wide) in paragraph at lines 770--771
+\TU/lmr/m/it/10.95 then there is no edge-path $\OML/cmm/m/it/10.95 ^^M [] [] E \OMS/cmsy/m/n/10.95 ! \U/msb/m/n/10.95 Z\OML/cmm/m/it/10.95 =\OT1/cmr/m/n/10.95 2\U/msb/m/n/10.95 Z$ \TU/lmr/m/it/10.95 satisfying the boundary condition $[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 G; P; ^^M\OT1/cmr/m/n/10.95 )$\TU/lmr/m/it/10.95 . 
+ []
+
+
+Overfull \hbox (89.11479pt too wide) in paragraph at lines 774--775
+\TU/lmr/m/n/10.95 Then by the fundamental result that boundary conditions imply commutation, we conclude $[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )$\TU/lmr/m/n/10.95 ,
+ []
+
+
+Overfull \hbox (6.13472pt too wide) detected at line 783
+[] []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P \OMS/cmsy/m/n/10.95 ^^A \OML/cmm/m/it/10.95 Q\OT1/cmr/m/n/10.95 )(\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 ) = [] [](\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )(\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 ) + [] [](\OML/cmm/m/it/10.95 Q\OT1/cmr/m/n/10.95 )(\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 :
+ []
+
+
+Overfull \hbox (20.27866pt too wide) in paragraph at lines 791--792
+[]\TU/lmr/bx/n/10.95 Theorem \TU/lmr/m/n/10.95 (Theorem 3: Multiplication Preserves CommutesWithLogical)\TU/lmr/bx/n/10.95 . []\TU/lmr/m/it/10.95 If $[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )$
+ []
+
+
+Overfull \hbox (14.65277pt too wide) in paragraph at lines 802--803
+[]\TU/lmr/bx/n/10.95 Theorem \TU/lmr/m/n/10.95 (Theorem 4: Contrapositive of Multiplication Preservation)\TU/lmr/bx/n/10.95 . []\TU/lmr/m/it/10.95 If $\OMS/cmsy/m/n/10.95 : []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P \OMS/cmsy/m/n/10.95 ^^A
+ []
+
+[17]
+Overfull \hbox (102.55646pt too wide) in paragraph at lines 827--828
+[]\TU/lmr/bx/n/10.95 Theorem \TU/lmr/m/n/10.95 (Theorem 5: pauliZ Does Not Commute With Logical)\TU/lmr/bx/n/10.95 . []\TU/lmr/m/it/10.95 For any vertex $\OML/cmm/m/it/10.95 v$\TU/lmr/m/it/10.95 , $\OMS/cmsy/m/n/10.95 : []\OT1/cmr/m/n/10.95 ([](\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 ))$\TU/lmr/m/it/10.95 . 
+ []
+
+
+Overfull \hbox (4.07852pt too wide) in paragraph at lines 831--832
+[]\TU/lmr/m/n/10.95 Unfolding $[]$, we need to show $[][] []\OT1/cmr/m/n/10.95 ([](\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 ))(\OML/cmm/m/it/10.95 w\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 6\OT1/cmr/m/n/10.95 =
+ []
+
+
+Overfull \hbox (32.83504pt too wide) in paragraph at lines 845--847
+\TU/lmr/m/n/10.95 The goal reduces to showing $[][] []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )(\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 ) + 1 = 0  \OMS/cmsy/m/n/10.95 ([])  [][] []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )(\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 6\OT1/cmr/m/n/10.95 =
+ []
+
+
+Overfull \hbox (39.66324pt too wide) in paragraph at lines 848--849
+[]\TU/lmr/m/n/10.95 For the forward direction: if $[][] []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )(\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 ) + 1 = 0$ \TU/lmr/m/n/10.95 and $[][] []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )(\OML/cmm/m/it/10.95 v\OT1/cmr/m/n/10.95 ) =
+ []
+
+[18]
+Overfull \hbox (9.50749pt too wide) in paragraph at lines 885--886
+[]\TU/lmr/bx/n/10.95 Theorem \TU/lmr/m/n/10.95 (Theorem 8: Stabilizer Preserves Non-Commuting Status)\TU/lmr/bx/n/10.95 . []\TU/lmr/m/it/10.95 If $\OMS/cmsy/m/n/10.95 : []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )$
+ []
+
+
+Overfull \hbox (65.85759pt too wide) in paragraph at lines 906--907
+[]\TU/lmr/bx/n/10.95 Theorem \TU/lmr/m/n/10.95 (Theorem 10: No Modification Helps)\TU/lmr/bx/n/10.95 . []\TU/lmr/m/it/10.95 If $\OMS/cmsy/m/n/10.95 : []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )$ \TU/lmr/m/it/10.95 and $[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 Q\OT1/cmr/m/n/10.95 )$\TU/lmr/m/it/10.95 ,
+ []
+
+[19]
+Overfull \hbox (9.20091pt too wide) in paragraph at lines 927--928
+[]\TU/lmr/bx/n/10.95 Theorem \TU/lmr/m/n/10.95 (Theorem 11: Z-Support Not in Range of Boundary Map)\TU/lmr/bx/n/10.95 . []\TU/lmr/m/it/10.95 If $\OMS/cmsy/m/n/10.95 : []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 )$\TU/lmr/m/it/10.95 ,
+ []
+
+[20] [21] [22] [23]
+Overfull \hbox (40.04823pt too wide) in paragraph at lines 1076--1077
+[]\TU/lmr/m/n/10.95 From the previous theorems, we have $[]\OT1/cmr/m/n/10.95 ([]) = \OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 V\OMS/cmsy/m/n/10.95 j \OT1/cmr/m/n/10.95 + \OMS/cmsy/m/n/10.95 j\OML/cmm/m/it/10.95 E\OMS/cmsy/m/n/10.95 j$ \TU/lmr/m/n/10.95 and $[]\OT1/cmr/m/n/10.95 ([]) =
+ []
+
+[24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35]
+Overfull \hbox (71.16402pt too wide) in paragraph at lines 1615--1616
+\TU/lmr/m/it/10.95 tinct vertices $\OML/cmm/m/it/10.95 u; v$ \TU/lmr/m/it/10.95 in $[]\OT1/cmr/m/n/10.95 ([](\OML/cmm/m/it/10.95 j\OT1/cmr/m/n/10.95 ))$\TU/lmr/m/it/10.95 , $\OML/cmm/m/it/10.95 u$ \TU/lmr/m/it/10.95 and $\OML/cmm/m/it/10.95 v$ \TU/lmr/m/it/10.95 are adjacent in $\OML/cmm/m/it/10.95 G$\TU/lmr/m/it/10.95 . Then $[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 G; []; \OT1/cmr/m/n/10.95 1)$
+ []
+
+[36] [37]
+Overfull \hbox (10.48444pt too wide) in paragraph at lines 1696--1698
+\TU/lmr/m/n/10.95 exists some $\OML/cmm/m/it/10.95 c[] \OT1/cmr/m/n/10.95 : \OML/cmm/m/it/10.95 V \OMS/cmsy/m/n/10.95 ! \U/msb/m/n/10.95 Z\OML/cmm/m/it/10.95 =\OT1/cmr/m/n/10.95 2\U/msb/m/n/10.95 Z$ \TU/lmr/m/n/10.95 with $\OML/cmm/m/it/10.95 ^^N\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 c[]\OT1/cmr/m/n/10.95 ) = [](\OML/cmm/m/it/10.95 L[]\OT1/cmr/m/n/10.95 )$\TU/lmr/m/n/10.95 . The cleaned operator $[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 L[]; c[]\OT1/cmr/m/n/10.95 ) =
+ []
+
+[38] [39] [40] [41] [42] [43] [44]
+Overfull \hbox (26.03395pt too wide) in paragraph at lines 2040--2041
+[]\TU/lmr/m/n/10.95 This follows immediately from the definitions of violation and the equality $[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 D; F\OT1/cmr/m/n/10.95 ) =
+ []
+
+
+Overfull \hbox (10.52747pt too wide) in paragraph at lines 2062--2063
+[]\TU/lmr/m/n/10.95 By the characterization of violation in terms of flip parity, it suffices to show $[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 D; F[]\OT1/cmr/m/n/10.95 ) =
+ []
+
+[45]
+Overfull \hbox (46.33986pt too wide) in paragraph at lines 2141--2142
+[]\TU/lmr/m/n/10.95 By the flip parity characterization, violation occurs iff $[]\OT1/cmr/m/n/10.95 ([](\OML/cmm/m/it/10.95 m\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; F\OT1/cmr/m/n/10.95 ) =
+ []
+
+[46] [47]
+Overfull \hbox (53.69073pt too wide) in paragraph at lines 2221--2222
+[]\TU/lmr/m/n/10.95 By extensionality on the index $\OML/cmm/m/it/10.95 i$\TU/lmr/m/n/10.95 , we simplify using the definitions of $[]$, $[]$,
+ []
+
+[48] [49]
+Overfull \hbox (15.31306pt too wide) in paragraph at lines 2347--2348
+\TU/lmr/m/n/10.95 plied to $\OML/cmm/m/it/10.95 S$\TU/lmr/m/n/10.95 , we know $\OML/cmm/m/it/10.95 S\OMS/cmsy/m/n/10.95 4\OML/cmm/m/it/10.95 U$ \TU/lmr/m/n/10.95 is generated. By associativity of symmetric difference, $\OML/cmm/m/it/10.95 S\OMS/cmsy/m/n/10.95 4\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 U\OMS/cmsy/m/n/10.95 4[][]\OT1/cmr/m/n/10.95 ) =
+ []
+
+[50] [51] [52]
+Overfull \hbox (5.80658pt too wide) in paragraph at lines 2444--2445
+[]\TU/lmr/m/n/10.95 If $[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 F\OT1/cmr/m/n/10.95 )$ \TU/lmr/m/n/10.95 is false, then $\OML/cmm/m/it/10.95 F$ \TU/lmr/m/n/10.95 satisfies syndrome-freeness (by hypothesis) and outcome-
+ []
+
+[53] [54] [55] [56] [57] [58]
+Overfull \hbox (12.14655pt too wide) in paragraph at lines 2668--2669
+\OML/cmm/m/it/10.95 F[]:[] \OMS/cmsy/m/n/10.95 ^^A \OML/cmm/m/it/10.95 F[]:[]$\TU/lmr/m/n/10.95 . Let $\OML/cmm/m/it/10.95 F[] \OT1/cmr/m/n/10.95 := \OML/cmm/m/it/10.95 F[]:[]$\TU/lmr/m/n/10.95 , $\OML/cmm/m/it/10.95 F[] \OT1/cmr/m/n/10.95 := \OML/cmm/m/it/10.95 F[]:[]$\TU/lmr/m/n/10.95 ,
+ []
+
+
+Overfull \hbox (48.1204pt too wide) in paragraph at lines 2679--2680
+\TU/lmr/m/n/10.95 Similarly, the Pauli error at any time depends only on space-faults, so $\OML/cmm/m/it/10.95 F:[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.95 F[]:[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t\OT1/cmr/m/n/10.95 )$\TU/lmr/m/n/10.95 . 
+ []
+
+
+Overfull \hbox (4.12639pt too wide) in paragraph at lines 2683--2684
+[]\TU/lmr/bx/n/10.95 Axiom dependencies: \TU/lmr/m/n/10.95 This proof relies on two axioms from Lemma 5: \TU/lmtt/m/n/10.95 space_fault_cleaning
+ []
+
+[59]
+Overfull \hbox (19.34857pt too wide) in paragraph at lines 2723--2724
+\TU/lmr/m/n/10.95 sitively depends on the axioms \TU/lmtt/m/n/10.95 space_fault_cleaning \TU/lmr/m/n/10.95 and \TU/lmtt/m/n/10.95 syndromeFree_pureSpace_inCentralizer
+ []
+
+[60] [61] [62] [63] [64] [65] [66] [67] [68] [69] [70]
+Overfull \hbox (51.99968pt too wide) in paragraph at lines 3143--3144
+[]\TU/lmr/bx/n/10.95 Expansion edges\TU/lmr/m/n/10.95 : 4 carefully chosen edges $\OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 ((2\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0)\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 (5\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 3))\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 ((2\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0)\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 (6\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 0))\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 ((5\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 3)\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 (11\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 3))\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 ((7\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 3)\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 (11\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 3))\OMS/cmsy/m/n/10.95 g$
+ []
+
+[71]
+Overfull \hbox (13.87938pt too wide) in paragraph at lines 3177--3178
+[]\TU/lmr/m/n/10.95 The polynomial $\OML/cmm/m/it/10.95 f$ \TU/lmr/m/n/10.95 defining the logical operators satisfies $\OML/cmm/m/it/10.95 f \OMS/cmsy/m/n/10.95 2 []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 B[]\OT1/cmr/m/n/10.95 )$\TU/lmr/m/n/10.95 , meaning that $[][] \OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^M\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 B[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 ^^M \OMS/cmsy/m/n/10.95 ^^@
+ []
+
+[72] [73] [74] [75] [76] (print.aux)
 Package rerunfilecheck Info: File `print.out' has not changed.
-(rerunfilecheck)             Checksum: 3AD9930A9FE85984D278DAEB7F405F61;10574.
+(rerunfilecheck)             Checksum: 8664EF26105E177090E9809047A81ACF;11409.
  ) 
 Here is how much of TeX's memory you used:
- 11255 strings out of 410967
- 173581 string characters out of 2823754
- 511390 words of memory out of 3000000
- 31833 multiletter control sequences out of 15000+600000
- 478468 words of font info for 84 fonts, out of 8000000 for 9000
+ 11520 strings out of 410967
+ 176886 string characters out of 2823754
+ 510482 words of memory out of 3000000
+ 32090 multiletter control sequences out of 15000+600000
+ 479268 words of font info for 86 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 60i,12n,64p,795b,541s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 60i,12n,64p,1083b,543s stack positions out of 10000i,1000n,20000p,200000b,80000s
 
-Output written on print.pdf (48 pages).
+Output written on print.pdf (76 pages).

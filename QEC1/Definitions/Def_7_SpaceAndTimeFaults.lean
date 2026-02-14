@@ -1,673 +1,385 @@
+import QEC1.Remarks.Rem_2_NotationPauliOperators
+import QEC1.Remarks.Rem_3_NotationStabilizerCodes
+import Mathlib.Data.ZMod.Basic
 import Mathlib.Data.Finset.Basic
 import Mathlib.Data.Fintype.Basic
-import Mathlib.Data.ZMod.Basic
-import Mathlib.Algebra.Group.Subgroup.Basic
-import Mathlib.GroupTheory.GroupAction.Basic
-import Mathlib.Data.Set.Lattice
-
-import QEC1.Definitions.Def_1_BoundaryCoboundaryMaps
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Mathlib.Order.SymmDiff
 
 /-!
-# Def_7: Space and Time Faults
+# Definition 7: Space and Time Faults
 
 ## Statement
-In the context of fault-tolerant implementation of the gauging measurement procedure:
+In the context of fault-tolerant quantum error correction:
 
-**Space-fault**: A Pauli error operator (single-qubit X, Y, or Z error) that occurs on some qubit
-at some time during the procedure. Space-faults are characterized by the qubit affected and the
-time of occurrence.
+1. A **space-fault** (or **space error**) is a Pauli error operator that occurs on some
+   qubit at a specific time during the procedure.
 
-**Time-fault (measurement error)**: An error where the result of a quantum measurement is reported
-incorrectly. The actual measurement projects onto an eigenspace, but the classical outcome is
-flipped. Time-faults are characterized by the measurement affected and the time step.
+2. A **time-fault** (or **measurement error**) is an error where the result of a
+   measurement is reported incorrectly (i.e., +1 is reported as -1 or vice versa).
 
-**State initialization fault**: Treated as equivalent to a time-fault. A faulty initialization of
-state |ψ⟩ is modeled as perfect initialization followed by an immediate space-fault.
+3. A **spacetime fault** is a collection of space-faults and time-faults occurring at
+   various locations and times during the procedure.
 
-**Spacetime fault**: A collection of space-faults and time-faults occurring at various locations
-and times during the procedure. The set of all spacetime faults forms a group under composition.
+**Convention:** State mis-initialization faults are treated as time-faults that are
+equivalent to a perfect initialization followed by a space-fault.
 
-## Main Definitions
-- `PauliType` : The three Pauli error types (X, Y, Z)
-- `SpaceFault` : A single-qubit Pauli error at a specific qubit and time
-- `TimeFault` : A measurement error (bit flip) at a specific measurement and time
-- `InitializationFault` : A state initialization fault (modeled as time-fault)
-- `SpacetimeFault` : A collection of space-faults and time-faults
-- `SpacetimeFaultGroup` : The group structure on spacetime faults
+## Main Results
+- `SpaceFault`: A Pauli error on a specific qubit at a specific time
+- `TimeFault`: A measurement error (bit-flip of outcome) at a specific measurement location
+- `SpacetimeFault`: A collection of space-faults and time-faults
+- `SpacetimeFault.weight`: The total number of individual faults
+- `SpacetimeFault.empty`: The fault-free configuration
+- `SpacetimeFault.compose`: Composition (symmetric difference) of faults
 
-## Key Properties
-- `spaceFault_identity` : Identity space-fault (no error)
-- `timeFault_identity` : Identity time-fault (no measurement error)
-- `spacetimeFault_compose` : Composition of spacetime faults
-- `spacetimeFault_inv` : Inverse of a spacetime fault
-- `spacetimeFault_group` : Group structure on spacetime faults
+## Corollaries
+- Weight properties: empty has weight 0, single faults have weight 1
+- Composition is commutative and involutive
+- Space-only and time-only fault embeddings
 -/
 
-open Finset
-
 set_option linter.unusedSectionVars false
-
-/-! ## Time Steps
-
-We model time discretely. Each round of the procedure corresponds to a time step.
-Time steps are indexed by natural numbers. -/
-
-/-- A time step in the fault-tolerant procedure.
-    Time 0 is the start, and time increases with each round. -/
-abbrev TimeStep := ℕ
-
-/-! ## Pauli Error Types
-
-A single-qubit Pauli error can be X, Y, or Z. We also include Identity (I) for completeness,
-representing "no error". -/
-
-/-- The four single-qubit Pauli operators -/
-inductive PauliType : Type
-  | I : PauliType  -- Identity (no error)
-  | X : PauliType  -- Bit flip
-  | Y : PauliType  -- Combined bit and phase flip
-  | Z : PauliType  -- Phase flip
-  deriving DecidableEq, Repr, Inhabited
-
-namespace PauliType
-
-/-- Pauli multiplication table.
-    I is identity, X² = Y² = Z² = I, and XYZ = iI (we ignore global phases). -/
-def mul : PauliType → PauliType → PauliType
-  | I, p => p
-  | p, I => p
-  | X, X => I
-  | Y, Y => I
-  | Z, Z => I
-  | X, Y => Z
-  | Y, X => Z
-  | Y, Z => X
-  | Z, Y => X
-  | Z, X => Y
-  | X, Z => Y
-
-instance : Mul PauliType where
-  mul := mul
-
-/-- Pauli operators are self-inverse (up to phase) -/
-def inv : PauliType → PauliType := id
-
-instance : Inv PauliType where
-  inv := inv
-
-/-- Identity element -/
-instance : One PauliType where
-  one := I
-
-@[simp] lemma one_eq_I : (1 : PauliType) = I := rfl
-
-@[simp] lemma mul_I (p : PauliType) : p * I = p := by cases p <;> rfl
-
-@[simp] lemma I_mul (p : PauliType) : I * p = p := by cases p <;> rfl
-
-@[simp] lemma mul_self (p : PauliType) : p * p = I := by cases p <;> rfl
-
-@[simp] lemma inv_eq_self (p : PauliType) : p⁻¹ = p := rfl
-
-/-- Pauli multiplication is associative -/
-theorem mul_assoc (a b c : PauliType) : a * b * c = a * (b * c) := by
-  cases a <;> cases b <;> cases c <;> rfl
-
-/-- Pauli inverses work correctly -/
-theorem mul_inv_cancel (p : PauliType) : p * p⁻¹ = 1 := mul_self p
-
-theorem inv_mul_cancel (p : PauliType) : p⁻¹ * p = 1 := mul_self p
-
-/-- PauliType forms a group -/
-instance : Group PauliType where
-  mul_assoc := mul_assoc
-  one_mul := I_mul
-  mul_one := mul_I
-  inv_mul_cancel := inv_mul_cancel
-
-/-- Check if a Pauli type represents an actual error (not identity) -/
-def isError : PauliType → Bool
-  | I => false
-  | _ => true
-
-@[simp] lemma isError_I : isError I = false := rfl
-@[simp] lemma isError_X : isError X = true := rfl
-@[simp] lemma isError_Y : isError Y = true := rfl
-@[simp] lemma isError_Z : isError Z = true := rfl
-
-end PauliType
-
-/-! ## Qubit Index Type
-
-Qubits are indexed by some type. In the gauging context, we have:
-- Vertex qubits (indexed by V)
-- Edge qubits (indexed by E)
-We use a unified qubit index type that can represent both. -/
-
-/-- A qubit location in the system. Can be a vertex qubit or an edge qubit. -/
-inductive QubitLoc (V E : Type*)
-  | vertex : V → QubitLoc V E  -- A vertex qubit
-  | edge : E → QubitLoc V E     -- An edge qubit
-  deriving DecidableEq
-
-namespace QubitLoc
-
-variable {V E : Type*}
-
-/-- Check if a location is a vertex qubit -/
-def isVertex : QubitLoc V E → Bool
-  | vertex _ => true
-  | edge _ => false
-
-/-- Check if a location is an edge qubit -/
-def isEdge : QubitLoc V E → Bool
-  | vertex _ => false
-  | edge _ => true
-
-@[simp] lemma isVertex_vertex (v : V) : (vertex v : QubitLoc V E).isVertex = true := rfl
-@[simp] lemma isVertex_edge (e : E) : (edge e : QubitLoc V E).isVertex = false := rfl
-@[simp] lemma isEdge_vertex (v : V) : (vertex v : QubitLoc V E).isEdge = false := rfl
-@[simp] lemma isEdge_edge (e : E) : (edge e : QubitLoc V E).isEdge = true := rfl
-
-/-- Extract the vertex index if this is a vertex qubit -/
-def getVertex : QubitLoc V E → Option V
-  | vertex v => some v
-  | edge _ => none
-
-/-- Extract the edge index if this is an edge qubit -/
-def getEdge : QubitLoc V E → Option E
-  | vertex _ => none
-  | edge e => some e
-
-instance [Fintype V] [Fintype E] : Fintype (QubitLoc V E) :=
-  Fintype.ofEquiv (V ⊕ E) {
-    toFun := Sum.elim vertex edge
-    invFun := fun q => match q with
-      | vertex v => Sum.inl v
-      | edge e => Sum.inr e
-    left_inv := fun s => by cases s <;> rfl
-    right_inv := fun q => by cases q <;> rfl
-  }
-
-@[simp]
-lemma card_qubitLoc [Fintype V] [Fintype E] :
-    Fintype.card (QubitLoc V E) = Fintype.card V + Fintype.card E := by
-  rw [Fintype.card_eq.mpr ⟨{
-    toFun := fun q => match q with
-      | vertex v => Sum.inl v
-      | edge e => Sum.inr e
-    invFun := Sum.elim vertex edge
-    left_inv := fun q => by cases q <;> rfl
-    right_inv := fun s => by cases s <;> rfl
-  }⟩]
-  simp [Fintype.card_sum]
-
-end QubitLoc
-
-/-! ## Measurement Index Type
-
-Measurements are indexed by type M. Each measurement corresponds to measuring some check
-operator (Gauss law A_v, flux B_p, or original stabilizer s_j). -/
-
-/-- A measurement index. This identifies which measurement is being referred to. -/
-abbrev MeasurementIdx (M : Type*) := M
-
-/-! ## Space-Faults
-
-A space-fault is a single-qubit Pauli error occurring on a specific qubit at a specific time. -/
-
-/-- A space-fault: a Pauli error on a specific qubit at a specific time.
-    The error `pauliType` occurs on qubit `qubit` at time `time`. -/
-structure SpaceFault (V E : Type*) where
-  /-- The qubit where the error occurs -/
-  qubit : QubitLoc V E
-  /-- The time step when the error occurs -/
-  time : TimeStep
-  /-- The type of Pauli error (X, Y, Z, or I for no error) -/
-  pauliType : PauliType
-  deriving DecidableEq
-
-namespace SpaceFault
-
-variable {V E : Type*}
-
-/-- The identity space-fault at a given location and time (no error) -/
-def identity (q : QubitLoc V E) (t : TimeStep) : SpaceFault V E :=
-  ⟨q, t, PauliType.I⟩
-
-/-- Check if this space-fault represents an actual error -/
-def isActualError (f : SpaceFault V E) : Bool := f.pauliType.isError
-
-@[simp]
-lemma isActualError_identity (q : QubitLoc V E) (t : TimeStep) :
-    (identity q t).isActualError = false := rfl
-
-/-- Compose two space-faults at the same location and time -/
-def compose (f g : SpaceFault V E)
-    (_h_qubit : f.qubit = g.qubit) (_h_time : f.time = g.time) : SpaceFault V E :=
-  ⟨f.qubit, f.time, f.pauliType * g.pauliType⟩
-
-/-- The inverse of a space-fault (same fault, since Paulis are self-inverse) -/
-def inv (f : SpaceFault V E) : SpaceFault V E :=
-  ⟨f.qubit, f.time, f.pauliType⁻¹⟩
-
-@[simp]
-lemma inv_pauliType (f : SpaceFault V E) : f.inv.pauliType = f.pauliType := rfl
-
-@[simp]
-lemma inv_qubit (f : SpaceFault V E) : f.inv.qubit = f.qubit := rfl
-
-@[simp]
-lemma inv_time (f : SpaceFault V E) : f.inv.time = f.time := rfl
-
-/-- A space-fault on a vertex qubit -/
-def onVertex (v : V) (t : TimeStep) (p : PauliType) : SpaceFault V E :=
-  ⟨QubitLoc.vertex v, t, p⟩
-
-/-- A space-fault on an edge qubit -/
-def onEdge (e : E) (t : TimeStep) (p : PauliType) : SpaceFault V E :=
-  ⟨QubitLoc.edge e, t, p⟩
-
-@[simp]
-lemma onVertex_qubit (v : V) (t : TimeStep) (p : PauliType) :
-    (onVertex v t p : SpaceFault V E).qubit = QubitLoc.vertex v := rfl
-
-@[simp]
-lemma onEdge_qubit (e : E) (t : TimeStep) (p : PauliType) :
-    (onEdge e t p : SpaceFault V E).qubit = QubitLoc.edge e := rfl
-
-/-- An X error on a vertex qubit -/
-abbrev X_vertex (v : V) (t : TimeStep) : SpaceFault V E := onVertex v t PauliType.X
-
-/-- A Y error on a vertex qubit -/
-abbrev Y_vertex (v : V) (t : TimeStep) : SpaceFault V E := onVertex v t PauliType.Y
-
-/-- A Z error on a vertex qubit -/
-abbrev Z_vertex (v : V) (t : TimeStep) : SpaceFault V E := onVertex v t PauliType.Z
-
-/-- An X error on an edge qubit -/
-abbrev X_edge (e : E) (t : TimeStep) : SpaceFault V E := onEdge e t PauliType.X
-
-/-- A Y error on an edge qubit -/
-abbrev Y_edge (e : E) (t : TimeStep) : SpaceFault V E := onEdge e t PauliType.Y
-
-/-- A Z error on an edge qubit -/
-abbrev Z_edge (e : E) (t : TimeStep) : SpaceFault V E := onEdge e t PauliType.Z
-
-end SpaceFault
-
-/-! ## Time-Faults (Measurement Errors)
-
-A time-fault is a measurement error: the classical outcome of a measurement is flipped.
-This is also called a "measurement error" or "readout error". -/
-
-/-- A time-fault: a measurement whose classical outcome is flipped.
-    The measurement `measurement` at time `time` reports the wrong outcome. -/
+set_option linter.unusedDecidableInType false
+
+open scoped symmDiff
+
+variable {Q : Type*} {T : Type*} {M : Type*}
+
+/-! ## Space Faults -/
+
+/-- A space-fault (space error) is a single-qubit Pauli error at a specific qubit
+    and time. The error is described by which qubit is affected, when it occurs,
+    and what Pauli error is applied (X, Y, or Z, encoded as a nonzero element of
+    ZMod 2 x ZMod 2 for the x and z components). -/
+structure SpaceFault (Q : Type*) (T : Type*) where
+  /-- The qubit where the error occurs. -/
+  qubit : Q
+  /-- The time at which the error occurs. -/
+  time : T
+  /-- The X-component of the Pauli error (1 if X or Y, 0 otherwise). -/
+  xComponent : ZMod 2
+  /-- The Z-component of the Pauli error (1 if Z or Y, 0 otherwise). -/
+  zComponent : ZMod 2
+  /-- The error is nontrivial: at least one component is nonzero. -/
+  nontrivial : xComponent ≠ 0 ∨ zComponent ≠ 0
+
+/-! ## Time Faults -/
+
+/-- A time-fault (measurement error) is a single measurement whose outcome is
+    reported incorrectly. In ZMod 2 encoding (0 -> +1, 1 -> -1), this corresponds
+    to flipping the measurement outcome bit. The fault is identified by which
+    measurement is affected.
+
+    Convention: State mis-initialization faults are also modeled as time-faults.
+    For example, initializing |0> but getting |1> is equivalent to a perfect
+    initialization followed by an X error. The initialization measurement
+    (projecting onto |0>) is treated as a measurement that reported incorrectly. -/
 structure TimeFault (M : Type*) where
-  /-- The measurement that is affected -/
+  /-- The measurement whose outcome is flipped. -/
   measurement : M
-  /-- The time step when the measurement occurs -/
-  time : TimeStep
-  /-- Whether this fault is active (true = flipped outcome) -/
-  isFlipped : Bool
-  deriving DecidableEq
 
-namespace TimeFault
+/-! ## Spacetime Faults -/
 
-variable {M : Type*}
+/-- A spacetime fault is a collection of space-faults and time-faults occurring
+    at various locations and times during the procedure. We represent it as
+    a pair of finsets: one of space-faults and one of time-faults.
 
-/-- The identity time-fault (no measurement error) -/
-def identity (m : M) (t : TimeStep) : TimeFault M :=
-  ⟨m, t, false⟩
-
-/-- An active measurement error -/
-def active (m : M) (t : TimeStep) : TimeFault M :=
-  ⟨m, t, true⟩
-
-/-- Check if this time-fault represents an actual error -/
-def isActualError (f : TimeFault M) : Bool := f.isFlipped
-
-@[simp]
-lemma isActualError_identity (m : M) (t : TimeStep) :
-    (identity m t).isActualError = false := rfl
-
-@[simp]
-lemma isActualError_active (m : M) (t : TimeStep) :
-    (active m t).isActualError = true := rfl
-
-/-- Compose two time-faults at the same measurement and time (XOR of flips) -/
-def compose (f g : TimeFault M)
-    (_h_meas : f.measurement = g.measurement) (_h_time : f.time = g.time) : TimeFault M :=
-  ⟨f.measurement, f.time, xor f.isFlipped g.isFlipped⟩
-
-/-- The inverse of a time-fault (same fault, since flip is self-inverse) -/
-def inv (f : TimeFault M) : TimeFault M := f
-
-@[simp]
-lemma inv_isFlipped (f : TimeFault M) : f.inv.isFlipped = f.isFlipped := rfl
-
-@[simp]
-lemma inv_measurement (f : TimeFault M) : f.inv.measurement = f.measurement := rfl
-
-@[simp]
-lemma inv_time (f : TimeFault M) : f.inv.time = f.time := rfl
-
-end TimeFault
-
-/-! ## Initialization Faults
-
-A state initialization fault is treated as equivalent to a time-fault.
-A faulty initialization of state |ψ⟩ is modeled as perfect initialization
-followed by an immediate space-fault.
-
-We model this by having initialization faults be a special case that can be
-represented either as a time-fault on the initialization "measurement" or
-as a space-fault immediately after initialization. -/
-
-/-- An initialization fault on a qubit.
-    This represents a faulty preparation of the initial state.
-    It is modeled as equivalent to perfect initialization followed by a space-fault. -/
-structure InitializationFault (V E : Type*) where
-  /-- The qubit being initialized -/
-  qubit : QubitLoc V E
-  /-- The time step of initialization -/
-  time : TimeStep
-  /-- The effective Pauli error (applied after "perfect" initialization) -/
-  effectiveError : PauliType
-  deriving DecidableEq
-
-namespace InitializationFault
-
-variable {V E : Type*}
-
-/-- Convert an initialization fault to an equivalent space-fault.
-    The space-fault occurs at the same time as the initialization. -/
-def toSpaceFault (f : InitializationFault V E) : SpaceFault V E :=
-  ⟨f.qubit, f.time, f.effectiveError⟩
-
-/-- The identity initialization fault (no error) -/
-def identity (q : QubitLoc V E) (t : TimeStep) : InitializationFault V E :=
-  ⟨q, t, PauliType.I⟩
-
-/-- Check if this initialization fault represents an actual error -/
-def isActualError (f : InitializationFault V E) : Bool := f.effectiveError.isError
-
-@[simp]
-lemma toSpaceFault_qubit (f : InitializationFault V E) :
-    f.toSpaceFault.qubit = f.qubit := rfl
-
-@[simp]
-lemma toSpaceFault_time (f : InitializationFault V E) :
-    f.toSpaceFault.time = f.time := rfl
-
-@[simp]
-lemma toSpaceFault_pauliType (f : InitializationFault V E) :
-    f.toSpaceFault.pauliType = f.effectiveError := rfl
-
-@[simp]
-lemma toSpaceFault_identity (q : QubitLoc V E) (t : TimeStep) :
-    (identity q t).toSpaceFault = SpaceFault.identity q t := rfl
-
-end InitializationFault
-
-/-! ## Spacetime Faults
-
-A spacetime fault is a collection of space-faults and time-faults occurring at various
-locations and times during the procedure. -/
-
-/-- A spacetime fault: a collection of space-faults and time-faults.
-
-    We represent this as:
-    - A function from (qubit, time) pairs to Pauli errors (for space-faults)
-    - A function from (measurement, time) pairs to flip flags (for time-faults)
-
-    This representation allows for efficient composition (pointwise multiplication/XOR). -/
+    The weight of a spacetime fault is the total number of individual faults
+    (each single-qubit Pauli error counts as 1, each measurement error counts as 1). -/
 @[ext]
-structure SpacetimeFault (V E M : Type*) where
-  /-- The Pauli error at each (qubit, time) location. Identity means no error. -/
-  spaceErrors : QubitLoc V E → TimeStep → PauliType
-  /-- Whether each (measurement, time) has a flipped outcome. False means no error. -/
-  timeErrors : M → TimeStep → Bool
+structure SpacetimeFault (Q : Type*) (T : Type*) (M : Type*) where
+  /-- The collection of space-faults (Pauli errors on qubits at specific times). -/
+  spaceFaults : Finset (SpaceFault Q T)
+  /-- The collection of time-faults (measurement errors). -/
+  timeFaults : Finset (TimeFault M)
 
 namespace SpacetimeFault
 
-variable {V E M : Type*}
+variable [DecidableEq Q] [DecidableEq T] [DecidableEq M]
+variable [DecidableEq (SpaceFault Q T)] [DecidableEq (TimeFault M)]
 
-/-- The identity spacetime fault (no errors anywhere) -/
-def identity : SpacetimeFault V E M where
-  spaceErrors := fun _ _ => PauliType.I
-  timeErrors := fun _ _ => false
+/-- The weight of a spacetime fault: total number of individual faults. -/
+def weight (F : SpacetimeFault Q T M) : ℕ :=
+  F.spaceFaults.card + F.timeFaults.card
 
-instance : One (SpacetimeFault V E M) where
-  one := identity
+/-- The empty spacetime fault: no errors at all. -/
+def empty : SpacetimeFault Q T M :=
+  ⟨∅, ∅⟩
 
-@[simp]
-lemma one_spaceErrors (q : QubitLoc V E) (t : TimeStep) :
-    (1 : SpacetimeFault V E M).spaceErrors q t = PauliType.I := rfl
+/-- A spacetime fault consisting of a single space-fault. -/
+def ofSpaceFault (f : SpaceFault Q T) : SpacetimeFault Q T M :=
+  ⟨{f}, ∅⟩
 
-@[simp]
-lemma one_timeErrors (m : M) (t : TimeStep) :
-    (1 : SpacetimeFault V E M).timeErrors m t = false := rfl
+/-- A spacetime fault consisting of a single time-fault. -/
+def ofTimeFault (f : TimeFault M) : SpacetimeFault Q T M :=
+  ⟨∅, {f}⟩
 
-/-- Composition of spacetime faults (pointwise multiplication/XOR) -/
-def compose (f g : SpacetimeFault V E M) : SpacetimeFault V E M where
-  spaceErrors := fun q t => f.spaceErrors q t * g.spaceErrors q t
-  timeErrors := fun m t => xor (f.timeErrors m t) (g.timeErrors m t)
+/-- Composition of spacetime faults via symmetric difference.
+    Applying the same error twice cancels it; flipping an outcome twice restores it. -/
+def compose (F₁ F₂ : SpacetimeFault Q T M) : SpacetimeFault Q T M :=
+  ⟨F₁.spaceFaults ∆ F₂.spaceFaults, F₁.timeFaults ∆ F₂.timeFaults⟩
 
-instance : Mul (SpacetimeFault V E M) where
-  mul := compose
+/-- A spacetime fault is pure-space if it has no time-faults. -/
+def isPureSpace (F : SpacetimeFault Q T M) : Prop :=
+  F.timeFaults = ∅
 
-@[simp]
-lemma mul_spaceErrors (f g : SpacetimeFault V E M) (q : QubitLoc V E) (t : TimeStep) :
-    (f * g).spaceErrors q t = f.spaceErrors q t * g.spaceErrors q t := rfl
+/-- A spacetime fault is pure-time if it has no space-faults. -/
+def isPureTime (F : SpacetimeFault Q T M) : Prop :=
+  F.spaceFaults = ∅
 
-@[simp]
-lemma mul_timeErrors (f g : SpacetimeFault V E M) (m : M) (t : TimeStep) :
-    (f * g).timeErrors m t = xor (f.timeErrors m t) (g.timeErrors m t) := rfl
+/-- The number of space-faults in the spacetime fault. -/
+def spaceWeight (F : SpacetimeFault Q T M) : ℕ :=
+  F.spaceFaults.card
 
-/-- Inverse of a spacetime fault -/
-def inv (f : SpacetimeFault V E M) : SpacetimeFault V E M where
-  spaceErrors := fun q t => (f.spaceErrors q t)⁻¹
-  timeErrors := f.timeErrors  -- XOR is self-inverse
+/-- The number of time-faults in the spacetime fault. -/
+def timeWeight (F : SpacetimeFault Q T M) : ℕ :=
+  F.timeFaults.card
 
-instance : Inv (SpacetimeFault V E M) where
-  inv := inv
-
-@[simp]
-lemma inv_spaceErrors (f : SpacetimeFault V E M) (q : QubitLoc V E) (t : TimeStep) :
-    f⁻¹.spaceErrors q t = (f.spaceErrors q t)⁻¹ := rfl
+/-! ## Basic Properties -/
 
 @[simp]
-lemma inv_timeErrors (f : SpacetimeFault V E M) (m : M) (t : TimeStep) :
-    f⁻¹.timeErrors m t = f.timeErrors m t := rfl
-
-/-- Spacetime faults form a group under composition -/
-theorem mul_assoc (a b c : SpacetimeFault V E M) : a * b * c = a * (b * c) := by
-  ext q t
-  · simp [PauliType.mul_assoc]
-  · simp only [mul_timeErrors]
-    cases a.timeErrors q t <;> cases b.timeErrors q t <;> cases c.timeErrors q t <;> rfl
-
-theorem one_mul (f : SpacetimeFault V E M) : 1 * f = f := by
-  ext q t
-  · simp
-  · simp
-
-theorem mul_one (f : SpacetimeFault V E M) : f * 1 = f := by
-  ext q t
-  · simp
-  · simp
-
-theorem inv_mul_cancel (f : SpacetimeFault V E M) : f⁻¹ * f = 1 := by
-  ext q t
-  · simp [PauliType.inv_mul_cancel]
-  · simp only [mul_timeErrors, inv_timeErrors, one_timeErrors]
-    cases f.timeErrors q t <;> rfl
-
-instance : Group (SpacetimeFault V E M) where
-  mul_assoc := mul_assoc
-  one_mul := one_mul
-  mul_one := mul_one
-  inv_mul_cancel := inv_mul_cancel
-
-/-- Create a spacetime fault from a single space-fault -/
-def fromSpaceFault [DecidableEq V] [DecidableEq E] (f : SpaceFault V E) : SpacetimeFault V E M where
-  spaceErrors := fun q t => if q = f.qubit ∧ t = f.time then f.pauliType else PauliType.I
-  timeErrors := fun _ _ => false
-
-/-- Create a spacetime fault from a single time-fault -/
-def fromTimeFault [DecidableEq M] (f : TimeFault M) : SpacetimeFault V E M where
-  spaceErrors := fun _ _ => PauliType.I
-  timeErrors := fun m t => if m = f.measurement ∧ t = f.time then f.isFlipped else false
-
-/-- Create a spacetime fault from a single initialization fault -/
-def fromInitializationFault [DecidableEq V] [DecidableEq E] (f : InitializationFault V E) : SpacetimeFault V E M :=
-  fromSpaceFault f.toSpaceFault
+theorem weight_empty : (empty : SpacetimeFault Q T M).weight = 0 := by
+  simp [weight, empty]
 
 @[simp]
-lemma fromSpaceFault_at_location [DecidableEq V] [DecidableEq E] (f : SpaceFault V E) :
-    (fromSpaceFault (M := M) f).spaceErrors f.qubit f.time = f.pauliType := by
-  simp [fromSpaceFault]
+theorem weight_eq_space_plus_time (F : SpacetimeFault Q T M) :
+    F.weight = F.spaceWeight + F.timeWeight := by
+  simp [weight, spaceWeight, timeWeight]
 
 @[simp]
-lemma fromTimeFault_at_location [DecidableEq M] (f : TimeFault M) :
-    (fromTimeFault (V := V) (E := E) f).timeErrors f.measurement f.time = f.isFlipped := by
-  simp [fromTimeFault]
-
-/-- The set of (qubit, time) locations where space errors occur -/
-def spaceErrorLocations [Fintype V] [Fintype E]
-    (f : SpacetimeFault V E M) (times : Finset TimeStep) : Finset (QubitLoc V E × TimeStep) :=
-  (Finset.univ ×ˢ times).filter fun ⟨q, t⟩ => f.spaceErrors q t ≠ PauliType.I
-
-/-- The set of (measurement, time) locations where time errors occur -/
-def timeErrorLocations [Fintype M]
-    (f : SpacetimeFault V E M) (times : Finset TimeStep) : Finset (M × TimeStep) :=
-  (Finset.univ ×ˢ times).filter fun ⟨m, t⟩ => f.timeErrors m t = true
-
-/-- The total weight of a spacetime fault (number of non-trivial errors) over given time range -/
-def weight [Fintype V] [Fintype E] [Fintype M]
-    (f : SpacetimeFault V E M) (times : Finset TimeStep) : ℕ :=
-  (f.spaceErrorLocations times).card + (f.timeErrorLocations times).card
+theorem spaceWeight_empty : (empty : SpacetimeFault Q T M).spaceWeight = 0 := by
+  simp [spaceWeight, empty]
 
 @[simp]
-lemma weight_identity [Fintype V] [Fintype E] [Fintype M] (times : Finset TimeStep) :
-    weight (1 : SpacetimeFault V E M) times = 0 := by
-  simp [weight, spaceErrorLocations, timeErrorLocations]
+theorem timeWeight_empty : (empty : SpacetimeFault Q T M).timeWeight = 0 := by
+  simp [timeWeight, empty]
 
-/-- A spacetime fault is "pure space" if it has no time errors -/
-def isPureSpace (f : SpacetimeFault V E M) : Prop :=
-  ∀ m t, f.timeErrors m t = false
+theorem weight_ofSpaceFault (f : SpaceFault Q T) :
+    (ofSpaceFault f : SpacetimeFault Q T M).weight = 1 := by
+  simp [weight, ofSpaceFault]
 
-/-- A spacetime fault is "pure time" if it has no space errors -/
-def isPureTime (f : SpacetimeFault V E M) : Prop :=
-  ∀ q t, f.spaceErrors q t = PauliType.I
-
-@[simp]
-lemma identity_isPureSpace : isPureSpace (1 : SpacetimeFault V E M) := by
-  simp [isPureSpace]
+theorem weight_ofTimeFault (f : TimeFault M) :
+    (ofTimeFault f : SpacetimeFault Q T M).weight = 1 := by
+  simp [weight, ofTimeFault]
 
 @[simp]
-lemma identity_isPureTime : isPureTime (1 : SpacetimeFault V E M) := by
-  simp [isPureTime]
-
-lemma fromSpaceFault_isPureSpace [DecidableEq V] [DecidableEq E] (f : SpaceFault V E) :
-    isPureSpace (fromSpaceFault (M := M) f) := by
-  simp [isPureSpace, fromSpaceFault]
-
-lemma fromTimeFault_isPureTime [DecidableEq M] (f : TimeFault M) :
-    isPureTime (fromTimeFault (V := V) (E := E) f) := by
-  simp [isPureTime, fromTimeFault]
-
-/-- The space-only component of a spacetime fault -/
-def spaceComponent (f : SpacetimeFault V E M) : SpacetimeFault V E M where
-  spaceErrors := f.spaceErrors
-  timeErrors := fun _ _ => false
-
-/-- The time-only component of a spacetime fault -/
-def timeComponent (f : SpacetimeFault V E M) : SpacetimeFault V E M where
-  spaceErrors := fun _ _ => PauliType.I
-  timeErrors := f.timeErrors
+theorem isPureSpace_empty : (empty : SpacetimeFault Q T M).isPureSpace := by
+  simp [isPureSpace, empty]
 
 @[simp]
-lemma spaceComponent_isPureSpace (f : SpacetimeFault V E M) :
-    isPureSpace f.spaceComponent := by
-  simp [isPureSpace, spaceComponent]
+theorem isPureTime_empty : (empty : SpacetimeFault Q T M).isPureTime := by
+  simp [isPureTime, empty]
+
+theorem isPureSpace_ofSpaceFault (f : SpaceFault Q T) :
+    (ofSpaceFault f : SpacetimeFault Q T M).isPureSpace := by
+  simp [isPureSpace, ofSpaceFault]
+
+theorem isPureTime_ofTimeFault (f : TimeFault M) :
+    (ofTimeFault f : SpacetimeFault Q T M).isPureTime := by
+  simp [isPureTime, ofTimeFault]
+
+theorem weight_pos_of_nonempty_space {F : SpacetimeFault Q T M}
+    (h : F.spaceFaults.Nonempty) : 0 < F.weight := by
+  unfold weight
+  have := Finset.card_pos.mpr h
+  omega
+
+theorem weight_pos_of_nonempty_time {F : SpacetimeFault Q T M}
+    (h : F.timeFaults.Nonempty) : 0 < F.weight := by
+  unfold weight
+  have := Finset.card_pos.mpr h
+  omega
+
+/-! ## Composition Properties -/
+
+theorem compose_comm (F₁ F₂ : SpacetimeFault Q T M) :
+    compose F₁ F₂ = compose F₂ F₁ := by
+  ext a
+  · simp [compose, Finset.mem_symmDiff]; tauto
+  · simp [compose, Finset.mem_symmDiff]; tauto
+
+theorem compose_self (F : SpacetimeFault Q T M) :
+    compose F F = empty := by
+  ext a
+  · simp [compose, empty, Finset.mem_symmDiff]
+  · simp [compose, empty, Finset.mem_symmDiff]
+
+theorem compose_empty_left (F : SpacetimeFault Q T M) :
+    compose empty F = F := by
+  ext a
+  · simp [compose, empty, Finset.mem_symmDiff]
+  · simp [compose, empty, Finset.mem_symmDiff]
+
+theorem compose_empty_right (F : SpacetimeFault Q T M) :
+    compose F empty = F := by
+  ext a
+  · simp [compose, empty, Finset.mem_symmDiff]
+  · simp [compose, empty, Finset.mem_symmDiff]
+
+theorem compose_assoc (F₁ F₂ F₃ : SpacetimeFault Q T M) :
+    compose (compose F₁ F₂) F₃ = compose F₁ (compose F₂ F₃) := by
+  ext a
+  · simp [compose, Finset.mem_symmDiff]; tauto
+  · simp [compose, Finset.mem_symmDiff]; tauto
+
+/-! ## Space-only and time-only projections -/
+
+/-- The space component of a spacetime fault (keeping only space-faults). -/
+def spaceComponent (F : SpacetimeFault Q T M) : SpacetimeFault Q T M :=
+  ⟨F.spaceFaults, ∅⟩
+
+/-- The time component of a spacetime fault (keeping only time-faults). -/
+def timeComponent (F : SpacetimeFault Q T M) : SpacetimeFault Q T M :=
+  ⟨∅, F.timeFaults⟩
 
 @[simp]
-lemma timeComponent_isPureTime (f : SpacetimeFault V E M) :
-    isPureTime f.timeComponent := by
-  simp [isPureTime, timeComponent]
+theorem spaceComponent_isPureSpace (F : SpacetimeFault Q T M) :
+    F.spaceComponent.isPureSpace := by
+  simp [spaceComponent, isPureSpace]
 
-/-- A spacetime fault decomposes into its space and time components -/
-theorem decompose (f : SpacetimeFault V E M) :
-    f = f.spaceComponent * f.timeComponent := by
-  ext q t
-  · simp [spaceComponent, timeComponent]
-  · simp only [mul_timeErrors, spaceComponent, timeComponent]
-    cases f.timeErrors q t <;> rfl
+@[simp]
+theorem timeComponent_isPureTime (F : SpacetimeFault Q T M) :
+    F.timeComponent.isPureTime := by
+  simp [timeComponent, isPureTime]
+
+theorem weight_spaceComponent (F : SpacetimeFault Q T M) :
+    F.spaceComponent.weight = F.spaceWeight := by
+  simp [spaceComponent, weight, spaceWeight]
+
+theorem weight_timeComponent (F : SpacetimeFault Q T M) :
+    F.timeComponent.weight = F.timeWeight := by
+  simp [timeComponent, weight, timeWeight]
+
+/-- Any spacetime fault decomposes into its space and time components. -/
+theorem decompose_space_time (F : SpacetimeFault Q T M) :
+    compose F.spaceComponent F.timeComponent = F := by
+  ext a
+  · simp [compose, spaceComponent, timeComponent, Finset.mem_symmDiff]
+  · simp [compose, spaceComponent, timeComponent, Finset.mem_symmDiff]
+
+/-! ## Pauli operator associated to space-faults at a given time -/
+
+/-- The space-faults of a spacetime fault restricted to a specific time. -/
+def spaceFaultsAt (F : SpacetimeFault Q T M) (t : T) :
+    Finset (SpaceFault Q T) :=
+  F.spaceFaults.filter (fun f => f.time = t)
+
+/-- The composite Pauli error on qubit system Q from all space-faults at time t. -/
+def pauliErrorAt [Fintype Q] (F : SpacetimeFault Q T M) (t : T) : PauliOp Q where
+  xVec q := ∑ f ∈ F.spaceFaultsAt t, if f.qubit = q then f.xComponent else 0
+  zVec q := ∑ f ∈ F.spaceFaultsAt t, if f.qubit = q then f.zComponent else 0
+
+@[simp]
+theorem pauliErrorAt_empty [Fintype Q] (t : T) :
+    (empty : SpacetimeFault Q T M).pauliErrorAt t = 1 := by
+  ext q <;> simp [pauliErrorAt, spaceFaultsAt, empty]
+
+/-! ## Convention: Initialization faults as time-faults
+
+The convention that initialization faults are treated as time-faults is captured
+by modeling each initialization as a measurement. An initialization fault
+(e.g., preparing |1> instead of |0>) is then a time-fault on that measurement,
+equivalent to perfect initialization followed by a Pauli X error (space-fault). -/
+
+/-- An initialization fault viewed as a time-fault on the initialization measurement. -/
+def initializationFault (initMeasurement : M) : SpacetimeFault Q T M :=
+  ofTimeFault ⟨initMeasurement⟩
+
+/-- The equivalent space-fault: perfect initialization followed by Pauli X error. -/
+def initializationAsSpaceFault (q : Q) (t : T) : SpacetimeFault Q T M :=
+  ofSpaceFault ⟨q, t, 1, 0, Or.inl one_ne_zero⟩
+
+theorem initializationFault_weight (m : M) :
+    (initializationFault m : SpacetimeFault Q T M).weight = 1 := by
+  simp [initializationFault, ofTimeFault, weight]
+
+theorem initializationAsSpaceFault_weight (q : Q) (t : T) :
+    (initializationAsSpaceFault q t : SpacetimeFault Q T M).weight = 1 := by
+  simp [initializationAsSpaceFault, ofSpaceFault, weight]
+
+/-! ## Weight bounds -/
+
+theorem spaceWeight_le_weight (F : SpacetimeFault Q T M) :
+    F.spaceWeight ≤ F.weight := by
+  unfold weight spaceWeight; omega
+
+theorem timeWeight_le_weight (F : SpacetimeFault Q T M) :
+    F.timeWeight ≤ F.weight := by
+  unfold weight timeWeight; omega
+
+theorem weight_zero_iff (F : SpacetimeFault Q T M) :
+    F.weight = 0 ↔ F.spaceFaults = ∅ ∧ F.timeFaults = ∅ := by
+  simp [weight, Nat.add_eq_zero_iff, Finset.card_eq_zero]
+
+theorem weight_zero_iff_empty (F : SpacetimeFault Q T M) :
+    F.weight = 0 ↔ F = empty := by
+  constructor
+  · intro h
+    have ⟨hs, ht⟩ := (weight_zero_iff F).mp h
+    ext <;> simp_all [empty]
+  · intro h; subst h; simp
 
 end SpacetimeFault
 
-/-! ## The Group of Spacetime Faults
+/-! ## Fault classification predicates -/
 
-The set of all spacetime faults forms a group under composition.
-This is captured by the `Group` instance on `SpacetimeFault`. -/
+/-- A spacetime fault is trivial (identity) if it has no faults at all. -/
+def SpacetimeFault.isTrivial [DecidableEq Q] [DecidableEq T] [DecidableEq M]
+    [DecidableEq (SpaceFault Q T)] [DecidableEq (TimeFault M)]
+    (F : SpacetimeFault Q T M) : Prop :=
+  F = SpacetimeFault.empty
 
-/-- The subgroup of pure space-faults -/
-def pureSpaceFaults (V E M : Type*) : Subgroup (SpacetimeFault V E M) where
-  carrier := { f | f.isPureSpace }
-  mul_mem' := by
-    intro f g hf hg
-    simp only [Set.mem_setOf_eq, SpacetimeFault.isPureSpace] at *
-    intro m t
-    simp [hf m t, hg m t]
-  one_mem' := SpacetimeFault.identity_isPureSpace
-  inv_mem' := by
-    intro f hf
-    simp only [Set.mem_setOf_eq, SpacetimeFault.isPureSpace] at *
-    intro m t
-    simp [hf m t]
+/-- The set of qubits affected by space-faults in a spacetime fault. -/
+def SpacetimeFault.affectedQubits [DecidableEq Q]
+    [DecidableEq (SpaceFault Q T)]
+    (F : SpacetimeFault Q T M) : Finset Q :=
+  F.spaceFaults.image SpaceFault.qubit
 
-/-- The subgroup of pure time-faults -/
-def pureTimeFaults (V E M : Type*) : Subgroup (SpacetimeFault V E M) where
-  carrier := { f | f.isPureTime }
-  mul_mem' := by
-    intro f g hf hg
-    simp only [Set.mem_setOf_eq, SpacetimeFault.isPureTime] at *
-    intro q t
-    simp [hf q t, hg q t]
-  one_mem' := SpacetimeFault.identity_isPureTime
-  inv_mem' := by
-    intro f hf
-    simp only [Set.mem_setOf_eq, SpacetimeFault.isPureTime] at *
-    intro q t
-    simp only [SpacetimeFault.inv_spaceErrors, hf q t, PauliType.inv_eq_self]
+/-- The set of times at which space-faults occur. -/
+def SpacetimeFault.activeTimes [DecidableEq T]
+    [DecidableEq (SpaceFault Q T)]
+    (F : SpacetimeFault Q T M) : Finset T :=
+  F.spaceFaults.image SpaceFault.time
 
-/-! ## Summary
+/-- The set of measurements affected by time-faults. -/
+def SpacetimeFault.affectedMeasurements [DecidableEq M]
+    [DecidableEq (TimeFault M)]
+    (F : SpacetimeFault Q T M) : Finset M :=
+  F.timeFaults.image TimeFault.measurement
 
-This formalization captures the fault model for fault-tolerant quantum error correction:
+/-! ## Measurement outcome with faults
 
-1. **Space-faults**: Single-qubit Pauli errors (X, Y, Z) occurring at specific qubits and times.
-   - Represented by `SpaceFault V E` which records qubit location, time, and error type.
-   - Can occur on vertex qubits (V) or edge qubits (E).
+A time-fault flips the measurement outcome. In ZMod 2 encoding (0 -> +1, 1 -> -1),
+this means adding 1 to the ideal outcome. -/
 
-2. **Time-faults**: Measurement errors where classical outcomes are flipped.
-   - Represented by `TimeFault M` which records measurement index, time, and flip status.
-   - Models readout errors in the measurement process.
+/-- The observed measurement outcome given an ideal outcome and a set of time-faults.
+    If measurement m appears in the time-faults, the outcome is flipped. -/
+def observedOutcome [DecidableEq M] [DecidableEq (TimeFault M)]
+    (idealOutcome : M → ZMod 2)
+    (faults : Finset (TimeFault M))
+    (m : M) : ZMod 2 :=
+  idealOutcome m + if (⟨m⟩ : TimeFault M) ∈ faults then 1 else 0
 
-3. **Initialization faults**: Faulty state preparation.
-   - Modeled as equivalent to a space-fault immediately after initialization.
-   - Represented by `InitializationFault V E`.
+theorem observedOutcome_no_fault [DecidableEq M] [DecidableEq (TimeFault M)]
+    (idealOutcome : M → ZMod 2) (faults : Finset (TimeFault M)) (m : M)
+    (h : (⟨m⟩ : TimeFault M) ∉ faults) :
+    observedOutcome idealOutcome faults m = idealOutcome m := by
+  simp [observedOutcome, h]
 
-4. **Spacetime faults**: Collections of space and time faults.
-   - Represented by `SpacetimeFault V E M` as functions from locations to errors.
-   - Form a group under pointwise composition (`Group` instance).
-   - Can be decomposed into pure-space and pure-time components.
+theorem observedOutcome_with_fault [DecidableEq M] [DecidableEq (TimeFault M)]
+    (idealOutcome : M → ZMod 2) (faults : Finset (TimeFault M)) (m : M)
+    (h : (⟨m⟩ : TimeFault M) ∈ faults) :
+    observedOutcome idealOutcome faults m = idealOutcome m + 1 := by
+  simp [observedOutcome, h]
 
-Key properties proven:
-- `PauliType` forms a group (Pauli operators under multiplication)
-- `SpacetimeFault` forms a group under composition
-- Pure space-faults form a subgroup
-- Pure time-faults form a subgroup
-- Every spacetime fault decomposes as space_component * time_component
--/
+theorem observedOutcome_flip [DecidableEq M] [DecidableEq (TimeFault M)]
+    (idealOutcome : M → ZMod 2) (faults : Finset (TimeFault M)) (m : M)
+    (h : (⟨m⟩ : TimeFault M) ∈ faults) :
+    observedOutcome idealOutcome faults m ≠ idealOutcome m := by
+  rw [observedOutcome_with_fault idealOutcome faults m h]
+  intro heq
+  have h1 : (0 : ZMod 2) = 1 := by
+    have : idealOutcome m + 1 - idealOutcome m = idealOutcome m - idealOutcome m := by
+      rw [heq]
+    simp at this
+  exact zero_ne_one h1

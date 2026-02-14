@@ -1,571 +1,351 @@
+import QEC1.Definitions.Def_7_SpaceAndTimeFaults
+import QEC1.Definitions.Def_8_Detectors
+import Mathlib.Data.ZMod.Basic
 import Mathlib.Data.Finset.Basic
 import Mathlib.Data.Fintype.Basic
-import Mathlib.Data.ZMod.Basic
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
-import Mathlib.Order.SymmDiff
-import Mathlib.Data.Fintype.Powerset
-
-import QEC1.Definitions.Def_7_SpaceAndTimeFaults
-import QEC1.Definitions.Def_8_Detector
+import Mathlib.Algebra.Module.BigOperators
 
 /-!
-# Def_9: Syndrome
+# Definition 9: Syndrome
 
 ## Statement
-The **syndrome** of a spacetime fault F is the set of detectors violated by F. Formally:
-$$\text{syndrome}(F) = \{D : D \text{ is a detector and } D \text{ reports } -1 \text{ in the presence of } F\}$$
+The **syndrome** of a spacetime fault (Def 7) is the set of detectors (Def 8) that are
+violated by the fault. A detector is violated if the product of its measurement outcomes
+is −1 instead of the expected +1.
 
-Equivalently, the syndrome is the binary vector over the set of all detectors, where entry D is 1
-if detector D is violated and 0 otherwise.
+Equivalently, working over Z₂, if detectors are indexed as D₁, …, Dₘ, the syndrome
+can be identified with a binary vector s ∈ Z₂^m where sⱼ = 1 iff detector Dⱼ is violated.
 
-Key properties:
-1. The syndrome function is Z₂-linear: syndrome(F₁ · F₂) = syndrome(F₁) + syndrome(F₂) (symmetric difference).
-2. A spacetime stabilizer (trivial fault) has empty syndrome.
-3. A **logical fault** is a non-trivial fault with empty syndrome.
+## Main Results
+- `syndromeFault`: The syndrome of a spacetime fault as a finset of detector indices
+- `syndromeVec`: The syndrome as a binary vector s ∈ (I → ZMod 2)
+- `mem_syndromeFault_iff`: Detector i is in the syndrome iff it is violated by the fault
+- `syndromeVec_eq_one_iff`: s(i) = 1 iff detector i is violated
 
-## Main Definitions
-- `Syndrome` : The syndrome of a spacetime fault (set of violated detectors)
-- `syndrome` : Function computing the syndrome of a fault
-- `syndromeVector` : Binary vector representation of the syndrome
-- `hasEmptySyndrome` : Predicate for faults with no violated detectors
-
-## Key Properties
-- `syndrome_identity` : Identity fault has empty syndrome
-- `syndrome_mul` : Syndrome is Z₂-linear (symmetric difference under composition)
-- `syndrome_inv` : Syndrome of inverse equals syndrome of original
-- `isLogicalFault_iff` : A logical fault is non-trivial with empty syndrome
+## Corollaries
+- `syndromeFault_empty`: The syndrome is empty for the fault-free configuration
+- `syndromeVec_zero`: The syndrome vector is zero for no faults
+- `syndromeFault_eq_syndrome`: The spacetime syndrome reduces to the time-fault syndrome
+- `syndromeVec_sum`: The sum of the syndrome vector counts violated detectors (mod 2)
 -/
-
-open Finset
 
 set_option linter.unusedSectionVars false
-
-variable {V E M : Type*} [DecidableEq V] [DecidableEq E] [DecidableEq M]
-
-/-! ## Syndrome Definition
-
-The syndrome of a spacetime fault is the set of detectors it violates.
-We use Finset directly rather than a wrapper type. -/
-
-/-- The syndrome of a spacetime fault: the set of detectors violated by the fault.
-    A detector is violated if the observed parity differs from expected parity. -/
-abbrev Syndrome (V E M : Type*) [DecidableEq V] [DecidableEq E] [DecidableEq M] :=
-  Finset (Detector V E M)
-
-namespace Syndrome
-
-/-- The empty syndrome (no detectors violated) -/
-def empty : Syndrome V E M := ∅
-
-/-- Combine two syndromes via symmetric difference (Z₂ addition) -/
-def add (s₁ s₂ : Syndrome V E M) : Syndrome V E M := symmDiff s₁ s₂
-
-@[simp] lemma empty_eq : (empty : Syndrome V E M) = ∅ := rfl
-
-@[simp] lemma add_eq (s₁ s₂ : Syndrome V E M) : add s₁ s₂ = symmDiff s₁ s₂ := rfl
-
-/-- Syndrome addition is commutative -/
-theorem add_comm' (s₁ s₂ : Syndrome V E M) : add s₁ s₂ = add s₂ s₁ :=
-  symmDiff_comm s₁ s₂
-
-/-- Syndrome addition is associative -/
-theorem add_assoc' (s₁ s₂ s₃ : Syndrome V E M) : add (add s₁ s₂) s₃ = add s₁ (add s₂ s₃) :=
-  symmDiff_assoc s₁ s₂ s₃
-
-/-- Empty syndrome is additive identity (right) -/
-@[simp] theorem add_empty' (s : Syndrome V E M) : add s empty = s := by
-  simp only [add_eq, empty_eq, ← Finset.bot_eq_empty, symmDiff_bot]
-
-/-- Empty syndrome is additive identity (left) -/
-@[simp] theorem empty_add' (s : Syndrome V E M) : add empty s = s := by
-  simp only [add_eq, empty_eq, ← Finset.bot_eq_empty, bot_symmDiff]
-
-/-- Every syndrome is its own inverse (self-inverse in Z₂) -/
-@[simp] theorem add_self' (s : Syndrome V E M) : add s s = empty := by
-  simp only [add_eq, empty_eq, symmDiff_self, Finset.bot_eq_empty]
-
-/-- The cardinality of the syndrome (number of violated detectors) -/
-def card (s : Syndrome V E M) : ℕ := Finset.card s
-
-@[simp] lemma card_empty' : card (empty : Syndrome V E M) = 0 := rfl
-
-/-- A syndrome is empty iff its cardinality is 0 -/
-lemma isEmpty_iff_card_zero (s : Syndrome V E M) : s = empty ↔ card s = 0 := by
-  simp [card, empty_eq, Finset.card_eq_zero]
-
-end Syndrome
-
-/-! ## Computing the Syndrome
-
-Given a detector collection and measurement outcomes, compute which detectors are violated. -/
-
-/-- Apply a spacetime fault to measurement outcomes.
-    Time-faults flip the classical measurement outcome. -/
-def applyFaultToOutcomes'
-    (baseOutcomes : OutcomeAssignment M)
-    (fault : SpacetimeFault V E M) : OutcomeAssignment M :=
-  fun m t => if fault.timeErrors m t then baseOutcomes m t + 1 else baseOutcomes m t
-
-/-- Compute the syndrome of a spacetime fault given a detector collection.
-    Returns the set of detectors violated by the fault. -/
-def syndrome
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (fault : SpacetimeFault V E M) : Syndrome V E M :=
-  DC.detectors.filter fun D => D.isViolated (applyFaultToOutcomes' baseOutcomes fault)
-
-/-- A fault has empty syndrome if it violates no detectors -/
-def hasEmptySyndrome'
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (fault : SpacetimeFault V E M) : Prop :=
-  syndrome DC baseOutcomes fault = ∅
-
-instance decHasEmptySyndrome'
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (fault : SpacetimeFault V E M) :
-    Decidable (hasEmptySyndrome' DC baseOutcomes fault) :=
-  inferInstanceAs (Decidable (_ = ∅))
-
-/-! ## Syndrome as Binary Vector
-
-The syndrome can equivalently be viewed as a binary vector indexed by detectors. -/
-
-/-- The syndrome as a function to ZMod 2: 1 if violated, 0 if satisfied -/
-def syndromeVector
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (fault : SpacetimeFault V E M)
-    (D : Detector V E M) : ZMod 2 :=
-  if D ∈ syndrome DC baseOutcomes fault then 1 else 0
-
-@[simp] lemma syndromeVector_violated
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (fault : SpacetimeFault V E M)
-    (D : Detector V E M)
-    (hD : D ∈ DC.detectors)
-    (hviol : D.isViolated (applyFaultToOutcomes' baseOutcomes fault)) :
-    syndromeVector DC baseOutcomes fault D = 1 := by
-  simp only [syndromeVector, syndrome, Finset.mem_filter, hD, hviol, and_self, ↓reduceIte]
-
-@[simp] lemma syndromeVector_satisfied
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (fault : SpacetimeFault V E M)
-    (D : Detector V E M)
-    (hsat : ¬D.isViolated (applyFaultToOutcomes' baseOutcomes fault)) :
-    syndromeVector DC baseOutcomes fault D = 0 := by
-  simp only [syndromeVector, syndrome, Finset.mem_filter]
-  split_ifs with h
-  · exact absurd h.2 hsat
-  · rfl
-
-/-- Syndrome vector is 1 iff detector is violated -/
-theorem syndromeVector_eq_one_iff
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (fault : SpacetimeFault V E M)
-    (D : Detector V E M)
-    (hD : D ∈ DC.detectors) :
-    syndromeVector DC baseOutcomes fault D = 1 ↔
-    D.isViolated (applyFaultToOutcomes' baseOutcomes fault) := by
-  constructor
-  · intro h
-    simp only [syndromeVector, syndrome, Finset.mem_filter] at h
-    split_ifs at h with hmem
-    · exact hmem.2
-    · simp at h
-  · intro hviol
-    exact syndromeVector_violated DC baseOutcomes fault D hD hviol
-
-/-! ## Key Properties -/
-
-section Properties
-
-variable (DC : DetectorCollection V E M)
-variable (baseOutcomes : OutcomeAssignment M)
-
-/-- The identity fault has empty syndrome when base outcomes satisfy all detectors -/
-theorem syndrome_identity
-    (h_base : DC.allSatisfied baseOutcomes) :
-    syndrome DC baseOutcomes (1 : SpacetimeFault V E M) = ∅ := by
-  simp only [syndrome, Finset.filter_eq_empty_iff]
-  intro D hD
-  have heq : applyFaultToOutcomes' baseOutcomes (1 : SpacetimeFault V E M) = baseOutcomes := by
-    funext m t
-    simp only [applyFaultToOutcomes', SpacetimeFault.one_timeErrors]
-    -- if false then baseOutcomes m t + 1 else baseOutcomes m t = baseOutcomes m t
-    rfl
-  rw [heq, ← Detector.satisfied_iff_not_violated]
-  rw [DetectorCollection.allSatisfied_iff] at h_base
-  exact h_base D hD
-
-/-- Empty syndrome iff all detectors in the collection are satisfied -/
-theorem hasEmptySyndrome'_iff
-    (fault : SpacetimeFault V E M) :
-    hasEmptySyndrome' DC baseOutcomes fault ↔
-    ∀ D ∈ DC.detectors, D.isSatisfied (applyFaultToOutcomes' baseOutcomes fault) := by
-  unfold hasEmptySyndrome' syndrome
-  rw [Finset.filter_eq_empty_iff]
-  constructor
-  · intro h D hD
-    rw [Detector.satisfied_iff_not_violated]
-    exact h hD
-  · intro h D hD
-    rw [← Detector.satisfied_iff_not_violated]
-    exact h D hD
-
-end Properties
-
-/-! ## Z₂-Linearity of Syndrome
-
-The key property: syndrome(F₁ · F₂) = syndrome(F₁) + syndrome(F₂) (symmetric difference).
-
-This holds when faults only affect detectors through time-faults (measurement flips),
-and each detector monitors a fixed set of measurements. -/
-
-section Linearity
-
-variable (DC : DetectorCollection V E M)
-variable (baseOutcomes : OutcomeAssignment M)
-
-/-- Helper: symmetric difference cardinality has the same parity as the sum of cardinalities -/
-private lemma card_symmDiff_mod_two [DecidableEq α] (A B : Finset α) :
-    (symmDiff A B).card % 2 = (A.card + B.card) % 2 := by
-  -- symmDiff A B = (A \ B) ∪ (B \ A) and these are disjoint
-  have h_eq : symmDiff A B = (A \ B) ∪ (B \ A) := by
-    ext x
-    simp only [mem_symmDiff, mem_union, mem_sdiff]
-  rw [h_eq, card_union_of_disjoint (disjoint_sdiff_sdiff)]
-  -- Use card_sdiff: #(t \ s) = #t - #(s ∩ t)
-  have hA : (A \ B).card = A.card - (B ∩ A).card := card_sdiff (t := A) (s := B)
-  have hB : (B \ A).card = B.card - (A ∩ B).card := card_sdiff (t := B) (s := A)
-  rw [hA, hB]
-  have h_inter_comm : (A ∩ B).card = (B ∩ A).card := by rw [inter_comm]
-  rw [← h_inter_comm]
-  -- Now we have: (A.card - (A ∩ B).card) + (B.card - (A ∩ B).card)
-  have h_sub_A : (A ∩ B).card ≤ A.card := card_le_card inter_subset_left
-  have h_sub_B : (A ∩ B).card ≤ B.card := card_le_card inter_subset_right
-  omega
-
 set_option linter.unusedDecidableInType false
-/-- Helper: applying two faults in sequence -/
-lemma applyFaultToOutcomes_mul
-    (f g : SpacetimeFault V E M) (m : M) (t : TimeStep) :
-    applyFaultToOutcomes' (V := V) (E := E) baseOutcomes (f * g) m t =
-    if xor (f.timeErrors m t) (g.timeErrors m t)
-    then baseOutcomes m t + 1
-    else baseOutcomes m t := by
-  simp only [applyFaultToOutcomes', SpacetimeFault.mul_timeErrors]
 
-/-- Condition for Z₂-linearity: detectors depend only on time-faults in a simple way.
-    Specifically, each detector's violation status depends on the XOR of time-faults
-    over its measurement events. -/
-structure SyndromeLinearCondition
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M) : Prop where
-  /-- Each detector's violation only depends on time-faults at its measurement events -/
-  localDependence : ∀ (f g : SpacetimeFault V E M) (D : Detector V E M),
-    D ∈ DC.detectors →
-    (∀ e ∈ D.measEvents, f.timeErrors e.measurement e.time = g.timeErrors e.measurement e.time) →
-    (D.isViolated (applyFaultToOutcomes' baseOutcomes f) ↔
-     D.isViolated (applyFaultToOutcomes' baseOutcomes g))
-  /-- Violation is determined by parity of time-faults on measurement events -/
-  parityDetermines : ∀ (f : SpacetimeFault V E M) (D : Detector V E M),
-    D ∈ DC.detectors →
-    (D.isViolated (applyFaultToOutcomes' baseOutcomes f) ↔
-     (D.measEvents.filter (fun e => f.timeErrors e.measurement e.time)).card % 2 = 1)
+variable {Q : Type*} {T : Type*} {M : Type*}
+variable {I : Type*}
 
-/-- Under linearity conditions, syndrome respects multiplication (symmetric difference) -/
-theorem syndrome_mul
-    (hlin : SyndromeLinearCondition DC baseOutcomes)
-    (f g : SpacetimeFault V E M) :
-    syndrome DC baseOutcomes (f * g) = symmDiff (syndrome DC baseOutcomes f) (syndrome DC baseOutcomes g) := by
-  ext D
-  simp only [syndrome, Finset.mem_filter, Finset.mem_symmDiff]
+/-! ## Decidability of isViolated -/
+
+/-- `Detector.isViolated` is decidable because it reduces to equality in `ZMod 2`,
+    which has `DecidableEq`. -/
+instance Detector.decidableIsViolated [DecidableEq M] [DecidableEq (TimeFault M)]
+    (D : Detector M) (faults : Finset (TimeFault M)) :
+    Decidable (D.isViolated faults) :=
+  inferInstanceAs (Decidable (D.observedParity faults = 1))
+
+/-! ## Syndrome of a Spacetime Fault -/
+
+/-- The syndrome of a spacetime fault F with respect to a collection of detectors:
+    the finset of detector indices that are violated by F.
+    Since detectors depend only on measurement outcomes (time-faults flip outcomes),
+    the syndrome is determined by the time-fault component of F. -/
+def syndromeFault [DecidableEq I] [Fintype I] [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) : Finset I :=
+  Finset.univ.filter (fun i => (detectors i).isViolated F.timeFaults)
+
+/-- The syndrome as a binary vector: s(i) = 1 if detector i is violated, 0 otherwise.
+    This is the Z₂^m representation from the paper. -/
+def syndromeVec [DecidableEq I] [Fintype I] [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) : I → ZMod 2 :=
+  fun i => if (detectors i).isViolated F.timeFaults then 1 else 0
+
+/-! ## Membership and characterization -/
+
+/-- A detector index is in the syndrome iff the detector is violated by the spacetime fault. -/
+@[simp]
+theorem mem_syndromeFault_iff [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) (i : I) :
+    i ∈ syndromeFault detectors F ↔ (detectors i).isViolated F.timeFaults := by
+  simp [syndromeFault]
+
+/-- The syndrome vector is 1 at index i iff detector i is violated. -/
+@[simp]
+theorem syndromeVec_eq_one_iff [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) (i : I) :
+    syndromeVec detectors F i = 1 ↔ (detectors i).isViolated F.timeFaults := by
+  unfold syndromeVec
+  split_ifs with h
+  · exact ⟨fun _ => h, fun _ => rfl⟩
+  · exact ⟨fun h0 => absurd h0 zero_ne_one, fun hv => absurd hv h⟩
+
+/-- The syndrome vector is 0 at index i iff detector i is not violated. -/
+@[simp]
+theorem syndromeVec_eq_zero_iff [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) (i : I) :
+    syndromeVec detectors F i = 0 ↔ ¬(detectors i).isViolated F.timeFaults := by
+  unfold syndromeVec
+  split_ifs with h
+  · simp [h]
+  · simp [h]
+
+/-! ## Consistency with Def_8 syndrome -/
+
+/-- The spacetime syndrome equals the Def_8 syndrome applied to the time-fault component.
+    This captures the key fact that detectors depend only on measurement outcomes,
+    so only time-faults affect the syndrome. -/
+theorem syndromeFault_eq_syndrome [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) :
+    syndromeFault detectors F = Detector.syndrome detectors F.timeFaults := by
+  ext i
+  simp [syndromeFault, Detector.syndrome, Detector.isViolated]
+
+/-! ## Empty fault syndrome -/
+
+/-- The syndrome is empty for the fault-free spacetime configuration. -/
+@[simp]
+theorem syndromeFault_empty [DecidableEq Q] [DecidableEq T]
+    [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    [DecidableEq (SpaceFault Q T)]
+    (detectors : I → Detector M) :
+    syndromeFault detectors (SpacetimeFault.empty : SpacetimeFault Q T M) = ∅ := by
+  simp only [syndromeFault, Finset.filter_eq_empty_iff]
+  intro i _
+  exact Detector.not_isViolated_no_faults (detectors i)
+
+/-- The syndrome vector is zero for the fault-free configuration. -/
+@[simp]
+theorem syndromeVec_zero [DecidableEq Q] [DecidableEq T]
+    [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    [DecidableEq (SpaceFault Q T)]
+    (detectors : I → Detector M) :
+    syndromeVec detectors (SpacetimeFault.empty : SpacetimeFault Q T M) = 0 := by
+  ext i
+  simp only [syndromeVec, Pi.zero_apply]
+  have : ¬(detectors i).isViolated (SpacetimeFault.empty : SpacetimeFault Q T M).timeFaults :=
+    Detector.not_isViolated_no_faults (detectors i)
+  simp [this]
+
+
+/-! ## Syndrome vector and finset correspondence -/
+
+/-- The syndrome finset is exactly the support of the syndrome vector. -/
+theorem syndromeFault_eq_support [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) :
+    syndromeFault detectors F =
+      Finset.univ.filter (fun i => syndromeVec detectors F i = 1) := by
+  ext i
+  simp only [Finset.mem_filter, Finset.mem_univ, true_and,
+    mem_syndromeFault_iff, syndromeVec_eq_one_iff]
+
+/-- Membership in syndrome finset iff the syndrome vector entry is 1. -/
+theorem mem_syndromeFault_iff_vec [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) (i : I) :
+    i ∈ syndromeFault detectors F ↔ syndromeVec detectors F i = 1 := by
+  rw [mem_syndromeFault_iff, ← syndromeVec_eq_one_iff]
+
+/-- Not in syndrome finset iff the syndrome vector entry is 0. -/
+theorem not_mem_syndromeFault_iff_vec [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) (i : I) :
+    i ∉ syndromeFault detectors F ↔ syndromeVec detectors F i = 0 := by
+  rw [mem_syndromeFault_iff, syndromeVec_eq_zero_iff]
+
+/-! ## Space-faults do not affect the syndrome -/
+
+/-- Space-faults do not affect the syndrome: two spacetime faults with the same
+    time-faults produce the same syndrome. This formalizes the key insight that
+    the syndrome depends only on measurement outcome flips (time-faults). -/
+theorem syndromeFault_depends_on_timeFaults [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F₁ F₂ : SpacetimeFault Q T M) (h : F₁.timeFaults = F₂.timeFaults) :
+    syndromeFault detectors F₁ = syndromeFault detectors F₂ := by
+  ext i
+  simp [syndromeFault, Detector.isViolated, Detector.observedParity, h]
+
+/-- The syndrome vector is the same for faults with identical time-fault components. -/
+theorem syndromeVec_depends_on_timeFaults [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F₁ F₂ : SpacetimeFault Q T M) (h : F₁.timeFaults = F₂.timeFaults) :
+    syndromeVec detectors F₁ = syndromeVec detectors F₂ := by
+  ext i
+  simp [syndromeVec, Detector.isViolated, Detector.observedParity, h]
+
+/-! ## Syndrome of pure space-faults and pure time-faults -/
+
+/-- A pure space-fault (no time-faults) has empty syndrome. -/
+theorem syndromeFault_pureSpace [DecidableEq Q] [DecidableEq T]
+    [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    [DecidableEq (SpaceFault Q T)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) (hpure : F.isPureSpace) :
+    syndromeFault detectors F = ∅ := by
+  have htf : F.timeFaults = ∅ := hpure
+  simp only [syndromeFault, Finset.filter_eq_empty_iff]
+  intro i _
+  unfold Detector.isViolated
+  rw [htf, Detector.observedParity_no_faults]
+  exact zero_ne_one
+
+/-- A pure space-fault has zero syndrome vector. -/
+theorem syndromeVec_pureSpace [DecidableEq Q] [DecidableEq T]
+    [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    [DecidableEq (SpaceFault Q T)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) (hpure : F.isPureSpace) :
+    syndromeVec detectors F = 0 := by
+  have htf : F.timeFaults = ∅ := hpure
+  ext i
+  simp only [syndromeVec, Pi.zero_apply]
+  have : ¬(detectors i).isViolated F.timeFaults := by
+    unfold Detector.isViolated
+    rw [htf, Detector.observedParity_no_faults]
+    exact zero_ne_one
+  simp [this]
+
+/-! ## Syndrome cardinality -/
+
+/-- The number of violated detectors equals the cardinality of the syndrome. -/
+theorem syndromeFault_card [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) :
+    (syndromeFault detectors F).card =
+      (Finset.univ.filter (fun i => (detectors i).isViolated F.timeFaults)).card := by
+  rfl
+
+/-! ## Syndrome sum (mod 2) -/
+
+/-- The sum of the syndrome vector counts the number of violated detectors mod 2. -/
+theorem syndromeVec_sum [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) :
+    ∑ i : I, syndromeVec detectors F i =
+      ((syndromeFault detectors F).card : ZMod 2) := by
+  simp only [syndromeVec, syndromeFault]
+  rw [Finset.sum_ite, Finset.sum_const_zero, add_zero, ← Finset.cast_card]
+
+/-! ## Syndrome determined by flip parity -/
+
+/-- The syndrome is equivalently described using flip parities of detectors. -/
+theorem syndromeFault_eq_flipParity_filter [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) :
+    syndromeFault detectors F =
+      Finset.univ.filter (fun i => (detectors i).flipParity F.timeFaults = 1) := by
+  ext i
+  simp [syndromeFault, Detector.isViolated, Detector.observedParity_eq_flipParity]
+
+/-- In ZMod 2, every element is 0 or 1. -/
+private lemma zmod2_eq_zero_or_one (x : ZMod 2) : x = 0 ∨ x = 1 := by
+  fin_cases x <;> simp
+
+/-- The syndrome vector can be computed via flip parities. -/
+theorem syndromeVec_eq_flipParity [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F : SpacetimeFault Q T M) (i : I) :
+    syndromeVec detectors F i = (detectors i).flipParity F.timeFaults := by
+  simp only [syndromeVec, Detector.isViolated, Detector.observedParity_eq_flipParity]
+  split_ifs with h
+  · exact h.symm
+  · push_neg at h
+    rcases zmod2_eq_zero_or_one ((detectors i).flipParity F.timeFaults) with h0 | h1
+    · exact h0.symm
+    · exact absurd h1 h
+
+/-! ## Single fault syndrome -/
+
+/-- A pure space-fault has empty syndrome: space-faults don't violate detectors. -/
+theorem syndromeFault_ofSpaceFault [DecidableEq Q] [DecidableEq T]
+    [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    [DecidableEq (SpaceFault Q T)]
+    (detectors : I → Detector M) (f : SpaceFault Q T) :
+    syndromeFault detectors (SpacetimeFault.ofSpaceFault f : SpacetimeFault Q T M) = ∅ := by
+  apply syndromeFault_pureSpace
+  exact SpacetimeFault.isPureSpace_ofSpaceFault f
+
+/-- A detector not containing any faulted measurement is not violated. -/
+theorem not_isViolated_disjoint [DecidableEq M] [DecidableEq (TimeFault M)]
+    (D : Detector M) (faults : Finset (TimeFault M))
+    (h : ∀ m ∈ D.measurements, (⟨m⟩ : TimeFault M) ∉ faults) :
+    ¬D.isViolated faults := by
+  rw [Detector.isViolated_iff_flipParity]
+  have : D.flipParity faults = 0 := by
+    unfold Detector.flipParity
+    apply Finset.sum_eq_zero
+    intro m hm
+    simp [h m hm]
+  rw [this]
+  exact zero_ne_one
+
+/-! ## Syndrome determines information about errors -/
+
+/-- The syndrome captures the error information revealed by detectors:
+    two faults produce the same syndrome iff they violate the same detectors. -/
+theorem syndromeFault_eq_iff [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F₁ F₂ : SpacetimeFault Q T M) :
+    syndromeFault detectors F₁ = syndromeFault detectors F₂ ↔
+      ∀ i : I, (detectors i).isViolated F₁.timeFaults ↔
+              (detectors i).isViolated F₂.timeFaults := by
   constructor
-  · intro ⟨hD, hviol⟩
-    rw [hlin.parityDetermines (f * g) D hD] at hviol
-    rw [hlin.parityDetermines f D hD, hlin.parityDetermines g D hD]
-    have h_xor : ∀ e ∈ D.measEvents,
-      (f * g).timeErrors e.measurement e.time = xor (f.timeErrors e.measurement e.time) (g.timeErrors e.measurement e.time) := by
-      intro e _
-      simp [SpacetimeFault.mul_timeErrors]
-    have h_symmDiff :
-      D.measEvents.filter (fun e => (f * g).timeErrors e.measurement e.time) =
-      symmDiff (D.measEvents.filter (fun e => f.timeErrors e.measurement e.time))
-               (D.measEvents.filter (fun e => g.timeErrors e.measurement e.time)) := by
-      ext e
-      simp only [Finset.mem_filter, Finset.mem_symmDiff, h_xor]
-      constructor
-      · intro ⟨he, hxor⟩
-        cases hf : f.timeErrors e.measurement e.time <;>
-        cases hg : g.timeErrors e.measurement e.time <;>
-        simp_all
-      · intro hcase
-        cases hcase with
-        | inl hcase =>
-          have hg_false : g.timeErrors e.measurement e.time = false := by
-            by_contra hg_true
-            have : g.timeErrors e.measurement e.time = true := Bool.eq_true_of_not_eq_false hg_true
-            exact hcase.2 ⟨hcase.1.1, this⟩
-          exact ⟨hcase.1.1, by simp [hcase.1.2, hg_false]⟩
-        | inr hcase =>
-          have hf_false : f.timeErrors e.measurement e.time = false := by
-            by_contra hf_true
-            have : f.timeErrors e.measurement e.time = true := Bool.eq_true_of_not_eq_false hf_true
-            exact hcase.2 ⟨hcase.1.1, this⟩
-          exact ⟨hcase.1.1, by simp [hf_false, hcase.1.2]⟩
-    rw [h_symmDiff] at hviol
-    have card_symmDiff_mod2 :
-      (symmDiff (D.measEvents.filter (fun e => f.timeErrors e.measurement e.time))
-                (D.measEvents.filter (fun e => g.timeErrors e.measurement e.time))).card % 2 =
-      ((D.measEvents.filter (fun e => f.timeErrors e.measurement e.time)).card +
-       (D.measEvents.filter (fun e => g.timeErrors e.measurement e.time)).card) % 2 :=
-      card_symmDiff_mod_two _ _
-    rw [card_symmDiff_mod2] at hviol
-    -- hviol : (f_card + g_card) % 2 = 1
-    -- Goal: (hD ∧ f_parity=1) ∧ ¬(hD ∧ g_parity=1) ∨ (hD ∧ g_parity=1) ∧ ¬(hD ∧ f_parity=1)
-    let f_card := (D.measEvents.filter (fun e => f.timeErrors e.measurement e.time)).card
-    let g_card := (D.measEvents.filter (fun e => g.timeErrors e.measurement e.time)).card
-    have h_sum : (f_card + g_card) % 2 = 1 := hviol
-    -- Sum is odd means exactly one is odd
-    have h_xor_parity : (f_card % 2 = 1 ∧ g_card % 2 = 0) ∨ (f_card % 2 = 0 ∧ g_card % 2 = 1) := by omega
-    cases h_xor_parity with
-    | inl hcase =>
-      left
-      refine ⟨⟨hD, hcase.1⟩, ?_⟩
-      intro ⟨_, hg_odd⟩
-      omega
-    | inr hcase =>
-      right
-      refine ⟨⟨hD, hcase.2⟩, ?_⟩
-      intro ⟨_, hf_odd⟩
-      omega
+  · intro h i
+    have h1 := mem_syndromeFault_iff detectors F₁ i
+    have h2 := mem_syndromeFault_iff detectors F₂ i
+    rw [h] at h1
+    exact ⟨fun hv => h2.mp (h1.mpr hv), fun hv => h1.mp (h2.mpr hv)⟩
   · intro h
-    cases h with
-    | inl h =>
-      constructor
-      · exact h.1.1
-      · rw [hlin.parityDetermines (f * g) D h.1.1]
-        rw [hlin.parityDetermines f D h.1.1] at h
-        rw [hlin.parityDetermines g D h.1.1] at h
-        have h_xor : ∀ e ∈ D.measEvents,
-          (f * g).timeErrors e.measurement e.time =
-            xor (f.timeErrors e.measurement e.time) (g.timeErrors e.measurement e.time) := by
-          intro e _
-          simp [SpacetimeFault.mul_timeErrors]
-        have h_symmDiff :
-          D.measEvents.filter (fun e => (f * g).timeErrors e.measurement e.time) =
-          symmDiff (D.measEvents.filter (fun e => f.timeErrors e.measurement e.time))
-                   (D.measEvents.filter (fun e => g.timeErrors e.measurement e.time)) := by
-          ext e
-          simp only [Finset.mem_filter, Finset.mem_symmDiff, h_xor]
-          constructor
-          · intro ⟨he, hxor⟩
-            cases hf : f.timeErrors e.measurement e.time <;>
-            cases hg : g.timeErrors e.measurement e.time <;>
-            simp_all
-          · intro hh
-            cases hh with
-            | inl hh =>
-              have hg_false : g.timeErrors e.measurement e.time = false := by
-                by_contra hg_true
-                push_neg at hg_true
-                exact hh.2 ⟨hh.1.1, Bool.eq_true_of_not_eq_false hg_true⟩
-              exact ⟨hh.1.1, by simp [hh.1.2, hg_false]⟩
-            | inr hh =>
-              have hf_false : f.timeErrors e.measurement e.time = false := by
-                by_contra hf_true
-                push_neg at hf_true
-                exact hh.2 ⟨hh.1.1, Bool.eq_true_of_not_eq_false hf_true⟩
-              exact ⟨hh.1.1, by simp [hf_false, hh.1.2]⟩
-        rw [h_symmDiff]
-        have card_symmDiff_mod2 :
-          (symmDiff (D.measEvents.filter (fun e => f.timeErrors e.measurement e.time))
-                    (D.measEvents.filter (fun e => g.timeErrors e.measurement e.time))).card % 2 =
-          ((D.measEvents.filter (fun e => f.timeErrors e.measurement e.time)).card +
-           (D.measEvents.filter (fun e => g.timeErrors e.measurement e.time)).card) % 2 :=
-          card_symmDiff_mod_two _ _
-        rw [card_symmDiff_mod2]
-        have hf_viol := h.1.2
-        have hg_sat : ¬(D.measEvents.filter fun e => g.timeErrors e.measurement e.time).card % 2 = 1 := by
-          intro hcontra
-          exact h.2 ⟨h.1.1, hcontra⟩
-        omega
-    | inr h =>
-      constructor
-      · exact h.1.1
-      · rw [hlin.parityDetermines (f * g) D h.1.1]
-        rw [hlin.parityDetermines f D h.1.1] at h
-        rw [hlin.parityDetermines g D h.1.1] at h
-        have h_xor : ∀ e ∈ D.measEvents,
-          (f * g).timeErrors e.measurement e.time =
-            xor (f.timeErrors e.measurement e.time) (g.timeErrors e.measurement e.time) := by
-          intro e _
-          simp [SpacetimeFault.mul_timeErrors]
-        have h_symmDiff :
-          D.measEvents.filter (fun e => (f * g).timeErrors e.measurement e.time) =
-          symmDiff (D.measEvents.filter (fun e => f.timeErrors e.measurement e.time))
-                   (D.measEvents.filter (fun e => g.timeErrors e.measurement e.time)) := by
-          ext e
-          simp only [Finset.mem_filter, Finset.mem_symmDiff, h_xor]
-          constructor
-          · intro ⟨he, hxor⟩
-            cases hf : f.timeErrors e.measurement e.time <;>
-            cases hg : g.timeErrors e.measurement e.time <;>
-            simp_all
-          · intro hh
-            cases hh with
-            | inl hh =>
-              have hg_false : g.timeErrors e.measurement e.time = false := by
-                by_contra hg_true
-                push_neg at hg_true
-                exact hh.2 ⟨hh.1.1, Bool.eq_true_of_not_eq_false hg_true⟩
-              exact ⟨hh.1.1, by simp [hh.1.2, hg_false]⟩
-            | inr hh =>
-              have hf_false : f.timeErrors e.measurement e.time = false := by
-                by_contra hf_true
-                push_neg at hf_true
-                exact hh.2 ⟨hh.1.1, Bool.eq_true_of_not_eq_false hf_true⟩
-              exact ⟨hh.1.1, by simp [hf_false, hh.1.2]⟩
-        rw [h_symmDiff]
-        have card_symmDiff_mod2 :
-          (symmDiff (D.measEvents.filter (fun e => f.timeErrors e.measurement e.time))
-                    (D.measEvents.filter (fun e => g.timeErrors e.measurement e.time))).card % 2 =
-          ((D.measEvents.filter (fun e => f.timeErrors e.measurement e.time)).card +
-           (D.measEvents.filter (fun e => g.timeErrors e.measurement e.time)).card) % 2 :=
-          card_symmDiff_mod_two _ _
-        rw [card_symmDiff_mod2]
-        have hf_sat : ¬(D.measEvents.filter fun e => f.timeErrors e.measurement e.time).card % 2 = 1 := by
-          intro hcontra
-          exact h.2 ⟨h.1.1, hcontra⟩
-        have hg_viol := h.1.2
-        omega
+    ext i
+    simp [syndromeFault, h i]
 
-/-- Syndrome of inverse equals syndrome of original (since XOR is self-inverse) -/
-theorem syndrome_inv
-    (hlin : SyndromeLinearCondition DC baseOutcomes)
-    (f : SpacetimeFault V E M) :
-    syndrome DC baseOutcomes f⁻¹ = syndrome DC baseOutcomes f := by
-  ext D
-  simp only [syndrome, Finset.mem_filter]
+/-- Two faults with the same syndrome have identical syndrome vectors. -/
+theorem syndromeVec_eq_iff [DecidableEq I] [Fintype I]
+    [DecidableEq M] [DecidableEq (TimeFault M)]
+    (detectors : I → Detector M)
+    (F₁ F₂ : SpacetimeFault Q T M) :
+    syndromeVec detectors F₁ = syndromeVec detectors F₂ ↔
+      syndromeFault detectors F₁ = syndromeFault detectors F₂ := by
   constructor
-  · intro ⟨hD, hviol⟩
-    refine ⟨hD, ?_⟩
-    rw [hlin.parityDetermines f⁻¹ D hD] at hviol
-    rw [hlin.parityDetermines f D hD]
-    convert hviol using 2
-  · intro ⟨hD, hviol⟩
-    refine ⟨hD, ?_⟩
-    rw [hlin.parityDetermines f D hD] at hviol
-    rw [hlin.parityDetermines f⁻¹ D hD]
-    convert hviol using 2
-
-end Linearity
-
-/-! ## Spacetime Stabilizers and Logical Faults
-
-Based on the syndrome definition, we can characterize:
-- Spacetime stabilizers: trivial faults with empty syndrome
-- Logical faults: non-trivial faults with empty syndrome -/
-
-/-- A spacetime stabilizer has empty syndrome by definition -/
-def IsSpacetimeStabilizer'
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (isTrivial : SpacetimeFault V E M → Prop)
-    (fault : SpacetimeFault V E M) : Prop :=
-  hasEmptySyndrome' DC baseOutcomes fault ∧ isTrivial fault
-
-/-- A logical fault is non-trivial with empty syndrome -/
-def IsLogicalFault
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (isTrivial : SpacetimeFault V E M → Prop)
-    (fault : SpacetimeFault V E M) : Prop :=
-  hasEmptySyndrome' DC baseOutcomes fault ∧ ¬isTrivial fault
-
-/-- Stabilizers and logical faults partition empty-syndrome faults -/
-theorem emptySyndrome_dichotomy
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (isTrivial : SpacetimeFault V E M → Prop)
-    (fault : SpacetimeFault V E M)
-    (h_empty : hasEmptySyndrome' DC baseOutcomes fault) :
-    IsSpacetimeStabilizer' DC baseOutcomes isTrivial fault ∨
-    IsLogicalFault DC baseOutcomes isTrivial fault := by
-  by_cases htrivial : isTrivial fault
-  · left; exact ⟨h_empty, htrivial⟩
-  · right; exact ⟨h_empty, htrivial⟩
-
-/-- Stabilizers and logical faults are mutually exclusive -/
-theorem stabilizer_logicalFault_exclusive
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (isTrivial : SpacetimeFault V E M → Prop)
-    (fault : SpacetimeFault V E M) :
-    ¬(IsSpacetimeStabilizer' DC baseOutcomes isTrivial fault ∧
-      IsLogicalFault DC baseOutcomes isTrivial fault) := by
-  intro ⟨hstab, hlog⟩
-  exact hlog.2 hstab.2
-
-/-- A logical fault is characterized as non-trivial with empty syndrome -/
-theorem isLogicalFault_iff
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (isTrivial : SpacetimeFault V E M → Prop)
-    (fault : SpacetimeFault V E M) :
-    IsLogicalFault DC baseOutcomes isTrivial fault ↔
-    (hasEmptySyndrome' DC baseOutcomes fault ∧ ¬isTrivial fault) :=
-  Iff.rfl
-
-/-! ## Syndrome Membership Characterization -/
-
-/-- A detector is in the syndrome iff it is violated by the fault -/
-theorem mem_syndrome_iff
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (fault : SpacetimeFault V E M)
-    (D : Detector V E M)
-    (hD : D ∈ DC.detectors) :
-    D ∈ syndrome DC baseOutcomes fault ↔
-    D.isViolated (applyFaultToOutcomes' baseOutcomes fault) := by
-  simp only [syndrome, Finset.mem_filter, hD, true_and]
-
-/-- Syndrome is a subset of the detector collection -/
-theorem syndrome_subset
-    (DC : DetectorCollection V E M)
-    (baseOutcomes : OutcomeAssignment M)
-    (fault : SpacetimeFault V E M) :
-    syndrome DC baseOutcomes fault ⊆ DC.detectors := by
-  intro D hD
-  simp only [syndrome, Finset.mem_filter] at hD
-  exact hD.1
-
-/-! ## Summary
-
-This formalization captures the syndrome concept from fault-tolerant quantum error correction:
-
-1. **Syndrome Definition**: The syndrome of a fault F is the set of detectors violated by F.
-   Equivalently, it's a binary vector where entry D is 1 iff detector D is violated.
-
-2. **Z₂-Linearity**: Under appropriate conditions, the syndrome function satisfies:
-   - syndrome(F₁ · F₂) = syndrome(F₁) + syndrome(F₂) (symmetric difference)
-   - syndrome(F⁻¹) = syndrome(F)
-   - syndrome(1) = ∅
-
-3. **Partition of Empty-Syndrome Faults**:
-   - Spacetime stabilizers: trivial faults with empty syndrome
-   - Logical faults: non-trivial faults with empty syndrome
-   - These are mutually exclusive and exhaustive
-
-Key properties proven:
-- Syndrome addition (symmetric difference) is commutative, associative, has identity
-- Every syndrome is self-inverse
-- Identity fault has empty syndrome
-- Syndrome respects fault composition (Z₂-linear)
-- Empty-syndrome faults partition into stabilizers and logical faults
--/
+  · intro h
+    ext i
+    have hi : syndromeVec detectors F₁ i = syndromeVec detectors F₂ i := congr_fun h i
+    simp only [mem_syndromeFault_iff, ← syndromeVec_eq_one_iff, hi]
+  · intro h
+    ext i
+    have : (i ∈ syndromeFault detectors F₁) ↔ (i ∈ syndromeFault detectors F₂) := by
+      rw [h]
+    rw [mem_syndromeFault_iff, ← syndromeVec_eq_one_iff] at this
+    rw [mem_syndromeFault_iff, ← syndromeVec_eq_one_iff] at this
+    rcases zmod2_eq_zero_or_one (syndromeVec detectors F₁ i) with h0 | h1 <;>
+    rcases zmod2_eq_zero_or_one (syndromeVec detectors F₂ i) with h0' | h1'
+    · rw [h0, h0']
+    · exfalso; rw [h0] at this; exact zero_ne_one (this.mpr h1')
+    · exfalso; rw [h0'] at this; exact zero_ne_one (this.mp h1)
+    · rw [h1, h1']

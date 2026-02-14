@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    
+
+<!-- Header -->
+<header class="site-header">
+  <h1 class="title">MerLean</h1>
+  <h2 class="subtitle">An Agentic Framework for Autoformalization in Quantum Computation</h2>
+
+  <div class="authors">
+    <span class="author">
+      <img src="/assets/img/yuanjie.jpg" alt="Yuanjie Ren" class="author-photo">
+      <a href="https://collinyuanjieren.com/" target="_blank" rel="noopener">Yuanjie Ren</a><sup>*1</sup>
+    </span>
+    <span class="author">
+      <img src="/assets/img/jinzheng.jpg" alt="Jinzheng Li" class="author-photo">
+      <a href="https://jinzheng.li/" target="_blank" rel="noopener">Jinzheng Li</a><sup>*2</sup>
+    </span>
+    <span class="author">
+      <img src="/assets/img/yidi.jpg" alt="Yidi Qi" class="author-photo">
+      <a href="https://yidiq7.github.io/" target="_blank" rel="noopener">Yidi Qi</a><sup>*2</sup>
+    </span>
+  </div>
+  <div class="affiliations">
+    <span><sup>1</sup>Massachusetts Institute of Technology</span>
+    <span><sup>2</sup>Northeastern University</span>
+  </div>
+  <p class="equal">* Equal contribution</p>
+
+  <div class="header-links">
+    <a href="/assets/MerLean_arxiv.pdf" class="header-btn" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
+      Paper (PDF)
+    </a>
+  </div>
+</header>
+
+<hr class="divider">
+
+<!-- Example -->
+<section class="section">
+  <h3>Example: Fault-Tolerant Quantum Computation</h3>
+  <p>
+    This page presents the formalization output for
+    <a href="https://arxiv.org/abs/2410.02213" target="_blank" rel="noopener"><em>Low-overhead fault-tolerant quantum computation by gauging logical operators</em></a>
+    produced fully automatically by MerLean.
+    The formalization covers stabilizer formalism, Pauli algebra, transversal gates, gauging graphs,
+    and fault-tolerant measurement &mdash; yielding <strong>923 Lean declarations</strong> from 47 statements
+    with <strong>zero axioms</strong>.
+  </p>
+
+  <div class="example-links">
+    <a href="https://doxtor6.github.io/MerLean-examples/blueprint/" class="example-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      Interactive Blueprint
+    </a>
+    <a href="https://doxtor6.github.io/MerLean-examples/blueprint.pdf" class="example-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+      Informalized PDF
+    </a>
+    <a href="https://doxtor6.github.io/MerLean-examples/docs/" class="example-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      API Docs
+    </a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- About MerLean -->
+<section class="section">
+  <h3>About MerLean</h3>
+  <p>
+    MerLean is a fully automated agentic framework for autoformalization.
+    It extracts mathematical statements from LaTeX, formalizes them into verified
+    Lean 4 code built on Mathlib, and translates the result back into human-readable
+    LaTeX for semantic review &mdash; all without human intervention.
+  </p>
+</section>
+
+<hr class="divider">
+
+<!-- BibTeX -->
+<section class="section">
+  <h3>BibTeX</h3>
+  <pre class="bibtex">@article{ren2025merlean,
+  title     = {MerLean: An Agentic Framework for Autoformalization
+               in Quantum Computation},
+  author    = {Ren, Yuanjie and Li, Jinzheng and Qi, Yidi},
+  year      = {2026}
+}</pre>
+</section>
+
+<footer class="site-footer">
+  <p>
+    Maintained by <a href="https://github.com/doxtor6">doxtor6</a>.
+    Built with <a href="https://lean-lang.org/" target="_blank" rel="noopener">Lean 4</a> +
+    <a href="https://leanprover-community.github.io/mathlib4_docs/" target="_blank" rel="noopener">Mathlib</a>.
+  </p>
+</footer>
+
+  </div>
+</body>
+</html>
