@@ -136,6 +136,13 @@ a:hover {
   flex-shrink: 0;
 }
 
+.paper-disclaimer {
+  margin-top: 10px;
+  font-size: 0.82em;
+  color: #888;
+  font-style: italic;
+}
+
 /* ---- Divider ---- */
 .divider {
   border: none;
