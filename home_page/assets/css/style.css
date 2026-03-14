@@ -172,49 +172,63 @@ a:hover {
   margin-bottom: 0;
 }
 
-/* ---- Example Links ---- */
-.example-links {
+/* ---- Gallery Cards ---- */
+.gallery-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 28px;
+  padding: 22px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fafbfc;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
 
-.example-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 280px;
-  padding: 14px 0;
-  border: none;
-  border-radius: 8px;
+.gallery-card:hover {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+  border-color: #b0bdd4;
+}
+
+.gallery-card .card-title {
   font-size: 1rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 8px;
+}
+
+.gallery-card p {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0 0 14px;
+  flex: 1;
+}
+
+.gallery-card-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.gallery-card-links a {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #fff;
   background: #2563eb;
-  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
-  cursor: pointer;
+  transition: background 0.15s;
 }
 
-.example-btn:hover {
+.gallery-card-links a:hover {
   background: #1d4ed8;
   text-decoration: none;
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
-  transform: translateY(-1px);
-}
-
-.example-btn svg {
-  flex-shrink: 0;
-  stroke: #fff;
 }
 
 /* ---- Card Grid ---- */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
