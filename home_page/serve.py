@@ -104,6 +104,29 @@ def build_site():
         with open(os.path.join(BUILD_DIR, "404.html"), "w", encoding="utf-8") as f:
             f.write(html)
 
+    # Build blog.html
+    blog_src = os.path.join(SITE_DIR, "blog.html")
+    if os.path.exists(blog_src):
+        html = build_page(blog_src)
+        with open(os.path.join(BUILD_DIR, "blog.html"), "w", encoding="utf-8") as f:
+            f.write(html)
+
+    # Build blog-post.html
+    blog_post_src = os.path.join(SITE_DIR, "blog-post.html")
+    if os.path.exists(blog_post_src):
+        html = build_page(blog_post_src)
+        with open(os.path.join(BUILD_DIR, "blog-post.html"), "w", encoding="utf-8") as f:
+            f.write(html)
+
+    # Copy blogs/ markdown files
+    blogs_src = os.path.join(SITE_DIR, "blogs")
+    blogs_dst = os.path.join(BUILD_DIR, "blogs")
+    if os.path.exists(blogs_src):
+        import shutil
+        if os.path.exists(blogs_dst):
+            shutil.rmtree(blogs_dst)
+        shutil.copytree(blogs_src, blogs_dst)
+
 
 def main():
     build_site()

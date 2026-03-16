@@ -1,0 +1,32 @@
+---
+layout: default
+title: "Blog — MerLean"
+---
+
+<nav class="blog-nav">
+  <a href="{{ '/' | relative_url }}">&larr; Home</a>
+  <span class="blog-nav-sep">/</span>
+  <a href="blog.html">Blog</a>
+</nav>
+
+<article class="blog-post">
+  <header class="blog-post-header">
+    <h1 id="post-title" class="title">Loading...</h1>
+    <time id="post-date" class="blog-post-date"></time>
+  </header>
+  <hr class="divider">
+  <div id="post-content" class="blog-post-body">
+    <p>Loading post...</p>
+  </div>
+</article>
+
+<footer class="site-footer">
+  <p>
+    Maintained by <a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a>.
+    Built with <a href="https://lean-lang.org/" target="_blank" rel="noopener">Lean 4</a> +
+    <a href="https://leanprover-community.github.io/mathlib4_docs/" target="_blank" rel="noopener">Mathlib</a>.
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="{{ '/assets/js/blog-post.js' | relative_url }}"></script>
