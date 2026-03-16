@@ -9,9 +9,9 @@
 const blogPosts = [
   {
     file:    "blog1.md",
-    title:   "Autoformalization as automated refereeing: MerLean catches errors in a frontier quantum computing paper",
+    title:   "Formalizing Balanced Product Quantum Codes with MerLean",
     date:    "2026-03-14",
-    excerpt: "We evaluated MerLean on \"Balanced Product Quantum Codes\" and discovered actual mathematical errors that had slipped past peer review — caught by a tug-of-war between the Lean compiler and our faithfulness checker."
+    excerpt: "We evaluated MerLean on one of the most important papers in Quantum Error Correction — here's how the dual-engine architecture handled it and what we learned."
   }
 ];
 
