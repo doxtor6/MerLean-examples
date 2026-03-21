@@ -33,7 +33,7 @@ For context, here are the results from other agents on the full 23-problem bench
 | Codex | 5/23 | n/a | 40m |
 | Claude Code | 4/23 | $23.16 | 1h 45m |
 
-Note that MerLean-prover has only been tested on 8 of the 23 problems so far, so a direct comparison on the full benchmark is not yet possible. However, on the problems tested, MerLean-prover achieves a 100% solve rate where the best existing agent (OpenGauss) solves 8 out of 23. MerLean-prover's higher cost per solve reflects the depth of its autoformalization pipeline — it constructs complete, axiom-free proofs rather than relying on shortcuts.
+Note that MerLean-prover has only been tested on 8 of the 23 problems so far, so a direct comparison on the full benchmark is not yet possible. However, on the problems tested, MerLean-prover achieves a 100% solve rate where the best existing agent (OpenGauss) solves 8 out of 23. MerLean-prover's higher cost per solve likely reflects its autoformalization pipeline, which constructs complete, axiom-free proofs.
 
 ## Run Details
 
