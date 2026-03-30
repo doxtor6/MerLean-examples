@@ -1,119 +1,109 @@
----
-layout: default
-title: "MerLean"
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MerLean — An Agentic Framework for Autoformalization</title>
+  <meta name="description" content="MerLean is a fully automated agentic framework that formalizes mathematical research papers into verified Lean 4 code and translates them back into human-readable LaTeX.">
+  <meta property="og:title" content="MerLean">
+  <meta property="og:description" content="An Agentic Framework for Autoformalization in Quantum Computation">
+  <meta property="og:image" content="assets/img/MerLean_logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
 
-<!-- Header -->
-<header class="site-header">
-  <img src="{{ '/assets/img/MerLean_logo.png' | relative_url }}" alt="MerLean Logo" class="site-logo">
-  <h1 class="title">MerLean</h1>
-  <h2 class="subtitle">An Agentic Framework for Autoformalization in Quantum Computation</h2>
+<div class="wrapper">
 
-  <div class="authors">
-    <span class="author">
-      <img src="{{ '/assets/img/yuanjie.jpg' | relative_url }}" alt="Yuanjie Ren" class="author-photo">
-      <a href="https://collinyuanjieren.com/" target="_blank" rel="noopener">Yuanjie Ren</a><sup>*1</sup>
-    </span>
-    <span class="author">
-      <img src="{{ '/assets/img/jinzheng.jpg' | relative_url }}" alt="Jinzheng Li" class="author-photo">
-      <a href="https://jinzheng.li/doxtor6.html" target="_blank" rel="noopener">Jinzheng Li</a><sup>*2</sup>
-    </span>
-    <span class="author">
-      <img src="{{ '/assets/img/yidi.jpg' | relative_url }}" alt="Yidi Qi" class="author-photo">
-      <a href="https://yidiq7.github.io/" target="_blank" rel="noopener">Yidi Qi</a><sup>*2</sup>
-    </span>
-  </div>
-  <div class="affiliations">
-    <span><sup>1</sup>Massachusetts Institute of Technology</span>
-    <span><sup>2</sup>Northeastern University</span>
-  </div>
-  <p class="equal">* Equal contribution</p>
-
-  <div class="header-links">
-    <a href="https://arxiv.org/abs/2602.16554" class="header-btn" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
-      arXiv
+  <!-- ===== Top Nav ===== -->
+  <nav class="top-nav" id="top-nav">
+    <a href="#" class="nav-brand" onclick="switchTab('home'); return false;">
+      <img src="assets/img/MerLean_logo.png" alt="MerLean">
+      <span>MerLean</span>
     </a>
-    <a href="blog.html" class="header-btn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-      Blog
-    </a>
-  </div>
-  <p class="paper-disclaimer">Note: The data in the paper is from an early version of MerLean and does not represent the actual performance of the final product.</p>
-</header>
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-tab="home" id="nav-home">Home</button>
+      <button class="nav-tab" data-tab="publications" id="nav-publications">Publications</button>
+      <button class="nav-tab" data-tab="videos" id="nav-videos">Demo video</button>
+      <button class="nav-tab" data-tab="blogs" id="nav-blogs">Blogs</button>
+      <button class="nav-tab" data-tab="examples" id="nav-examples">Examples</button>
+    </div>
+  </nav>
 
-<hr class="divider">
-
-<!-- Examples Gallery -->
-<section class="section">
-  <h3>Examples</h3>
-  <div class="card-grid">
-
-    <div class="gallery-card">
-      <div class="card-title">Fault-Tolerant Quantum Computation</div>
-      <p>
-        Formalization of
-        <a href="https://arxiv.org/abs/2410.02213" target="_blank" rel="noopener"><em>Low-overhead fault-tolerant quantum computation by gauging logical operators</em></a>.
-        Covers stabilizer formalism, Pauli algebra, transversal gates, gauging graphs,
-        and fault-tolerant measurement &mdash; <strong>1450 Lean declarations</strong> from 48 statements.
-      </p>
-      <div class="gallery-card-links">
-        <a href="{{ site.url }}/blueprint/">Blueprint</a>
-        <a href="{{ site.url }}/blueprint.pdf">PDF</a>
-        <a href="{{ site.url }}/docs/">Docs</a>
+  <!-- ===== HOME ===== -->
+  <div class="tab-content active" id="tab-home">
+    <div class="hero">
+      <img src="assets/img/MerLean_logo.png" alt="MerLean Logo" class="hero-logo">
+      <h1>MerLean</h1>
+      <p class="hero-subtitle">A fully automated agentic framework for autoformalization — bridging LaTeX research papers and verified Lean&nbsp;4 code.</p>
+      <div class="hero-actions">
+        <a href="https://arxiv.org/abs/2602.16554" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Read the Paper
+        </a>
+        <a href="https://github.com/doxtor6/MerLean-examples" target="_blank" rel="noopener" class="btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
       </div>
     </div>
 
-    <div class="gallery-card">
-      <div class="card-title">Balanced Product Quantum Codes</div>
-      <p>
-        Formalization of
-        <a href="https://arxiv.org/abs/2012.09271" target="_blank" rel="noopener"><em>Balanced Product Quantum Codes</em></a>.
-        Covers chain complexes, cohomology,
-        CSS &amp; LDPC codes, expander graphs, Cayley graphs, and the LPS construction &mdash;
-        culminating in explicit families of quantum codes with proven distance and rate properties.
-      </p>
-      <div class="gallery-card-links">
-        <a href="https://doxtor6.github.io/MerLean_bpqc/blueprint/">Blueprint</a>
-        <a href="https://doxtor6.github.io/MerLean_bpqc/blueprint.pdf">PDF</a>
-        <a href="https://doxtor6.github.io/MerLean_bpqc/docs/">Docs</a>
+    <!-- Authors -->
+    <div class="authors-strip">
+      <a href="https://collinyuanjieren.com/" target="_blank" rel="noopener" class="author-card">
+        <img src="assets/img/yuanjie.jpg" alt="Yuanjie Ren">
+        <div class="author-info">
+          <div class="author-name">Yuanjie Ren</div>
+          <div class="author-affil">MIT</div>
+        </div>
+      </a>
+      <a href="https://jinzheng.li/doxtor6.html" target="_blank" rel="noopener" class="author-card">
+        <img src="assets/img/jinzheng.jpg" alt="Jinzheng Li">
+        <div class="author-info">
+          <div class="author-name">Jinzheng Li</div>
+          <div class="author-affil">Northeastern University</div>
+        </div>
+      </a>
+      <a href="https://yidiq7.github.io/" target="_blank" rel="noopener" class="author-card">
+        <img src="assets/img/yidi.jpg" alt="Yidi Qi">
+        <div class="author-info">
+          <div class="author-name">Yidi Qi</div>
+          <div class="author-affil">Northeastern University</div>
+        </div>
+      </a>
+    </div>
 
+
+    <!-- About -->
+    <div class="about-section">
+      <h2>About MerLean</h2>
+      <p>
+        MerLean is a bidirectional pipeline powered by Claude that extracts mathematical statements from LaTeX, formalizes them into verified Lean 4 code built on Mathlib, and translates the result back into human-readable LaTeX for semantic review — all without human intervention.
+      </p>
+      <p>
+        Across three quantum-computing papers (114 statements), MerLean produced 2,050 Lean declarations totaling 41,000+ lines of verified code, achieving full formalization without axioms on two of three papers.
+      </p>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-value">2,050</div>
+          <div class="stat-label">Lean Declarations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">41k+</div>
+          <div class="stat-label">Lines of Code</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">114</div>
+          <div class="stat-label">Statements Formalized</div>
+        </div>
       </div>
     </div>
 
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- Blog -->
-<section class="section">
-  <h3>Blog</h3>
-  <div id="blog-list">
-    <p>Loading blog posts...</p>
-  </div>
-  <p style="margin-top: 12px;"><a href="blog.html">View all posts &rarr;</a></p>
-</section>
-
-<hr class="divider">
-
-<!-- About MerLean -->
-<section class="section">
-  <h3>About MerLean</h3>
-  <p>
-    MerLean is a fully automated agentic framework for autoformalization.
-    It extracts mathematical statements from LaTeX, formalizes them into verified
-    Lean 4 code built on Mathlib, and translates the result back into human-readable
-    LaTeX for semantic review &mdash; all without human intervention.
-  </p>
-</section>
-
-<hr class="divider">
-
-<!-- BibTeX -->
-<section class="section">
-  <h3>BibTeX</h3>
-  <pre class="bibtex">@article{ren2026merlean,
+    <!-- BibTeX -->
+    <div class="bibtex-section">
+      <h3>Cite</h3>
+      <div class="bibtex-block">
+        <button class="copy-btn" onclick="copyBibtex()" id="copy-bibtex-btn">Copy</button>@article{ren2026merlean,
   title         = {MerLean: An Agentic Framework for Autoformalization
                    in Quantum Computation},
   author        = {Ren, Yuanjie and Li, Jinzheng and Qi, Yidi},
@@ -123,13 +113,105 @@ title: "MerLean"
   archivePrefix = {arXiv},
   primaryClass  = {cs.LO},
   doi           = {10.48550/arXiv.2602.16554}
-}</pre>
-</section>
+}</div>
+    </div>
+  </div>
 
-<footer class="site-footer">
-  <p>
-    Maintained by <a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a>.
-    Built with <a href="https://lean-lang.org/" target="_blank" rel="noopener">Lean 4</a> +
-    <a href="https://leanprover-community.github.io/mathlib4_docs/" target="_blank" rel="noopener">Mathlib</a>.
-  </p>
-</footer>
+  <!-- ===== PUBLICATIONS ===== -->
+  <div class="tab-content" id="tab-publications">
+    <h2 class="section-title">Publications</h2>
+    <p class="section-desc">Research papers from the MerLean project.</p>
+
+    <div class="pub-card">
+      <span class="pub-tag">arXiv 2026</span>
+      <div class="pub-title">MerLean: An Agentic Framework for Autoformalization in Quantum Computation</div>
+      <div class="pub-authors">Yuanjie Ren*, Jinzheng Li*, Yidi Qi*</div>
+      <div class="pub-venue">arXiv preprint arXiv:2602.16554 · cs.LO</div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2602.16554" target="_blank" rel="noopener" class="pub-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+          arXiv
+        </a>
+        <a href="assets/MerLean_arxiv.pdf" target="_blank" class="pub-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v14M5 10l7 7 7-7"/><path d="M5 18h14"/></svg>
+          PDF
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== VIDEOS ===== -->
+  <div class="tab-content" id="tab-videos">
+    <h2 class="section-title">Videos</h2>
+    <p class="section-desc">Demos and presentations showcasing MerLean in action.</p>
+
+    <div class="video-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      <p>Videos coming soon. Stay tuned for demos and presentations!</p>
+    </div>
+  </div>
+
+  <!-- ===== BLOGS ===== -->
+  <div class="tab-content" id="tab-blogs">
+    <!-- Blog list view -->
+    <div id="blog-list-view">
+      <h2 class="section-title">Blog</h2>
+      <p class="section-desc">Updates on autoformalization, Lean 4, and quantum computation.</p>
+      <div class="blog-list" id="blog-list"></div>
+    </div>
+    <!-- Blog post view -->
+    <div class="blog-post-view" id="blog-post-view">
+      <button class="blog-back" onclick="closeBlogPost()">← Back to blog</button>
+      <h1 class="blog-post-title" id="blog-post-title"></h1>
+      <div class="blog-post-date" id="blog-post-date"></div>
+      <div class="blog-post-body" id="blog-post-body"></div>
+    </div>
+  </div>
+
+  <!-- ===== EXAMPLES ===== -->
+  <div class="tab-content" id="tab-examples">
+    <h2 class="section-title">Examples</h2>
+    <p class="section-desc">Browse the formalization output produced by MerLean.</p>
+
+    <div class="examples-grid">
+      <div class="example-card">
+        <div class="example-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Fault-Tolerant Quantum Computation</h3>
+        <p>Formalization of <em>Low-overhead fault-tolerant quantum computation by gauging logical operators</em>. Covers stabilizer formalism, Pauli algebra, transversal gates, gauging graphs, and fault-tolerant measurement — <strong>1,450 Lean declarations</strong> from 48 statements.</p>
+        <div class="example-links">
+          <a href="https://doxtor6.github.io/MerLean-examples/blueprint/" target="_blank" class="example-link">Blueprint</a>
+          <a href="https://doxtor6.github.io/MerLean-examples/blueprint.pdf" target="_blank" class="example-link">PDF</a>
+          <a href="https://doxtor6.github.io/MerLean-examples/docs/" target="_blank" class="example-link">Docs</a>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <div class="example-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
+        <h3>Balanced Product Quantum Codes</h3>
+        <p>Formalization of <em>Balanced Product Quantum Codes</em>. Covers chain complexes, cohomology, CSS &amp; LDPC codes, expander graphs, Cayley graphs, and the LPS construction.</p>
+        <div class="example-links">
+          <a href="https://doxtor6.github.io/MerLean_bpqc/blueprint/" target="_blank" class="example-link">Blueprint</a>
+          <a href="https://doxtor6.github.io/MerLean_bpqc/blueprint.pdf" target="_blank" class="example-link">PDF</a>
+          <a href="https://doxtor6.github.io/MerLean_bpqc/docs/" target="_blank" class="example-link">Docs</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- ===== Footer ===== -->
+
+</div>
+
+<!-- Marked.js for blog markdown rendering -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
