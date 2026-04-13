@@ -1,0 +1,367 @@
+{
+  "version": 2,
+  "nodes": {
+    "thm:OrderFinding.phaseEstimation_semantically_correct": {
+      "source_hash": "21fc25aa82f16f4cc260232b7f444ffeaf6c4b18",
+      "overview": "This theorem is a semantic soundness corollary for the phase-estimation component of the order-finding development. It says: if you already have a derivation of the program `P` in the proof system from the assertion built from `backwardPre` to the standard postcondition for the phase-estimation context, and if you assume the general soundness theorem for that proof system, then `P` is semantically totally correct for that same pre/post pair. Mathematically, the theorem does not analyze the phase-estimation circuit itself; it packages the general metatheorem \"derivable implies semantically valid\" and applies it to this particular context and postcondition. The context assumption `hctx` supplies the dimension facts needed to make the semantic objects line up.",
+      "line_explanations": {
+        "895": "This assumes that the program P already has a total-correctness derivation in the proof system QHL+, starting from the backward-computed assertion and ending at the desired postcondition. In mathematical terms, it is the formal derivation that the rest of the theorem will turn into a semantic Hoare triple.",
+        "897": "This assumes a general soundness principle for the proof system: any total-correctness derivation in QHL+ yields a semantically valid total-correctness Hoare triple. So the theorem does not re-prove soundness for P specifically; it invokes a uniform meta-result.",
+        "902": "This is the key implication inside the soundness assumption: from a derivation of pre ⟶ Q ⟶ post in the logic, one may conclude the corresponding semantic Hoare triple for Q. Mathematically, it is the bridge from syntactic provability to semantic correctness.",
+        "906": "This pulls in the fact that the phase-estimation context has the expected total dimension, as supplied by hctx. It is proof-script bookkeeping: the equality is made available locally so the final soundness application has the dimensional side information it needs."
+      }
+    },
+    "thm:ShorFactoring.shor_semantically_correct": {
+      "source_hash": "9c9e96616a578611ca1b9bb5bd184930edb79c6f",
+      "overview": "This theorem is the final semantic-correctness statement for the formalized Shor factoring program. It says that, once the semantics of the primitive quantum operations have been connected to their intended Kraus-operator models, the two branches of the classical control step have been proved to preserve the loop invariant, and the general soundness theorem for the proof system is available, then the whole program satisfies the desired Hoare-style specification: starting from `preCond`, the program `shorProgram` establishes `postCond`. Mathematically, this theorem is mostly a wrapper: it takes an already constructed proof-system derivation of correctness (`shor_factoring_correct`) and turns it into an actual semantic correctness statement by one application of the generic soundness principle.",
+      "line_explanations": {
+        "1288": "This assumes that for every exponent \\(j\\), the controlled operation \\(CU\\_pow(j)\\) has the correct unitary/Kraus interpretation in the semantics. In mathematical terms, every controlled modular-exponentiation block used by Shor’s circuit is certified to denote the intended unitary evolution.",
+        "1292": "This begins the precondition for the `else` branch: we have the loop invariant and `notFound`, and we additionally assume the test `gGt1` is false. So this branch is analyzed under the case where no factor has been found yet and the favorable gcd condition does not hold.",
+        "1298": "This begins the precondition for the `then` branch: we have the loop invariant and `notFound`, and now we also assume `gGt1` is true. So this is the complementary case where the branch is taken because the gcd test succeeds in the relevant way.",
+        "1303": "This introduces a general soundness principle for the proof system: for any assertions `pre` and `post`, and any program in this language, a derivation in the Hoare logic can be turned into a semantic correctness statement. It is the meta-level bridge from syntactic proof to actual program meaning.",
+        "1308": "This is the premise of that soundness principle: assume we have a formal derivation proving `{pre} Q {post}` in the quantum Hoare logic. The mathematical role is to say, 'whenever the logic proves a triple, soundness will let us conclude the corresponding semantic triple.'",
+        "1311": "This is the final proof step: apply the soundness principle to the previously constructed derivation `shor_factoring_correct ...`. Mathematically, the argument is 'we already proved Shor’s program correct inside the logic, so by soundness it is semantically correct as well.'"
+      }
+    },
+    "thm:QHL.soundness_tot_deriv": {
+      "source_hash": "dbe6852bded22de5fddd6e795cabbdc93a84394a",
+      "overview": "This theorem is the main soundness statement for the total-correctness proof system: if a Hoare-style judgment `QHLPlusTotDeriv ... pre P post` is derivable syntactically, then it is semantically valid as a `TotTriple`. Mathematically, it says that every proof rule of the logic preserves the intended total-correctness meaning: starting from any state satisfying the precondition, the expected value encoded by the precondition is bounded by the postcondition expectation after executing `P`, with only terminating runs contributing. The parameters `sem`, `psem`, `expSub`, `qvSub`, and especially `sax : SoundnessBase ...` supply the semantic interpretation of programs/assertions and the basic soundness facts for substitution, initialization, unitary evolution, and measurement. The proof proceeds by induction over the derivation `h`, so each constructor of the proof system is matched with its corresponding semantic soundness argument.",
+      "line_explanations": {
+        "797": "The proof proceeds by induction on the derivation of the Hoare-style judgment \\(h\\). Mathematically, this means proving soundness separately for each axiom and inference rule that could have produced the derivation.",
+        "811": "This defines an explicit bijection between `Unit` and the set of terminating executions of `skip` from the state \\(\\omega\\). The point is that `skip` has exactly one terminating derivation, so the infinite sum over derivations can be treated as a one-term sum.",
+        "834": "This invokes the substitution lemma for formulas: evaluating the postcondition after updating \\(x := e\\) is the same as evaluating the syntactically substituted assertion before the update. It is the key step that connects the assignment rule's substituted precondition to the semantic state transformation.",
+        "934": "This applies the general fact that if two summable series satisfy a term-by-term inequality, then their total sums satisfy the same inequality. Here it lifts the pointwise bound for each terminating derivation of \\(P_1\\) to a bound for the whole sequential composition.",
+        "962": "This discharges the loop case by appealing to a previously established total-soundness theorem for loops. The induction hypotheses for the body and the variant argument are supplied as inputs, along with the ranking and freshness assumptions.",
+        "972": "This starts a transitive inequality chain by using monotonicity of expectation: if one effect is pointwise below another, then its expected value is also below the other's. In the consequence rule, this is the step that replaces the original precondition by the stronger one justified by the premise."
+      }
+    },
+    "thm:QHL.soundness_par_deriv": {
+      "source_hash": "2f14f1bc74614b0fe6039e900666a40f3a4fb9d0",
+      "overview": "This theorem is the main soundness statement for the partial-correctness proof system `QHL+`: every derivable Hoare judgment in the syntax-directed calculus denotes a semantically valid partial-correctness triple. Mathematically, it says that if one can prove `{pre} P {post}` in the deductive system, then for every input state satisfying the precondition, the expected value of the pre-assertion is bounded by the expected post-value accumulated over terminating executions, plus the residual nontermination mass. The assumptions `sem`, `psem`, `expSub`, `qvSub`, and especially `sax : SoundnessBase ...` supply the operational semantics, assertion semantics, substitution machinery, and the already-proved soundness facts for the primitive commands. The proof proceeds by induction on the derivation `h`, showing that each proof rule of `QHL+` corresponds to a semantically valid reasoning step.",
+      "line_explanations": {
+        "470": "This identifies the set of terminating derivations of `skip` from `ω` with a one-point set, because `skip` has exactly one terminating execution. The point is to replace the infinite sum over derivations by a sum over a singleton, i.e. just one term.",
+        "498": "This invokes the substitution lemma for assertions: interpreting the postcondition after updating `x := e` is the same as interpreting the syntactically substituted assertion before the update. In the proof, this rewrites the expectation of the post-state into the expectation of the precondition.",
+        "532": "This uses the bridge lemma for quantum initialization to move the effect of `q := |0⟩` from the state side to the predicate side. Concretely, it identifies the expectation after the initialization transform with the expectation of the corresponding Kraus-dual transformed assertion.",
+        "674": "This is the standard step of summing a pointwise inequality over all terminating derivations `d₁`. Since each summand is bounded by `hpw d₁` and the relevant series are summable, the whole left-hand series is bounded by the whole right-hand series.",
+        "693": "This rewrites the summed expression termwise from `a + b - c` into `a + (b - c)` and then uses linearity of infinite sums to split it into three separate series. Mathematically, it is the decomposition `∑(a+b-c) = ∑a + ∑b - ∑c`.",
+        "754": "This invokes monotonicity of `postcondExpectDeriv`: if the intermediate postcondition `post` implies the larger/weaker postcondition `post'`, then the derived post-expectation for `post` is at most that for `post'`. In the consequence rule, this is the step that transports the induction hypothesis from the stronger assertion to the desired weaker one."
+      }
+    },
+    "def:QHL.QWhileSyntaxCats": {
+      "source_hash": "e9f97ea6e3ff6d7034619d71fa64a147fd46d03f",
+      "overview": "`QHL.QWhileSyntaxCats` packages the background data needed before one can even state the syntax of the qWhile+ language. Mathematically, it says: fix six syntactic categories (classical variables, classical expressions, Boolean expressions, quantum variables, gate symbols, and measurement symbols), and assume enough structure on them so that gate applications and measurements have well-defined arities and measurements have finite outcome sets. In particular, it records that classical and quantum variables come from countable sets, each gate or measurement symbol knows how many quantum arguments it expects, and each measurement symbol comes with a finite set of possible results. The point of the class is that later definitions of programs can be written uniformly for any choice of these categories, as long as these basic syntactic assumptions hold.",
+      "line_explanations": {
+        "55": "For each measurement symbol \\(M\\), this asserts that its set of possible outcomes is finite. Mathematically, it guarantees that every measurement has only finitely many outcomes, so later definitions can range over or sum over those outcomes.",
+        "57": "This promotes the assumptions that classical variables and quantum variables are countable into automatically available background facts. Mathematically, it means later constructions may use countability of these variable sets without restating it each time."
+      }
+    },
+    "def:QHL.QuantumPredicateCats": {
+      "source_hash": "6ca93a8031fe85e8c056f6725ea6ee929bc8864e",
+      "overview": "`QuantumPredicateCats` sets up the abstract signature for the language of quantum predicate formulas. It says: assume you have a collection of atomic predicate symbols and a collection of Kraus-operator symbols, and for each such symbol you know how many classical arguments it takes, how many quantum variables it acts on, and, for Kraus symbols, how many subformulas it combines. The positivity conditions rule out degenerate symbols by requiring every atomic predicate and Kraus symbol to involve at least one quantum variable, and every Kraus symbol to take at least one subformula. Mathematically, this is the bookkeeping layer that makes the later inductive definition of formulas precise and well-formed.",
+      "line_explanations": {
+        "36": "This introduces a structure of data and axioms specifying the syntactic categories for quantum predicate formulas. Concretely, it fixes what counts as an atomic predicate symbol and a Kraus operator symbol, together with the numerical information attached to each of them.",
+        "42": "This requires that every atomic predicate symbol involve at least one quantum variable. Mathematically, atomic predicates are never purely classical: each one has a nonempty quantum input list.",
+        "48": "This says every Kraus operator symbol also acts on at least one quantum variable. So Kraus operators in the syntax are genuinely quantum operations, not nullary symbols with no quantum operand.",
+        "52": "This requires that every Kraus operator symbol take at least one subformula as input. In other words, a Kraus-formula constructor is never empty: it combines one or more subordinate formulas."
+      }
+    },
+    "def:QHL.ProgramContext": {
+      "source_hash": "4e9422aaddff550deb4282e8b22e448483158d77",
+      "overview": "`QHL.ProgramContext` packages the ambient data needed to talk about programs with both classical and quantum variables. Mathematically, it fixes a finite family of classical variables, each with its own finite nonempty value set, together with a finite family of quantum registers and one global finite-dimensional complex Hilbert space representing the joint quantum system. It also records enough concrete structure to move between the abstract Hilbert-space view and a basis/matrix view: namely, the dimension of each register, the fact that total dimension is their product, and a chosen orthonormal basis of the whole space. So the role of the structure is to serve as the background “universe of variables and state spaces” in which later definitions of classical states, quantum states, and program semantics are made.",
+      "line_explanations": {
+        "83": "This asserts that the chosen number \\(D_{\\mathrm{total}}\\) really is the dimension of the full quantum system: it is the product of the dimensions of all individual registers. Mathematically, this is the finite-dimensional tensor-product rule \\(\\dim(H_{\\mathrm{all}})=\\prod_{q\\in \\mathcal V_q}\\dim(H_q)\\).",
+        "86": "This chooses a specific orthonormal basis of the total Hilbert space \\(H_{\\mathrm{all}}\\), indexed by \\(0,\\dots,D_{\\mathrm{total}}-1\\). Its role is to make the abstract space concrete, so vectors and operators on \\(H_{\\mathrm{all}}\\) can be represented as coordinates and matrices.",
+        "88": "This registers the facts that the set of classical variables is finite and that each classical value type is finite as default assumptions available everywhere later. Mathematically, it is bookkeeping: from now on, arguments may freely use finiteness of classical variable names and their value spaces without restating it each time."
+      }
+    },
+    "def:QHL.LoewnerOrder": {
+      "source_hash": "f0ce8db7db642b8e95ad51a2bb30407edb8b568d",
+      "overview": "This declaration introduces `QHL.LoewnerOrder` as the Löwner partial order on complex linear operators `E \\to E` for a complex inner product space `E`. Mathematically, it is the order in which `A \\le B` means that `B-A` is positive semidefinite, so it packages the standard comparison of Hermitian operators into a reusable object. The assumptions on `E` say that `E` has the additive, normed, and complex inner-product structure needed to talk about adjoints, positivity, and quadratic forms. The result is not a new theorem but a named alias for the existing partial-order structure from Mathlib, so later declarations can refer to the Löwner order explicitly.",
+      "line_explanations": {
+        "47": "This introduces the construction \\(\\mathrm{LoewnerOrder}(E)\\) for a complex inner product space \\(E\\). Mathematically, it is saying: on the space of complex linear endomorphisms of \\(E\\), we are about to use the Loewner order as the relevant notion of comparison.",
+        "48": "This specifies the output of the construction: a partial order on the vector space \\(E \\to_{\\mathbb C} E\\) of complex-linear maps from \\(E\\) to itself. In other words, it equips endomorphisms of \\(E\\) with an order relation that satisfies reflexivity, antisymmetry, and transitivity.",
+        "49": "This line supplies the actual partial order, namely the standard Loewner partial order already defined for linear maps. So the declaration is not proving anything new here; it is simply reusing the existing order structure on operators."
+      }
+    },
+    "def:QHL.krausApply": {
+      "source_hash": "53bbd8732fa87387c8c9b10ac2087fdb75b058e8",
+      "overview": "`QHL.krausApply` defines the linear map associated to a finite Kraus family of operators. Mathematically, given operators \\(K_i\\) for \\(i=0,\\dots,k-1\\) and an operator \\(\\rho\\), it returns the map \\(\\sum_i K_i \\, \\rho \\, K_i^*\\), which is the standard Kraus action used to describe a completely positive quantum operation. The input `ops : Fin k → (E →ₗ[ℂ] E)` is just a finite indexed family of linear endomorphisms of the space `E`, and `ρ` is another endomorphism, typically thought of as a state or density operator. The result is the transformed operator obtained by conjugating `ρ` by each Kraus operator and summing the contributions.",
+      "line_explanations": {}
+    },
+    "thm:QHL.IsQuantumEffect": {
+      "source_hash": "6c8b6e335b2854cdb4555a2ce765f2e08cff92e4",
+      "overview": "This theorem records one of the basic structural facts built into the notion of a quantum effect: any operator that is a quantum effect is automatically symmetric (in the complex setting, essentially self-adjoint in the sense used by this development). Its input is a linear operator A on the space E together with a proof h that A satisfies the definition of quantum effect. The conclusion gives the reader a reusable fact that symmetry can be invoked immediately whenever A is known to be a quantum effect. The proof is short because symmetry is already one of the components packaged inside the definition of `IsQuantumEffect`.",
+      "line_explanations": {}
+    },
+    "thm:QHL.IsPartialDensityOperator": {
+      "source_hash": "502f65bebce16acc32904c047aa5b7b8d5875b61",
+      "overview": "This theorem extracts one of the basic consequences built into the definition of a partial density operator: positivity. Mathematically, it says that if a linear operator \\(\\rho\\) is already known to be a partial density operator, then \\(\\rho\\) is positive in the usual operator-theoretic sense. Its only input is the assumption \\(h\\) that \\(\\rho\\) satisfies the definition of partial density operator, and the conclusion recovers the positivity component of that definition. So this theorem is mainly a convenient projection lemma: it lets later arguments use positivity directly without repeatedly unpacking the full definition.",
+      "line_explanations": {
+        "55": "This extracts the first fact contained in the assumption that \\(\\rho\\) is a partial density operator. Mathematically, it is just using the definition: one of the defining properties of a partial density operator is that \\(\\rho\\) is positive."
+      }
+    },
+    "def:QHL.expectationValue": {
+      "source_hash": "4d409ef418779100116059f543b4b4cfefe82ba9",
+      "overview": "This declaration defines the expectation value of an operator A with respect to another operator ρ as the trace of their composition. Mathematically, it is the standard formula \\(\\operatorname{tr}(A\\rho)\\), familiar from quantum mechanics when A is an observable and ρ is a density operator. The inputs are two complex-linear endomorphisms of the same space E, and the output is a complex number summarizing the expected value associated with that pair. In other words, the declaration packages a central numerical quantity extracted from two operators into a named definition.",
+      "line_explanations": {
+        "43": "This introduces the quantity \\(\\mathrm{expectationValue}(A,\\rho)\\) for two complex-linear operators \\(A,\\rho : E \\to E\\). Mathematically, it says the output is a complex number associated to the pair \\((A,\\rho)\\).",
+        "44": "It defines that number to be the trace of the composite operator \\(A\\circ \\rho\\). In standard notation, this is \\(\\operatorname{tr}(A\\rho)\\), the usual expectation-value expression for an observable \\(A\\) against a state/operator \\(\\rho\\)."
+      }
+    },
+    "def:OrderFinding.t": {
+      "source_hash": "800d54b8c0cf1f46512749df5f405937aeb73aaf",
+      "overview": "This declaration introduces the symbol `t` as a convenient name for the quantity `tc + 1`. Mathematically, it is defining the spec-level number of target qubits, so the construction depends on an already existing parameter `tc` and then shifts it by one. Its role is not to prove anything new, but to fix a standard piece of notation that later statements in the order-finding development can use cleanly. For the reader, the result is simply: whenever `t` appears, read it as the target-register size, equal to one more than `tc`.",
+      "line_explanations": {
+        "51": "This defines the quantity \\(t\\) to be one more than \\(tc\\). Mathematically, it is introducing the parameter for the target register size, with an extra qubit beyond the base count \\(tc\\)."
+      }
+    },
+    "def:QHL.QWhilePlus": {
+      "source_hash": "1cb32a778c8aaec86899c1dc8df8ab322459d6f2",
+      "overview": "`QHL.QWhilePlus` defines the abstract syntax tree for an extended quantum while-language: it is the datatype of all well-formed programs built from classical commands (`skip`, assignment, conditionals, loops) together with quantum commands (initialization, unitary application, and measurement). Its parameters `CVar`, `Exp`, `BExp`, `QVar`, `Gate`, and `Meas` specify the underlying sets of classical variables, expressions, boolean expressions, quantum variables, gate symbols, and measurement symbols, while the assumption `QWhileSyntaxCats ...` supplies the arity information saying how many classical parameters or quantum wires each gate or measurement expects. Mathematically, the point of the declaration is to package the grammar of the language in a way that already enforces basic well-formedness conditions, especially that gates and measurements are applied to the correct number of arguments and to pairwise distinct quantum variables. So the result is the type of syntactically valid QWhile+ programs over the chosen collections of symbols.",
+      "line_explanations": {
+        "76": "This assumes a fixed piece of background data describing the syntax categories and arities for classical variables, expressions, booleans, quantum variables, gates, and measurements. With that structure in place, the declaration defines a type whose elements are exactly the well-formed QWhilePlus programs built from those ingredients.",
+        "88": "For a gate U, this gives one classical parameter expression for each of the gate's required classical input slots. Mathematically, it is an m-tuple of expressions, where m is the classical arity of U.",
+        "89": "This gives one quantum variable for each quantum wire on which U acts. Mathematically, it is an n-tuple of quantum variables, where n is the quantum arity of U.",
+        "90": "This is the distinctness condition on the chosen quantum variables: if two input positions i and j are different, then the variables placed there must also be different. So the gate is only allowed to act on pairwise distinct quantum registers.",
+        "96": "For a measurement M, this selects one quantum variable for each quantum input of the measurement. In other words, it is an n-tuple of quantum variables, where n is the quantum arity of M.",
+        "97": "This again imposes pairwise distinctness on the measured quantum variables. It ensures the measurement is applied to different quantum registers rather than repeating the same one in two positions."
+      }
+    },
+    "def:QHL.QuantumPredicateFormula": {
+      "source_hash": "9cdca73fd6ea0afaa59e8c2b94c85cf4d8ba4cd0",
+      "overview": "This declaration defines the syntax of quantum predicate formulas, built from four constructors: atomic predicates, complement, tensor product, and a Kraus-style predicate former. Mathematically, it is not just a single type of formulas: each formula is indexed by its signature, meaning the finite set of quantum variables on which it depends. The many type parameters and assumptions provide the surrounding language: classical expressions, quantum variables, gate/measurement syntax, and the arity data for atomic predicates and Kraus operators. The result is a typed representation of predicate formulas in which side conditions such as variable distinctness, disjointness for tensor products, and signature containment are enforced directly in the formal object.",
+      "line_explanations": {
+        "77": "This makes `QuantumPredicateFormula` an indexed family of types, where the index is a finite set `S` of quantum variables. In mathematical terms, a formula is always built together with its signature `S = Sig(A)`.",
+        "85": "This says the quantum variables listed in the atomic predicate are pairwise distinct. So the tuple `q̄` really names different quantum registers, with no repetitions.",
+        "87": "The resulting atomic formula is indexed by the finite set of quantum variables that actually appear in `qvars`. In other words, its signature is exactly `{q₁, …, qₙ}`.",
+        "98": "This requires the signatures of `A₁` and `A₂` to be disjoint before forming their tensor product. Mathematically, the two formulas act on separate sets of quantum variables, so the combined signature is their union.",
+        "109": "This introduces the list of subformulas attached to the Kraus predicate: for each of the `k = krausRank(F)` branches, one specifies a formula. All of these subformulas live over the same signature `S`.",
+        "112": "This states that every quantum variable explicitly named by the Kraus symbol belongs to the ambient signature `S`. Equivalently, the set of variables `q̄` is required to satisfy `{q̄} ⊆ S`."
+      }
+    },
+    "lem:QHL.CQState": {
+      "source_hash": "e2e6c2f340da889c772fd237bab5fca298333ca3",
+      "overview": "This lemma states a basic positivity property of a quantum state in this formalization: if \\(\\omega\\) is a `CQState`, then the real part of its trace is nonnegative. Mathematically, this is exactly what one expects from a partial density operator, whose trace is a nonnegative real number (or at least has nonnegative real part when represented in the ambient complex setting). The assumption `ω : CQState ctx` is doing the substantive work: being a `CQState` packages the fact that \\(\\omega\\) satisfies the axioms of a partial density operator, and the lemma simply extracts the corresponding trace-positivity fact. So the result gives a clean, reusable statement that any such state has nonnegative trace mass.",
+      "line_explanations": {
+        "307": "This invokes the fact that ω is a partial density operator, and therefore its trace is nonnegative. Mathematically, it brings in the standard result \\(0 \\le \\mathrm{tr}(\\omega)\\).",
+        "308": "This converts the inequality on the complex trace into the corresponding statement about its real part. Since \\(0 \\le \\mathrm{tr}(\\omega)\\) for a complex number implies its real part is nonnegative, this yields \\(0 \\le \\operatorname{Re}(\\mathrm{tr}(\\omega))\\)."
+      }
+    },
+    "def:QHL.ClassicalState": {
+      "source_hash": "f694c4e3cf573a7e1e6903f36dbc87064f894f41",
+      "overview": "`QHL.ClassicalState` packages the idea of a classical memory state for a fixed program context `ctx`. Mathematically, it is the set of all assignments that choose, for each classical variable `x`, a value of the appropriate type `T x`; in other words, it is the dependent product `∏ x, T x`. The surrounding assumptions in `ctx` ensure that there is a finite collection of classical variables, that each variable has its own value set, and that these value sets are finite and nonempty. So the definition gives the formal state space of the classical part of a program, ready to be combined later with the quantum part.",
+      "line_explanations": {
+        "51": "This introduces a family of value sets indexed by classical variables: for each classical variable x, there is a corresponding type T(x) of values that x is allowed to take. Mathematically, it specifies the typing data needed so that a classical state can assign to each variable x an element of its own domain T(x)."
+      }
+    },
+    "def:QHL.QWP": {
+      "source_hash": "e4d33bba658e227fa831b0ca9e0deeb74b945dbd",
+      "overview": "This declaration introduces `QWP` as a shorter name for the existing type or syntax family `QWhilePlus`. Mathematically, it does not define a new object or add new structure; it is only a convenient abbreviation for the language of QWhile+ programs built from the chosen kinds of classical variables, expressions, boolean expressions, quantum variables, gates, and measurements. The parameters specify the raw ingredients of the programming language, while the assumption `QWhileSyntaxCats ...` says that these ingredients fit together as a valid collection of syntax categories. The result gives the reader a compact name for that resulting QWhile+ syntax.",
+      "line_explanations": {
+        "144": "This line assumes that the six types come equipped with the full collection of syntax categories needed for the QWhile language: how classical variables, expressions, boolean expressions, quantum variables, gates, and measurements are organized. In mathematical terms, it fixes the background structure that makes the construction of `QWhilePlus` (and hence `QWP`) meaningful for these chosen types."
+      }
+    },
+    "def:QHL.QPFormula": {
+      "source_hash": "5b27b224cfc76491485a26441d030147b141f45e",
+      "overview": "`QHL.QPFormula` is simply a shorter name for the previously defined type `QuantumPredicateFormula` with the same parameters. Mathematically, it packages the notion of a quantum predicate formula in the ambient language determined by the chosen kinds of classical variables, expressions, quantum variables, gates, measurements, atomic predicates, and Kraus-operator symbols, together with a finite set `S` of quantum variables that the formula may range over. The assumptions say that equality on quantum variables is decidable and that the surrounding syntactic categories for the programming language and predicate language have already been fixed. So this declaration does not introduce a new concept; it introduces convenient notation for working with that existing notion.",
+      "line_explanations": {
+        "236": "This assumes we can effectively tell when two quantum variables are the same. Mathematically, that is what lets the signature `S` behave as a genuine finite set of quantum variables, so distinctness and disjointness conditions are meaningful.",
+        "237": "This fixes the underlying qWhile-plus syntax already in the background: the allowed classical variables and expressions, Boolean expressions, quantum variables, gates, and measurements. In other words, the predicate formulas are being built over a chosen programming-language vocabulary.",
+        "238": "This adds the extra symbols specific to quantum predicates, namely atomic predicate symbols and Kraus-operator symbols, together with their arities and ranks. That data determines what kinds of atomic formulas and Kraus-composed formulas are allowed in the construction."
+      }
+    },
+    "def:QHL.ProgramSemantics": {
+      "source_hash": "2326e3f91496df5b472b8e2b0f610a074b95baed",
+      "overview": "This structure packages the semantic data needed to interpret a quantum while-language inside a fixed program context. Its inputs specify the syntactic sorts of the language (classical variables and expressions, quantum variables, gates, measurements), together with background information saying how many arguments each gate or measurement expects and what outcome type each measurement has. The fields then provide the actual mathematical interpretation of the language: how classical states are updated, how booleans are evaluated, how gates and measurements act on the global Hilbert space, and how measurement outcomes are written back into the classical store. The accompanying axioms ensure these operations are physically meaningful, for example by preserving partial density operators, making gate actions unitary, and expressing initialization and measurement in Kraus-operator form.",
+      "line_explanations": {
+        "40": "This assumes a fixed syntactic signature for the language: for the chosen kinds of classical variables, expressions, quantum variables, gates, and measurements, it tells you things like each gate's arity and each measurement's outcome type. That data is what makes it possible to state the semantics uniformly for all program constructs.",
+        "60": "This says that a gate symbol U receives its classical arguments as a finite tuple of expressions, with one slot for each classical parameter position of U. Mathematically, it enforces that the semantics uses exactly the right number of classical parameters for that gate.",
+        "70": "This is the usual quantum state update by conjugation: the input density operator ρ is sent to UρU^†. The line is packaging the standard action of a unitary gate on a quantum state in operator language.",
+        "100": "This requires that when you sum M_m^†M_m over all possible outcomes m, the result is a quantum effect, meaning an operator between 0 and I. That is the mathematical condition ensuring the measurement operators form a physically valid sub-normalized measurement family.",
+        "107": "This asserts that there is some finite number k of operators on the global Hilbert space, indexed as ops_0,...,ops_{k-1}. The point is to produce a finite Kraus family witnessing that initialization can be described as a quantum operation.",
+        "110": "This says the initialization transform is exactly the map obtained by applying that Kraus family to ρ. In other words, initialization is being identified with an operator-sum representation, not just approximated by one."
+      }
+    },
+    "def:QHL.PredicateSemantics": {
+      "source_hash": "4cba5a9cd7121c0781161d6d4401faa05b6b4468",
+      "overview": "This structure packages the semantic ingredients needed to interpret the atomic building blocks of quantum predicates in a fixed program context. Concretely, it assigns to each atomic predicate symbol an operator on the total Hilbert space and to each Kraus symbol a finite family of operators, both allowed to depend on the current classical state and on classical and quantum arguments. It also records the well-formedness conditions saying that atomic predicates denote quantum effects and that Kraus symbols denote sub-normalized Kraus families. Mathematically, this is the interface that lets the later recursive semantics of composite formulas be defined from their atomic pieces.",
+      "line_explanations": {}
+    },
+    "def:QHL.conjNegBExpFormula": {
+      "source_hash": "9c00324cf8bdeb9f720c26a3c30b8e38cc1877fc",
+      "overview": "`QHL.conjNegBExpFormula` builds a new state predicate from an existing assertion `φ` and a boolean expression `b`. Mathematically, it takes the condition \"the state satisfies `φ`\" and strengthens it by also requiring that `b` be false in that state. The parameter `sem` supplies the meaning of boolean expressions, so the definition depends on the chosen program semantics for the ambient context `ctx`. The result is therefore the assertion \\(\\sigma \\mapsto \\phi(\\sigma) \\land \\neg\\llbracket b\\rrbracket(\\sigma)\\), which is the usual way to encode conjunction with the negation of a guard in program logic.",
+      "line_explanations": {
+        "64": "This defines the new assertion by sending a state σ to the conjunction of two conditions: σ satisfies φ, and the Boolean expression b evaluates to false in σ under the semantics sem. In other words, it is the predicate φ strengthened by the negation of the test b."
+      }
+    },
+    "def:QHL.conjBExpFormula": {
+      "source_hash": "cce04942563e1b4b9ad353147d4bc2e5e37f0c44",
+      "overview": "This definition packages a very standard logical operation: given a state property \\(\\varphi\\) and a boolean program expression \\(b\\), it builds the new state property \"\\(\\varphi\\) and \\(b\\) both hold.\" Mathematically, the result is the predicate on program states \\(\\sigma\\) given by \\(\\varphi(\\sigma) \\land \\llbracket b \\rrbracket(\\sigma)\\), where \\(\\llbracket b \\rrbracket(\\sigma)\\) is the truth value of the boolean expression in that state. Its role in QHL-style rules is to restrict an assertion to the states that also satisfy a branch condition or guard. One small thing worth noticing is that the code defines conjunction with \\(b\\) itself, even though the following comment mentions a negated boolean expression.",
+      "line_explanations": {
+        "57": "This line specifies the inputs and output of the construction: it takes a state predicate φ and a boolean expression b, and produces a new predicate on program states. Mathematically, it is defining an operation that combines a formula φ with the condition expressed by b.",
+        "58": "This gives the actual predicate: for a state σ, the new formula holds exactly when both φ holds at σ and the boolean expression b evaluates to true at σ. In other words, it defines the conjunction φ ∧ b as a state property."
+      }
+    },
+    "def:QHL.classSubstFormula": {
+      "source_hash": "805e14e868b7a307df34a5806b304d1cc4b4af7d",
+      "overview": "`QHL.classSubstFormula` turns a classical state predicate `φ` into the predicate obtained after substituting an assignment `x := e`. Mathematically, it is the pullback of `φ` along the state-update map: a state `σ` satisfies `classSubstFormula sem x e φ` exactly when `φ` holds after updating `σ` by assigning to `x` the value of expression `e`. Its inputs are the program semantics `sem` (which knows how assignments change states), the variable `x`, the expression `e`, and the original formula `φ`; the output is a new formula on states. This is the standard device used in Hoare-style reasoning to express weakest-precondition style substitution for classical assertions.",
+      "line_explanations": {
+        "52": "This defines the new predicate on a state σ by first updating σ with the assignment x := e, and then checking whether the original formula φ holds of that updated state. Mathematically, it is the pullback of φ along the state-update map σ ↦ classicalUpdate(σ, x, e), i.e. substitution of e for x inside the formula."
+      }
+    },
+    "def:QHL.substFormula": {
+      "source_hash": "7a5388fb3428d90d6c621aea660d7552e9da1887",
+      "overview": "This definition performs capture-free substitution of a classical variable x by an expression e throughout a quantum-predicate formula. It acts uniformly on the classical expression parameters of the formula via expSubst, and also on the quantum-variable indices/subscripts via qvarSubst, so the formula’s support set of quantum variables changes from S to its image under that renaming. The injectivity assumption on qvarSubst x e is the key mathematical side condition: it guarantees that distinct quantum variables remain distinct after substitution, so atomic predicates, tensor-factor disjointness, and Kraus-family side conditions are preserved. In short, the result is the same logical formula after substitution, but now regarded over the transformed set of quantum variables.",
+      "line_explanations": {
+        "78": "This assumes that the quantum-variable substitution map is injective. Mathematically, substitution is not allowed to collapse two distinct quantum variables into one, which is needed to preserve distinctness and disjointness facts later.",
+        "87": "This introduces the bookkeeping identity saying that the set of quantum variables obtained by substituting each listed variable of the atomic formula is exactly the image of the original support under the substitution map. It identifies the support of the new atomic formula with the expected substituted support.",
+        "90": "Using the support identity `hSig`, the construction rewrites the newly formed atomic formula so that its support matches the required target set. The mathematical move is: substitute in the classical parameters and quantum variables, then recognize that the resulting formula lives on the correct set of qubits.",
+        "98": "This applies the fact that an injective map preserves disjointness of sets. Since the supports of `A₁` and `A₂` were disjoint before substitution, they are still disjoint after applying the quantum-variable substitution.",
+        "103": "This uses the equality between the union of the substituted supports and the image of the original union to place the tensor product in the required ambient support. Mathematically, it is just the support bookkeeping needed after recursively substituting in both tensor factors.",
+        "109": "For each Kraus subformula, this shows that if its original support lay inside the ambient support, then its substituted support lies inside the substituted ambient support. It is the obvious image-of-a-subset argument carried out for each branch."
+      }
+    },
+    "def:QHL.ProgSem": {
+      "source_hash": "40c3a4bd93ccd711da29fa32ae7caa7522e2e818",
+      "overview": "This declaration introduces \"ProgSem\" as a shorter name for the operational semantics of programs in the QWhile language framework. Mathematically, it does not define a new notion of semantics; it simply packages an existing construction, \"ProgramSemantics\", under a more convenient name once the relevant kinds of classical variables, expressions, Boolean expressions, quantum variables, gates, measurements, and a program context have been fixed. The bracketed assumption says that these syntactic categories really do form a valid QWhile-style language, so the semantics is only available when the language ingredients fit together correctly. The result is therefore the semantic object associated to programs over that chosen language and context.",
+      "line_explanations": {
+        "395": "This line assumes that the chosen types for classical variables, expressions, boolean expressions, quantum variables, gates, and measurements together form a valid QWhile syntax. Mathematically, it is the hypothesis that these ingredients already come with the structural rules needed to even state the operational semantics of programs built from them."
+      }
+    },
+    "def:QHL.ProgDown": {
+      "source_hash": "8f07e0797e6a8952ef915021a9e27d9a6307c93d",
+      "overview": "This declaration introduces `ProgDown` as a convenient name for the type obtained by taking ordinary program objects of type `QWP ...` and adjoining one extra special element. Mathematically, this is a standard way to model a language of programs together with a distinguished termination symbol, here documented as `↓`. The parameters `CVar`, `Exp`, `BExp`, `QVar`, `Gate`, and `Meas` specify the classical and quantum syntactic ingredients of the language, while the assumption `QWhileSyntaxCats ...` says these ingredients fit together into the ambient QWhile syntax. So the result is: for any such language, `ProgDown` is the space of program terms augmented by a special terminal marker.",
+      "line_explanations": {
+        "37": "Assume the six parameter types are equipped with the structure needed to form the quantum-while syntax categories. This hypothesis is what lets the construction `QWP CVar Exp BExp QVar Gate Meas` make sense for these types.",
+        "38": "Define `ProgDown` to be the type of `QWP` objects together with one extra distinguished element, by wrapping `QWP` in `Option`. Mathematically, this adjoins a special symbol to ordinary `QWP` values, here used for the termination marker `↓`."
+      }
+    },
+    "def:QHL.PredSem": {
+      "source_hash": "d1a116fc0b811029e1e82ab4df69bc8926e5f857",
+      "overview": "`QHL.PredSem` is just a convenient name for the semantic object that interprets quantum predicates in a fixed program context. Mathematically, it does not introduce a new notion: it repackages the more general `PredicateSemantics` construction under a shorter, more readable name specialized to this setting. Its parameters specify the underlying syntactic categories for classical and quantum programs, the atomic ingredients used to build predicates, and the background assumptions needed to talk about variables and predicate syntax. The result is the semantic framework in which those predicates are interpreted once the context `ctx` has been fixed.",
+      "line_explanations": {
+        "282": "This assumes that the types `CVar`, `Exp`, `BExp`, `QVar`, `Gate`, and `Meas` together really form the syntax of the quantum while-language being studied. Mathematically, it says we are working in a fixed programming language with well-specified classical and quantum variables, expressions, gates, and measurements, so the semantics can be defined on that language.",
+        "283": "This assumes that `AtomPred` and `KrausOpSym` provide the basic ingredients from which quantum predicates are built. Mathematically, it fixes the predicate language and the symbolic operations acting on states, so predicate semantics has the right objects to interpret."
+      }
+    },
+    "def:QHL.interpFormula": {
+      "source_hash": "11a5ad3ea126ebbc4cf25e367b1999d5cf92b86b",
+      "overview": "This declaration defines the semantic interpretation of a quantum-predicate formula, relative to a fixed program context, a chosen semantics for primitive predicates and Kraus operators, and a classical state \\(\\sigma\\). Its output is always an operator on the full Hilbert space of the context, so the definition turns syntactic formulas into their corresponding linear-operator semantics. Mathematically, it is a recursive interpretation map: atomic formulas are interpreted by the supplied primitive semantics, complement is sent to operator complement \\(I-A\\), the tensor-like connective is interpreted by operator composition, and a Kraus-formula is interpreted by the usual sum over Kraus branches \\(\\sum_i K_i \\circ A_i \\circ K_i^*\\).",
+      "line_explanations": {}
+    },
+    "def:QHL.CQAssertion": {
+      "source_hash": "bf2e3bb8ac94751d85e3da4071babb3877f3bd43",
+      "overview": "This declaration packages the basic notion of a classical-quantum assertion: a pair consisting of a classical condition and a quantum predicate, together with the set of quantum variables on which the quantum part depends. Mathematically, it is the object used to describe properties of hybrid program states, where a state has both a classical component σ and a quantum component ρ. The surrounding assumptions provide the ambient language for classical expressions, quantum variables, gates/measurements, and atomic quantum predicates, so that the quantum formula A can be formed and interpreted. The result is a single record type representing assertions of the form (φ, A), which later support a satisfaction relation for cq-states.",
+      "line_explanations": {
+        "52": "This assumes we have fixed the basic syntax of the quantum while-language: what counts as classical variables and expressions, boolean tests, quantum variables, gates, and measurements. Mathematically, it says the assertion is being built relative to a chosen programming language of hybrid classical-quantum programs.",
+        "53": "This assumes we also have the ingredients for writing quantum predicates, namely atomic predicate symbols and symbolic Kraus operators together with their intended formation rules. In other words, the structure only makes sense once a formal language for quantum predicates has been specified.",
+        "61": "This field chooses the quantum part of the assertion: a quantum-predicate formula A whose free quantum variables are exactly constrained by the signature S. So the cq-assertion consists of a classical condition φ together with a quantum formula A referring only to the qubits listed in S."
+      }
+    },
+    "def:QHL.conjNegBExpCQAssertion": {
+      "source_hash": "6227bb3b542fc204239d323907105fd81fa4ee94",
+      "overview": "This definition builds a new assertion from an existing assertion a by adjoining the negation of a boolean expression b to its logical condition. Mathematically, it keeps the same ambient state space and the same auxiliary/assertion data as a, and only strengthens the formula part by requiring that b be false (interpreted through the program semantics sem). Its role is to package the common operation “assert a, together with not b” back into the same assertion type, so later proof rules can use it uniformly.",
+      "line_explanations": {
+        "96": "This line says that the construction now produces a new assertion in the same program context. Mathematically, it is defining a new assertion by specifying its components one by one.",
+        "98": "This sets the logical/formula part of the new assertion to the result of adjoining the negation of the Boolean expression \\(b\\) to the original formula \\(a.\\varphi\\), interpreted using the program semantics \\(sem\\). In other words, the new assertion keeps the old assertion but strengthens its condition by requiring \\(\\neg b\\)."
+      }
+    },
+    "def:QHL.conjBExpCQAssertion": {
+      "source_hash": "3dde31a5d933f2c5ac717c021fc7ae0803a27fd7",
+      "overview": "This definition packages an existing assertion together with an additional boolean program condition, producing a new assertion of the same overall kind. Mathematically, it leaves the structural parts of the assertion unchanged and only modifies the logical predicate component by combining the old formula \\(\\varphi\\) with the condition \\(b\\), using the program semantics to interpret what \\(b\\) means. Its role is to form the assertion appropriate after restricting attention to states satisfying a boolean test (or its negation, depending on how the helper `conjBExpFormula` is defined). So the output is a refined assertion that talks about the same states and auxiliary data as `a`, but under an extra boolean side condition.",
+      "line_explanations": {
+        "86": "This starts the construction of a new assertion in the same program context. Mathematically, it is packaging together the components that will define the new assertion.",
+        "88": "This chooses the formula part of the new assertion by combining the old formula `a.φ` with the boolean expression `b` via `conjBExpFormula`, using the program semantics `sem` to interpret `b`. In effect, the new assertion keeps the same state space and annotation data, but strengthens its logical condition by adjoining the condition coming from `b`."
+      }
+    },
+    "def:QHL.substCQAssertion": {
+      "source_hash": "401849ef0b36cb54b17346dbfe6c871e18acdac8",
+      "overview": "This declaration defines how to substitute a classical variable \\(x\\) by an expression \\(e\\) inside a combined quantum-classical assertion. Mathematically, an assertion here has three parts: a set of quantum variables, a classical side-condition/formula, and a main assertion formula; `substCQAssertion` applies the corresponding substitution operation to each of these components in the appropriate way. The inputs `expSub` and `qvSub` describe how substitution acts on expressions and quantum variables, while `hInj` guarantees that the induced renaming of quantum variables does not collapse distinct variables, which is needed for the formula-level substitution to make sense. The result is a new assertion representing the original assertion after replacing \\(x\\) with \\(e\\).",
+      "line_explanations": {
+        "74": "This assumes that the variable-renaming map on quantum variables induced by substituting x := e is injective. Mathematically, it says distinct quantum variables stay distinct after the substitution, which is needed so the transformed assertion does not identify different variables when A is rewritten.",
+        "77": "The set S is replaced by its image under the map qvSub x e. In other words, every quantum variable mentioned in S is renamed according to the substitution x := e, producing the new set of relevant quantum variables.",
+        "79": "The quantum part A of the assertion is transformed by applying the substitution procedure substFormula to it. This rewrites A according to x := e, using both the expression substitution and quantum-variable substitution, and relies on injectivity to make that renaming mathematically well-defined."
+      }
+    },
+    "def:QHL.CQAssert": {
+      "source_hash": "7f3bb82f64455708306e615a3a76a0dbd7843367",
+      "overview": "`QHL.CQAssert` does not introduce a new mathematical object; it is simply a shorter name for the already defined notion `CQAssertion`, with the same parameters and assumptions. Mathematically, it packages the data needed to talk about classical-quantum assertions in a fixed program context `ctx`: the classical and quantum variable systems, the syntax of expressions/program commands, and the language of quantum predicates. The assumptions say that quantum variables admit equality testing and that the surrounding syntax and predicate infrastructure have been set up. For the reader, the result is just a convenient alias for the type of classical-quantum assertions associated with that context.",
+      "line_explanations": {
+        "221": "This assumes that quantum variables can be compared for equality. Mathematically, that is what lets the construction treat the set of quantum variables appearing in an assertion as a genuine finite set and talk about repeated versus distinct qubits.",
+        "222": "This fixes the underlying qWhile language data: what the classical and quantum variables, expressions, gates, and measurements are, together with their arities and measurement outcome sets. In other words, the assertion is being formed relative to a specific program syntax and state space.",
+        "223": "This fixes the signature of the quantum-predicate language: which atomic predicate symbols and Kraus-operation symbols exist, and how many classical, quantum, and subformula arguments each one takes. That is what makes the quantum part of a cq-assertion a well-formed quantum predicate formula rather than an arbitrary expression."
+      }
+    },
+    "def:QHL.Configuration": {
+      "source_hash": "bb75c66698702e910d422ba88e9a6c3a1420a22c",
+      "overview": "This declaration defines the notion of a program configuration for the quantum while-language being formalized. Mathematically, a configuration is the standard operational-semantics object: it pairs the current program component with the current classical-quantum state, so it represents one instantaneous snapshot of execution. The various type parameters describe the kinds of classical variables, expressions, Boolean expressions, quantum variables, gates, and measurements in the language, while `ctx` fixes the ambient program context in which states are interpreted. The resulting structure is therefore the basic state space on which the small-step or big-step semantics of the language can act.",
+      "line_explanations": {
+        "91": "This assumes the six parameter types already carry the structure needed to serve as the syntax of the quantum while-language: classical variables and expressions, boolean expressions, quantum variables, gates, and measurements. Mathematically, it fixes the ambient programming language in which configurations will live.",
+        "94": "A configuration contains a program component, but not just an ordinary program: it may also be the distinguished symbol for termination. So this field records the current control part of the computation, either still running or already finished.",
+        "96": "A configuration also contains the current classical-quantum state associated with the fixed context `ctx`. In mathematical terms, this is the pair of classical data and quantum state on the variables/registers specified by that context."
+      }
+    },
+    "def:QHL.TerminatingDerivation": {
+      "source_hash": "a6cf912afbd7daa9cd2874c381ab5b7dae2c4d5b",
+      "overview": "`QHL.TerminatingDerivation` packages the data witnessing that a program `P`, started in an initial classical-quantum state `ω`, actually terminates under the operational semantics `sem`. Mathematically, it is a certificate of one complete execution: it records the final state reached, the sequence of reduction steps taken, and proofs that this sequence really starts from the intended initial configuration, ends in a terminal configuration, and is locally consistent at each step. The parameters `ctx`, `sem`, `P`, and `ω` fix the ambient programming language/state space, the transition system, the program being run, and the initial state. The output is therefore not just the endpoint `result`, but a fully validated terminating run from `⟨P, ω⟩` to a halted configuration.",
+      "line_explanations": {
+        "99": "This field chooses a concrete derivation path for the program under the semantics `sem`. Mathematically, it is the finite execution history witnessing how one moves through configurations from the initial setup toward termination.",
+        "101": "This states that the chosen derivation path really starts from the intended initial configuration: program `P` running on the initial state `ω`. So the derivation is anchored at the correct starting point, not at some arbitrary configuration.",
+        "103": "This states that the derivation path ends in a terminal configuration whose final state is `result`. In other words, the path is a witness that executing `P` from `ω` terminates and produces the state `result`.",
+        "107": "This adds the stronger internal well-formedness condition that every substep occurring inside the path is itself correctly formed. The `by trivial` part means this fact is immediate from the definitions, so no substantive new argument is needed."
+      }
+    },
+    "def:QHL.CQAssertionEntails": {
+      "source_hash": "74b57f7b88b01fcb61568449eebd51839272db8a",
+      "overview": "This definition introduces the entailment relation between two classical-quantum assertions. Mathematically, it says that `a₁` entails `a₂` when, in every classical state, the classical condition of `a₁` is strong enough to force the classical condition of `a₂`, and whenever that classical condition of `a₁` holds, the quantum predicate carried by `a₁` is below the one carried by `a₂` in the semantic order. Its role is to formalize when one assertion is logically/semantically stronger than another, taking both the classical side and the quantum side into account.",
+      "line_explanations": {
+        "53": "This states the first requirement for entailment: for every classical state σ, whenever the classical condition φ of a₁ holds at σ, the classical condition φ of a₂ also holds. The final ∧ says that this classical implication must be combined with a second, quantum-order condition.",
+        "54": "This begins the second requirement, again ranging over every classical state σ, but only under the assumption that a₁’s classical side condition φ holds there. In other words, the quantum comparison is only demanded on states where a₁ is classically applicable.",
+        "55": "Here the quantum parts of the two assertions are compared at the same classical state σ: the interpretation of a₁.A must be less than or equal to the interpretation of a₂.A. Mathematically, this says a₂’s quantum claim is at least as strong as, or contains, the one from a₁ at every relevant σ."
+      }
+    },
+    "def:OrderFinding.n": {
+      "source_hash": "c69f01084d0beeb7643779ab2a1b5fa982d6286c",
+      "overview": "This declaration introduces the notation \\(n\\) as the quantity \\(nc+1\\). Mathematically, it is packaging a frequently used size parameter: if \\(nc\\) counts some base number of qubits or bits in the construction, then \\(n\\) is the corresponding “one larger” value that will be used later in the order-finding setup. Its only dependency is the previously defined parameter \\(nc\\), and the result is simply a convenient name for this derived size so later definitions can refer to \\(n\\) instead of repeatedly writing \\(nc+1\\).",
+      "line_explanations": {}
+    },
+    "thm:QHL.substFormula_complement": {
+      "source_hash": "d51bad437ebe4ba0bd552383f2d0e21722ba47a5",
+      "overview": "This theorem says that substitution commutes with logical complement for quantum predicate formulas: if you first take the complement of a formula and then substitute, you get the same result as first substituting and then taking the complement. Mathematically, it is a compatibility lemma showing that substitution respects one of the basic formula-forming operations. The inputs `expSub` and `qvSub` describe how classical expressions and quantum variables are substituted, `x` and `e` specify the variable being replaced and the replacing expression, and `hqvInj` ensures the quantum-variable substitution does not identify distinct quantum variables. The proof is `rfl`, meaning this is true directly from the definitions rather than requiring any deeper argument.",
+      "line_explanations": {
+        "116": "This assumes that the quantum-variable substitution induced by replacing x with e is injective: distinct quantum variables stay distinct after substitution. Mathematically, this rules out collisions in renamed quantum variables, so substitution is well behaved on formulas.",
+        "118": "Here A is an arbitrary quantum-predicate formula whose free quantum variables lie in the finite set S. The theorem is therefore stated for every formula of the relevant language, with a fixed quantum-variable signature.",
+        "121": "The proof is by definitional equality: substituting into a complement is built into the definition to commute with complement. So both sides are literally the same expression once the definitions are unfolded."
+      }
+    },
+    "def:QHL.traceSumDeriv": {
+      "source_hash": "4fc674be8a49e0e981134bd2154c8d350d62be96",
+      "overview": "This definition assigns to a program state \\(\\omega\\) the total trace contributed by all terminating executions of the program \\(P\\), under the chosen operational semantics \\(\\mathrm{sem}\\). Mathematically, it sums the trace of the output state over every terminating derivation starting from \\(\\omega\\), so it measures how much of the initial state's total trace ends up in terminating runs. In the surrounding development, this is the “terminating part” of execution mass, and it is used to define the complementary nontermination quantity by subtracting this sum from the initial trace. Thus the result gives the reader a single real number encoding the total probability/weight of termination, expressed at the level of traces.",
+      "line_explanations": {
+        "331": "This takes the sum over all terminating execution derivations of program `P` from initial state `ω`, and for each such derivation adds the real trace of its final state. Mathematically, it is the total trace mass contributed by every possible terminating run, i.e. the overall terminating part of the program’s behavior from `ω`."
+      }
+    },
+    "def:QHL.nonTermTraceDeriv": {
+      "source_hash": "1548e85fdb81d8795afe5fff544f41b4a99f9e44",
+      "overview": "This definition assigns to a program state \\(\\omega\\) a real number measuring how much trace is lost under the execution of program \\(P\\). Concretely, it takes the initial real-valued trace of the state and subtracts the total trace accounted for by the program’s derived output states. Mathematically, this is the nontermination mass (or trace deficit): the part of the input trace that does not reappear in the program’s terminating outcomes. The parameters `sem`, `P`, and `ω` supply, respectively, the semantic interpretation of programs, the particular program being run, and the input state on which this loss is measured.",
+      "line_explanations": {
+        "341": "The definition is made relative to an arbitrary program context \\(ctx\\), which fixes the ambient setting in which programs, states, and their semantics are interpreted.",
+        "345": "This sets the value to the current state's trace \\(\\omega.\\mathrm{traceRe}\\) minus the total trace accounted for by the derivative semantics of \\(P\\) at \\(\\omega\\). Mathematically, it measures the leftover trace mass, interpreted as the contribution coming from nontermination."
+      }
+    },
+    "def:QHL.HoareTripleTotDeriv": {
+      "source_hash": "f77336e2db5ad03d8d5b17f3368f1e9f4e28beff",
+      "overview": "This definition gives the semantic meaning of a total-correctness Hoare triple for a program P. It says: for every classical-quantum state ω satisfying the classical part of the precondition, and for which the precondition’s quantum observable is a valid effect, the current expected truth-value of the precondition is at most the program-induced expected value of the postcondition after running P. In other words, the declaration packages the correctness judgment as an inequality between two expectations: the precondition measured now, and the postcondition propagated backward through the program semantics. Its role is to define when the triple {pre} P {post} is valid in this expectation-based quantum/classical semantics.",
+      "line_explanations": {
+        "403": "This assumes that the precondition’s quantum predicate, after plugging in the current classical store \\(\\sigma\\), is a valid quantum effect. Mathematically, it is the well-formedness side condition ensuring its expectation against \\(\\rho\\) is the right kind of quantity to compare.",
+        "404": "This is the left-hand side of the desired inequality: the current state’s weight/probability for satisfying the precondition effect, written as the expectation of that effect in \\(\\rho\\) and then taking its real part. It is the amount that must be accounted for by the program’s post-behavior.",
+        "405": "This is the right-hand side bound: the derived postcondition expectation obtained by running program \\(P\\) from the initial state \\(\\omega\\). In other words, the precondition expectation is required to be no larger than the total postcondition expectation produced by the semantics of \\(P\\)."
+      }
+    },
+    "def:ShorFactoring.sigAll": {
+      "source_hash": "d6bdea4ff54e26a4f71cec54e6129b93fdea67ad",
+      "overview": "`ShorFactoring.sigAll` should be read as the register footprint of the controlled modular-exponentiation subroutine used inside Shor's algorithm. For fixed register sizes `tc` and `nc`, it returns a finite set of qubit indices inside the full register `Fin (tc + nc + 2)`: the distinguished index `0` is the relevant counting/control qubit, and the indices `1..nc+1` are the target/work qubits. Mathematically this is bookkeeping, not a state transformation: it records exactly which tensor factors a gate acts on so that later semantics can lift that local operation to the whole quantum system. The excerpt shown is actually a neighboring block about predicate and Kraus-operator symbols rather than the body of `sigAll` itself, so there are no genuinely opaque lines of the requested declaration to isolate.",
+      "line_explanations": {}
+    }
+  }
+}
