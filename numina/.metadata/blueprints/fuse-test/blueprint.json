@@ -114,5 +114,6 @@
       "kind": "corollary",
       "title": "Worst-case qubit overhead"
     }
-  ]
+  ],
+  "leanModule": "QEC1"
 }

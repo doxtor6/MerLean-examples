@@ -1,1 +1,3 @@
 - [2026-05-12] Started: drafting fuse-test blueprint from existing QEC1 Lean files.
+- [2026-05-12] Progress: wrote 588-line fuse-test.tex with 12 definitions, 7 lemmas, 2 theorems, 1 corollary, 26 remarks.
+- [2026-05-12] Completed: initialized blueprint metadata; 22 formalizable entries (defs/lemmas/thms/cor) tracked; 26 remarks remain in LaTeX but are not parsed as declarations.
