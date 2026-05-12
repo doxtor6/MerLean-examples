@@ -142,7 +142,7 @@ constant ancilla overhead per qubit, the LDPC property, and distance preservatio
 
 \begin{remark}[Worst-case graph construction]
 \label{rem:12_worst_case_graph_construction}
-\lean{WorstCaseGraphConstruction.total_qubit_bound}
+\lean{WorstCaseGraphConstruction.worst_case_construction_log_squared}
 \leanok
 For a logical $L$ of weight $W$ one can produce a graph $G$ satisfying all desiderata of
 Remark~\ref{rem:11_desiderata_for_graph_g} with $O(W \log^2 W)$ qubit overhead by:
@@ -214,7 +214,7 @@ have two vertices.
 
 \begin{remark}[Relation to lattice surgery]
 \label{rem:18_relation_to_lattice_surgery}
-\lean{ladderGraph_connected}
+\lean{RelationToLatticeSurgery.ladderGraph_connected}
 \leanok
 Surface-code lattice surgery is the special case in which $G$ is a ladder connecting the
 boundary qubits of two patches: the rungs identify corresponding qubits and the rails connect
@@ -504,7 +504,7 @@ coboundary, and cleans up using sufficient expansion.
 
 \begin{lemma}[Spacetime code detectors]
 \label{lem:4_spacetime_code_detectors}
-\lean{phase1RepeatedDetector_parametric}
+\lean{FaultTolerantGaugingProcedure.phase1RepeatedDetector_parametric}
 \leanok
 The local detectors of the fault-tolerant gauging procedure are: repeated-measurement
 detectors $s_j^t$ in Phase 1, $A_v^t$, $B_p^t$, $\tilde s_j^t$ in Phase 2, and $s_j^t$ in

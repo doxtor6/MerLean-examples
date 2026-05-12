@@ -8,5 +8,5 @@
   ],
   "statement": "The local detectors of the fault-tolerant gauging procedure are: repeated-measurement\ndetectors $s_j^t$ in Phase 1, $A_v^t$, $B_p^t$, $\\tilde s_j^t$ in Phase 2, and $s_j^t$ in\nPhase 3; together with boundary detectors at $t_i$ (edge initialization + first $B_p$, and\nlast $s_j$ + edge inits + first $\\tilde s_j$) and at $t_o$ (last $B_p$ + $Z_e$ readouts, and\nlast $\\tilde s_j$ + $Z_e$ + first $s_j$). These cover every measurement and $\\mathbb{F}_2$-generate\nall detectors of the procedure.",
   "proof": null,
-  "leanDeclaration": "phase1RepeatedDetector_parametric"
+  "leanDeclaration": "FaultTolerantGaugingProcedure.phase1RepeatedDetector_parametric"
 }
