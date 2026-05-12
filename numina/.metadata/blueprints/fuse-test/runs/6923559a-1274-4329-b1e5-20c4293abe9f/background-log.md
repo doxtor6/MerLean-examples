@@ -1,0 +1,1 @@
+- [2026-05-12] Started: drafting fuse-test blueprint from existing QEC1 Lean files.
