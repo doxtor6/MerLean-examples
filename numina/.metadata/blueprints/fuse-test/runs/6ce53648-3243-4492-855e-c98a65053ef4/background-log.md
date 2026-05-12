@@ -1,0 +1,1 @@
+- [2026-05-12] Started: reviewing fuse-test.tex \lean anchors and \uses references against QEC1 Lean source.
