@@ -1,1 +1,3 @@
 - [2026-05-12] Started: reviewing fuse-test.tex \lean anchors and \uses references against QEC1 Lean source.
+- [2026-05-12] Progress: verified 48 blocks; fixed 3 \lean anchors (rem:12, rem:18, lem:4); all \uses references resolve.
+- [2026-05-12] Completed: refreshed blueprint metadata; review pass done.
