@@ -1,0 +1,13 @@
+{
+  "label": "def:11_spacetime_logical_fault",
+  "kind": "definition",
+  "title": "Spacetime logical fault",
+  "uses": [
+    "def:7_space_time_faults",
+    "def:9_syndrome",
+    "def:10_ft_gauging_procedure"
+  ],
+  "statement": "A spacetime fault $F$ is \\emph{syndrome-free} if it violates no detector. A\n\\emph{spacetime logical fault} is syndrome-free and changes the outcome of the\nfault-tolerant gauging procedure; a \\emph{spacetime stabilizer} is syndrome-free and does\nnot. The two classes partition the syndrome-free faults, and the empty fault is a stabilizer.",
+  "proof": null,
+  "leanDeclaration": "SpacetimeLogicalFault.IsSpacetimeLogicalFault"
+}

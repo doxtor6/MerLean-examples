@@ -1,0 +1,13 @@
+{
+  "label": "lem:2_decongestion_bound",
+  "kind": "lemma",
+  "title": "Decongestion lemma bound",
+  "uses": [
+    "def:6_cycle_sparsified_graph",
+    "rem:4_notation_cheeger_constant",
+    "rem:11_desiderata_for_graph_g"
+  ],
+  "statement": "For a constant-degree expander graph with $W$ vertices, the number of layers $R$ needed by\nthe cycle-sparsification of Definition~\\ref{def:6_cycle_sparsified_graph} with cycle-degree\nbound $c$ satisfies $R = O(\\log^2 W)$. The proof goes via $|E| \\le \\Delta W / 2$,\n$|C| = O(W)$, and a greedy packing argument (König's theorem) showing\n$R \\le \\lceil M/c \\rceil$ for the maximum edge-cycle degree $M$; for expanders\n$M \\le K \\log^2 W$ from the diameter bound.",
+  "proof": null,
+  "leanDeclaration": "DecongestionLemma.decongestion_log_squared"
+}

@@ -3,5 +3,116 @@
   "branch": "numina/fuse-test",
   "source_type": "latex",
   "notes": "",
-  "entries": []
+  "entries": [
+    {
+      "label": "def:1_boundary_coboundary_maps",
+      "kind": "definition",
+      "title": "Boundary and coboundary maps"
+    },
+    {
+      "label": "def:2_gauss_law_flux",
+      "kind": "definition",
+      "title": "Gauss's law and flux operators"
+    },
+    {
+      "label": "def:3_deformed_operator",
+      "kind": "definition",
+      "title": "Deformed operator"
+    },
+    {
+      "label": "def:4_deformed_code",
+      "kind": "definition",
+      "title": "Deformed code"
+    },
+    {
+      "label": "def:5_gauging_measurement_algorithm",
+      "kind": "definition",
+      "title": "Gauging measurement algorithm"
+    },
+    {
+      "label": "def:6_cycle_sparsified_graph",
+      "kind": "definition",
+      "title": "Cycle-sparsified graph"
+    },
+    {
+      "label": "def:7_space_time_faults",
+      "kind": "definition",
+      "title": "Space and time faults"
+    },
+    {
+      "label": "def:8_detectors",
+      "kind": "definition",
+      "title": "Detectors"
+    },
+    {
+      "label": "def:9_syndrome",
+      "kind": "definition",
+      "title": "Syndrome"
+    },
+    {
+      "label": "def:10_ft_gauging_procedure",
+      "kind": "definition",
+      "title": "Fault-tolerant gauging procedure"
+    },
+    {
+      "label": "def:11_spacetime_logical_fault",
+      "kind": "definition",
+      "title": "Spacetime logical fault"
+    },
+    {
+      "label": "def:12_spacetime_fault_distance",
+      "kind": "definition",
+      "title": "Spacetime fault distance"
+    },
+    {
+      "label": "lem:1_deformed_code_checks",
+      "kind": "lemma",
+      "title": "Deformed code checks"
+    },
+    {
+      "label": "lem:2_decongestion_bound",
+      "kind": "lemma",
+      "title": "Decongestion lemma bound"
+    },
+    {
+      "label": "lem:3_space_distance",
+      "kind": "lemma",
+      "title": "Space distance"
+    },
+    {
+      "label": "lem:4_spacetime_code_detectors",
+      "kind": "lemma",
+      "title": "Spacetime code detectors"
+    },
+    {
+      "label": "lem:5_spacetime_stabilizers",
+      "kind": "lemma",
+      "title": "Spacetime stabilizers"
+    },
+    {
+      "label": "lem:6_time_fault_distance",
+      "kind": "lemma",
+      "title": "Time fault-distance"
+    },
+    {
+      "label": "lem:7_space_time_decoupling",
+      "kind": "lemma",
+      "title": "Space-time decoupling"
+    },
+    {
+      "label": "thm:1_gauging_correctness",
+      "kind": "theorem",
+      "title": "Gauging measurement correctness"
+    },
+    {
+      "label": "thm:2_ft_gauging_distance",
+      "kind": "theorem",
+      "title": "Fault-tolerant gauging distance"
+    },
+    {
+      "label": "cor:1_worst_case_overhead",
+      "kind": "corollary",
+      "title": "Worst-case qubit overhead"
+    }
+  ]
 }

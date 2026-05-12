@@ -1,0 +1,12 @@
+{
+  "label": "def:12_spacetime_fault_distance",
+  "kind": "definition",
+  "title": "Spacetime fault distance",
+  "uses": [
+    "def:11_spacetime_logical_fault",
+    "def:10_ft_gauging_procedure"
+  ],
+  "statement": "The \\emph{spacetime fault-distance} $d_{\\mathrm{spacetime}}$ is the minimum weight of a\nspacetime logical fault (Definition~\\ref{def:11_spacetime_logical_fault}), with the\nconvention $d_{\\mathrm{spacetime}} = 0$ when no logical fault exists. It satisfies\n$d_{\\mathrm{spacetime}} \\le |F|$ for every logical fault $F$, and a syndrome-free fault of\nweight strictly less than $d_{\\mathrm{spacetime}}$ is necessarily a stabilizer.",
+  "proof": null,
+  "leanDeclaration": "SpacetimeFaultDistance.spacetimeFaultDistance"
+}

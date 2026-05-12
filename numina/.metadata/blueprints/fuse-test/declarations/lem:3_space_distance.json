@@ -1,0 +1,15 @@
+{
+  "label": "lem:3_space_distance",
+  "kind": "lemma",
+  "title": "Space distance",
+  "uses": [
+    "lem:1_deformed_code_checks",
+    "rem:4_notation_cheeger_constant",
+    "rem:5_exactness_of_sequences",
+    "rem:8_freedom_in_deformed_checks",
+    "thm:1_gauging_correctness"
+  ],
+  "statement": "For the graph $G$ used in the gauging procedure with original code distance $d$ and deformed\ndistance $d^*$,\n\\[\n  d^* \\ge \\min(h(G), 1) \\cdot d.\n\\]\nIn particular, when $h(G) \\ge 1$ we obtain $d^* \\ge d$. The proof restricts a candidate\ndeformed logical to $V$, shows the edge $X$-support lies in $\\ker(\\delta_2)$ and is a\ncoboundary, and cleans up using sufficient expansion.",
+  "proof": null,
+  "leanDeclaration": "SpaceDistance.distance_ge_min_cheeger_one_mul_d"
+}

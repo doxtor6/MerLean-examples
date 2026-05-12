@@ -1,0 +1,14 @@
+{
+  "label": "cor:1_worst_case_overhead",
+  "kind": "corollary",
+  "title": "Worst-case qubit overhead",
+  "uses": [
+    "thm:2_ft_gauging_distance",
+    "rem:12_worst_case_graph_construction",
+    "lem:2_decongestion_bound",
+    "lem:3_space_distance"
+  ],
+  "statement": "The fault-tolerant gauging measurement of a Pauli logical operator of weight $W$ in a qLDPC\nstabilizer code can be carried out with at most $O(W \\log^2 W)$ additional qubits while\npreserving the original code distance, the LDPC property, and bounded check weights. The\nconstruction combines the graph of Remark~\\ref{rem:12_worst_case_graph_construction} with\nthe cycle sparsification of Definition~\\ref{def:6_cycle_sparsified_graph} at\n$R = O(\\log^2 W)$ layers.",
+  "proof": null,
+  "leanDeclaration": "WorstCaseOverhead.worst_case_overhead"
+}

@@ -1,0 +1,12 @@
+{
+  "label": "def:4_deformed_code",
+  "kind": "definition",
+  "title": "Deformed code",
+  "uses": [
+    "def:2_gauss_law_flux",
+    "def:3_deformed_operator"
+  ],
+  "statement": "The deformed code on $V \\oplus E(G)$ is the stabilizer code whose generating checks are the\nGauss operators $\\{A_v : v \\in V\\}$, the flux operators $\\{B_p : p \\in C\\}$, and the deformed\noriginal checks $\\{\\tilde s_j : j \\in J\\}$, where each $\\tilde s_j$ is obtained from $s_j$\nby an edge-path $\\gamma_j$ with $\\partial \\gamma_j = S_Z(s_j)|_V$. The three families\nmutually commute, every check is self-inverse, and the product $\\prod_v A_v$ equals the\nlogical $L$.",
+  "proof": null,
+  "leanDeclaration": "DeformedCode.deformedCodeChecks"
+}

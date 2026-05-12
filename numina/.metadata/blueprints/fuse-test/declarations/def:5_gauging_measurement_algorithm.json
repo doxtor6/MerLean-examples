@@ -1,0 +1,12 @@
+{
+  "label": "def:5_gauging_measurement_algorithm",
+  "kind": "definition",
+  "title": "Gauging measurement algorithm",
+  "uses": [
+    "def:2_gauss_law_flux",
+    "def:1_boundary_coboundary_maps"
+  ],
+  "statement": "The classical-data layer of the gauging measurement procedure for $L = \\prod_v X_v$. Inputs\nare a connected graph $G$ and a base vertex $v_0$. The measurement outcomes\n$\\varepsilon_v \\in \\mathbb{F}_2$ of $A_v$ and $\\omega_e \\in \\mathbb{F}_2$ of $Z_e$ determine\nthe measurement sign $\\sigma = \\sum_v \\varepsilon_v$ and the byproduct correction at vertex\n$v$ via the parity of $\\omega$ along a walk from $v_0$ to $v$. Walk parities are additive\nunder concatenation, invariant under reversal, and well-defined when closed walks have zero\nparity.",
+  "proof": null,
+  "leanDeclaration": "GaugingMeasurement.gaugingAlgorithm"
+}

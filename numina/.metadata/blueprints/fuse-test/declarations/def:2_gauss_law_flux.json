@@ -1,0 +1,12 @@
+{
+  "label": "def:2_gauss_law_flux",
+  "kind": "definition",
+  "title": "Gauss's law and flux operators",
+  "uses": [
+    "def:1_boundary_coboundary_maps",
+    "rem:2_notation_pauli_operators"
+  ],
+  "statement": "On the extended qubit system $V \\oplus E(G)$ we define, for each vertex $v$, the Gauss's law\noperator $A_v = X_v \\prod_{e \\ni v} X_e$ (pure $X$-type), and for each cycle $p \\in C$ the\nflux operator $B_p = \\prod_{e \\in p} Z_e$ (pure $Z$-type). All $A_v$ pairwise commute, all\n$B_p$ pairwise commute, $[A_v, B_p] = 0$, and $\\prod_v A_v = L = \\prod_v X_v$ is the logical.",
+  "proof": null,
+  "leanDeclaration": "GaussFlux.gaussLawOp"
+}

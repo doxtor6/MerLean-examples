@@ -1,0 +1,15 @@
+{
+  "label": "def:10_ft_gauging_procedure",
+  "kind": "definition",
+  "title": "Fault-tolerant gauging procedure",
+  "uses": [
+    "def:4_deformed_code",
+    "def:5_gauging_measurement_algorithm",
+    "def:7_space_time_faults",
+    "def:8_detectors",
+    "def:9_syndrome"
+  ],
+  "statement": "The fault-tolerant gauging measurement of a logical $L$ in an $[[n,k,d]]$ stabilizer code\nconsists of three phases: (1) measure the original checks $\\{s_j\\}$ for $d$ rounds; (2)\ninitialize edge qubits and measure the deformed-code checks $\\{A_v, B_p, \\tilde s_j\\}$ for\n$d$ rounds; (3) measure $Z_e$ on edge qubits to ungauge and resume the original checks for\n$d$ rounds. The corresponding measurement label type, phase assignment, and round counting\nare formalized.",
+  "proof": null,
+  "leanDeclaration": "FaultTolerantGaugingProcedure"
+}

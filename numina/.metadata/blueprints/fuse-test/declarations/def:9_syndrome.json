@@ -1,0 +1,12 @@
+{
+  "label": "def:9_syndrome",
+  "kind": "definition",
+  "title": "Syndrome",
+  "uses": [
+    "def:7_space_time_faults",
+    "def:8_detectors"
+  ],
+  "statement": "For a family of detectors $(D_i)_{i \\in I}$, the \\emph{syndrome} of a spacetime fault $F$ is\nthe finset of indices $i \\in I$ for which $D_i$ is violated; equivalently, the\nsyndrome vector $s \\in \\mathbb{F}_2^I$ has $s_i = 1$ iff $D_i$ is violated. The syndrome is\nempty for the fault-free configuration and depends only on the time-fault component of $F$.",
+  "proof": null,
+  "leanDeclaration": "syndromeFault"
+}

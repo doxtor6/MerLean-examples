@@ -1,0 +1,15 @@
+{
+  "label": "lem:6_time_fault_distance",
+  "kind": "lemma",
+  "title": "Time fault-distance",
+  "uses": [
+    "def:10_ft_gauging_procedure",
+    "def:11_spacetime_logical_fault",
+    "def:12_spacetime_fault_distance",
+    "lem:4_spacetime_code_detectors",
+    "lem:5_spacetime_stabilizers"
+  ],
+  "statement": "The fault-distance restricted to pure time-faults (measurement and initialization errors)\nin the fault-tolerant gauging procedure equals $t_o - t_i = d$. An $A_v$ measurement string\non a single vertex across all $d$ Phase 2 rounds is syndrome-free, has weight $d$, and flips\n$\\sigma$, providing the upper bound. The all-or-none constraint on $A_v$ faults from\nrepeated Gauss detectors gives the matching lower bound.",
+  "proof": null,
+  "leanDeclaration": "TimeFaultDistance.timeFaultDistance_eq_d"
+}

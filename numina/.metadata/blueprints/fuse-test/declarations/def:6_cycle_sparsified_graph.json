@@ -1,0 +1,12 @@
+{
+  "label": "def:6_cycle_sparsified_graph",
+  "kind": "definition",
+  "title": "Cycle-sparsified graph",
+  "uses": [
+    "def:1_boundary_coboundary_maps",
+    "rem:11_desiderata_for_graph_g"
+  ],
+  "statement": "The cycle-sparsified graph $\\bar{\\bar G}$ with bound $c$ is built from a connected $G$ in\n$R+1$ layers indexed by $\\mathrm{Fin}(R+1)$: layer $0$ is the original graph; inter-layer\nedges connect $(v, i)$ to $(v, i+1)$; intra-layer edges replicate $G$ within each layer;\nzigzag-diagonal triangulation edges decompose long cycles into triangles. With $R$ chosen\nsufficiently large the generating cycles all have weight at most $4$: triangles from the\ncellulation and $4$-cycles from inter-layer squares.",
+  "proof": null,
+  "leanDeclaration": "CycleSparsification.sparsifiedGraph"
+}

@@ -1,0 +1,12 @@
+{
+  "label": "def:3_deformed_operator",
+  "kind": "definition",
+  "title": "Deformed operator",
+  "uses": [
+    "def:1_boundary_coboundary_maps",
+    "def:2_gauss_law_flux"
+  ],
+  "statement": "For a Pauli operator $P$ on $V$ commuting with $L = \\prod_v X_v$, and an edge-path\n$\\gamma \\in \\mathbb{F}_2^E$ with $\\partial \\gamma = S_Z(P)|_V$, the deformed operator\n$\\tilde P$ on $V \\oplus E$ acts as $P$ on the vertex qubits and as $Z_e$ on each edge\n$e$ with $\\gamma(e) = 1$. The deformed operator is self-inverse and commutes with every\nGauss operator $A_v$.",
+  "proof": null,
+  "leanDeclaration": "DeformedOperator.deformedOperator"
+}

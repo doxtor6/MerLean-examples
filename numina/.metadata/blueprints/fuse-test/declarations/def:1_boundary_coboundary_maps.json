@@ -1,0 +1,9 @@
+{
+  "label": "def:1_boundary_coboundary_maps",
+  "kind": "definition",
+  "title": "Boundary and coboundary maps",
+  "uses": [],
+  "statement": "For a finite graph $G = (V, E)$ we define $\\mathbb{F}_2$-linear maps\n$\\partial : \\mathbb{F}_2^E \\to \\mathbb{F}_2^V$ by $(\\partial \\gamma)_v = \\sum_{e \\ni v} \\gamma_e$\nand the coboundary $\\delta : \\mathbb{F}_2^V \\to \\mathbb{F}_2^E$ as its transpose,\n$(\\delta f)_{\\{a,b\\}} = f(a) + f(b)$. For a cycle collection $C$ we also define\n$\\partial_2 : \\mathbb{F}_2^C \\to \\mathbb{F}_2^E$, $\\partial_2(c) = \\sum_{e \\in c} e$, and the\ntranspose $\\delta_2 : \\mathbb{F}_2^E \\to \\mathbb{F}_2^C$.",
+  "proof": null,
+  "leanDeclaration": "GraphMaps.boundaryMap"
+}

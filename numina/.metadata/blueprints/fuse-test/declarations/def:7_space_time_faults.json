@@ -1,0 +1,9 @@
+{
+  "label": "def:7_space_time_faults",
+  "kind": "definition",
+  "title": "Space and time faults",
+  "uses": [],
+  "statement": "A \\emph{space-fault} is a nontrivial single-qubit Pauli error at a specific qubit and time,\nencoded by its $X$- and $Z$-components in $\\mathbb{F}_2 \\times \\mathbb{F}_2$. A\n\\emph{time-fault} is a measurement whose outcome is reported incorrectly (initialization\nerrors are modeled this way). A \\emph{spacetime fault} $F$ is a finset of space-faults and a\nfinset of time-faults, with weight $|F|$ equal to the total number of elementary faults.\nComposition is symmetric difference on both components.",
+  "proof": null,
+  "leanDeclaration": "SpacetimeFault"
+}

@@ -1,0 +1,16 @@
+{
+  "label": "thm:2_ft_gauging_distance",
+  "kind": "theorem",
+  "title": "Fault-tolerant gauging distance",
+  "uses": [
+    "def:10_ft_gauging_procedure",
+    "def:12_spacetime_fault_distance",
+    "lem:3_space_distance",
+    "lem:6_time_fault_distance",
+    "lem:7_space_time_decoupling",
+    "rem:13_optimal_cheeger_constant"
+  ],
+  "statement": "Assume the gauging graph $G$ has Cheeger constant $h(G) \\ge 1$ and that the deformed-code\nphase lasts at least $d$ rounds. Then the spacetime fault-distance of the fault-tolerant\ngauging procedure equals the original code distance: $d_{\\mathrm{spacetime}} = d$. The lower\nbound combines the space-time decomposition with the space and time distance lemmas; the\nupper bound is witnessed by a minimum-weight logical of the original code placed as a\nspace-fault at $t_i$.",
+  "proof": null,
+  "leanDeclaration": "FaultTolerantGaugingDistance.spacetimeFaultDistance_eq_d"
+}

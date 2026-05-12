@@ -1,0 +1,11 @@
+{
+  "label": "def:8_detectors",
+  "kind": "definition",
+  "title": "Detectors",
+  "uses": [
+    "def:7_space_time_faults"
+  ],
+  "statement": "A \\emph{detector} is a finset of measurement labels with ideal outcomes summing to $0$ in\n$\\mathbb{F}_2$ (equivalently, the product of $\\pm 1$ outcomes is $+1$ in the absence of\nfaults). Given a finset of time-faults, the observed parity is the sum of observed outcomes\nover the detector's measurements; the detector is \\emph{violated} when this parity is $1$.\nStandard constructions include the repeated-measurement detector and the\ninitialization-plus-later-measurement detector.",
+  "proof": null,
+  "leanDeclaration": "Detector"
+}

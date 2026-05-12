@@ -1,0 +1,17 @@
+{
+  "label": "lem:7_space_time_decoupling",
+  "kind": "lemma",
+  "title": "Space-time decoupling",
+  "uses": [
+    "def:10_ft_gauging_procedure",
+    "def:11_spacetime_logical_fault",
+    "def:12_spacetime_fault_distance",
+    "lem:1_deformed_code_checks",
+    "lem:4_spacetime_code_detectors",
+    "lem:5_spacetime_stabilizers",
+    "lem:6_time_fault_distance"
+  ],
+  "statement": "Every spacetime logical fault $F$ of the fault-tolerant gauging procedure decomposes, up to a\nspacetime stabilizer $S$, as $F = F_S \\cdot F_T \\cdot S$, where $F_S$ is a space-only\nlogical fault concentrated at the gauging time $t_i$ acting as a logical of the deformed\ncode, and $F_T$ is a pure-time logical fault that flips the gauging sign. The proof moves\nall space-faults to time $t_i$ via time-propagating stabilizers and separates the\nremaining time-faults into $A_v$ strings versus stabilizer generators.",
+  "proof": null,
+  "leanDeclaration": "SpaceTimeDecoupling.spaceTime_decomposition"
+}

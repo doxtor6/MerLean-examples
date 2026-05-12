@@ -1,0 +1,14 @@
+{
+  "label": "thm:1_gauging_correctness",
+  "kind": "theorem",
+  "title": "Gauging measurement correctness",
+  "uses": [
+    "def:5_gauging_measurement_algorithm",
+    "def:2_gauss_law_flux",
+    "def:1_boundary_coboundary_maps",
+    "rem:5_exactness_of_sequences"
+  ],
+  "statement": "The gauging measurement procedure of\nDefinition~\\ref{def:5_gauging_measurement_algorithm} is equivalent to a projective\nmeasurement of $L = \\prod_{v \\in V} X_v$. The effective Pauli operator acting on the vertex\nqubits after the procedure is $1 + \\sigma L$, where $\\sigma = \\prod_v \\varepsilon_v \\in \\{\\pm 1\\}$\nis the measurement sign, projecting onto the $\\sigma$-eigenspace of $L$.",
+  "proof": null,
+  "leanDeclaration": "GaugingMeasurementCorrectness.gauging_implements_projective_measurement"
+}

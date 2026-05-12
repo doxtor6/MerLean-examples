@@ -1,8 +1,588 @@
 % Blueprint: Fuse_test
-% Created by Numina
+% Generated from QEC1 Lean source
 
 \begin{document}
 
-% Your blueprint will go here.
+\chapter{Notation and preliminaries}
+
+\begin{remark}[Notation: binary vectors]
+\label{rem:1_notation_binary_vectors}
+\lean{charVec}
+\leanok
+Throughout we represent subsets of vertices, edges, and cycles of a graph $G$ by binary
+vectors over $\mathbb{F}_2 = \mathbb{Z}/2$. The characteristic vector $\chi_S : \alpha \to \mathbb{F}_2$
+of a set $S$ takes the value $1$ on $S$ and $0$ otherwise. Addition of binary vectors
+corresponds to symmetric difference of sets: $\chi_{S \triangle T} = \chi_S + \chi_T$.
+\end{remark}
+
+\begin{remark}[Notation: Pauli operators]
+\label{rem:2_notation_pauli_operators}
+\lean{PauliOp}
+\leanok
+A multi-qubit Pauli operator on a qubit set $V$ is represented as a pair of binary vectors
+$(x, z) \in \mathbb{F}_2^V \times \mathbb{F}_2^V$, encoding the operator
+$\bigotimes_v X_v^{x_v} Z_v^{z_v}$. Single-site operators $X_v$, $Z_v$, $Y_v$, the identity
+$\mathbb{1}$, finite products $\prod_{v \in S} X_v$, the $X$- and $Z$-supports $S_X(P)$,
+$S_Z(P)$, and the pointwise multiplication (XOR of binary vectors) are all defined here.
+\end{remark}
+
+\begin{remark}[Notation: stabilizer codes]
+\label{rem:3_notation_stabilizer_codes}
+\lean{StabilizerCode}
+\leanok
+An $[[n,k,d]]$ stabilizer code is specified by commuting Pauli checks $\{s_i\}$ generating
+the stabilizer group $\mathcal{S}$. We use the symplectic inner product
+$\langle P, Q\rangle = \sum_v (x^P_v z^Q_v + z^P_v x^Q_v)$ over $\mathbb{F}_2$ to encode
+commutation. Logical operators lie in the centralizer $C(\mathcal{S}) \setminus \mathcal{S}$,
+the distance $d$ is the minimum weight of a nontrivial logical operator, and a qLDPC code is
+one whose checks have bounded weight $w$ and where each qubit participates in at most $c$ checks.
+\end{remark}
+
+\begin{remark}[Notation: Cheeger constant]
+\label{rem:4_notation_cheeger_constant}
+\lean{QEC1.cheegerConstant}
+\leanok
+For a finite simple graph $G = (V,E)$ the Cheeger constant (edge expansion) is
+$h(G) = \min_{0 < |S| \le |V|/2} |\partial S| / |S|$, where $\partial S$ is the set of edges
+with exactly one endpoint in $S$. We formalize $\partial S$, $h(G)$, and the
+\emph{expander} property $h(G) \ge c$, together with $\partial \emptyset = \partial V = \emptyset$,
+$\partial S = \partial S^c$, and $h(G) \ge 0$.
+\end{remark}
+
+\begin{remark}[Exactness of $\partial$ and $\partial_2$]
+\label{rem:5_exactness_of_sequences}
+\lean{GraphMaps.boundary_comp_secondBoundary_eq_zero}
+\leanok
+For a graph $G$ with a cycle collection $C$ in which every vertex meets each cycle in an
+even number of edges, the boundary maps satisfy the chain-complex property
+$\partial \circ \partial_2 = 0$, equivalently $\delta_2 \circ \delta = 0$. For a connected
+$G$, $\ker(\delta) = \{0, \mathbf{1}\}$, so the sequence is not short exact. If $C$ generates
+the cycle space then $\ker(\partial) = \mathrm{im}(\partial_2)$.
+\uses{def:1_boundary_coboundary_maps}
+\end{remark}
+
+\begin{remark}[Noncommuting operators cannot be deformed]
+\label{rem:6_noncommuting_cannot_be_deformed}
+\lean{NoncommutingOperatorsCannotBeDeformed.noncommuting_cannot_be_deformed}
+\leanok
+A Pauli operator $P$ that does not commute with the logical $L = \prod_{v \in V} X_v$ cannot
+be deformed. The boundary condition $\partial \gamma = S_Z(P)|_V$ has no solution when
+$\sum_v S_Z(P)|_V (v) \ne 0$, and multiplying $P$ by edge $Z$ operators or by commuting
+stabilizers does not change this obstruction.
+\uses{def:3_deformed_operator, def:1_boundary_coboundary_maps}
+\end{remark}
+
+\begin{remark}[Codespace dimension after gauging]
+\label{rem:7_codespace_dimension_after_gauging}
+\lean{CodespaceDimension.codespace_dimension_change_after_gauging}
+\leanok
+If the original code is $[[n,k,d]]$ with $J$ checks and $C$ generates the full cycle space
+of a connected graph $G$ (so $|C| = |E| - |V| + 1$), the deformed code has $n + |E|$ physical
+qubits and $|V| + |C| + |J|$ checks. The nominal logical count drops by one,
+$k_{\text{new}} = k - 1$: the gauging measurement consumes exactly one logical qubit.
+\uses{def:4_deformed_code, lem:1_deformed_code_checks}
+\end{remark}
+
+\begin{remark}[Freedom in deformed checks]
+\label{rem:8_freedom_in_deformed_checks}
+\lean{FreedomInDeformedChecks.different_paths_same_code}
+\leanok
+The deformed codespace is unique but its generating set is not. The $A_v$ checks are fixed,
+the $B_p$ checks may use any generating set of cycles, and the deformed checks
+$\tilde{s}_j$ may use any path $\gamma_j$ with $\partial \gamma_j = S_Z(s_j)|_V$.
+Two choices $\gamma, \gamma'$ differ by an element of $\ker(\partial)$, so
+$\tilde s(\gamma') = \tilde s(\gamma) \cdot \prod_{c} B_c$ for some product of flux operators.
+\uses{def:4_deformed_code, def:3_deformed_operator}
+\end{remark}
+
+\begin{remark}[Circuit implementation]
+\label{rem:9_circuit_implementation}
+\lean{CircuitImplementation.entanglingCircuit_transforms_gaussLaw}
+\leanok
+The gauging measurement can be realized by a quantum circuit with only the edge ancillas:
+initialize each edge qubit in $|0\rangle$, apply the entangling layer
+$\prod_v \prod_{e \ni v} \mathrm{CX}_{v \to e}$, measure $X_v$ on every vertex, apply the
+entangling layer again, measure $Z_e$ on the edge qubits, and apply the byproduct
+corrections of Definition~\ref{def:5_gauging_measurement_algorithm}. The conjugation by the
+entangling layer transforms each Gauss operator $A_v$ into the single-qubit $X_v$.
+\uses{def:5_gauging_measurement_algorithm, def:2_gauss_law_flux}
+\end{remark}
+
+\begin{remark}[Flexibility of the graph $G$]
+\label{rem:10_flexibility_of_graph_g}
+\lean{FlexibilityOfGraphG.extendedLogicalOp_eq_mul}
+\leanok
+The gauging measurement permits an arbitrary connected graph $G$ whose vertex set contains
+the support of $L$. Dummy vertices may be added by measuring instead
+$L' = L \cdot \prod_{d \in D} X_d$, whose measurement sign agrees with that of $L$ when the
+dummies are prepared in $|+\rangle$. The choice of $G$ controls $|E|$ (ancilla overhead),
+deformed check weights (path lengths), and the deformed-code distance (via expansion).
+\uses{def:5_gauging_measurement_algorithm}
+\end{remark}
+
+\begin{remark}[Desiderata for the graph $G$]
+\label{rem:11_desiderata_for_graph_g}
+\lean{DesiderataForGraphG.AllDesiderataSatisfied}
+\leanok
+For a constant-degree graph $G$ used by the gauging measurement we require:
+(1) short paths for deformation, $\mathrm{dist}_G(u,v) \le D$ for all $u, v$ in the
+$Z$-support of any check; (2) sufficient expansion, $h(G) \ge 1$; (3) a low-weight cycle
+basis, with generating cycles of bounded weight. Together with constant degree these give
+constant ancilla overhead per qubit, the LDPC property, and distance preservation $d^* \ge d$.
+\uses{rem:4_notation_cheeger_constant}
+\end{remark}
+
+\begin{remark}[Worst-case graph construction]
+\label{rem:12_worst_case_graph_construction}
+\lean{WorstCaseGraphConstruction.total_qubit_bound}
+\leanok
+For a logical $L$ of weight $W$ one can produce a graph $G$ satisfying all desiderata of
+Remark~\ref{rem:11_desiderata_for_graph_g} with $O(W \log^2 W)$ qubit overhead by:
+matching $Z$-support pairs of each check to achieve $D = 1$; adding edges until $h(G) \ge 1$;
+and applying the cycle-sparsification of Definition~\ref{def:6_cycle_sparsified_graph} with
+$R = O(\log^2 W)$ layers, yielding bounded check weights, preserved distance, and constant degree.
+\uses{rem:11_desiderata_for_graph_g, def:6_cycle_sparsified_graph, lem:2_decongestion_bound}
+\end{remark}
+
+\begin{remark}[Optimal Cheeger constant]
+\label{rem:13_optimal_cheeger_constant}
+\lean{OptimalCheegerConstant.cheeger_one_is_optimal}
+\leanok
+The threshold $h(G) = 1$ is optimal. By Lemma~\ref{lem:3_space_distance}, $h(G) \ge 1$ gives
+$d^* \ge d$. Any pure-$X$ logical of the original code lifts to a logical of the deformed
+code with the same weight, so $d^* \le d$, hence $d^* = d$. When $h(G) < 1$ one only obtains
+$d^* \ge h(G) \cdot d$, which can be strictly less than $d$.
+\uses{lem:3_space_distance}
+\end{remark}
+
+\begin{remark}[Parallel gauging measurement]
+\label{rem:14_parallel_gauging_measurement}
+\lean{ParallelGaugingMeasurement.disjoint_supports_imply_commutation}
+\leanok
+Several logicals can be gauged in parallel under compatibility conditions: disjoint supports,
+or shared support on which all operators act with the same Pauli type. To preserve LDPC, the
+number of logicals sharing any one qubit is bounded by a constant. A time-space tradeoff
+measures $2m-1$ copies in $\lceil d/m \rceil$ rounds and takes a majority vote.
+\uses{def:5_gauging_measurement_algorithm}
+\end{remark}
+
+\begin{remark}[Flux check measurement frequency]
+\label{rem:15_flux_check_measurement_frequency}
+\lean{FluxCheckMeasurementFrequency.space_distance_independent_of_flux_measurements}
+\leanok
+Fault-tolerance is preserved even if the flux checks $B_p$ are measured rarely, or not at
+all. The information of $B_p$ is captured by the boundary detectors that pair edge
+initializations with edge readouts. The distance lower bound from
+Lemma~\ref{lem:3_space_distance} only uses $B_p$ as stabilizers, and the time-fault
+bottleneck of Lemma~\ref{lem:6_time_fault_distance} comes from $A_v$ strings. The price is
+larger detector cells, which can prevent threshold against random noise.
+\uses{thm:2_ft_gauging_distance, lem:3_space_distance, lem:6_time_fault_distance}
+\end{remark}
+
+\begin{remark}[Boundary rounds are overkill]
+\label{rem:16_boundary_rounds_overkill}
+\lean{BoundaryRoundsOverkill.allOrNone_is_phase2_only}
+\leanok
+The $d$ rounds of Phase 1 and Phase 3 in Definition~\ref{def:10_ft_gauging_procedure} are
+conservative. The all-or-none property of $A_v$ measurement faults relies only on Phase 2
+repeated detectors, and only one boundary round per side is needed for boundary detector
+coverage. The full $d$ rounds yield the cleanest proof of
+Theorem~\ref{thm:2_ft_gauging_distance}, but in practice fewer rounds may suffice.
+\uses{def:10_ft_gauging_procedure, thm:2_ft_gauging_distance}
+\end{remark}
+
+\begin{remark}[Hypergraph generalization]
+\label{rem:17_hypergraph_generalization}
+\lean{HypergraphGeneralization.ker_boundary_iff_commutes_all_gaussLaw}
+\leanok
+Replacing the graph $G$ by a hypergraph $H = (V, E)$ with hyperedges $e \subseteq V$ gives
+a generalized gauging procedure. Gauss operators are $A_v = X_v \prod_{e \ni v} X_e$, the
+boundary map $\partial : \mathbb{F}_2^E \to \mathbb{F}_2^V$ becomes
+$(\partial \gamma)_v = \sum_{e \ni v} \gamma_e$, and an edge $Z$-string $Z(\gamma)$ commutes
+with every $A_v$ iff $\gamma \in \ker(\partial)$. The graph case is recovered when hyperedges
+have two vertices.
+\uses{def:2_gauss_law_flux, def:1_boundary_coboundary_maps}
+\end{remark}
+
+\begin{remark}[Relation to lattice surgery]
+\label{rem:18_relation_to_lattice_surgery}
+\lean{ladderGraph_connected}
+\leanok
+Surface-code lattice surgery is the special case in which $G$ is a ladder connecting the
+boundary qubits of two patches: the rungs identify corresponding qubits and the rails connect
+consecutive boundary qubits. The Phase 3 $Z_e$ readouts implement the standard splitting
+step. Dummy grids realize long-range lattice surgery with constant overhead per unit
+distance, and bridge edges extend the construction to general LDPC codes.
+\uses{def:5_gauging_measurement_algorithm, rem:10_flexibility_of_graph_g}
+\end{remark}
+
+\begin{remark}[Bivariate bicycle code notation]
+\label{rem:19_bivariate_bicycle_code_notation}
+\lean{BivariateBicycle.BBCode}
+\leanok
+A bivariate bicycle (BB) code on $2\ell m$ qubits is built from cyclic permutation matrices
+$x, y$ acting on $\mathbb{Z}_\ell \times \mathbb{Z}_m$ inside the group algebra
+$\mathbb{F}_2[x,y]/(x^\ell - 1, y^m - 1)$. Convolution and the transpose
+$A(x,y) \mapsto A(x^{-1}, y^{-1})$ define $X$-type and $Z$-type checks
+$\tilde X_A, \tilde Z_B$, yielding a CSS stabilizer code with $X(p,q)$ and $Z(p,q)$ Pauli
+notation.
+\uses{rem:3_notation_stabilizer_codes, rem:2_notation_pauli_operators}
+\end{remark}
+
+\begin{remark}[Gross code definition]
+\label{rem:20_gross_code_definition}
+\lean{BivariateBicycle.GrossCode.grossCode}
+\leanok
+The Gross code is the $[[144,12,12]]$ BB code with $\ell = 12$, $m = 6$,
+$A = x^3 + y^2 + y$ and $B = y^3 + x^2 + x$. Logical operators are encoded by polynomials
+$f, g, h$ in the group algebra; the logical $\bar{X}_\alpha = X(\alpha f, 0)$ has weight
+$12$, acts only on the $L$ qubits and lies in the centralizer.
+\uses{rem:19_bivariate_bicycle_code_notation}
+\end{remark}
+
+\begin{remark}[Gross code gauging measurement]
+\label{rem:21_gross_code_gauging_measurement}
+\lean{BivariateBicycle.GrossCode.gaugingGraph}
+\leanok
+Explicit gauging-graph construction for measuring $\bar{X}_\alpha$ in the Gross code: $12$
+vertices (the support of $f$), $18$ matching edges plus $4$ expansion edges, and $7$
+independent cycles, giving total ancilla overhead $41$.
+\uses{rem:20_gross_code_definition, def:5_gauging_measurement_algorithm}
+\end{remark}
+
+\begin{remark}[Double Gross code definition]
+\label{rem:22_double_gross_code_definition}
+\lean{BivariateBicycle.DoubleGrossCode.doubleGrossCode}
+\leanok
+The Double Gross code is the $[[288, 12, 18]]$ BB code with $\ell = m = 12$,
+$A = x^3 + y^7 + y^2$, $B = y^3 + x^2 + x$. The logical $\bar{X}_\alpha = X(\alpha f, 0)$ has
+weight $18$; its gauging graph has $18$ vertices, $27$ matching plus $7$ expansion edges,
+and $13$ independent cycles, with total overhead $65$.
+\uses{rem:19_bivariate_bicycle_code_notation, def:5_gauging_measurement_algorithm}
+\end{remark}
+
+\begin{remark}[Generalizations beyond Pauli]
+\label{rem:23_generalizations_beyond_pauli}
+\lean{GeneralizationsBeyondPauli.quditBoundaryMap}
+\leanok
+The gauging procedure extends beyond Pauli logicals on qubits. It applies to any finite-group
+representation by tensor-factorized operators, to qudit systems with $\mathbb{Z}_p$
+replacing $\mathbb{Z}_2$ (boundary maps become $\mathbb{Z}_p$-linear), and to nonabelian
+groups, where the total charge no longer factorizes into local measurements.
+\uses{def:1_boundary_coboundary_maps, rem:17_hypergraph_generalization}
+\end{remark}
+
+\begin{remark}[Shor-style measurement as gauging]
+\label{rem:24_shor_style_measurement}
+\lean{ShorStyleMeasurement.shor_gauss_product_eq_logical}
+\leanok
+Shor-style logical measurement of a weight-$W$ logical $L$ is recovered by gauging on a
+graph $G$ with vertex set $\mathrm{supp}(L) \sqcup D$, where $D$ is a connected subgraph on
+$W$ dummy qubits, each connected by a single edge to a unique qubit of $\mathrm{supp}(L)$.
+Measuring the dummy subgraph first yields the GHZ-style ancilla of the Shor protocol.
+\uses{def:5_gauging_measurement_algorithm, rem:10_flexibility_of_graph_g}
+\end{remark}
+
+\begin{remark}[Steane-style measurement as gauging]
+\label{rem:25_steane_style_measurement}
+\lean{SteaneStyleMeasurement.steane_is_composition_of_gauging}
+\leanok
+Steane-style measurement of a CSS code's stabilizers decomposes into three gauging steps:
+hypergraph gauging for state preparation, ordinary gauging on a perfect matching graph for
+the transversal entangling step, and edge $Z$ measurements for the ancilla readout.
+\uses{rem:17_hypergraph_generalization, def:5_gauging_measurement_algorithm}
+\end{remark}
+
+\begin{remark}[Cohen et al.\ scheme recovery]
+\label{rem:26_cohen_et_al_scheme_recovery}
+\lean{CohenEtAlSchemeRecovery.cohen_layered_all_ones_measures_L}
+\leanok
+The Cohen et al.\ scheme for measuring an irreducible $X$ logical of a CSS code is the
+hypergraph gauging procedure applied to the hypergraph obtained by restricting the $Z$-checks
+to the support of $L$, with $d$ layers. Variants with fewer layers (Cross et al.) and joint
+measurements (adding bridge edges) are obtained by adjusting the same construction.
+\uses{rem:17_hypergraph_generalization, rem:11_desiderata_for_graph_g}
+\end{remark}
+
+\chapter{Definitions}
+
+\begin{definition}[Boundary and coboundary maps]
+\label{def:1_boundary_coboundary_maps}
+\lean{GraphMaps.boundaryMap}
+\leanok
+For a finite graph $G = (V, E)$ we define $\mathbb{F}_2$-linear maps
+$\partial : \mathbb{F}_2^E \to \mathbb{F}_2^V$ by $(\partial \gamma)_v = \sum_{e \ni v} \gamma_e$
+and the coboundary $\delta : \mathbb{F}_2^V \to \mathbb{F}_2^E$ as its transpose,
+$(\delta f)_{\{a,b\}} = f(a) + f(b)$. For a cycle collection $C$ we also define
+$\partial_2 : \mathbb{F}_2^C \to \mathbb{F}_2^E$, $\partial_2(c) = \sum_{e \in c} e$, and the
+transpose $\delta_2 : \mathbb{F}_2^E \to \mathbb{F}_2^C$.
+\end{definition}
+
+\begin{definition}[Gauss's law and flux operators]
+\label{def:2_gauss_law_flux}
+\lean{GaussFlux.gaussLawOp}
+\leanok
+On the extended qubit system $V \oplus E(G)$ we define, for each vertex $v$, the Gauss's law
+operator $A_v = X_v \prod_{e \ni v} X_e$ (pure $X$-type), and for each cycle $p \in C$ the
+flux operator $B_p = \prod_{e \in p} Z_e$ (pure $Z$-type). All $A_v$ pairwise commute, all
+$B_p$ pairwise commute, $[A_v, B_p] = 0$, and $\prod_v A_v = L = \prod_v X_v$ is the logical.
+\uses{def:1_boundary_coboundary_maps, rem:2_notation_pauli_operators}
+\end{definition}
+
+\begin{definition}[Deformed operator]
+\label{def:3_deformed_operator}
+\lean{DeformedOperator.deformedOperator}
+\leanok
+For a Pauli operator $P$ on $V$ commuting with $L = \prod_v X_v$, and an edge-path
+$\gamma \in \mathbb{F}_2^E$ with $\partial \gamma = S_Z(P)|_V$, the deformed operator
+$\tilde P$ on $V \oplus E$ acts as $P$ on the vertex qubits and as $Z_e$ on each edge
+$e$ with $\gamma(e) = 1$. The deformed operator is self-inverse and commutes with every
+Gauss operator $A_v$.
+\uses{def:1_boundary_coboundary_maps, def:2_gauss_law_flux}
+\end{definition}
+
+\begin{definition}[Deformed code]
+\label{def:4_deformed_code}
+\lean{DeformedCode.deformedCodeChecks}
+\leanok
+The deformed code on $V \oplus E(G)$ is the stabilizer code whose generating checks are the
+Gauss operators $\{A_v : v \in V\}$, the flux operators $\{B_p : p \in C\}$, and the deformed
+original checks $\{\tilde s_j : j \in J\}$, where each $\tilde s_j$ is obtained from $s_j$
+by an edge-path $\gamma_j$ with $\partial \gamma_j = S_Z(s_j)|_V$. The three families
+mutually commute, every check is self-inverse, and the product $\prod_v A_v$ equals the
+logical $L$.
+\uses{def:2_gauss_law_flux, def:3_deformed_operator}
+\end{definition}
+
+\begin{definition}[Gauging measurement algorithm]
+\label{def:5_gauging_measurement_algorithm}
+\lean{GaugingMeasurement.gaugingAlgorithm}
+\leanok
+The classical-data layer of the gauging measurement procedure for $L = \prod_v X_v$. Inputs
+are a connected graph $G$ and a base vertex $v_0$. The measurement outcomes
+$\varepsilon_v \in \mathbb{F}_2$ of $A_v$ and $\omega_e \in \mathbb{F}_2$ of $Z_e$ determine
+the measurement sign $\sigma = \sum_v \varepsilon_v$ and the byproduct correction at vertex
+$v$ via the parity of $\omega$ along a walk from $v_0$ to $v$. Walk parities are additive
+under concatenation, invariant under reversal, and well-defined when closed walks have zero
+parity.
+\uses{def:2_gauss_law_flux, def:1_boundary_coboundary_maps}
+\end{definition}
+
+\begin{definition}[Cycle-sparsified graph]
+\label{def:6_cycle_sparsified_graph}
+\lean{CycleSparsification.sparsifiedGraph}
+\leanok
+The cycle-sparsified graph $\bar{\bar G}$ with bound $c$ is built from a connected $G$ in
+$R+1$ layers indexed by $\mathrm{Fin}(R+1)$: layer $0$ is the original graph; inter-layer
+edges connect $(v, i)$ to $(v, i+1)$; intra-layer edges replicate $G$ within each layer;
+zigzag-diagonal triangulation edges decompose long cycles into triangles. With $R$ chosen
+sufficiently large the generating cycles all have weight at most $4$: triangles from the
+cellulation and $4$-cycles from inter-layer squares.
+\uses{def:1_boundary_coboundary_maps, rem:11_desiderata_for_graph_g}
+\end{definition}
+
+\begin{definition}[Space and time faults]
+\label{def:7_space_time_faults}
+\lean{SpacetimeFault}
+\leanok
+A \emph{space-fault} is a nontrivial single-qubit Pauli error at a specific qubit and time,
+encoded by its $X$- and $Z$-components in $\mathbb{F}_2 \times \mathbb{F}_2$. A
+\emph{time-fault} is a measurement whose outcome is reported incorrectly (initialization
+errors are modeled this way). A \emph{spacetime fault} $F$ is a finset of space-faults and a
+finset of time-faults, with weight $|F|$ equal to the total number of elementary faults.
+Composition is symmetric difference on both components.
+\end{definition}
+
+\begin{definition}[Detectors]
+\label{def:8_detectors}
+\lean{Detector}
+\leanok
+A \emph{detector} is a finset of measurement labels with ideal outcomes summing to $0$ in
+$\mathbb{F}_2$ (equivalently, the product of $\pm 1$ outcomes is $+1$ in the absence of
+faults). Given a finset of time-faults, the observed parity is the sum of observed outcomes
+over the detector's measurements; the detector is \emph{violated} when this parity is $1$.
+Standard constructions include the repeated-measurement detector and the
+initialization-plus-later-measurement detector.
+\uses{def:7_space_time_faults}
+\end{definition}
+
+\begin{definition}[Syndrome]
+\label{def:9_syndrome}
+\lean{syndromeFault}
+\leanok
+For a family of detectors $(D_i)_{i \in I}$, the \emph{syndrome} of a spacetime fault $F$ is
+the finset of indices $i \in I$ for which $D_i$ is violated; equivalently, the
+syndrome vector $s \in \mathbb{F}_2^I$ has $s_i = 1$ iff $D_i$ is violated. The syndrome is
+empty for the fault-free configuration and depends only on the time-fault component of $F$.
+\uses{def:7_space_time_faults, def:8_detectors}
+\end{definition}
+
+\begin{definition}[Fault-tolerant gauging procedure]
+\label{def:10_ft_gauging_procedure}
+\lean{FaultTolerantGaugingProcedure}
+\leanok
+The fault-tolerant gauging measurement of a logical $L$ in an $[[n,k,d]]$ stabilizer code
+consists of three phases: (1) measure the original checks $\{s_j\}$ for $d$ rounds; (2)
+initialize edge qubits and measure the deformed-code checks $\{A_v, B_p, \tilde s_j\}$ for
+$d$ rounds; (3) measure $Z_e$ on edge qubits to ungauge and resume the original checks for
+$d$ rounds. The corresponding measurement label type, phase assignment, and round counting
+are formalized.
+\uses{def:4_deformed_code, def:5_gauging_measurement_algorithm, def:7_space_time_faults, def:8_detectors, def:9_syndrome}
+\end{definition}
+
+\begin{definition}[Spacetime logical fault]
+\label{def:11_spacetime_logical_fault}
+\lean{SpacetimeLogicalFault.IsSpacetimeLogicalFault}
+\leanok
+A spacetime fault $F$ is \emph{syndrome-free} if it violates no detector. A
+\emph{spacetime logical fault} is syndrome-free and changes the outcome of the
+fault-tolerant gauging procedure; a \emph{spacetime stabilizer} is syndrome-free and does
+not. The two classes partition the syndrome-free faults, and the empty fault is a stabilizer.
+\uses{def:7_space_time_faults, def:9_syndrome, def:10_ft_gauging_procedure}
+\end{definition}
+
+\begin{definition}[Spacetime fault distance]
+\label{def:12_spacetime_fault_distance}
+\lean{SpacetimeFaultDistance.spacetimeFaultDistance}
+\leanok
+The \emph{spacetime fault-distance} $d_{\mathrm{spacetime}}$ is the minimum weight of a
+spacetime logical fault (Definition~\ref{def:11_spacetime_logical_fault}), with the
+convention $d_{\mathrm{spacetime}} = 0$ when no logical fault exists. It satisfies
+$d_{\mathrm{spacetime}} \le |F|$ for every logical fault $F$, and a syndrome-free fault of
+weight strictly less than $d_{\mathrm{spacetime}}$ is necessarily a stabilizer.
+\uses{def:11_spacetime_logical_fault, def:10_ft_gauging_procedure}
+\end{definition}
+
+\chapter{Lemmas}
+
+\begin{lemma}[Deformed code checks]
+\label{lem:1_deformed_code_checks}
+\lean{DeformedCodeChecks.deformedStabilizerCode}
+\leanok
+The three families of operators defining the deformed code pairwise commute: $[A_v, A_w] = 0$,
+$[B_p, B_q] = 0$, $[\tilde s_i, \tilde s_j] = 0$, $[A_v, B_p] = 0$, $[A_v, \tilde s_j] = 0$,
+$[B_p, \tilde s_j] = 0$, and every check is self-inverse. They therefore form a valid
+generating set for a stabilizer code on the extended system $V \oplus E$.
+\uses{def:4_deformed_code, def:2_gauss_law_flux, def:3_deformed_operator}
+\end{lemma}
+
+\begin{lemma}[Decongestion lemma bound]
+\label{lem:2_decongestion_bound}
+\lean{DecongestionLemma.decongestion_log_squared}
+\leanok
+For a constant-degree expander graph with $W$ vertices, the number of layers $R$ needed by
+the cycle-sparsification of Definition~\ref{def:6_cycle_sparsified_graph} with cycle-degree
+bound $c$ satisfies $R = O(\log^2 W)$. The proof goes via $|E| \le \Delta W / 2$,
+$|C| = O(W)$, and a greedy packing argument (König's theorem) showing
+$R \le \lceil M/c \rceil$ for the maximum edge-cycle degree $M$; for expanders
+$M \le K \log^2 W$ from the diameter bound.
+\uses{def:6_cycle_sparsified_graph, rem:4_notation_cheeger_constant, rem:11_desiderata_for_graph_g}
+\end{lemma}
+
+\begin{lemma}[Space distance]
+\label{lem:3_space_distance}
+\lean{SpaceDistance.distance_ge_min_cheeger_one_mul_d}
+\leanok
+For the graph $G$ used in the gauging procedure with original code distance $d$ and deformed
+distance $d^*$,
+\[
+  d^* \ge \min(h(G), 1) \cdot d.
+\]
+In particular, when $h(G) \ge 1$ we obtain $d^* \ge d$. The proof restricts a candidate
+deformed logical to $V$, shows the edge $X$-support lies in $\ker(\delta_2)$ and is a
+coboundary, and cleans up using sufficient expansion.
+\uses{lem:1_deformed_code_checks, rem:4_notation_cheeger_constant, rem:5_exactness_of_sequences, rem:8_freedom_in_deformed_checks, thm:1_gauging_correctness}
+\end{lemma}
+
+\begin{lemma}[Spacetime code detectors]
+\label{lem:4_spacetime_code_detectors}
+\lean{phase1RepeatedDetector_parametric}
+\leanok
+The local detectors of the fault-tolerant gauging procedure are: repeated-measurement
+detectors $s_j^t$ in Phase 1, $A_v^t$, $B_p^t$, $\tilde s_j^t$ in Phase 2, and $s_j^t$ in
+Phase 3; together with boundary detectors at $t_i$ (edge initialization + first $B_p$, and
+last $s_j$ + edge inits + first $\tilde s_j$) and at $t_o$ (last $B_p$ + $Z_e$ readouts, and
+last $\tilde s_j$ + $Z_e$ + first $s_j$). These cover every measurement and $\mathbb{F}_2$-generate
+all detectors of the procedure.
+\uses{def:10_ft_gauging_procedure, def:8_detectors}
+\end{lemma}
+
+\begin{lemma}[Spacetime stabilizers]
+\label{lem:5_spacetime_stabilizers}
+\lean{SpacetimeStabilizers.listedGenerator_isGaugingStabilizer}
+\leanok
+The local spacetime stabilizers of the fault-tolerant gauging procedure are generated by
+explicit fault patterns organized by phase: space-only stabilizer generators, time-propagating
+generators (Pauli at $t$ and $t+1$ together with measurement flips on anticommuting checks),
+initialization $X_e$ generators at $t_i$, $Z_e$-with-$A_v$ measurement generators, and
+edge-readout $X_e$ generators at $t_o$. Every listed generator is a syndrome-free
+outcome-preserving fault, and every gauging stabilizer decomposes into such generators.
+\uses{def:10_ft_gauging_procedure, def:11_spacetime_logical_fault, lem:1_deformed_code_checks, lem:4_spacetime_code_detectors}
+\end{lemma}
+
+\begin{lemma}[Time fault-distance]
+\label{lem:6_time_fault_distance}
+\lean{TimeFaultDistance.timeFaultDistance_eq_d}
+\leanok
+The fault-distance restricted to pure time-faults (measurement and initialization errors)
+in the fault-tolerant gauging procedure equals $t_o - t_i = d$. An $A_v$ measurement string
+on a single vertex across all $d$ Phase 2 rounds is syndrome-free, has weight $d$, and flips
+$\sigma$, providing the upper bound. The all-or-none constraint on $A_v$ faults from
+repeated Gauss detectors gives the matching lower bound.
+\uses{def:10_ft_gauging_procedure, def:11_spacetime_logical_fault, def:12_spacetime_fault_distance, lem:4_spacetime_code_detectors, lem:5_spacetime_stabilizers}
+\end{lemma}
+
+\begin{lemma}[Space-time decoupling]
+\label{lem:7_space_time_decoupling}
+\lean{SpaceTimeDecoupling.spaceTime_decomposition}
+\leanok
+Every spacetime logical fault $F$ of the fault-tolerant gauging procedure decomposes, up to a
+spacetime stabilizer $S$, as $F = F_S \cdot F_T \cdot S$, where $F_S$ is a space-only
+logical fault concentrated at the gauging time $t_i$ acting as a logical of the deformed
+code, and $F_T$ is a pure-time logical fault that flips the gauging sign. The proof moves
+all space-faults to time $t_i$ via time-propagating stabilizers and separates the
+remaining time-faults into $A_v$ strings versus stabilizer generators.
+\uses{def:10_ft_gauging_procedure, def:11_spacetime_logical_fault, def:12_spacetime_fault_distance, lem:1_deformed_code_checks, lem:4_spacetime_code_detectors, lem:5_spacetime_stabilizers, lem:6_time_fault_distance}
+\end{lemma}
+
+\chapter{Main results}
+
+\begin{theorem}[Gauging measurement correctness]
+\label{thm:1_gauging_correctness}
+\lean{GaugingMeasurementCorrectness.gauging_implements_projective_measurement}
+\leanok
+The gauging measurement procedure of
+Definition~\ref{def:5_gauging_measurement_algorithm} is equivalent to a projective
+measurement of $L = \prod_{v \in V} X_v$. The effective Pauli operator acting on the vertex
+qubits after the procedure is $1 + \sigma L$, where $\sigma = \prod_v \varepsilon_v \in \{\pm 1\}$
+is the measurement sign, projecting onto the $\sigma$-eigenspace of $L$.
+\uses{def:5_gauging_measurement_algorithm, def:2_gauss_law_flux, def:1_boundary_coboundary_maps, rem:5_exactness_of_sequences}
+\end{theorem}
+
+\begin{theorem}[Fault-tolerant gauging distance]
+\label{thm:2_ft_gauging_distance}
+\lean{FaultTolerantGaugingDistance.spacetimeFaultDistance_eq_d}
+\leanok
+Assume the gauging graph $G$ has Cheeger constant $h(G) \ge 1$ and that the deformed-code
+phase lasts at least $d$ rounds. Then the spacetime fault-distance of the fault-tolerant
+gauging procedure equals the original code distance: $d_{\mathrm{spacetime}} = d$. The lower
+bound combines the space-time decomposition with the space and time distance lemmas; the
+upper bound is witnessed by a minimum-weight logical of the original code placed as a
+space-fault at $t_i$.
+\uses{def:10_ft_gauging_procedure, def:12_spacetime_fault_distance, lem:3_space_distance, lem:6_time_fault_distance, lem:7_space_time_decoupling, rem:13_optimal_cheeger_constant}
+\end{theorem}
+
+\begin{corollary}[Worst-case qubit overhead]
+\label{cor:1_worst_case_overhead}
+\lean{WorstCaseOverhead.worst_case_overhead}
+\leanok
+The fault-tolerant gauging measurement of a Pauli logical operator of weight $W$ in a qLDPC
+stabilizer code can be carried out with at most $O(W \log^2 W)$ additional qubits while
+preserving the original code distance, the LDPC property, and bounded check weights. The
+construction combines the graph of Remark~\ref{rem:12_worst_case_graph_construction} with
+the cycle sparsification of Definition~\ref{def:6_cycle_sparsified_graph} at
+$R = O(\log^2 W)$ layers.
+\uses{thm:2_ft_gauging_distance, rem:12_worst_case_graph_construction, lem:2_decongestion_bound, lem:3_space_distance}
+\end{corollary}
 
 \end{document}
