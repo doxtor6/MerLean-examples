@@ -337,6 +337,110 @@ a:hover {
   margin-bottom: 0;
 }
 
+/* ---- Results section ---- */
+.results-section {
+  margin-top: 32px;
+  padding: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.results-section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.results-section > p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 18px;
+}
+
+.result-card {
+  min-width: 0;
+  padding: 18px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+.table-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.results-table.compact {
+  font-size: 0.82rem;
+}
+
+.results-table th,
+.results-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.results-table th:first-child,
+.results-table td:first-child {
+  text-align: left;
+}
+
+.results-table th {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.results-table td {
+  color: var(--text-secondary);
+}
+
+.results-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.highlight-row td,
+.summary-row td,
+.best {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.table-note {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  line-height: 1.55;
+}
+
 /* Stats row */
 .stats-row {
   display: grid;
@@ -469,6 +573,12 @@ a:hover {
   font-size: 0.82rem;
   color: var(--text-muted);
   margin-bottom: 16px;
+}
+
+.pub-note {
+  margin-top: 12px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
 }
 
 .pub-links {
@@ -913,6 +1023,10 @@ a:hover {
   }
 
   .stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .results-grid {
     grid-template-columns: 1fr;
   }
 

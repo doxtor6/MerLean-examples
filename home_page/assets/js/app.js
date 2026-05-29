@@ -6,9 +6,9 @@
 const blogPosts = [
   {
     file:    "blog2.md",
-    title:   "MerLean-prover and Its Performance on FormalQualBench",
-    date:    "2026-03-21",
-    excerpt: "MerLean-prover solves 8 out of 8 graduate-level FormalQualBench problems at 100% success rate — all 82 statements with no axioms and no sorry."
+    title:   "MerLean-Prover and Its Performance on FormalQualBench",
+    date:    "2026-05-27",
+    excerpt: "MerLean-Prover now closes 10/23 FormalQualBench problems and 12/12 on a Putnam 2025 slice, using a recursive Lean proof harness without fine-tuning."
   },
   {
     file:    "blog1.md",
