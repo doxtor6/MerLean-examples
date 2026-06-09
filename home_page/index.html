@@ -68,22 +68,28 @@
     <div class="about-section">
       <h2>About MerLean</h2>
       <p>
-        MerLean began as a bidirectional autoformalization pipeline: it extracts mathematical statements from LaTeX, formalizes them into Lean 4 code built on Mathlib, and translates the result back into human-readable LaTeX for semantic review.
-      </p>
-      <p>
-        The newer MerLean-Prover work extends that stack into end-to-end Lean theorem proving. A simple recursive looping harness closes 10/23 FormalQualBench problems and 12/12 on a Putnam 2025 slice, without fine-tuning or theorem-specific scaffolding.
+        MerLean is a Lean-based verifier and prover for mathematics and code. As a verifier, it turns mathematical solutions, programs, and AI-generated code into machine-checkable certificates that help certify correctness and catch mistakes; as a prover, MerLean-Prover searches for formal proofs for hard and open problems, and supports vibe coding without hallucination by grounding generated code in formal checks.
       </p>
       <div class="stats-row">
         <div class="stat-card">
-          <div class="stat-value">2,050+</div>
-          <div class="stat-label">Lean Declarations</div>
+          <div class="stat-value stat-value-lines">
+            <span>21/179</span>
+            <span>Top 5/6</span>
+          </div>
+          <div class="stat-label">Lean Eval Benchmark</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value">10/23</div>
+          <div class="stat-value stat-value-lines">
+            <span>10/23</span>
+            <span>Top 1</span>
+          </div>
           <div class="stat-label">FormalQualBench</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value">12/12</div>
+          <div class="stat-value stat-value-lines">
+            <span>12/12, 789 mins</span>
+            <span>Top 1</span>
+          </div>
           <div class="stat-label">Putnam 2025 Slice</div>
         </div>
       </div>
@@ -91,8 +97,7 @@
 
     <!-- Fundraising -->
     <div class="fundraising-section">
-      <div class="section-eyebrow">Fundraising, Advisors & Cofounders</div>
-      <h2>MerLean is actively preparing a pre-seed round.</h2>
+      <h2>Fundraising, Advisors &amp; Cofounders</h2>
       <p>
         We are speaking with pre-seed investors who are interested in capital-efficient assurance infrastructure for AI-generated critical code, formal verification, and machine-checkable scientific and software work.
       </p>
@@ -118,6 +123,43 @@
       <p>
         MerLean-Prover uses three agent types around a recursive proof-plan loop: planning, focused artifact checking, and Lean compile / repair. The proof assistant remains the judge; each closed proof passes the Lean kernel and axiom audit described in the paper.
       </p>
+
+      <article class="result-card lean-eval-card">
+        <div class="lean-eval-layout">
+          <div class="lean-eval-table-panel">
+            <div class="table-title">Lean Eval top submitters</div>
+            <div class="table-scroll">
+              <table class="results-table compact lean-eval-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Submitter</th>
+                    <th>Solved</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Seed Prover (ByteDance)</td><td>62</td></tr>
+                  <tr><td>2</td><td>Aleph Prover(logicalintelligence.com)</td><td>56</td></tr>
+                  <tr><td>3</td><td>Aristotle (Harmonic)</td><td>52</td></tr>
+                  <tr><td>4</td><td>Stealth Model</td><td>42</td></tr>
+                  <tr><td>5</td><td>Antigravity (Multi-Model Ensemble: Gemini 3.1 Pro, Gemini 3 Flash, Claude 4.6 Sonnet/Opus)</td><td>21</td></tr>
+                  <tr class="highlight-row"><td>6</td><td>MerLean-Prover</td><td>21</td></tr>
+                  <tr><td>7</td><td>Claude Opus 4.7 (1M context)</td><td>17</td></tr>
+                  <tr><td>8</td><td>GPT-5.5</td><td>16</td></tr>
+                  <tr><td>9</td><td>EVO (deepthought.com.au)</td><td>3</td></tr>
+                  <tr><td>10</td><td>GPT-5.5 Codex</td><td>2</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="table-note">Source: Lean Eval public leaderboard, fetched June 9, 2026. Ranked by main benchmark problems solved; internal test problems do not count toward the score.</p>
+          </div>
+          <div class="lean-eval-copy">
+            <p>
+              On the public <a href="https://lean-lang.org/eval/" target="_blank" rel="noopener" class="inline-link">Lean Eval Benchmark</a>, MerLean-Prover is currently in the top #5/#6 tier among 25 models: 21 solved problems, tied by solved count with the #5 entry, from a small academic team competing on the same table as large company-backed Lean agents.
+            </p>
+          </div>
+        </div>
+      </article>
 
       <div class="results-grid">
         <article class="result-card">

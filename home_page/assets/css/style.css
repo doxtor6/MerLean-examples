@@ -92,8 +92,9 @@ a:hover {
 }
 
 .nav-brand img {
-  width: 36px;
   height: 36px;
+  width: auto;
+  flex-shrink: 0;
   border-radius: 0;
 }
 
@@ -441,6 +442,49 @@ a:hover {
   border-radius: var(--radius-sm);
 }
 
+.lean-eval-card {
+  margin-bottom: 22px;
+}
+
+.lean-eval-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.lean-eval-table-panel {
+  min-width: 0;
+}
+
+.lean-eval-copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.lean-eval-copy p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.85;
+  margin: 0;
+  max-width: 75%;
+}
+
+.lean-eval-table th:first-child,
+.lean-eval-table td:first-child {
+  width: 64px;
+  text-align: right;
+}
+
+.lean-eval-table th:nth-child(2),
+.lean-eval-table td:nth-child(2) {
+  white-space: normal;
+  min-width: 260px;
+  text-align: left;
+}
+
 .table-title {
   font-size: 0.95rem;
   font-weight: 700;
@@ -516,6 +560,9 @@ a:hover {
 }
 
 .stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 20px 16px;
   background: var(--bg-secondary);
@@ -531,10 +578,20 @@ a:hover {
 }
 
 .stat-value {
-  font-size: 1.8rem;
+  font-size: 1.44rem;
   font-weight: 800;
   color: var(--accent);
   letter-spacing: -0.02em;
+}
+
+.stat-value-lines {
+  display: flex;
+  min-height: 4.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.16;
 }
 
 .stat-label {
@@ -542,7 +599,7 @@ a:hover {
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 /* ---- BibTeX ---- */
