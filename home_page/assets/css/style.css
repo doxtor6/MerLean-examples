@@ -377,6 +377,14 @@ a:hover {
   max-width: 760px;
 }
 
+.fundraising-contact strong {
+  color: var(--text-primary);
+}
+
+.fundraising-contact a {
+  font-weight: 600;
+}
+
 .fundraising-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1101,6 +1109,7 @@ a:hover {
 
 .site-footer a {
   color: var(--text-secondary);
+  font-weight: 600;
 }
 
 .site-footer a:hover {
