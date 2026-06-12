@@ -29,6 +29,7 @@
 - 2026-06-09: Revised the About MerLean wording from `without hallucinated correctness claims` to `without hallucination`. Updated source and tracked `_site` mirror manually.
 - 2026-06-09: Reverted the About MerLean final clause to `supports vibe coding without hallucination by grounding generated code in formal checks`. Updated source and tracked `_site` mirror manually.
 - 2026-06-10: Added `merlean.prover@gmail.com` as the public contact email in the Home fundraising/recruiting section and again at the bottom of the Home tab. The fundraising contact line sits directly under the fundraising intro sentence, not in a separate mini-card. Updated source and tracked `_site` mirror manually.
+- 2026-06-12: Updated the Lean Eval homepage stats and result card to show MerLean-Prover at `24/182` and `Top 5`, with the highlighted table row moved to rank 5 and the source date refreshed. Updated source and tracked `_site` mirror manually.
 
 ## Notes For Future Agents
 
